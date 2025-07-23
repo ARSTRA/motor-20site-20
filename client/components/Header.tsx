@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { Search, Menu, Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Search, Menu, Phone, Mail, MapPin, Clock, User, LogOut, Settings, Car } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/contexts/AuthContext";
 
 // SVG Logo Component with Natural Mountain & Road Theme
 const PremiumAutoLogo = () => (
