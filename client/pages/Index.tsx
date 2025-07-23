@@ -203,10 +203,10 @@ export default function Index() {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <Link
-                key={index}
-                to={`/category/${category.name.toLowerCase().replace(' ', '-')}`}
+                key={category.id}
+                to={`/category/${category.slug}`}
                 className="group"
               >
                 <Card className="text-center p-6 hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
