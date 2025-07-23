@@ -31,16 +31,16 @@ export default function About() {
 
   const heroImages = [
     {
-      url: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2083&q=80",
+      url: "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg",
       alt: "Luxury car showroom with premium vehicles",
     },
     {
-      url: "https://images.unsplash.com/photo-1562911791-c7a97b729ec5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Modern car dealership exterior with alpine mountain backdrop",
+      url: "https://images.pexels.com/photos/9764732/pexels-photo-9764732.jpeg",
+      alt: "Modern luxury sports car in showroom",
     },
     {
-      url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Professional automotive service center",
+      url: "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
+      alt: "Professional automotive service center team",
     },
   ];
 
