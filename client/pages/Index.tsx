@@ -131,19 +131,19 @@ export default function Index() {
 
         {/* Hero Content */}
         <div className="relative z-20 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-4 w-full">
-            <div className="max-w-2xl">
-              <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                 Discover Your
                 <span className="bg-gradient-to-r from-gold-400 via-sunset-400 to-gold-400 bg-clip-text text-transparent block">
                   Perfect Journey
                 </span>
               </h1>
-              <p className="text-xl lg:text-2xl text-gray-100 mb-8 leading-relaxed max-w-2xl">
+              <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-8 leading-relaxed max-w-2xl">
                 Where luxury meets adventure. Experience our curated collection
                 of premium vehicles designed for those who demand excellence.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md sm:max-w-none">
                 <Link to="/inventory">
                   <Button
                     size="lg"
