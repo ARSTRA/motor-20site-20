@@ -68,7 +68,7 @@ export default function About() {
       description:
         "We believe in transparent, honest dealings with every customer, building trust through reliability and ethical business practices.",
       image:
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80",
+        "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
     },
     {
       icon: Sparkles,
@@ -76,7 +76,7 @@ export default function About() {
       description:
         "Every vehicle in our collection represents the pinnacle of automotive excellence, carefully curated for the discerning driver.",
       image:
-        "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        "https://images.pexels.com/photos/9764732/pexels-photo-9764732.jpeg",
     },
     {
       icon: Heart,
@@ -84,7 +84,7 @@ export default function About() {
       description:
         "Your satisfaction drives our passion. We're dedicated to creating extraordinary experiences that exceed expectations.",
       image:
-        "https://images.unsplash.com/photo-1551522435-a13afa10f103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg",
     },
   ];
 
