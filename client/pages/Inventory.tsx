@@ -619,29 +619,43 @@ export default function Inventory() {
             {/* Vehicle Grid/List */}
             <div className="flex-1">
               {loading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
                   {[...Array(6)].map((_, i) => (
                     <div
                       key={i}
-                      className="bg-gray-200 animate-pulse rounded-2xl h-96"
-                    ></div>
+                      className="bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse rounded-2xl h-96 relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full animate-shimmer"></div>
+                    </div>
                   ))}
                 </div>
               ) : cars.length === 0 ? (
-                <div className="text-center py-16">
-                  <div className="text-6xl mb-4">🔍</div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    No vehicles found
+                <div className="text-center py-20">
+                  <div className="w-24 h-24 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="text-4xl">🔍</div>
+                  </div>
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-4">
+                    No Vehicles Found
                   </h3>
-                  <p className="text-gray-600 mb-8">
-                    Try adjusting your filters to see more results
+                  <p className="text-gray-600 mb-8 text-lg max-w-md mx-auto">
+                    We couldn't find any vehicles matching your criteria. Try adjusting your filters or search terms.
                   </p>
-                  <Button
-                    onClick={clearFilters}
-                    className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white"
-                  >
-                    Clear All Filters
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      onClick={clearFilters}
+                      className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    >
+                      Clear All Filters
+                    </Button>
+                    <Link to="/contact">
+                      <Button
+                        variant="outline"
+                        className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white font-bold px-8 py-3 rounded-xl transition-all duration-300"
+                      >
+                        Contact Expert
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               ) : (
                 <>
