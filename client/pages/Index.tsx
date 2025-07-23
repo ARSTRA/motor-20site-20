@@ -19,7 +19,7 @@ import { Car, Category } from "@shared/api";
 const stats = [
   { label: "Vehicles in Stock", value: "150+", icon: "🚗" },
   { label: "Happy Customers", value: "2.5K+", icon: "😊" },
-  { label: "Years Experience", value: "25+", icon: "��" },
+  { label: "Years Experience", value: "25+", icon: "🏆" },
   { label: "Service Centers", value: "8", icon: "🔧" },
 ];
 
@@ -503,26 +503,32 @@ export default function Index() {
             exclusive offers, and the luxury you deserve.
           </p>
           <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
-            <Button
-              size="lg"
-              className="text-lg px-10 py-4 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-            >
-              Schedule Private Viewing
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-10 py-4 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-2xl transition-all duration-300"
-            >
-              Get Instant Quote
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-10 py-4 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-2xl transition-all duration-300"
-            >
-              Financing Options
-            </Button>
+            <Link to="/contact">
+              <Button
+                size="lg"
+                className="text-lg px-10 py-4 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+              >
+                Schedule Private Viewing
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-10 py-4 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-2xl transition-all duration-300"
+              >
+                Get Instant Quote
+              </Button>
+            </Link>
+            <Link to="/financing">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-10 py-4 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-2xl transition-all duration-300"
+              >
+                Financing Options
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
