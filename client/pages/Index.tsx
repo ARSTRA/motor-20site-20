@@ -113,10 +113,18 @@ export default function Index() {
             </div>
           ))
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-r from-automotive-500 to-automotive-600 flex items-center justify-center">
-            <div className="text-white text-center">
-              <div className="text-6xl mb-4">🚗</div>
-              <p className="text-lg opacity-75">Loading featured vehicles...</p>
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg)`,
+            }}
+          >
+            <div className="absolute inset-0 bg-black/50"></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-white text-center">
+                <div className="text-6xl mb-4">🚗</div>
+                <p className="text-lg opacity-75">Loading featured vehicles...</p>
+              </div>
             </div>
           </div>
         )}
