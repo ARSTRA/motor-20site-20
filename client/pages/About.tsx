@@ -282,12 +282,13 @@ export default function About() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-              <div>
+              <div className="relative group">
                 <img
-                  src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  src="https://images.pexels.com/photos/331988/pexels-photo-331988.jpeg"
                   alt="Alpine Motors historical founding"
-                  className="w-full h-96 object-cover rounded-3xl shadow-2xl"
+                  className="w-full h-96 object-cover rounded-3xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
