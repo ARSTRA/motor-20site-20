@@ -382,30 +382,34 @@ export default function About() {
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {values.map((value, index) => (
                 <Card
                   key={index}
-                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2"
+                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2 bg-white/95 backdrop-blur-sm"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <img
                       src={value.image}
                       alt={value.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        // Fallback to a default image if specific image fails
+                        e.currentTarget.src = 'https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg';
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div className="absolute bottom-4 left-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm mb-3">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm mb-3 group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300">
                         <value.icon className="h-6 w-6 text-white" />
                       </div>
                     </div>
                   </div>
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <CardContent className="p-6 sm:p-8">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 group-hover:text-ocean-600 transition-colors duration-300">
                       {value.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                       {value.description}
                     </p>
                   </CardContent>
