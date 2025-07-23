@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Inventory from "./pages/Inventory";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
+import CategoryPage from "./pages/CategoryPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 
