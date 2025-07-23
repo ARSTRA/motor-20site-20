@@ -47,6 +47,23 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Car dealer specific colors
+        automotive: {
+          50: "#f0f9ff",
+          100: "#e0f2fe",
+          500: "#0ea5e9",
+          600: "#0284c7",
+          700: "#0369a1",
+          900: "#0c4a6e",
+        },
+        luxury: {
+          50: "#fefce8",
+          100: "#fef9c3",
+          400: "#facc15",
+          500: "#eab308",
+          600: "#ca8a04",
+          900: "#713f12",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
