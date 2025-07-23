@@ -1,5 +1,9 @@
 import { RequestHandler } from "express";
-import { ContactMessage, MessagesResponse, CreateMessageRequest } from "@shared/api";
+import {
+  ContactMessage,
+  MessagesResponse,
+  CreateMessageRequest,
+} from "@shared/api";
 
 // Mock database for messages
 const mockMessages: ContactMessage[] = [
@@ -9,19 +13,21 @@ const mockMessages: ContactMessage[] = [
     email: "john.smith@email.com",
     phone: "(555) 123-4567",
     subject: "Test Drive Request",
-    message: "I'm interested in scheduling a test drive for the BMW X5. When would be a good time?",
+    message:
+      "I'm interested in scheduling a test drive for the BMW X5. When would be a good time?",
     carId: 1,
     status: "new",
-    createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() // 1 day ago
+    createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
   },
   {
     id: 2,
     name: "Sarah Johnson",
     email: "sarah.j@email.com",
     subject: "Financing Question",
-    message: "What financing options do you have available? I'm looking to purchase a vehicle in the $80k-$120k range.",
+    message:
+      "What financing options do you have available? I'm looking to purchase a vehicle in the $80k-$120k range.",
     status: "read",
-    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 days ago
+    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
   },
   {
     id: 3,
@@ -29,10 +35,11 @@ const mockMessages: ContactMessage[] = [
     email: "m.chen@email.com",
     phone: "(555) 987-6543",
     subject: "Trade-in Inquiry",
-    message: "I have a 2020 Audi A4 that I'd like to trade in. Can you provide an estimate?",
+    message:
+      "I have a 2020 Audi A4 that I'd like to trade in. Can you provide an estimate?",
     status: "replied",
-    createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() // 3 days ago
-  }
+    createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days ago
+  },
 ];
 
 // Get all messages with pagination
@@ -44,12 +51,14 @@ export const handleGetMessages: RequestHandler = (req, res) => {
   let filteredMessages = [...mockMessages];
 
   // Filter by status if provided
-  if (status && status !== 'all') {
-    filteredMessages = filteredMessages.filter(msg => msg.status === status);
+  if (status && status !== "all") {
+    filteredMessages = filteredMessages.filter((msg) => msg.status === status);
   }
 
   // Sort by creation date (newest first)
-  filteredMessages.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  filteredMessages.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  );
 
   // Apply pagination
   const startIndex = (page - 1) * limit;
@@ -60,7 +69,7 @@ export const handleGetMessages: RequestHandler = (req, res) => {
     messages: paginatedMessages,
     total: filteredMessages.length,
     page,
-    limit
+    limit,
   };
 
   res.json(response);
@@ -69,15 +78,15 @@ export const handleGetMessages: RequestHandler = (req, res) => {
 // Get single message by ID
 export const handleGetMessage: RequestHandler = (req, res) => {
   const messageId = Number(req.params.id);
-  const message = mockMessages.find(m => m.id === messageId);
-  
+  const message = mockMessages.find((m) => m.id === messageId);
+
   if (!message) {
     return res.status(404).json({ error: "Message not found" });
   }
 
   // Mark as read if it was new
-  if (message.status === 'new') {
-    message.status = 'read';
+  if (message.status === "new") {
+    message.status = "read";
   }
 
   res.json(message);
@@ -86,17 +95,19 @@ export const handleGetMessage: RequestHandler = (req, res) => {
 // Create new message
 export const handleCreateMessage: RequestHandler = (req, res) => {
   const messageData: CreateMessageRequest = req.body;
-  
+
   // Basic validation
   if (!messageData.name || !messageData.email || !messageData.message) {
-    return res.status(400).json({ error: "Name, email, and message are required" });
+    return res
+      .status(400)
+      .json({ error: "Name, email, and message are required" });
   }
 
   const newMessage: ContactMessage = {
     ...messageData,
-    id: Math.max(...mockMessages.map(m => m.id)) + 1,
-    status: 'new',
-    createdAt: new Date().toISOString()
+    id: Math.max(...mockMessages.map((m) => m.id)) + 1,
+    status: "new",
+    createdAt: new Date().toISOString(),
   };
 
   mockMessages.push(newMessage);
@@ -107,13 +118,13 @@ export const handleCreateMessage: RequestHandler = (req, res) => {
 export const handleUpdateMessageStatus: RequestHandler = (req, res) => {
   const messageId = Number(req.params.id);
   const { status } = req.body;
-  
-  const messageIndex = mockMessages.findIndex(m => m.id === messageId);
+
+  const messageIndex = mockMessages.findIndex((m) => m.id === messageId);
   if (messageIndex === -1) {
     return res.status(404).json({ error: "Message not found" });
   }
 
-  if (!['new', 'read', 'replied', 'resolved'].includes(status)) {
+  if (!["new", "read", "replied", "resolved"].includes(status)) {
     return res.status(400).json({ error: "Invalid status" });
   }
 
@@ -124,8 +135,8 @@ export const handleUpdateMessageStatus: RequestHandler = (req, res) => {
 // Delete message (Admin only)
 export const handleDeleteMessage: RequestHandler = (req, res) => {
   const messageId = Number(req.params.id);
-  const messageIndex = mockMessages.findIndex(m => m.id === messageId);
-  
+  const messageIndex = mockMessages.findIndex((m) => m.id === messageId);
+
   if (messageIndex === -1) {
     return res.status(404).json({ error: "Message not found" });
   }
@@ -138,10 +149,10 @@ export const handleDeleteMessage: RequestHandler = (req, res) => {
 export const handleGetMessageStats: RequestHandler = (req, res) => {
   const stats = {
     total: mockMessages.length,
-    new: mockMessages.filter(m => m.status === 'new').length,
-    read: mockMessages.filter(m => m.status === 'read').length,
-    replied: mockMessages.filter(m => m.status === 'replied').length,
-    resolved: mockMessages.filter(m => m.status === 'resolved').length
+    new: mockMessages.filter((m) => m.status === "new").length,
+    read: mockMessages.filter((m) => m.status === "read").length,
+    replied: mockMessages.filter((m) => m.status === "replied").length,
+    resolved: mockMessages.filter((m) => m.status === "resolved").length,
   };
 
   res.json(stats);

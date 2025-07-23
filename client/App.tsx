@@ -39,12 +39,52 @@ const App = () => (
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/financing" element={<Financing />} />
-            <Route path="/trade-in" element={<PlaceholderPage title="Trade-In Services" description="Get top value for your current vehicle with our trade-in program." />} />
+            <Route
+              path="/trade-in"
+              element={
+                <PlaceholderPage
+                  title="Trade-In Services"
+                  description="Get top value for your current vehicle with our trade-in program."
+                />
+              }
+            />
             <Route path="/category/:category" element={<CategoryPage />} />
-            <Route path="/car/:id" element={<PlaceholderPage title="Vehicle Details" description="Detailed information about this specific vehicle." />} />
-            <Route path="/privacy" element={<PlaceholderPage title="Privacy Policy" description="Our commitment to protecting your privacy and data." />} />
-            <Route path="/terms" element={<PlaceholderPage title="Terms of Service" description="Terms and conditions for using our services." />} />
-            <Route path="/forgot-password" element={<PlaceholderPage title="Forgot Password" description="Reset your password to regain access to your account." />} />
+            <Route
+              path="/car/:id"
+              element={
+                <PlaceholderPage
+                  title="Vehicle Details"
+                  description="Detailed information about this specific vehicle."
+                />
+              }
+            />
+            <Route
+              path="/privacy"
+              element={
+                <PlaceholderPage
+                  title="Privacy Policy"
+                  description="Our commitment to protecting your privacy and data."
+                />
+              }
+            />
+            <Route
+              path="/terms"
+              element={
+                <PlaceholderPage
+                  title="Terms of Service"
+                  description="Terms and conditions for using our services."
+                />
+              }
+            />
+            <Route
+              path="/forgot-password"
+              element={
+                <PlaceholderPage
+                  title="Forgot Password"
+                  description="Reset your password to regain access to your account."
+                />
+              }
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

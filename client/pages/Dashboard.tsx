@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  User, 
-  Settings, 
-  CreditCard, 
-  Heart, 
-  Car, 
-  MessageSquare, 
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  User,
+  Settings,
+  CreditCard,
+  Heart,
+  Car,
+  MessageSquare,
   Calendar,
   Shield,
   Bell,
@@ -19,46 +19,68 @@ import {
   Trash2,
   CheckCircle,
   Clock,
-  XCircle
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useAuth, PaymentMethod } from '@/contexts/AuthContext';
-import Layout from '@/components/Layout';
+  XCircle,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useAuth, PaymentMethod } from "@/contexts/AuthContext";
+import Layout from "@/components/Layout";
 
 export default function Dashboard() {
-  const { user, updateProfile, addPaymentMethod, removePaymentMethod, loading } = useAuth();
-  const [activeTab, setActiveTab] = useState('overview');
+  const {
+    user,
+    updateProfile,
+    addPaymentMethod,
+    removePaymentMethod,
+    loading,
+  } = useAuth();
+  const [activeTab, setActiveTab] = useState("overview");
   const [editingProfile, setEditingProfile] = useState(false);
   const [profileData, setProfileData] = useState({
-    firstName: user?.firstName || '',
-    lastName: user?.lastName || '',
-    phone: user?.phone || '',
-    address: user?.address || '',
-    city: user?.city || '',
-    state: user?.state || '',
-    zipCode: user?.zipCode || ''
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    phone: user?.phone || "",
+    address: user?.address || "",
+    city: user?.city || "",
+    state: user?.state || "",
+    zipCode: user?.zipCode || "",
   });
-  const [preferences, setPreferences] = useState(user?.preferences || {
-    newsletter: true,
-    notifications: true,
-    darkMode: false
-  });
+  const [preferences, setPreferences] = useState(
+    user?.preferences || {
+      newsletter: true,
+      notifications: true,
+      darkMode: false,
+    },
+  );
   const [newPaymentMethod, setNewPaymentMethod] = useState({
-    type: 'credit' as 'credit' | 'debit',
-    last4: '',
-    brand: '',
+    type: "credit" as "credit" | "debit",
+    last4: "",
+    brand: "",
     expiryMonth: 1,
     expiryYear: 2025,
-    isDefault: false
+    isDefault: false,
   });
   const [showAddPayment, setShowAddPayment] = useState(false);
 
@@ -67,7 +89,9 @@ export default function Dashboard() {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Please log in to access your dashboard</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+              Please log in to access your dashboard
+            </h1>
             <Link to="/login">
               <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white">
                 Go to Login
@@ -95,25 +119,25 @@ export default function Dashboard() {
     if (success) {
       setShowAddPayment(false);
       setNewPaymentMethod({
-        type: 'credit',
-        last4: '',
-        brand: '',
+        type: "credit",
+        last4: "",
+        brand: "",
         expiryMonth: 1,
         expiryYear: 2025,
-        isDefault: false
+        isDefault: false,
       });
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'completed':
+      case "completed":
         return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'scheduled':
+      case "scheduled":
         return <Calendar className="h-4 w-4 text-blue-500" />;
-      case 'pending':
+      case "pending":
         return <Clock className="h-4 w-4 text-yellow-500" />;
-      case 'cancelled':
+      case "cancelled":
         return <XCircle className="h-4 w-4 text-red-500" />;
       default:
         return <Clock className="h-4 w-4 text-gray-500" />;
@@ -122,16 +146,16 @@ export default function Dashboard() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed':
-        return 'bg-green-100 text-green-800 border-green-200';
-      case 'scheduled':
-        return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'pending':
-        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'cancelled':
-        return 'bg-red-100 text-red-800 border-red-200';
+      case "completed":
+        return "bg-green-100 text-green-800 border-green-200";
+      case "scheduled":
+        return "bg-blue-100 text-blue-800 border-blue-200";
+      case "pending":
+        return "bg-yellow-100 text-yellow-800 border-yellow-200";
+      case "cancelled":
+        return "bg-red-100 text-red-800 border-red-200";
       default:
-        return 'bg-gray-100 text-gray-800 border-gray-200';
+        return "bg-gray-100 text-gray-800 border-gray-200";
     }
   };
 
@@ -156,9 +180,9 @@ export default function Dashboard() {
                     <User className="h-12 w-12 text-white mb-2" />
                     <p className="text-sm text-ocean-100">Member since</p>
                     <p className="font-bold">
-                      {new Date(user.joinDate).toLocaleDateString('en-US', { 
-                        month: 'long', 
-                        year: 'numeric' 
+                      {new Date(user.joinDate).toLocaleDateString("en-US", {
+                        month: "long",
+                        year: "numeric",
                       })}
                     </p>
                   </div>
@@ -173,8 +197,12 @@ export default function Dashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-ocean-600 font-medium">Favorite Vehicles</p>
-                    <p className="text-3xl font-bold text-ocean-700">{user.favoriteVehicles.length}</p>
+                    <p className="text-sm text-ocean-600 font-medium">
+                      Favorite Vehicles
+                    </p>
+                    <p className="text-3xl font-bold text-ocean-700">
+                      {user.favoriteVehicles.length}
+                    </p>
                   </div>
                   <Heart className="h-10 w-10 text-ocean-500" />
                 </div>
@@ -185,9 +213,17 @@ export default function Dashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-forest-600 font-medium">Active Inquiries</p>
+                    <p className="text-sm text-forest-600 font-medium">
+                      Active Inquiries
+                    </p>
                     <p className="text-3xl font-bold text-forest-700">
-                      {user.inquiries.filter(i => i.status !== 'completed' && i.status !== 'cancelled').length}
+                      {
+                        user.inquiries.filter(
+                          (i) =>
+                            i.status !== "completed" &&
+                            i.status !== "cancelled",
+                        ).length
+                      }
                     </p>
                   </div>
                   <MessageSquare className="h-10 w-10 text-forest-500" />
@@ -199,8 +235,12 @@ export default function Dashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-sunset-600 font-medium">Payment Methods</p>
-                    <p className="text-3xl font-bold text-sunset-700">{user.paymentMethods.length}</p>
+                    <p className="text-sm text-sunset-600 font-medium">
+                      Payment Methods
+                    </p>
+                    <p className="text-3xl font-bold text-sunset-700">
+                      {user.paymentMethods.length}
+                    </p>
                   </div>
                   <CreditCard className="h-10 w-10 text-sunset-500" />
                 </div>
@@ -211,9 +251,14 @@ export default function Dashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gold-600 font-medium">Test Drives</p>
+                    <p className="text-sm text-gold-600 font-medium">
+                      Test Drives
+                    </p>
                     <p className="text-3xl font-bold text-gold-700">
-                      {user.inquiries.filter(i => i.type === 'test_drive').length}
+                      {
+                        user.inquiries.filter((i) => i.type === "test_drive")
+                          .length
+                      }
                     </p>
                   </div>
                   <Car className="h-10 w-10 text-gold-500" />
@@ -223,38 +268,42 @@ export default function Dashboard() {
           </div>
 
           {/* Main Content */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <Tabs
+            value={activeTab}
+            onValueChange={setActiveTab}
+            className="w-full"
+          >
             <TabsList className="bg-white shadow-xl rounded-2xl p-2 border-2 border-gray-100 mb-8 grid grid-cols-2 md:grid-cols-5">
-              <TabsTrigger 
-                value="overview" 
+              <TabsTrigger
+                value="overview"
                 className="flex items-center gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-ocean-500 data-[state=active]:to-forest-500 data-[state=active]:text-white font-bold"
               >
                 <User className="h-4 w-4" />
                 Overview
               </TabsTrigger>
-              <TabsTrigger 
-                value="profile" 
+              <TabsTrigger
+                value="profile"
                 className="flex items-center gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-ocean-500 data-[state=active]:to-forest-500 data-[state=active]:text-white font-bold"
               >
                 <Settings className="h-4 w-4" />
                 Profile
               </TabsTrigger>
-              <TabsTrigger 
-                value="payments" 
+              <TabsTrigger
+                value="payments"
                 className="flex items-center gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-ocean-500 data-[state=active]:to-forest-500 data-[state=active]:text-white font-bold"
               >
                 <CreditCard className="h-4 w-4" />
                 Payments
               </TabsTrigger>
-              <TabsTrigger 
-                value="vehicles" 
+              <TabsTrigger
+                value="vehicles"
                 className="flex items-center gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-ocean-500 data-[state=active]:to-forest-500 data-[state=active]:text-white font-bold"
               >
                 <Car className="h-4 w-4" />
                 Vehicles
               </TabsTrigger>
-              <TabsTrigger 
-                value="inquiries" 
+              <TabsTrigger
+                value="inquiries"
                 className="flex items-center gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-ocean-500 data-[state=active]:to-forest-500 data-[state=active]:text-white font-bold"
               >
                 <MessageSquare className="h-4 w-4" />
@@ -276,11 +325,18 @@ export default function Dashboard() {
                   <CardContent className="p-6">
                     <div className="space-y-4">
                       {user.inquiries.slice(0, 3).map((inquiry) => (
-                        <div key={inquiry.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                        <div
+                          key={inquiry.id}
+                          className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl"
+                        >
                           {getStatusIcon(inquiry.status)}
                           <div className="flex-1">
-                            <p className="font-semibold text-gray-900">{inquiry.vehicleName}</p>
-                            <p className="text-sm text-gray-600">{inquiry.type.replace('_', ' ')} inquiry</p>
+                            <p className="font-semibold text-gray-900">
+                              {inquiry.vehicleName}
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              {inquiry.type.replace("_", " ")} inquiry
+                            </p>
                             <p className="text-xs text-gray-500">
                               {new Date(inquiry.createdAt).toLocaleDateString()}
                             </p>
@@ -291,7 +347,10 @@ export default function Dashboard() {
                         </div>
                       ))}
                     </div>
-                    <Link to="/dashboard" onClick={() => setActiveTab('inquiries')}>
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setActiveTab("inquiries")}
+                    >
                       <Button variant="outline" className="w-full mt-4">
                         View All Activity
                       </Button>
@@ -315,15 +374,15 @@ export default function Dashboard() {
                           <span className="text-sm font-bold">Browse Cars</span>
                         </Button>
                       </Link>
-                      <Button 
-                        onClick={() => setActiveTab('payments')}
+                      <Button
+                        onClick={() => setActiveTab("payments")}
                         className="w-full h-20 bg-gradient-to-r from-forest-500 to-forest-600 hover:from-forest-600 hover:to-forest-700 text-white rounded-xl flex flex-col items-center justify-center gap-2"
                       >
                         <CreditCard className="h-6 w-6" />
                         <span className="text-sm font-bold">Add Payment</span>
                       </Button>
-                      <Button 
-                        onClick={() => setActiveTab('vehicles')}
+                      <Button
+                        onClick={() => setActiveTab("vehicles")}
                         className="w-full h-20 bg-gradient-to-r from-sunset-500 to-sunset-600 hover:from-sunset-600 hover:to-sunset-700 text-white rounded-xl flex flex-col items-center justify-center gap-2"
                       >
                         <Heart className="h-6 w-6" />
@@ -370,7 +429,12 @@ export default function Dashboard() {
                           <Input
                             id="firstName"
                             value={profileData.firstName}
-                            onChange={(e) => setProfileData({...profileData, firstName: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                firstName: e.target.value,
+                              })
+                            }
                             disabled={!editingProfile}
                             className="mt-1"
                           />
@@ -380,7 +444,12 @@ export default function Dashboard() {
                           <Input
                             id="lastName"
                             value={profileData.lastName}
-                            onChange={(e) => setProfileData({...profileData, lastName: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                lastName: e.target.value,
+                              })
+                            }
                             disabled={!editingProfile}
                             className="mt-1"
                           />
@@ -391,7 +460,12 @@ export default function Dashboard() {
                         <Input
                           id="phone"
                           value={profileData.phone}
-                          onChange={(e) => setProfileData({...profileData, phone: e.target.value})}
+                          onChange={(e) =>
+                            setProfileData({
+                              ...profileData,
+                              phone: e.target.value,
+                            })
+                          }
                           disabled={!editingProfile}
                           className="mt-1"
                         />
@@ -401,7 +475,12 @@ export default function Dashboard() {
                         <Input
                           id="address"
                           value={profileData.address}
-                          onChange={(e) => setProfileData({...profileData, address: e.target.value})}
+                          onChange={(e) =>
+                            setProfileData({
+                              ...profileData,
+                              address: e.target.value,
+                            })
+                          }
                           disabled={!editingProfile}
                           className="mt-1"
                         />
@@ -412,7 +491,12 @@ export default function Dashboard() {
                           <Input
                             id="city"
                             value={profileData.city}
-                            onChange={(e) => setProfileData({...profileData, city: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                city: e.target.value,
+                              })
+                            }
                             disabled={!editingProfile}
                             className="mt-1"
                           />
@@ -422,7 +506,12 @@ export default function Dashboard() {
                           <Input
                             id="state"
                             value={profileData.state}
-                            onChange={(e) => setProfileData({...profileData, state: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                state: e.target.value,
+                              })
+                            }
                             disabled={!editingProfile}
                             className="mt-1"
                           />
@@ -432,7 +521,12 @@ export default function Dashboard() {
                           <Input
                             id="zipCode"
                             value={profileData.zipCode}
-                            onChange={(e) => setProfileData({...profileData, zipCode: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                zipCode: e.target.value,
+                              })
+                            }
                             disabled={!editingProfile}
                             className="mt-1"
                           />
@@ -472,13 +566,18 @@ export default function Dashboard() {
                       <div className="flex items-center justify-between">
                         <div>
                           <Label htmlFor="newsletter">Newsletter</Label>
-                          <p className="text-sm text-gray-500">Receive our latest offers and news</p>
+                          <p className="text-sm text-gray-500">
+                            Receive our latest offers and news
+                          </p>
                         </div>
                         <Switch
                           id="newsletter"
                           checked={preferences.newsletter}
                           onCheckedChange={(checked) => {
-                            const newPrefs = {...preferences, newsletter: checked};
+                            const newPrefs = {
+                              ...preferences,
+                              newsletter: checked,
+                            };
                             setPreferences(newPrefs);
                             updateProfile({ preferences: newPrefs });
                           }}
@@ -487,13 +586,18 @@ export default function Dashboard() {
                       <div className="flex items-center justify-between">
                         <div>
                           <Label htmlFor="notifications">Notifications</Label>
-                          <p className="text-sm text-gray-500">Get notified about your inquiries</p>
+                          <p className="text-sm text-gray-500">
+                            Get notified about your inquiries
+                          </p>
                         </div>
                         <Switch
                           id="notifications"
                           checked={preferences.notifications}
                           onCheckedChange={(checked) => {
-                            const newPrefs = {...preferences, notifications: checked};
+                            const newPrefs = {
+                              ...preferences,
+                              notifications: checked,
+                            };
                             setPreferences(newPrefs);
                             updateProfile({ preferences: newPrefs });
                           }}
@@ -502,13 +606,18 @@ export default function Dashboard() {
                       <div className="flex items-center justify-between">
                         <div>
                           <Label htmlFor="darkMode">Dark Mode</Label>
-                          <p className="text-sm text-gray-500">Switch to dark theme</p>
+                          <p className="text-sm text-gray-500">
+                            Switch to dark theme
+                          </p>
                         </div>
                         <Switch
                           id="darkMode"
                           checked={preferences.darkMode}
                           onCheckedChange={(checked) => {
-                            const newPrefs = {...preferences, darkMode: checked};
+                            const newPrefs = {
+                              ...preferences,
+                              darkMode: checked,
+                            };
                             setPreferences(newPrefs);
                             updateProfile({ preferences: newPrefs });
                           }}
@@ -529,9 +638,16 @@ export default function Dashboard() {
                       <CreditCard className="h-5 w-5" />
                       Payment Methods
                     </div>
-                    <Dialog open={showAddPayment} onOpenChange={setShowAddPayment}>
+                    <Dialog
+                      open={showAddPayment}
+                      onOpenChange={setShowAddPayment}
+                    >
                       <DialogTrigger asChild>
-                        <Button variant="ghost" size="sm" className="text-white hover:bg-white/20">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-white hover:bg-white/20"
+                        >
                           <Plus className="h-4 w-4 mr-2" />
                           Add Payment
                         </Button>
@@ -546,27 +662,37 @@ export default function Dashboard() {
                         <div className="space-y-4">
                           <div>
                             <Label htmlFor="cardType">Card Type</Label>
-                            <Select 
-                              value={newPaymentMethod.type} 
-                              onValueChange={(value: 'credit' | 'debit') => 
-                                setNewPaymentMethod({...newPaymentMethod, type: value})
+                            <Select
+                              value={newPaymentMethod.type}
+                              onValueChange={(value: "credit" | "debit") =>
+                                setNewPaymentMethod({
+                                  ...newPaymentMethod,
+                                  type: value,
+                                })
                               }
                             >
                               <SelectTrigger>
                                 <SelectValue />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="credit">Credit Card</SelectItem>
-                                <SelectItem value="debit">Debit Card</SelectItem>
+                                <SelectItem value="credit">
+                                  Credit Card
+                                </SelectItem>
+                                <SelectItem value="debit">
+                                  Debit Card
+                                </SelectItem>
                               </SelectContent>
                             </Select>
                           </div>
                           <div>
                             <Label htmlFor="brand">Card Brand</Label>
-                            <Select 
-                              value={newPaymentMethod.brand} 
-                              onValueChange={(value) => 
-                                setNewPaymentMethod({...newPaymentMethod, brand: value})
+                            <Select
+                              value={newPaymentMethod.brand}
+                              onValueChange={(value) =>
+                                setNewPaymentMethod({
+                                  ...newPaymentMethod,
+                                  brand: value,
+                                })
                               }
                             >
                               <SelectTrigger>
@@ -574,9 +700,15 @@ export default function Dashboard() {
                               </SelectTrigger>
                               <SelectContent>
                                 <SelectItem value="Visa">Visa</SelectItem>
-                                <SelectItem value="Mastercard">Mastercard</SelectItem>
-                                <SelectItem value="American Express">American Express</SelectItem>
-                                <SelectItem value="Discover">Discover</SelectItem>
+                                <SelectItem value="Mastercard">
+                                  Mastercard
+                                </SelectItem>
+                                <SelectItem value="American Express">
+                                  American Express
+                                </SelectItem>
+                                <SelectItem value="Discover">
+                                  Discover
+                                </SelectItem>
                               </SelectContent>
                             </Select>
                           </div>
@@ -585,7 +717,12 @@ export default function Dashboard() {
                             <Input
                               id="last4"
                               value={newPaymentMethod.last4}
-                              onChange={(e) => setNewPaymentMethod({...newPaymentMethod, last4: e.target.value})}
+                              onChange={(e) =>
+                                setNewPaymentMethod({
+                                  ...newPaymentMethod,
+                                  last4: e.target.value,
+                                })
+                              }
                               placeholder="1234"
                               maxLength={4}
                             />
@@ -593,19 +730,25 @@ export default function Dashboard() {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <Label htmlFor="expiryMonth">Expiry Month</Label>
-                              <Select 
-                                value={newPaymentMethod.expiryMonth.toString()} 
-                                onValueChange={(value) => 
-                                  setNewPaymentMethod({...newPaymentMethod, expiryMonth: parseInt(value)})
+                              <Select
+                                value={newPaymentMethod.expiryMonth.toString()}
+                                onValueChange={(value) =>
+                                  setNewPaymentMethod({
+                                    ...newPaymentMethod,
+                                    expiryMonth: parseInt(value),
+                                  })
                                 }
                               >
                                 <SelectTrigger>
                                   <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
-                                  {Array.from({length: 12}, (_, i) => (
-                                    <SelectItem key={i+1} value={(i+1).toString()}>
-                                      {(i+1).toString().padStart(2, '0')}
+                                  {Array.from({ length: 12 }, (_, i) => (
+                                    <SelectItem
+                                      key={i + 1}
+                                      value={(i + 1).toString()}
+                                    >
+                                      {(i + 1).toString().padStart(2, "0")}
                                     </SelectItem>
                                   ))}
                                 </SelectContent>
@@ -613,19 +756,25 @@ export default function Dashboard() {
                             </div>
                             <div>
                               <Label htmlFor="expiryYear">Expiry Year</Label>
-                              <Select 
-                                value={newPaymentMethod.expiryYear.toString()} 
-                                onValueChange={(value) => 
-                                  setNewPaymentMethod({...newPaymentMethod, expiryYear: parseInt(value)})
+                              <Select
+                                value={newPaymentMethod.expiryYear.toString()}
+                                onValueChange={(value) =>
+                                  setNewPaymentMethod({
+                                    ...newPaymentMethod,
+                                    expiryYear: parseInt(value),
+                                  })
                                 }
                               >
                                 <SelectTrigger>
                                   <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
-                                  {Array.from({length: 10}, (_, i) => (
-                                    <SelectItem key={2024+i} value={(2024+i).toString()}>
-                                      {2024+i}
+                                  {Array.from({ length: 10 }, (_, i) => (
+                                    <SelectItem
+                                      key={2024 + i}
+                                      value={(2024 + i).toString()}
+                                    >
+                                      {2024 + i}
                                     </SelectItem>
                                   ))}
                                 </SelectContent>
@@ -649,7 +798,10 @@ export default function Dashboard() {
                 <CardContent className="p-6">
                   <div className="space-y-4">
                     {user.paymentMethods.map((method) => (
-                      <div key={method.id} className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-sunset-50 rounded-xl border border-sunset-200">
+                      <div
+                        key={method.id}
+                        className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-sunset-50 rounded-xl border border-sunset-200"
+                      >
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-8 bg-gradient-to-r from-sunset-500 to-gold-500 rounded flex items-center justify-center">
                             <CreditCard className="h-4 w-4 text-white" />
@@ -659,7 +811,9 @@ export default function Dashboard() {
                               {method.brand} •••• {method.last4}
                             </p>
                             <p className="text-sm text-gray-600">
-                              Expires {method.expiryMonth.toString().padStart(2, '0')}/{method.expiryYear}
+                              Expires{" "}
+                              {method.expiryMonth.toString().padStart(2, "0")}/
+                              {method.expiryYear}
                             </p>
                           </div>
                           {method.isDefault && (
@@ -681,7 +835,9 @@ export default function Dashboard() {
                     {user.paymentMethods.length === 0 && (
                       <div className="text-center py-8">
                         <CreditCard className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                        <p className="text-gray-600">No payment methods added yet</p>
+                        <p className="text-gray-600">
+                          No payment methods added yet
+                        </p>
                         <Button
                           onClick={() => setShowAddPayment(true)}
                           className="mt-4 bg-gradient-to-r from-sunset-500 to-gold-500"
@@ -708,7 +864,9 @@ export default function Dashboard() {
                   {user.favoriteVehicles.length === 0 ? (
                     <div className="text-center py-8">
                       <Heart className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600 mb-4">No favorite vehicles yet</p>
+                      <p className="text-gray-600 mb-4">
+                        No favorite vehicles yet
+                      </p>
                       <Link to="/inventory">
                         <Button className="bg-gradient-to-r from-ocean-500 to-forest-500">
                           Browse Our Inventory
@@ -718,25 +876,41 @@ export default function Dashboard() {
                   ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {user.favoriteVehicles.map((vehicleId) => (
-                        <div key={vehicleId} className="p-4 bg-gradient-to-r from-ocean-50 to-forest-50 rounded-xl border border-ocean-200">
+                        <div
+                          key={vehicleId}
+                          className="p-4 bg-gradient-to-r from-ocean-50 to-forest-50 rounded-xl border border-ocean-200"
+                        >
                           <div className="flex items-center justify-between mb-4">
                             <Badge className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white">
                               Favorite
                             </Badge>
-                            <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-800">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-red-600 hover:text-red-800"
+                            >
                               <Trash2 className="h-4 w-4" />
                             </Button>
                           </div>
                           <div className="aspect-video bg-gradient-to-r from-ocean-100 to-forest-100 rounded-lg mb-4 flex items-center justify-center">
                             <Car className="h-12 w-12 text-ocean-600" />
                           </div>
-                          <h3 className="font-bold text-gray-900 mb-2">Vehicle #{vehicleId}</h3>
+                          <h3 className="font-bold text-gray-900 mb-2">
+                            Vehicle #{vehicleId}
+                          </h3>
                           <div className="flex gap-2">
-                            <Button size="sm" variant="outline" className="flex-1">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="flex-1"
+                            >
                               <Eye className="h-4 w-4 mr-2" />
                               View Details
                             </Button>
-                            <Button size="sm" className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white">
+                            <Button
+                              size="sm"
+                              className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white"
+                            >
                               <Phone className="h-4 w-4 mr-2" />
                               Inquire
                             </Button>
@@ -772,24 +946,39 @@ export default function Dashboard() {
                   ) : (
                     <div className="space-y-4">
                       {user.inquiries.map((inquiry) => (
-                        <div key={inquiry.id} className="p-6 bg-gradient-to-r from-gray-50 to-forest-50 rounded-xl border border-forest-200">
+                        <div
+                          key={inquiry.id}
+                          className="p-6 bg-gradient-to-r from-gray-50 to-forest-50 rounded-xl border border-forest-200"
+                        >
                           <div className="flex items-start justify-between mb-4">
                             <div>
-                              <h3 className="font-bold text-gray-900 text-lg mb-2">{inquiry.vehicleName}</h3>
+                              <h3 className="font-bold text-gray-900 text-lg mb-2">
+                                {inquiry.vehicleName}
+                              </h3>
                               <Badge className={getStatusColor(inquiry.status)}>
                                 {getStatusIcon(inquiry.status)}
                                 <span className="ml-2">{inquiry.status}</span>
                               </Badge>
                             </div>
                             <Badge variant="outline" className="capitalize">
-                              {inquiry.type.replace('_', ' ')}
+                              {inquiry.type.replace("_", " ")}
                             </Badge>
                           </div>
-                          <p className="text-gray-600 mb-4">{inquiry.message}</p>
+                          <p className="text-gray-600 mb-4">
+                            {inquiry.message}
+                          </p>
                           <div className="flex items-center justify-between text-sm text-gray-500">
-                            <span>Created: {new Date(inquiry.createdAt).toLocaleDateString()}</span>
+                            <span>
+                              Created:{" "}
+                              {new Date(inquiry.createdAt).toLocaleDateString()}
+                            </span>
                             {inquiry.scheduledDate && (
-                              <span>Scheduled: {new Date(inquiry.scheduledDate).toLocaleDateString()}</span>
+                              <span>
+                                Scheduled:{" "}
+                                {new Date(
+                                  inquiry.scheduledDate,
+                                ).toLocaleDateString()}
+                              </span>
                             )}
                           </div>
                         </div>

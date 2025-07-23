@@ -1,60 +1,76 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Mail, Lock, User, Phone, Car, AlertCircle, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Checkbox } from '@/components/ui/checkbox';
-import { useAuth } from '@/contexts/AuthContext';
-import Layout from '@/components/Layout';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  User,
+  Phone,
+  Car,
+  AlertCircle,
+  CheckCircle,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useAuth } from "@/contexts/AuthContext";
+import Layout from "@/components/Layout";
 
 export default function Register() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [agreeToNewsletter, setAgreeToNewsletter] = useState(true);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   const { register, loading } = useAuth();
   const navigate = useNavigate();
 
-  const handleChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, [field]: e.target.value }));
-  };
+  const handleChange =
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+    };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
 
     // Validation
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
-      setError('Please fill in all required fields');
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.password
+    ) {
+      setError("Please fill in all required fields");
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError("Password must be at least 6 characters long");
       return;
     }
 
     if (!agreeToTerms) {
-      setError('Please agree to the Terms and Conditions');
+      setError("Please agree to the Terms and Conditions");
       return;
     }
 
@@ -63,14 +79,14 @@ export default function Register() {
       password: formData.password,
       firstName: formData.firstName,
       lastName: formData.lastName,
-      phone: formData.phone
+      phone: formData.phone,
     });
 
     if (success) {
-      setSuccess('Account created successfully! Redirecting to dashboard...');
-      setTimeout(() => navigate('/dashboard', { replace: true }), 1500);
+      setSuccess("Account created successfully! Redirecting to dashboard...");
+      setTimeout(() => navigate("/dashboard", { replace: true }), 1500);
     } else {
-      setError('Registration failed. Please try again.');
+      setError("Registration failed. Please try again.");
     }
   };
 
@@ -93,10 +109,14 @@ export default function Register() {
 
           <Card className="shadow-2xl border-2 border-gray-100 rounded-3xl overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-forest-500 to-sunset-500 text-white pb-8">
-              <CardTitle className="text-2xl font-bold text-center">Create Account</CardTitle>
-              <p className="text-center text-forest-100 mt-2">Join our exclusive community</p>
+              <CardTitle className="text-2xl font-bold text-center">
+                Create Account
+              </CardTitle>
+              <p className="text-center text-forest-100 mt-2">
+                Join our exclusive community
+              </p>
             </CardHeader>
-            
+
             <CardContent className="p-8">
               {error && (
                 <Alert className="mb-6 border-red-200 bg-red-50">
@@ -128,7 +148,7 @@ export default function Register() {
                       <Input
                         type="text"
                         value={formData.firstName}
-                        onChange={handleChange('firstName')}
+                        onChange={handleChange("firstName")}
                         placeholder="John"
                         className="pl-12 h-12 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
                         required
@@ -144,7 +164,7 @@ export default function Register() {
                       <Input
                         type="text"
                         value={formData.lastName}
-                        onChange={handleChange('lastName')}
+                        onChange={handleChange("lastName")}
                         placeholder="Doe"
                         className="pl-12 h-12 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
                         required
@@ -163,7 +183,7 @@ export default function Register() {
                     <Input
                       type="email"
                       value={formData.email}
-                      onChange={handleChange('email')}
+                      onChange={handleChange("email")}
                       placeholder="john.doe@email.com"
                       className="pl-12 h-12 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl"
                       required
@@ -181,7 +201,7 @@ export default function Register() {
                     <Input
                       type="tel"
                       value={formData.phone}
-                      onChange={handleChange('phone')}
+                      onChange={handleChange("phone")}
                       placeholder="(555) 123-4567"
                       className="pl-12 h-12 border-2 border-sunset-200 focus:border-sunset-500 rounded-xl"
                     />
@@ -197,9 +217,9 @@ export default function Register() {
                     <div className="relative">
                       <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gold-500" />
                       <Input
-                        type={showPassword ? 'text' : 'password'}
+                        type={showPassword ? "text" : "password"}
                         value={formData.password}
-                        onChange={handleChange('password')}
+                        onChange={handleChange("password")}
                         placeholder="Create password"
                         className="pl-12 pr-12 h-12 border-2 border-gold-200 focus:border-gold-500 rounded-xl"
                         required
@@ -209,7 +229,11 @@ export default function Register() {
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                       >
-                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                        {showPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
                       </button>
                     </div>
                   </div>
@@ -220,19 +244,25 @@ export default function Register() {
                     <div className="relative">
                       <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gold-500" />
                       <Input
-                        type={showConfirmPassword ? 'text' : 'password'}
+                        type={showConfirmPassword ? "text" : "password"}
                         value={formData.confirmPassword}
-                        onChange={handleChange('confirmPassword')}
+                        onChange={handleChange("confirmPassword")}
                         placeholder="Confirm password"
                         className="pl-12 pr-12 h-12 border-2 border-gold-200 focus:border-gold-500 rounded-xl"
                         required
                       />
                       <button
                         type="button"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        onClick={() =>
+                          setShowConfirmPassword(!showConfirmPassword)
+                        }
                         className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                       >
-                        {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                        {showConfirmPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
                       </button>
                     </div>
                   </div>
@@ -244,15 +274,26 @@ export default function Register() {
                     <Checkbox
                       id="terms"
                       checked={agreeToTerms}
-                      onCheckedChange={(checked) => setAgreeToTerms(checked === true)}
+                      onCheckedChange={(checked) =>
+                        setAgreeToTerms(checked === true)
+                      }
                     />
-                    <label htmlFor="terms" className="text-sm text-gray-700 leading-relaxed">
-                      I agree to the{' '}
-                      <Link to="/terms" className="text-ocean-600 hover:text-ocean-800 font-semibold">
+                    <label
+                      htmlFor="terms"
+                      className="text-sm text-gray-700 leading-relaxed"
+                    >
+                      I agree to the{" "}
+                      <Link
+                        to="/terms"
+                        className="text-ocean-600 hover:text-ocean-800 font-semibold"
+                      >
                         Terms and Conditions
-                      </Link>{' '}
-                      and{' '}
-                      <Link to="/privacy" className="text-ocean-600 hover:text-ocean-800 font-semibold">
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        to="/privacy"
+                        className="text-ocean-600 hover:text-ocean-800 font-semibold"
+                      >
                         Privacy Policy
                       </Link>
                     </label>
@@ -261,9 +302,14 @@ export default function Register() {
                     <Checkbox
                       id="newsletter"
                       checked={agreeToNewsletter}
-                      onCheckedChange={(checked) => setAgreeToNewsletter(checked === true)}
+                      onCheckedChange={(checked) =>
+                        setAgreeToNewsletter(checked === true)
+                      }
                     />
-                    <label htmlFor="newsletter" className="text-sm text-gray-700">
+                    <label
+                      htmlFor="newsletter"
+                      className="text-sm text-gray-700"
+                    >
                       Send me exclusive offers and automotive news
                     </label>
                   </div>
@@ -280,14 +326,14 @@ export default function Register() {
                       Creating Account...
                     </div>
                   ) : (
-                    'Create Account'
+                    "Create Account"
                   )}
                 </Button>
               </form>
 
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <p className="text-center text-gray-600">
-                  Already have an account?{' '}
+                  Already have an account?{" "}
                   <Link
                     to="/login"
                     className="font-bold text-forest-600 hover:text-forest-800 transition-colors"
@@ -303,13 +349,19 @@ export default function Register() {
           <div className="mt-8 grid grid-cols-2 gap-4">
             <div className="p-6 bg-white rounded-2xl shadow-lg border border-forest-100">
               <div className="text-3xl mb-3">🎯</div>
-              <h3 className="font-bold text-gray-800 mb-2">Personalized Experience</h3>
-              <p className="text-sm text-gray-600">Get vehicle recommendations tailored to your preferences</p>
+              <h3 className="font-bold text-gray-800 mb-2">
+                Personalized Experience
+              </h3>
+              <p className="text-sm text-gray-600">
+                Get vehicle recommendations tailored to your preferences
+              </p>
             </div>
             <div className="p-6 bg-white rounded-2xl shadow-lg border border-sunset-100">
               <div className="text-3xl mb-3">⚡</div>
               <h3 className="font-bold text-gray-800 mb-2">Priority Access</h3>
-              <p className="text-sm text-gray-600">Early access to new arrivals and exclusive deals</p>
+              <p className="text-sm text-gray-600">
+                Early access to new arrivals and exclusive deals
+              </p>
             </div>
           </div>
         </div>

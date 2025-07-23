@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
+import {
   Award,
   Users,
   Calendar,
@@ -23,7 +23,7 @@ import {
   TrendingUp,
   Zap,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 
 export default function About() {
@@ -32,73 +32,117 @@ export default function About() {
   const heroImages = [
     {
       url: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2083&q=80",
-      alt: "Luxury car showroom with premium vehicles"
+      alt: "Luxury car showroom with premium vehicles",
     },
     {
       url: "https://images.unsplash.com/photo-1562911791-c7a97b729ec5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Modern car dealership exterior with alpine mountain backdrop"
+      alt: "Modern car dealership exterior with alpine mountain backdrop",
     },
     {
       url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Professional automotive service center"
-    }
+      alt: "Professional automotive service center",
+    },
   ];
 
   const stats = [
-    { icon: Calendar, label: "Years of Excellence", value: "25+", color: "ocean" },
-    { icon: Users, label: "Happy Customers", value: "50,000+", color: "forest" },
+    {
+      icon: Calendar,
+      label: "Years of Excellence",
+      value: "25+",
+      color: "ocean",
+    },
+    {
+      icon: Users,
+      label: "Happy Customers",
+      value: "50,000+",
+      color: "forest",
+    },
     { icon: Car, label: "Vehicles Sold", value: "75,000+", color: "sunset" },
-    { icon: Award, label: "Industry Awards", value: "100+", color: "gold" }
+    { icon: Award, label: "Industry Awards", value: "100+", color: "gold" },
   ];
 
   const values = [
     {
       icon: Shield,
       title: "Integrity First",
-      description: "We believe in transparent, honest dealings with every customer, building trust through reliability and ethical business practices.",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80"
+      description:
+        "We believe in transparent, honest dealings with every customer, building trust through reliability and ethical business practices.",
+      image:
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80",
     },
     {
       icon: Sparkles,
       title: "Luxury Redefined",
-      description: "Every vehicle in our collection represents the pinnacle of automotive excellence, carefully curated for the discerning driver.",
-      image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+      description:
+        "Every vehicle in our collection represents the pinnacle of automotive excellence, carefully curated for the discerning driver.",
+      image:
+        "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
     },
     {
       icon: Heart,
       title: "Customer Devotion",
-      description: "Your satisfaction drives our passion. We're dedicated to creating extraordinary experiences that exceed expectations.",
-      image: "https://images.unsplash.com/photo-1551522435-a13afa10f103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-    }
+      description:
+        "Your satisfaction drives our passion. We're dedicated to creating extraordinary experiences that exceed expectations.",
+      image:
+        "https://images.unsplash.com/photo-1551522435-a13afa10f103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    },
   ];
 
   const milestones = [
-    { year: "1998", title: "Alpine Motors Founded", description: "Started as a small family business with a vision for luxury automotive excellence" },
-    { year: "2005", title: "Expansion Era", description: "Opened our flagship showroom and expanded to premium vehicle brands" },
-    { year: "2012", title: "Innovation Leader", description: "Introduced cutting-edge digital customer experience and virtual showrooms" },
-    { year: "2018", title: "Sustainability Focus", description: "Launched eco-friendly initiatives and electric vehicle specialization" },
-    { year: "2023", title: "AI-Powered Service", description: "Integrated advanced technology for personalized customer experiences" }
+    {
+      year: "1998",
+      title: "Alpine Motors Founded",
+      description:
+        "Started as a small family business with a vision for luxury automotive excellence",
+    },
+    {
+      year: "2005",
+      title: "Expansion Era",
+      description:
+        "Opened our flagship showroom and expanded to premium vehicle brands",
+    },
+    {
+      year: "2012",
+      title: "Innovation Leader",
+      description:
+        "Introduced cutting-edge digital customer experience and virtual showrooms",
+    },
+    {
+      year: "2018",
+      title: "Sustainability Focus",
+      description:
+        "Launched eco-friendly initiatives and electric vehicle specialization",
+    },
+    {
+      year: "2023",
+      title: "AI-Powered Service",
+      description:
+        "Integrated advanced technology for personalized customer experiences",
+    },
   ];
 
   const team = [
     {
       name: "Michael Rodriguez",
       position: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      bio: "25+ years automotive industry veteran with a passion for luxury vehicles and exceptional customer service."
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      bio: "25+ years automotive industry veteran with a passion for luxury vehicles and exceptional customer service.",
     },
     {
       name: "Sarah Chen",
       position: "VP of Operations",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b1c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
-      bio: "Expert in operational excellence and customer experience optimization with extensive luxury retail background."
+      image:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b1c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      bio: "Expert in operational excellence and customer experience optimization with extensive luxury retail background.",
     },
     {
       name: "David Johnson",
       position: "Head of Sales",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
-      bio: "Award-winning sales professional specializing in luxury automotive with a track record of customer satisfaction."
-    }
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      bio: "Award-winning sales professional specializing in luxury automotive with a track record of customer satisfaction.",
+    },
   ];
 
   const nextImage = () => {
@@ -106,7 +150,9 @@ export default function About() {
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + heroImages.length) % heroImages.length,
+    );
   };
 
   return (
@@ -122,7 +168,7 @@ export default function About() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
           </div>
-          
+
           {/* Navigation Buttons */}
           <button
             onClick={prevImage}
@@ -149,14 +195,22 @@ export default function About() {
                   About Alpine Motors
                 </h1>
                 <p className="text-2xl font-light mb-8 text-gray-200 leading-relaxed">
-                  For over 25 years, we've been redefining the luxury automotive experience, 
-                  where exceptional vehicles meet unparalleled service in the heart of the mountains.
+                  For over 25 years, we've been redefining the luxury automotive
+                  experience, where exceptional vehicles meet unparalleled
+                  service in the heart of the mountains.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button asChild className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <Button
+                    asChild
+                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
+                  >
                     <Link to="/contact">Our Story</Link>
                   </Button>
-                  <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-xl backdrop-blur-sm">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-xl backdrop-blur-sm"
+                  >
                     <Link to="/contact">Meet the Team</Link>
                   </Button>
                 </div>
@@ -171,9 +225,9 @@ export default function About() {
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex 
-                    ? 'bg-white scale-125' 
-                    : 'bg-white/50 hover:bg-white/75'
+                  index === currentImageIndex
+                    ? "bg-white scale-125"
+                    : "bg-white/50 hover:bg-white/75"
                 }`}
               />
             ))}
@@ -185,12 +239,19 @@ export default function About() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
-                <Card key={index} className="text-center border-none shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                <Card
+                  key={index}
+                  className="text-center border-none shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                >
                   <CardContent className="p-8">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-${stat.color}-500 to-${stat.color}-600 mb-4`}>
+                    <div
+                      className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-${stat.color}-500 to-${stat.color}-600 mb-4`}
+                    >
                       <stat.icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</h3>
+                    <h3 className="text-4xl font-bold text-gray-900 mb-2">
+                      {stat.value}
+                    </h3>
                     <p className="text-gray-600 font-medium">{stat.label}</p>
                   </CardContent>
                 </Card>
@@ -207,57 +268,79 @@ export default function About() {
                 Our Journey
               </Badge>
               <h2 className="text-5xl font-bold text-gray-900 mb-6">
-                A Legacy of 
-                <span className="bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent"> Excellence</span>
+                A Legacy of
+                <span className="bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent">
+                  {" "}
+                  Excellence
+                </span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Founded in the scenic mountains of California, Alpine Motors began as a dream to create 
-                an automotive experience that combines luxury, adventure, and uncompromising quality.
+                Founded in the scenic mountains of California, Alpine Motors
+                began as a dream to create an automotive experience that
+                combines luxury, adventure, and uncompromising quality.
               </p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
               <div>
-                <img 
+                <img
                   src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                   alt="Alpine Motors historical founding"
                   className="w-full h-96 object-cover rounded-3xl shadow-2xl"
                 />
               </div>
               <div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">The Alpine Motors Story</h3>
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                  The Alpine Motors Story
+                </h3>
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  What started as a small family dealership has evolved into a premier destination for luxury vehicle enthusiasts. 
-                  Our founder, Michael Rodriguez, envisioned a place where customers could experience the finest automobiles 
-                  against the backdrop of nature's grandeur.
+                  What started as a small family dealership has evolved into a
+                  premier destination for luxury vehicle enthusiasts. Our
+                  founder, Michael Rodriguez, envisioned a place where customers
+                  could experience the finest automobiles against the backdrop
+                  of nature's grandeur.
                 </p>
                 <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                  Today, we're proud to represent the world's most prestigious automotive brands, offering not just vehicles, 
-                  but gateways to extraordinary adventures. Every car we sell comes with our promise of excellence and 
-                  a commitment to your driving dreams.
+                  Today, we're proud to represent the world's most prestigious
+                  automotive brands, offering not just vehicles, but gateways to
+                  extraordinary adventures. Every car we sell comes with our
+                  promise of excellence and a commitment to your driving dreams.
                 </p>
                 <div className="flex gap-4">
                   <CheckCircle className="h-6 w-6 text-forest-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700">25+ years of automotive excellence and innovation</span>
+                  <span className="text-gray-700">
+                    25+ years of automotive excellence and innovation
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* Timeline */}
             <div className="relative">
-              <h3 className="text-3xl font-bold text-center text-gray-900 mb-16">Our Milestones</h3>
+              <h3 className="text-3xl font-bold text-center text-gray-900 mb-16">
+                Our Milestones
+              </h3>
               <div className="relative">
                 <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-ocean-500 via-forest-500 to-sunset-500"></div>
                 {milestones.map((milestone, index) => (
-                  <div key={index} className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                    <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                  <div
+                    key={index}
+                    className={`relative flex items-center mb-16 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
+                  >
+                    <div
+                      className={`w-1/2 ${index % 2 === 0 ? "pr-8" : "pl-8"}`}
+                    >
                       <Card className="bg-white border-none shadow-xl hover:shadow-2xl transition-all duration-300">
                         <CardContent className="p-6">
                           <Badge className="mb-3 bg-gradient-to-r from-ocean-500 to-forest-500 text-white">
                             {milestone.year}
                           </Badge>
-                          <h4 className="text-xl font-bold text-gray-900 mb-2">{milestone.title}</h4>
-                          <p className="text-gray-600">{milestone.description}</p>
+                          <h4 className="text-xl font-bold text-gray-900 mb-2">
+                            {milestone.title}
+                          </h4>
+                          <p className="text-gray-600">
+                            {milestone.description}
+                          </p>
                         </CardContent>
                       </Card>
                     </div>
@@ -277,14 +360,20 @@ export default function About() {
                 Our Values
               </Badge>
               <h2 className="text-5xl font-bold text-gray-900 mb-6">
-                What Drives 
-                <span className="bg-gradient-to-r from-forest-600 via-ocean-600 to-sunset-600 bg-clip-text text-transparent"> Us Forward</span>
+                What Drives
+                <span className="bg-gradient-to-r from-forest-600 via-ocean-600 to-sunset-600 bg-clip-text text-transparent">
+                  {" "}
+                  Us Forward
+                </span>
               </h2>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
               {values.map((value, index) => (
-                <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2">
+                <Card
+                  key={index}
+                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2"
+                >
                   <div className="relative h-64 overflow-hidden">
                     <img
                       src={value.image}
@@ -299,8 +388,12 @@ export default function About() {
                     </div>
                   </div>
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{value.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {value.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {value.description}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -316,14 +409,20 @@ export default function About() {
                 Leadership Team
               </Badge>
               <h2 className="text-5xl font-bold text-gray-900 mb-6">
-                Meet the Visionaries Behind 
-                <span className="bg-gradient-to-r from-gold-600 via-sunset-600 to-ocean-600 bg-clip-text text-transparent"> Alpine Motors</span>
+                Meet the Visionaries Behind
+                <span className="bg-gradient-to-r from-gold-600 via-sunset-600 to-ocean-600 bg-clip-text text-transparent">
+                  {" "}
+                  Alpine Motors
+                </span>
               </h2>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
-                <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2">
+                <Card
+                  key={index}
+                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2"
+                >
                   <div className="relative">
                     <img
                       src={member.image}
@@ -333,11 +432,15 @@ export default function About() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      {member.name}
+                    </h3>
                     <Badge className="mb-4 bg-gradient-to-r from-ocean-500 to-forest-500 text-white">
                       {member.position}
                     </Badge>
-                    <p className="text-gray-600 leading-relaxed">{member.bio}</p>
+                    <p className="text-gray-600 leading-relaxed">
+                      {member.bio}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -354,17 +457,25 @@ export default function About() {
               Ready to Experience Alpine Motors?
             </h2>
             <p className="text-xl mb-12 max-w-3xl mx-auto text-gray-200 leading-relaxed">
-              Join thousands of satisfied customers who have discovered the perfect blend of luxury, 
-              performance, and personalized service. Your adventure awaits.
+              Join thousands of satisfied customers who have discovered the
+              perfect blend of luxury, performance, and personalized service.
+              Your adventure awaits.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Button asChild className="bg-white text-ocean-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <Button
+                asChild
+                className="bg-white text-ocean-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              >
                 <Link to="/inventory">
                   <Car className="h-5 w-5 mr-2" />
                   Browse Inventory
                 </Link>
               </Button>
-              <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-8 py-4 text-lg rounded-xl backdrop-blur-sm">
+              <Button
+                asChild
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-8 py-4 text-lg rounded-xl backdrop-blur-sm"
+              >
                 <Link to="/contact">
                   <MapPin className="h-5 w-5 mr-2" />
                   Visit Our Showroom

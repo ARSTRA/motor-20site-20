@@ -9,7 +9,10 @@ interface PlaceholderPageProps {
   description: string;
 }
 
-export default function PlaceholderPage({ title, description }: PlaceholderPageProps) {
+export default function PlaceholderPage({
+  title,
+  description,
+}: PlaceholderPageProps) {
   return (
     <Layout>
       <div className="min-h-[60vh] flex items-center justify-center py-16">
@@ -19,7 +22,8 @@ export default function PlaceholderPage({ title, description }: PlaceholderPageP
             <h1 className="text-2xl font-bold text-gray-900 mb-4">{title}</h1>
             <p className="text-gray-600 mb-8">{description}</p>
             <p className="text-sm text-gray-500 mb-6">
-              This page is under construction. Please continue prompting to help build out this section of the website.
+              This page is under construction. Please continue prompting to help
+              build out this section of the website.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild>
@@ -28,9 +32,7 @@ export default function PlaceholderPage({ title, description }: PlaceholderPageP
                   Back to Home
                 </Link>
               </Button>
-              <Button variant="outline">
-                Contact Support
-              </Button>
+              <Button variant="outline">Contact Support</Button>
             </div>
           </CardContent>
         </Card>

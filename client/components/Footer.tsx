@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube, Clock, Star } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Clock,
+  Star,
+} from "lucide-react";
 
 // Same logo component as header for consistency
 const AlpineMotorsLogo = () => (
@@ -7,34 +17,80 @@ const AlpineMotorsLogo = () => (
     <div className="relative">
       <svg width="40" height="40" viewBox="0 0 48 48" className="relative z-10">
         <defs>
-          <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient
+            id="footerLogoGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
             <stop offset="0%" stopColor="#0ea5e9" />
             <stop offset="50%" stopColor="#22c55e" />
             <stop offset="100%" stopColor="#f97316" />
           </linearGradient>
-          <linearGradient id="footerMountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient
+            id="footerMountainGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
             <stop offset="0%" stopColor="#166534" />
             <stop offset="100%" stopColor="#15803d" />
           </linearGradient>
         </defs>
-        
+
         <circle cx="24" cy="24" r="20" fill="url(#footerLogoGradient)" />
-        <path d="M8 26 L16 18 L24 22 L32 16 L40 24 L40 34 L8 34 Z" fill="url(#footerMountainGradient)" opacity="0.9" />
-        <path d="M8 30 Q16 28 24 30 Q32 32 40 30 L40 34 L8 34 Z" fill="#fbbf24" opacity="0.8" />
-        
+        <path
+          d="M8 26 L16 18 L24 22 L32 16 L40 24 L40 34 L8 34 Z"
+          fill="url(#footerMountainGradient)"
+          opacity="0.9"
+        />
+        <path
+          d="M8 30 Q16 28 24 30 Q32 32 40 30 L40 34 L8 34 Z"
+          fill="#fbbf24"
+          opacity="0.8"
+        />
+
         <g transform="translate(20, 23) scale(0.4)">
-          <rect x="0" y="4" width="16" height="6" rx="2" fill="white" opacity="0.9" />
-          <rect x="2" y="2" width="12" height="4" rx="1" fill="white" opacity="0.7" />
+          <rect
+            x="0"
+            y="4"
+            width="16"
+            height="6"
+            rx="2"
+            fill="white"
+            opacity="0.9"
+          />
+          <rect
+            x="2"
+            y="2"
+            width="12"
+            height="4"
+            rx="1"
+            fill="white"
+            opacity="0.7"
+          />
           <circle cx="3" cy="10" r="1.5" fill="white" />
           <circle cx="13" cy="10" r="1.5" fill="white" />
         </g>
-        
-        <circle cx="24" cy="24" r="20" fill="none" stroke="white" strokeWidth="1" opacity="0.3" />
+
+        <circle
+          cx="24"
+          cy="24"
+          r="20"
+          fill="none"
+          stroke="white"
+          strokeWidth="1"
+          opacity="0.3"
+        />
       </svg>
     </div>
     <div>
       <h3 className="text-xl font-bold text-white">Alpine Motors</h3>
-      <p className="text-gold-300 text-sm font-medium">Where Luxury Meets Adventure</p>
+      <p className="text-gold-300 text-sm font-medium">
+        Where Luxury Meets Adventure
+      </p>
     </div>
   </div>
 );
@@ -57,14 +113,18 @@ export default function Footer() {
               <AlpineMotorsLogo />
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Your premier destination for luxury vehicles where exceptional quality meets 
-              unparalleled service. Experience the perfect blend of adventure and elegance 
-              with our curated collection of premium automobiles.
+              Your premier destination for luxury vehicles where exceptional
+              quality meets unparalleled service. Experience the perfect blend
+              of adventure and elegance with our curated collection of premium
+              automobiles.
             </p>
             <div className="flex items-center gap-2 mb-4">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-gold-400 text-gold-400" />
+                  <Star
+                    key={i}
+                    className="h-4 w-4 fill-gold-400 text-gold-400"
+                  />
                 ))}
               </div>
               <span className="text-gold-300 font-semibold">5.0 Rating</span>
@@ -88,40 +148,60 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-gold-300 border-b border-gold-500/30 pb-2">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-6 text-gold-300 border-b border-gold-500/30 pb-2">
+              Quick Links
+            </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
+                <Link
+                  to="/"
+                  className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group"
+                >
                   <span className="w-2 h-2 bg-ocean-500 rounded-full mr-3 group-hover:bg-ocean-400 transition-colors"></span>
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/inventory" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
+                <Link
+                  to="/inventory"
+                  className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group"
+                >
                   <span className="w-2 h-2 bg-forest-500 rounded-full mr-3 group-hover:bg-forest-400 transition-colors"></span>
                   View Inventory
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
+                <Link
+                  to="/about"
+                  className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group"
+                >
                   <span className="w-2 h-2 bg-sunset-500 rounded-full mr-3 group-hover:bg-sunset-400 transition-colors"></span>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/financing" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
+                <Link
+                  to="/financing"
+                  className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group"
+                >
                   <span className="w-2 h-2 bg-gold-500 rounded-full mr-3 group-hover:bg-gold-400 transition-colors"></span>
                   Financing Options
                 </Link>
               </li>
               <li>
-                <Link to="/trade-in" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
+                <Link
+                  to="/trade-in"
+                  className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group"
+                >
                   <span className="w-2 h-2 bg-gold-500 rounded-full mr-3 group-hover:bg-gold-400 transition-colors"></span>
                   Trade-In Program
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
+                <Link
+                  to="/contact"
+                  className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group"
+                >
                   <span className="w-2 h-2 bg-ocean-500 rounded-full mr-3 group-hover:bg-ocean-400 transition-colors"></span>
                   Contact Us
                 </Link>
@@ -131,34 +211,51 @@ export default function Footer() {
 
           {/* Vehicle Categories */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-gold-300 border-b border-gold-500/30 pb-2">Vehicle Collection</h4>
+            <h4 className="text-lg font-bold mb-6 text-gold-300 border-b border-gold-500/30 pb-2">
+              Vehicle Collection
+            </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/category/luxury-suv" className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group">
+                <Link
+                  to="/category/luxury-suv"
+                  className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group"
+                >
                   <span className="text-lg mr-3">🚙</span>
                   Luxury SUVs
                 </Link>
               </li>
               <li>
-                <Link to="/category/luxury-sedan" className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group">
+                <Link
+                  to="/category/luxury-sedan"
+                  className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group"
+                >
                   <span className="text-lg mr-3">🚗</span>
                   Premium Sedans
                 </Link>
               </li>
               <li>
-                <Link to="/category/sports-car" className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group">
+                <Link
+                  to="/category/sports-car"
+                  className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group"
+                >
                   <span className="text-lg mr-3">🏎️</span>
                   Sports Cars
                 </Link>
               </li>
               <li>
-                <Link to="/category/electric" className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group">
+                <Link
+                  to="/category/electric"
+                  className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group"
+                >
                   <span className="text-lg mr-3">⚡</span>
                   Electric Vehicles
                 </Link>
               </li>
               <li>
-                <Link to="/category/convertibles" className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group">
+                <Link
+                  to="/category/convertibles"
+                  className="text-gray-300 hover:text-forest-400 transition-colors flex items-center group"
+                >
                   <span className="text-lg mr-3">🏖️</span>
                   Convertibles
                 </Link>
@@ -168,17 +265,21 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-gold-300 border-b border-gold-500/30 pb-2">Contact Information</h4>
+            <h4 className="text-lg font-bold mb-6 text-gold-300 border-b border-gold-500/30 pb-2">
+              Contact Information
+            </h4>
             <div className="space-y-4">
               <div className="flex items-start gap-4 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
                 <MapPin className="h-5 w-5 text-sunset-400 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-white font-medium">Alpine Showroom</p>
                   <p className="text-gray-300 text-sm">123 Alpine Way</p>
-                  <p className="text-gray-300 text-sm">Mountain View, CA 94041</p>
+                  <p className="text-gray-300 text-sm">
+                    Mountain View, CA 94041
+                  </p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-4 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
                 <Phone className="h-5 w-5 text-ocean-400 flex-shrink-0" />
                 <div>
@@ -186,11 +287,13 @@ export default function Footer() {
                   <p className="text-gray-300 text-sm">24/7 Sales Hotline</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-4 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
                 <Mail className="h-5 w-5 text-forest-400 flex-shrink-0" />
                 <div>
-                  <p className="text-white font-medium">info@alpinemotors.com</p>
+                  <p className="text-white font-medium">
+                    info@alpinemotors.com
+                  </p>
                   <p className="text-gray-300 text-sm">Customer Service</p>
                 </div>
               </div>
@@ -201,9 +304,18 @@ export default function Footer() {
                   <h5 className="font-bold text-gold-300">Business Hours</h5>
                 </div>
                 <div className="space-y-1 text-sm">
-                  <p className="text-gray-300"><span className="text-white font-medium">Mon-Fri:</span> 8:00 AM - 8:00 PM</p>
-                  <p className="text-gray-300"><span className="text-white font-medium">Saturday:</span> 9:00 AM - 7:00 PM</p>
-                  <p className="text-gray-300"><span className="text-white font-medium">Sunday:</span> 10:00 AM - 6:00 PM</p>
+                  <p className="text-gray-300">
+                    <span className="text-white font-medium">Mon-Fri:</span>{" "}
+                    8:00 AM - 8:00 PM
+                  </p>
+                  <p className="text-gray-300">
+                    <span className="text-white font-medium">Saturday:</span>{" "}
+                    9:00 AM - 7:00 PM
+                  </p>
+                  <p className="text-gray-300">
+                    <span className="text-white font-medium">Sunday:</span>{" "}
+                    10:00 AM - 6:00 PM
+                  </p>
                 </div>
               </div>
             </div>
@@ -214,16 +326,26 @@ export default function Footer() {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-center md:text-left">
-              © 2024 Alpine Motors. All rights reserved. Crafted with excellence for luxury automotive experiences.
+              © 2024 Alpine Motors. All rights reserved. Crafted with
+              excellence for luxury automotive experiences.
             </p>
             <div className="flex gap-6 text-sm">
-              <Link to="/privacy" className="text-gray-400 hover:text-gold-300 transition-colors">
+              <Link
+                to="/privacy"
+                className="text-gray-400 hover:text-gold-300 transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-gray-400 hover:text-gold-300 transition-colors">
+              <Link
+                to="/terms"
+                className="text-gray-400 hover:text-gold-300 transition-colors"
+              >
                 Terms of Service
               </Link>
-              <Link to="/accessibility" className="text-gray-400 hover:text-gold-300 transition-colors">
+              <Link
+                to="/accessibility"
+                className="text-gray-400 hover:text-gold-300 transition-colors"
+              >
                 Accessibility
               </Link>
             </div>

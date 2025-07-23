@@ -1,42 +1,50 @@
-import { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Eye, EyeOff, Mail, Lock, Car, AlertCircle, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { useAuth } from '@/contexts/AuthContext';
-import Layout from '@/components/Layout';
+import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  Car,
+  AlertCircle,
+  CheckCircle,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useAuth } from "@/contexts/AuthContext";
+import Layout from "@/components/Layout";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   const { login, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  
-  const from = location.state?.from?.pathname || '/dashboard';
+
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
 
     if (!email || !password) {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
       return;
     }
 
     const success = await login(email, password);
     if (success) {
-      setSuccess('Login successful! Redirecting...');
+      setSuccess("Login successful! Redirecting...");
       setTimeout(() => navigate(from, { replace: true }), 1000);
     } else {
-      setError('Invalid email or password. Try: john.doe@email.com / password');
+      setError("Invalid email or password. Try: john.doe@email.com / password");
     }
   };
 
@@ -59,10 +67,14 @@ export default function Login() {
 
           <Card className="shadow-2xl border-2 border-gray-100 rounded-3xl overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white pb-8">
-              <CardTitle className="text-2xl font-bold text-center">Sign In</CardTitle>
-              <p className="text-center text-ocean-100 mt-2">Access your premium account</p>
+              <CardTitle className="text-2xl font-bold text-center">
+                Sign In
+              </CardTitle>
+              <p className="text-center text-ocean-100 mt-2">
+                Access your premium account
+              </p>
             </CardHeader>
-            
+
             <CardContent className="p-8">
               {error && (
                 <Alert className="mb-6 border-red-200 bg-red-50">
@@ -107,7 +119,7 @@ export default function Login() {
                   <div className="relative">
                     <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-forest-500" />
                     <Input
-                      type={showPassword ? 'text' : 'password'}
+                      type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter your password"
@@ -119,7 +131,11 @@ export default function Login() {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                     >
-                      {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      {showPassword ? (
+                        <EyeOff className="h-5 w-5" />
+                      ) : (
+                        <Eye className="h-5 w-5" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -132,7 +148,10 @@ export default function Login() {
                       type="checkbox"
                       className="h-4 w-4 text-ocean-600 focus:ring-ocean-500 border-gray-300 rounded"
                     />
-                    <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 font-medium">
+                    <label
+                      htmlFor="remember-me"
+                      className="ml-2 block text-sm text-gray-700 font-medium"
+                    >
                       Remember me
                     </label>
                   </div>
@@ -155,14 +174,14 @@ export default function Login() {
                       Signing In...
                     </div>
                   ) : (
-                    'Sign In'
+                    "Sign In"
                   )}
                 </Button>
               </form>
 
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <p className="text-center text-gray-600">
-                  Don't have an account?{' '}
+                  Don't have an account?{" "}
                   <Link
                     to="/register"
                     className="font-bold text-ocean-600 hover:text-ocean-800 transition-colors"
@@ -174,9 +193,12 @@ export default function Login() {
 
               {/* Demo Credentials */}
               <div className="mt-6 p-4 bg-gradient-to-r from-gold-50 to-sunset-50 rounded-xl border border-gold-200">
-                <h4 className="font-bold text-gold-700 mb-2">Demo Credentials:</h4>
+                <h4 className="font-bold text-gold-700 mb-2">
+                  Demo Credentials:
+                </h4>
                 <p className="text-sm text-gold-600">
-                  <strong>Email:</strong> john.doe@email.com<br />
+                  <strong>Email:</strong> john.doe@email.com
+                  <br />
                   <strong>Password:</strong> password
                 </p>
               </div>
@@ -187,11 +209,15 @@ export default function Login() {
           <div className="mt-8 grid grid-cols-3 gap-4 text-center">
             <div className="p-4 bg-white rounded-2xl shadow-lg border border-ocean-100">
               <div className="text-2xl mb-2">🚗</div>
-              <p className="text-sm font-semibold text-gray-700">Vehicle Access</p>
+              <p className="text-sm font-semibold text-gray-700">
+                Vehicle Access
+              </p>
             </div>
             <div className="p-4 bg-white rounded-2xl shadow-lg border border-forest-100">
               <div className="text-2xl mb-2">💳</div>
-              <p className="text-sm font-semibold text-gray-700">Saved Payments</p>
+              <p className="text-sm font-semibold text-gray-700">
+                Saved Payments
+              </p>
             </div>
             <div className="p-4 bg-white rounded-2xl shadow-lg border border-sunset-100">
               <div className="text-2xl mb-2">⭐</div>

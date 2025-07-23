@@ -17,7 +17,7 @@ export interface Car {
   images: string[];
   category: string;
   featured: boolean;
-  status: 'available' | 'sold' | 'pending';
+  status: "available" | "sold" | "pending";
   specifications: {
     engine: string;
     horsepower: string;
@@ -48,7 +48,7 @@ export interface ContactMessage {
   subject: string;
   message: string;
   carId?: number;
-  status: 'new' | 'read' | 'replied' | 'resolved';
+  status: "new" | "read" | "replied" | "resolved";
   createdAt: string;
 }
 
@@ -58,10 +58,10 @@ export interface CarInquiry {
   customerName: string;
   customerEmail: string;
   customerPhone?: string;
-  inquiryType: 'test_drive' | 'purchase' | 'financing' | 'trade_in' | 'general';
+  inquiryType: "test_drive" | "purchase" | "financing" | "trade_in" | "general";
   message: string;
   preferredDate?: string;
-  status: 'pending' | 'scheduled' | 'completed' | 'cancelled';
+  status: "pending" | "scheduled" | "completed" | "cancelled";
   createdAt: string;
 }
 
@@ -111,7 +111,7 @@ export interface CreateCarRequest {
   images: string[];
   category: string;
   featured: boolean;
-  specifications: Car['specifications'];
+  specifications: Car["specifications"];
 }
 
 export interface UpdateCarRequest extends Partial<CreateCarRequest> {
@@ -132,7 +132,7 @@ export interface CreateInquiryRequest {
   customerName: string;
   customerEmail: string;
   customerPhone?: string;
-  inquiryType: CarInquiry['inquiryType'];
+  inquiryType: CarInquiry["inquiryType"];
   message: string;
   preferredDate?: string;
 }
@@ -149,6 +149,6 @@ export interface CarFilters {
   search?: string;
   page?: number;
   limit?: number;
-  sortBy?: 'price' | 'year' | 'mileage' | 'created';
-  sortOrder?: 'asc' | 'desc';
+  sortBy?: "price" | "year" | "mileage" | "created";
+  sortOrder?: "asc" | "desc";
 }

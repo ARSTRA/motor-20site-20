@@ -7,20 +7,39 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
-import { 
-  Users, 
-  Car, 
-  CreditCard, 
-  Settings, 
-  DollarSign, 
-  BarChart3, 
+import {
+  Users,
+  Car,
+  CreditCard,
+  Settings,
+  DollarSign,
+  BarChart3,
   Shield,
   Eye,
   Edit,
@@ -53,14 +72,29 @@ import {
   UserMinus,
   FileText,
   PieChart,
-  LineChart
+  LineChart,
 } from "lucide-react";
 
 // Admin Authentication
 const ADMIN_CREDENTIALS = [
-  { username: "admin@alpinemotors.com", password: "admin123", role: "super_admin", name: "Michael Rodriguez" },
-  { username: "manager@alpinemotors.com", password: "manager123", role: "manager", name: "Sarah Chen" },
-  { username: "sales@alpinemotors.com", password: "sales123", role: "sales_admin", name: "David Johnson" }
+  {
+    username: "admin@alpinemotors.com",
+    password: "admin123",
+    role: "super_admin",
+    name: "Michael Rodriguez",
+  },
+  {
+    username: "manager@alpinemotors.com",
+    password: "manager123",
+    role: "manager",
+    name: "Sarah Chen",
+  },
+  {
+    username: "sales@alpinemotors.com",
+    password: "sales123",
+    role: "sales_admin",
+    name: "David Johnson",
+  },
 ];
 
 interface AdminUser {
@@ -76,7 +110,7 @@ interface Vehicle {
   year: number;
   price: number;
   category: string;
-  status: 'available' | 'sold' | 'reserved' | 'maintenance';
+  status: "available" | "sold" | "reserved" | "maintenance";
   featured: boolean;
   mileage: number;
   color: string;
@@ -95,7 +129,7 @@ interface Customer {
   email: string;
   phone: string;
   joinDate: string;
-  status: 'active' | 'inactive' | 'vip';
+  status: "active" | "inactive" | "vip";
   totalPurchases: number;
   favoriteVehicles: number;
   inquiries: number;
@@ -107,9 +141,9 @@ interface Payment {
   customerId: number;
   customerName: string;
   amount: number;
-  type: 'purchase' | 'financing' | 'deposit' | 'refund';
-  status: 'completed' | 'pending' | 'failed' | 'refunded';
-  method: 'credit_card' | 'bank_transfer' | 'check' | 'cash';
+  type: "purchase" | "financing" | "deposit" | "refund";
+  status: "completed" | "pending" | "failed" | "refunded";
+  method: "credit_card" | "bank_transfer" | "check" | "cash";
   vehicleId?: number;
   vehicleName?: string;
   createdAt: string;
@@ -143,7 +177,7 @@ export default function Admin() {
     monthlyGrowth: 12.5,
     avgSalePrice: 85000,
     conversionRate: 23.8,
-    customerSatisfaction: 4.8
+    customerSatisfaction: 4.8,
   });
 
   const [vehicles, setVehicles] = useState<Vehicle[]>([
@@ -163,7 +197,7 @@ export default function Admin() {
       images: ["https://images.unsplash.com/photo-1555215695-3004980ad54e"],
       description: "Ultimate performance SUV with M TwinPower Turbo engine",
       createdAt: "2024-01-15T10:00:00Z",
-      updatedAt: "2024-01-20T14:30:00Z"
+      updatedAt: "2024-01-20T14:30:00Z",
     },
     {
       id: 2,
@@ -181,8 +215,8 @@ export default function Admin() {
       images: ["https://images.unsplash.com/photo-1563720223520-8b5e0ab96d0e"],
       description: "Flagship luxury sedan with advanced technology",
       createdAt: "2024-01-10T09:00:00Z",
-      updatedAt: "2024-01-22T11:15:00Z"
-    }
+      updatedAt: "2024-01-22T11:15:00Z",
+    },
   ]);
 
   const [customers, setCustomers] = useState<Customer[]>([
@@ -197,7 +231,7 @@ export default function Admin() {
       totalPurchases: 2,
       favoriteVehicles: 5,
       inquiries: 8,
-      lastActivity: "2024-01-22T10:30:00Z"
+      lastActivity: "2024-01-22T10:30:00Z",
     },
     {
       id: 2,
@@ -210,8 +244,8 @@ export default function Admin() {
       totalPurchases: 1,
       favoriteVehicles: 3,
       inquiries: 2,
-      lastActivity: "2024-01-21T15:45:00Z"
-    }
+      lastActivity: "2024-01-21T15:45:00Z",
+    },
   ]);
 
   const [payments, setPayments] = useState<Payment[]>([
@@ -225,7 +259,7 @@ export default function Admin() {
       method: "bank_transfer",
       vehicleId: 2,
       vehicleName: "2024 Mercedes-Benz S-Class S580",
-      createdAt: "2024-01-22T11:15:00Z"
+      createdAt: "2024-01-22T11:15:00Z",
     },
     {
       id: 2,
@@ -237,13 +271,13 @@ export default function Admin() {
       method: "credit_card",
       vehicleId: 1,
       vehicleName: "2024 BMW X5 M Competition",
-      createdAt: "2024-01-21T16:30:00Z"
-    }
+      createdAt: "2024-01-21T16:30:00Z",
+    },
   ]);
 
   // Check if admin is already logged in
   useEffect(() => {
-    const storedAdmin = localStorage.getItem('alpine_admin');
+    const storedAdmin = localStorage.getItem("alpine_admin");
     if (storedAdmin) {
       setAdminUser(JSON.parse(storedAdmin));
     }
@@ -252,18 +286,24 @@ export default function Admin() {
   const handleAdminLogin = async () => {
     setIsLoading(true);
     setLoginError("");
-    
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+
       const admin = ADMIN_CREDENTIALS.find(
-        cred => cred.username === loginForm.username && cred.password === loginForm.password
+        (cred) =>
+          cred.username === loginForm.username &&
+          cred.password === loginForm.password,
       );
-      
+
       if (admin) {
-        const adminUser = { username: admin.username, role: admin.role, name: admin.name };
+        const adminUser = {
+          username: admin.username,
+          role: admin.role,
+          name: admin.name,
+        };
         setAdminUser(adminUser);
-        localStorage.setItem('alpine_admin', JSON.stringify(adminUser));
+        localStorage.setItem("alpine_admin", JSON.stringify(adminUser));
         setLoginForm({ username: "", password: "" });
       } else {
         setLoginError("Invalid credentials. Please try again.");
@@ -277,48 +317,50 @@ export default function Admin() {
 
   const handleAdminLogout = () => {
     setAdminUser(null);
-    localStorage.removeItem('alpine_admin');
+    localStorage.removeItem("alpine_admin");
     setLoginForm({ username: "", password: "" });
     setActiveTab("dashboard");
   };
 
   // Vehicle management functions
   const handleDeleteVehicle = (id: number) => {
-    setVehicles(vehicles.filter(v => v.id !== id));
+    setVehicles(vehicles.filter((v) => v.id !== id));
   };
 
   const handleToggleVehicleStatus = (id: number) => {
-    setVehicles(vehicles.map(v => 
-      v.id === id 
-        ? { ...v, status: v.status === 'available' ? 'sold' : 'available' }
-        : v
-    ));
+    setVehicles(
+      vehicles.map((v) =>
+        v.id === id
+          ? { ...v, status: v.status === "available" ? "sold" : "available" }
+          : v,
+      ),
+    );
   };
 
   const handleToggleFeatured = (id: number) => {
-    setVehicles(vehicles.map(v => 
-      v.id === id ? { ...v, featured: !v.featured } : v
-    ));
+    setVehicles(
+      vehicles.map((v) => (v.id === id ? { ...v, featured: !v.featured } : v)),
+    );
   };
 
   // Customer management functions
   const handleToggleCustomerStatus = (id: number) => {
-    setCustomers(customers.map(c => 
-      c.id === id 
-        ? { ...c, status: c.status === 'active' ? 'inactive' : 'active' }
-        : c
-    ));
+    setCustomers(
+      customers.map((c) =>
+        c.id === id
+          ? { ...c, status: c.status === "active" ? "inactive" : "active" }
+          : c,
+      ),
+    );
   };
 
   const handleDeleteCustomer = (id: number) => {
-    setCustomers(customers.filter(c => c.id !== id));
+    setCustomers(customers.filter((c) => c.id !== id));
   };
 
   // Payment management functions
-  const handleUpdatePaymentStatus = (id: number, status: Payment['status']) => {
-    setPayments(payments.map(p => 
-      p.id === id ? { ...p, status } : p
-    ));
+  const handleUpdatePaymentStatus = (id: number, status: Payment["status"]) => {
+    setPayments(payments.map((p) => (p.id === id ? { ...p, status } : p)));
   };
 
   // Admin Login Form
@@ -334,16 +376,20 @@ export default function Admin() {
               <CardTitle className="text-3xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
                 Admin Portal
               </CardTitle>
-              <p className="text-gray-600 mt-2">Secure access to Alpine Motors management</p>
+              <p className="text-gray-600 mt-2">
+                Secure access to Alpine Motors management
+              </p>
             </CardHeader>
             <CardContent className="space-y-6">
               {loginError && (
                 <Alert className="border-red-200 bg-red-50">
                   <AlertCircle className="h-4 w-4 text-red-600" />
-                  <AlertDescription className="text-red-800">{loginError}</AlertDescription>
+                  <AlertDescription className="text-red-800">
+                    {loginError}
+                  </AlertDescription>
                 </Alert>
               )}
-              
+
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="username">Admin Username</Label>
@@ -352,7 +398,9 @@ export default function Admin() {
                     type="email"
                     placeholder="admin@alpinemotors.com"
                     value={loginForm.username}
-                    onChange={(e) => setLoginForm({...loginForm, username: e.target.value})}
+                    onChange={(e) =>
+                      setLoginForm({ ...loginForm, username: e.target.value })
+                    }
                     className="mt-1"
                   />
                 </div>
@@ -363,27 +411,42 @@ export default function Admin() {
                     type="password"
                     placeholder="Enter admin password"
                     value={loginForm.password}
-                    onChange={(e) => setLoginForm({...loginForm, password: e.target.value})}
+                    onChange={(e) =>
+                      setLoginForm({ ...loginForm, password: e.target.value })
+                    }
                     className="mt-1"
-                    onKeyPress={(e) => e.key === 'Enter' && handleAdminLogin()}
+                    onKeyPress={(e) => e.key === "Enter" && handleAdminLogin()}
                   />
                 </div>
               </div>
 
-              <Button 
+              <Button
                 onClick={handleAdminLogin}
-                disabled={isLoading || !loginForm.username || !loginForm.password}
+                disabled={
+                  isLoading || !loginForm.username || !loginForm.password
+                }
                 className="w-full bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white py-3 rounded-xl font-semibold"
               >
                 {isLoading ? "Authenticating..." : "Access Admin Portal"}
               </Button>
 
               <div className="mt-6 p-4 bg-gray-50 rounded-xl">
-                <p className="text-sm font-semibold text-gray-700 mb-2">Demo Credentials:</p>
+                <p className="text-sm font-semibold text-gray-700 mb-2">
+                  Demo Credentials:
+                </p>
                 <div className="space-y-1 text-xs text-gray-600">
-                  <p><strong>Super Admin:</strong> admin@alpinemotors.com / admin123</p>
-                  <p><strong>Manager:</strong> manager@alpinemotors.com / manager123</p>
-                  <p><strong>Sales Admin:</strong> sales@alpinemotors.com / sales123</p>
+                  <p>
+                    <strong>Super Admin:</strong> admin@alpinemotors.com /
+                    admin123
+                  </p>
+                  <p>
+                    <strong>Manager:</strong> manager@alpinemotors.com /
+                    manager123
+                  </p>
+                  <p>
+                    <strong>Sales Admin:</strong> sales@alpinemotors.com /
+                    sales123
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -406,13 +469,17 @@ export default function Admin() {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-                  <p className="text-gray-600">Welcome back, {adminUser.name}</p>
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    Admin Dashboard
+                  </h1>
+                  <p className="text-gray-600">
+                    Welcome back, {adminUser.name}
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <Badge className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-3 py-1">
-                  {adminUser.role.replace('_', ' ').toUpperCase()}
+                  {adminUser.role.replace("_", " ").toUpperCase()}
                 </Badge>
                 <Button variant="outline" onClick={handleAdminLogout}>
                   <Lock className="h-4 w-4 mr-2" />
@@ -424,9 +491,16 @@ export default function Admin() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 py-8">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
+          <Tabs
+            value={activeTab}
+            onValueChange={setActiveTab}
+            className="space-y-8"
+          >
             <TabsList className="grid w-full grid-cols-6 bg-white p-1 rounded-xl shadow-lg">
-              <TabsTrigger value="dashboard" className="flex items-center gap-2">
+              <TabsTrigger
+                value="dashboard"
+                className="flex items-center gap-2"
+              >
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </TabsTrigger>
@@ -442,7 +516,10 @@ export default function Admin() {
                 <CreditCard className="h-4 w-4" />
                 Payments
               </TabsTrigger>
-              <TabsTrigger value="analytics" className="flex items-center gap-2">
+              <TabsTrigger
+                value="analytics"
+                className="flex items-center gap-2"
+              >
                 <TrendingUp className="h-4 w-4" />
                 Analytics
               </TabsTrigger>
@@ -461,10 +538,14 @@ export default function Admin() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-ocean-100">Total Revenue</p>
-                        <p className="text-3xl font-bold">${stats.totalRevenue.toLocaleString()}</p>
+                        <p className="text-3xl font-bold">
+                          ${stats.totalRevenue.toLocaleString()}
+                        </p>
                         <div className="flex items-center gap-1 mt-2">
                           <TrendingUp className="h-4 w-4" />
-                          <span className="text-sm">+{stats.monthlyGrowth}% this month</span>
+                          <span className="text-sm">
+                            +{stats.monthlyGrowth}% this month
+                          </span>
                         </div>
                       </div>
                       <DollarSign className="h-12 w-12 text-ocean-200" />
@@ -477,7 +558,9 @@ export default function Admin() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-forest-100">Total Vehicles</p>
-                        <p className="text-3xl font-bold">{stats.totalVehicles}</p>
+                        <p className="text-3xl font-bold">
+                          {stats.totalVehicles}
+                        </p>
                         <div className="flex items-center gap-1 mt-2">
                           <Car className="h-4 w-4" />
                           <span className="text-sm">Active inventory</span>
@@ -493,7 +576,9 @@ export default function Admin() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sunset-100">Total Customers</p>
-                        <p className="text-3xl font-bold">{stats.totalCustomers}</p>
+                        <p className="text-3xl font-bold">
+                          {stats.totalCustomers}
+                        </p>
                         <div className="flex items-center gap-1 mt-2">
                           <Users className="h-4 w-4" />
                           <span className="text-sm">Registered users</span>
@@ -509,7 +594,9 @@ export default function Admin() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-gold-100">Pending Inquiries</p>
-                        <p className="text-3xl font-bold">{stats.pendingInquiries}</p>
+                        <p className="text-3xl font-bold">
+                          {stats.pendingInquiries}
+                        </p>
                         <div className="flex items-center gap-1 mt-2">
                           <Clock className="h-4 w-4" />
                           <span className="text-sm">Needs attention</span>
@@ -534,28 +621,39 @@ export default function Admin() {
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
                         <span className="font-medium">Average Sale Price</span>
-                        <span className="text-xl font-bold text-green-600">${stats.avgSalePrice.toLocaleString()}</span>
+                        <span className="text-xl font-bold text-green-600">
+                          ${stats.avgSalePrice.toLocaleString()}
+                        </span>
                       </div>
                       <Progress value={75} className="h-2" />
                     </div>
-                    
+
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
                         <span className="font-medium">Conversion Rate</span>
-                        <span className="text-xl font-bold text-blue-600">{stats.conversionRate}%</span>
+                        <span className="text-xl font-bold text-blue-600">
+                          {stats.conversionRate}%
+                        </span>
                       </div>
                       <Progress value={stats.conversionRate} className="h-2" />
                     </div>
-                    
+
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="font-medium">Customer Satisfaction</span>
+                        <span className="font-medium">
+                          Customer Satisfaction
+                        </span>
                         <div className="flex items-center gap-2">
                           <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                          <span className="text-xl font-bold text-yellow-600">{stats.customerSatisfaction}/5.0</span>
+                          <span className="text-xl font-bold text-yellow-600">
+                            {stats.customerSatisfaction}/5.0
+                          </span>
                         </div>
                       </div>
-                      <Progress value={(stats.customerSatisfaction / 5) * 100} className="h-2" />
+                      <Progress
+                        value={(stats.customerSatisfaction / 5) * 100}
+                        className="h-2"
+                      />
                     </div>
                   </CardContent>
                 </Card>
@@ -573,25 +671,33 @@ export default function Admin() {
                         <CheckCircle className="h-5 w-5 text-green-600" />
                         <div className="flex-1">
                           <p className="font-medium">Vehicle Sale Completed</p>
-                          <p className="text-sm text-gray-600">2024 Mercedes S-Class sold to John Smith</p>
+                          <p className="text-sm text-gray-600">
+                            2024 Mercedes S-Class sold to John Smith
+                          </p>
                         </div>
                         <span className="text-xs text-gray-500">2h ago</span>
                       </div>
-                      
+
                       <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
                         <UserPlus className="h-5 w-5 text-blue-600" />
                         <div className="flex-1">
-                          <p className="font-medium">New Customer Registration</p>
-                          <p className="text-sm text-gray-600">Sarah Johnson joined today</p>
+                          <p className="font-medium">
+                            New Customer Registration
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            Sarah Johnson joined today
+                          </p>
                         </div>
                         <span className="text-xs text-gray-500">4h ago</span>
                       </div>
-                      
+
                       <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
                         <AlertCircle className="h-5 w-5 text-yellow-600" />
                         <div className="flex-1">
                           <p className="font-medium">Payment Pending</p>
-                          <p className="text-sm text-gray-600">$5,000 deposit for BMW X5</p>
+                          <p className="text-sm text-gray-600">
+                            $5,000 deposit for BMW X5
+                          </p>
                         </div>
                         <span className="text-xs text-gray-500">6h ago</span>
                       </div>
@@ -604,7 +710,9 @@ export default function Admin() {
             {/* Users Management Tab */}
             <TabsContent value="users" className="space-y-6">
               <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-gray-900">Customer Management</h2>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Customer Management
+                </h2>
                 <div className="flex gap-3">
                   <Button variant="outline">
                     <Download className="h-4 w-4 mr-2" />
@@ -634,7 +742,11 @@ export default function Admin() {
                         </div>
                         <div>
                           <Label htmlFor="email">Email</Label>
-                          <Input id="email" type="email" placeholder="john.doe@email.com" />
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="john.doe@email.com"
+                          />
                         </div>
                         <div>
                           <Label htmlFor="phone">Phone</Label>
@@ -666,39 +778,61 @@ export default function Admin() {
                         <TableRow key={customer.id}>
                           <TableCell>
                             <div>
-                              <p className="font-medium">{customer.firstName} {customer.lastName}</p>
-                              <p className="text-sm text-gray-600">ID: {customer.id}</p>
+                              <p className="font-medium">
+                                {customer.firstName} {customer.lastName}
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                ID: {customer.id}
+                              </p>
                             </div>
                           </TableCell>
                           <TableCell>
                             <div className="space-y-1">
                               <div className="flex items-center gap-1">
                                 <Mail className="h-3 w-3 text-gray-400" />
-                                <span className="text-sm">{customer.email}</span>
+                                <span className="text-sm">
+                                  {customer.email}
+                                </span>
                               </div>
                               <div className="flex items-center gap-1">
                                 <Phone className="h-3 w-3 text-gray-400" />
-                                <span className="text-sm">{customer.phone}</span>
+                                <span className="text-sm">
+                                  {customer.phone}
+                                </span>
                               </div>
                             </div>
                           </TableCell>
                           <TableCell>
-                            <Badge className={
-                              customer.status === 'vip' ? 'bg-gold-100 text-gold-800' :
-                              customer.status === 'active' ? 'bg-green-100 text-green-800' :
-                              'bg-gray-100 text-gray-800'
-                            }>
+                            <Badge
+                              className={
+                                customer.status === "vip"
+                                  ? "bg-gold-100 text-gold-800"
+                                  : customer.status === "active"
+                                    ? "bg-green-100 text-green-800"
+                                    : "bg-gray-100 text-gray-800"
+                              }
+                            >
                               {customer.status.toUpperCase()}
                             </Badge>
                           </TableCell>
                           <TableCell>
                             <div className="text-center">
-                              <p className="font-medium">{customer.totalPurchases}</p>
-                              <p className="text-xs text-gray-600">{customer.inquiries} inquiries</p>
+                              <p className="font-medium">
+                                {customer.totalPurchases}
+                              </p>
+                              <p className="text-xs text-gray-600">
+                                {customer.inquiries} inquiries
+                              </p>
                             </div>
                           </TableCell>
-                          <TableCell>{new Date(customer.joinDate).toLocaleDateString()}</TableCell>
-                          <TableCell>{new Date(customer.lastActivity).toLocaleDateString()}</TableCell>
+                          <TableCell>
+                            {new Date(customer.joinDate).toLocaleDateString()}
+                          </TableCell>
+                          <TableCell>
+                            {new Date(
+                              customer.lastActivity,
+                            ).toLocaleDateString()}
+                          </TableCell>
                           <TableCell>
                             <div className="flex gap-2">
                               <Button size="sm" variant="outline">
@@ -707,17 +841,25 @@ export default function Admin() {
                               <Button size="sm" variant="outline">
                                 <Edit className="h-3 w-3" />
                               </Button>
-                              <Button 
-                                size="sm" 
+                              <Button
+                                size="sm"
                                 variant="outline"
-                                onClick={() => handleToggleCustomerStatus(customer.id)}
+                                onClick={() =>
+                                  handleToggleCustomerStatus(customer.id)
+                                }
                               >
-                                {customer.status === 'active' ? <Lock className="h-3 w-3" /> : <Unlock className="h-3 w-3" />}
+                                {customer.status === "active" ? (
+                                  <Lock className="h-3 w-3" />
+                                ) : (
+                                  <Unlock className="h-3 w-3" />
+                                )}
                               </Button>
-                              <Button 
-                                size="sm" 
+                              <Button
+                                size="sm"
                                 variant="outline"
-                                onClick={() => handleDeleteCustomer(customer.id)}
+                                onClick={() =>
+                                  handleDeleteCustomer(customer.id)
+                                }
                               >
                                 <Trash2 className="h-3 w-3 text-red-600" />
                               </Button>
@@ -734,7 +876,9 @@ export default function Admin() {
             {/* Vehicle Management Tab */}
             <TabsContent value="vehicles" className="space-y-6">
               <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-gray-900">Vehicle Inventory</h2>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Vehicle Inventory
+                </h2>
                 <div className="flex gap-3">
                   <Button variant="outline">
                     <Upload className="h-4 w-4 mr-2" />
@@ -769,7 +913,11 @@ export default function Admin() {
                         <div className="grid grid-cols-2 gap-4">
                           <div>
                             <Label htmlFor="price">Price</Label>
-                            <Input id="price" type="number" placeholder="108000" />
+                            <Input
+                              id="price"
+                              type="number"
+                              placeholder="108000"
+                            />
                           </div>
                           <div>
                             <Label htmlFor="category">Category</Label>
@@ -778,17 +926,28 @@ export default function Admin() {
                                 <SelectValue placeholder="Select category" />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="luxury-suv">Luxury SUV</SelectItem>
-                                <SelectItem value="luxury-sedan">Luxury Sedan</SelectItem>
-                                <SelectItem value="sports-car">Sports Car</SelectItem>
-                                <SelectItem value="electric">Electric</SelectItem>
+                                <SelectItem value="luxury-suv">
+                                  Luxury SUV
+                                </SelectItem>
+                                <SelectItem value="luxury-sedan">
+                                  Luxury Sedan
+                                </SelectItem>
+                                <SelectItem value="sports-car">
+                                  Sports Car
+                                </SelectItem>
+                                <SelectItem value="electric">
+                                  Electric
+                                </SelectItem>
                               </SelectContent>
                             </Select>
                           </div>
                         </div>
                         <div>
                           <Label htmlFor="description">Description</Label>
-                          <Textarea id="description" placeholder="Vehicle description..." />
+                          <Textarea
+                            id="description"
+                            placeholder="Vehicle description..."
+                          />
                         </div>
                         <Button className="w-full">Add Vehicle</Button>
                       </div>
@@ -816,42 +975,57 @@ export default function Admin() {
                         <TableRow key={vehicle.id}>
                           <TableCell>
                             <div className="flex items-center gap-3">
-                              <img 
-                                src={vehicle.images[0]} 
+                              <img
+                                src={vehicle.images[0]}
                                 alt={`${vehicle.make} ${vehicle.model}`}
                                 className="w-12 h-12 object-cover rounded-lg"
                               />
                               <div>
-                                <p className="font-medium">{vehicle.year} {vehicle.make} {vehicle.model}</p>
-                                <p className="text-sm text-gray-600">{vehicle.color} • {vehicle.mileage} miles</p>
+                                <p className="font-medium">
+                                  {vehicle.year} {vehicle.make} {vehicle.model}
+                                </p>
+                                <p className="text-sm text-gray-600">
+                                  {vehicle.color} • {vehicle.mileage} miles
+                                </p>
                               </div>
                             </div>
                           </TableCell>
                           <TableCell>
-                            <p className="font-bold text-green-600">${vehicle.price.toLocaleString()}</p>
+                            <p className="font-bold text-green-600">
+                              ${vehicle.price.toLocaleString()}
+                            </p>
                           </TableCell>
                           <TableCell>
-                            <Badge className={
-                              vehicle.status === 'available' ? 'bg-green-100 text-green-800' :
-                              vehicle.status === 'sold' ? 'bg-red-100 text-red-800' :
-                              vehicle.status === 'reserved' ? 'bg-yellow-100 text-yellow-800' :
-                              'bg-gray-100 text-gray-800'
-                            }>
+                            <Badge
+                              className={
+                                vehicle.status === "available"
+                                  ? "bg-green-100 text-green-800"
+                                  : vehicle.status === "sold"
+                                    ? "bg-red-100 text-red-800"
+                                    : vehicle.status === "reserved"
+                                      ? "bg-yellow-100 text-yellow-800"
+                                      : "bg-gray-100 text-gray-800"
+                              }
+                            >
                               {vehicle.status.toUpperCase()}
                             </Badge>
                           </TableCell>
                           <TableCell>
                             <Badge variant="outline">
-                              {vehicle.category.replace('-', ' ').toUpperCase()}
+                              {vehicle.category.replace("-", " ").toUpperCase()}
                             </Badge>
                           </TableCell>
                           <TableCell>
-                            <Switch 
+                            <Switch
                               checked={vehicle.featured}
-                              onCheckedChange={() => handleToggleFeatured(vehicle.id)}
+                              onCheckedChange={() =>
+                                handleToggleFeatured(vehicle.id)
+                              }
                             />
                           </TableCell>
-                          <TableCell>{new Date(vehicle.updatedAt).toLocaleDateString()}</TableCell>
+                          <TableCell>
+                            {new Date(vehicle.updatedAt).toLocaleDateString()}
+                          </TableCell>
                           <TableCell>
                             <div className="flex gap-2">
                               <Button size="sm" variant="outline">
@@ -860,15 +1034,19 @@ export default function Admin() {
                               <Button size="sm" variant="outline">
                                 <Edit className="h-3 w-3" />
                               </Button>
-                              <Button 
-                                size="sm" 
+                              <Button
+                                size="sm"
                                 variant="outline"
-                                onClick={() => handleToggleVehicleStatus(vehicle.id)}
+                                onClick={() =>
+                                  handleToggleVehicleStatus(vehicle.id)
+                                }
                               >
-                                {vehicle.status === 'available' ? 'Mark Sold' : 'Mark Available'}
+                                {vehicle.status === "available"
+                                  ? "Mark Sold"
+                                  : "Mark Available"}
                               </Button>
-                              <Button 
-                                size="sm" 
+                              <Button
+                                size="sm"
                                 variant="outline"
                                 onClick={() => handleDeleteVehicle(vehicle.id)}
                               >
@@ -887,7 +1065,9 @@ export default function Admin() {
             {/* Payments Management Tab */}
             <TabsContent value="payments" className="space-y-6">
               <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-gray-900">Payment Management</h2>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Payment Management
+                </h2>
                 <div className="flex gap-3">
                   <Button variant="outline">
                     <Download className="h-4 w-4 mr-2" />
@@ -907,24 +1087,28 @@ export default function Admin() {
                       <CheckCircle className="h-8 w-8 text-green-600" />
                       <div>
                         <p className="text-sm text-gray-600">Completed</p>
-                        <p className="text-2xl font-bold text-green-600">$125,000</p>
+                        <p className="text-2xl font-bold text-green-600">
+                          $125,000
+                        </p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3">
                       <Clock className="h-8 w-8 text-yellow-600" />
                       <div>
                         <p className="text-sm text-gray-600">Pending</p>
-                        <p className="text-2xl font-bold text-yellow-600">$5,000</p>
+                        <p className="text-2xl font-bold text-yellow-600">
+                          $5,000
+                        </p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3">
@@ -959,31 +1143,44 @@ export default function Admin() {
                         <TableRow key={payment.id}>
                           <TableCell>
                             <code className="bg-gray-100 px-2 py-1 rounded text-sm">
-                              PAY-{payment.id.toString().padStart(4, '0')}
+                              PAY-{payment.id.toString().padStart(4, "0")}
                             </code>
                           </TableCell>
                           <TableCell>
-                            <p className="font-medium">{payment.customerName}</p>
-                            <p className="text-sm text-gray-600">ID: {payment.customerId}</p>
+                            <p className="font-medium">
+                              {payment.customerName}
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              ID: {payment.customerId}
+                            </p>
                           </TableCell>
                           <TableCell>
-                            <p className="font-bold text-green-600">${payment.amount.toLocaleString()}</p>
+                            <p className="font-bold text-green-600">
+                              ${payment.amount.toLocaleString()}
+                            </p>
                           </TableCell>
                           <TableCell>
                             <Badge variant="outline">
-                              {payment.type.replace('_', ' ').toUpperCase()}
+                              {payment.type.replace("_", " ").toUpperCase()}
                             </Badge>
                           </TableCell>
                           <TableCell>
-                            <span className="text-sm">{payment.method.replace('_', ' ')}</span>
+                            <span className="text-sm">
+                              {payment.method.replace("_", " ")}
+                            </span>
                           </TableCell>
                           <TableCell>
-                            <Badge className={
-                              payment.status === 'completed' ? 'bg-green-100 text-green-800' :
-                              payment.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                              payment.status === 'failed' ? 'bg-red-100 text-red-800' :
-                              'bg-gray-100 text-gray-800'
-                            }>
+                            <Badge
+                              className={
+                                payment.status === "completed"
+                                  ? "bg-green-100 text-green-800"
+                                  : payment.status === "pending"
+                                    ? "bg-yellow-100 text-yellow-800"
+                                    : payment.status === "failed"
+                                      ? "bg-red-100 text-red-800"
+                                      : "bg-gray-100 text-gray-800"
+                              }
+                            >
                               {payment.status.toUpperCase()}
                             </Badge>
                           </TableCell>
@@ -994,21 +1191,36 @@ export default function Admin() {
                               <span className="text-gray-400">N/A</span>
                             )}
                           </TableCell>
-                          <TableCell>{new Date(payment.createdAt).toLocaleDateString()}</TableCell>
+                          <TableCell>
+                            {new Date(payment.createdAt).toLocaleDateString()}
+                          </TableCell>
                           <TableCell>
                             <div className="flex gap-2">
                               <Button size="sm" variant="outline">
                                 <Eye className="h-3 w-3" />
                               </Button>
-                              {payment.status === 'pending' && (
-                                <Select onValueChange={(value) => handleUpdatePaymentStatus(payment.id, value as Payment['status'])}>
+                              {payment.status === "pending" && (
+                                <Select
+                                  onValueChange={(value) =>
+                                    handleUpdatePaymentStatus(
+                                      payment.id,
+                                      value as Payment["status"],
+                                    )
+                                  }
+                                >
                                   <SelectTrigger className="w-24 h-8">
                                     <SelectValue placeholder="Update" />
                                   </SelectTrigger>
                                   <SelectContent>
-                                    <SelectItem value="completed">Complete</SelectItem>
-                                    <SelectItem value="failed">Mark Failed</SelectItem>
-                                    <SelectItem value="refunded">Refund</SelectItem>
+                                    <SelectItem value="completed">
+                                      Complete
+                                    </SelectItem>
+                                    <SelectItem value="failed">
+                                      Mark Failed
+                                    </SelectItem>
+                                    <SelectItem value="refunded">
+                                      Refund
+                                    </SelectItem>
                                   </SelectContent>
                                 </Select>
                               )}
@@ -1025,7 +1237,9 @@ export default function Admin() {
             {/* Analytics Tab */}
             <TabsContent value="analytics" className="space-y-6">
               <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-gray-900">Business Analytics</h2>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Business Analytics
+                </h2>
                 <div className="flex gap-3">
                   <Select defaultValue="30days">
                     <SelectTrigger className="w-40">
@@ -1057,8 +1271,12 @@ export default function Admin() {
                     <div className="h-64 flex items-center justify-center bg-gradient-to-br from-ocean-50 to-forest-50 rounded-lg">
                       <div className="text-center">
                         <TrendingUp className="h-16 w-16 text-ocean-400 mx-auto mb-4" />
-                        <p className="text-gray-600">Revenue chart visualization would go here</p>
-                        <p className="text-sm text-gray-500">Integration with charting library needed</p>
+                        <p className="text-gray-600">
+                          Revenue chart visualization would go here
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          Integration with charting library needed
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -1109,7 +1327,9 @@ export default function Admin() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">Top Selling Models</CardTitle>
+                    <CardTitle className="text-lg">
+                      Top Selling Models
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
@@ -1141,7 +1361,9 @@ export default function Admin() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-sm">Active Customers</span>
-                        <Badge className="bg-green-100 text-green-800">892</Badge>
+                        <Badge className="bg-green-100 text-green-800">
+                          892
+                        </Badge>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-sm">New This Month</span>
@@ -1181,8 +1403,10 @@ export default function Admin() {
 
             {/* Settings Tab */}
             <TabsContent value="settings" className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900">System Settings</h2>
-              
+              <h2 className="text-2xl font-bold text-gray-900">
+                System Settings
+              </h2>
+
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
@@ -1194,24 +1418,34 @@ export default function Admin() {
                   <CardContent className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <Label htmlFor="notifications">Email Notifications</Label>
-                        <p className="text-sm text-gray-600">Receive email alerts for new inquiries</p>
+                        <Label htmlFor="notifications">
+                          Email Notifications
+                        </Label>
+                        <p className="text-sm text-gray-600">
+                          Receive email alerts for new inquiries
+                        </p>
                       </div>
                       <Switch id="notifications" defaultChecked />
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <div>
-                        <Label htmlFor="autoApproval">Auto-approve Reviews</Label>
-                        <p className="text-sm text-gray-600">Automatically approve customer reviews</p>
+                        <Label htmlFor="autoApproval">
+                          Auto-approve Reviews
+                        </Label>
+                        <p className="text-sm text-gray-600">
+                          Automatically approve customer reviews
+                        </p>
                       </div>
                       <Switch id="autoApproval" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <div>
                         <Label htmlFor="maintenance">Maintenance Mode</Label>
-                        <p className="text-sm text-gray-600">Enable maintenance mode for updates</p>
+                        <p className="text-sm text-gray-600">
+                          Enable maintenance mode for updates
+                        </p>
                       </div>
                       <Switch id="maintenance" />
                     </div>
@@ -1230,17 +1464,17 @@ export default function Admin() {
                       <Lock className="h-4 w-4 mr-2" />
                       Change Admin Password
                     </Button>
-                    
+
                     <Button variant="outline" className="w-full justify-start">
                       <UserPlus className="h-4 w-4 mr-2" />
                       Manage Admin Users
                     </Button>
-                    
+
                     <Button variant="outline" className="w-full justify-start">
                       <Activity className="h-4 w-4 mr-2" />
                       View Activity Logs
                     </Button>
-                    
+
                     <Button variant="outline" className="w-full justify-start">
                       <Download className="h-4 w-4 mr-2" />
                       Export System Data
@@ -1260,17 +1494,23 @@ export default function Admin() {
                       <Label htmlFor="siteTitle">Site Title</Label>
                       <Input id="siteTitle" defaultValue="Alpine Motors" />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="siteDescription">Site Description</Label>
-                      <Textarea id="siteDescription" defaultValue="Where Luxury Meets Adventure" />
+                      <Textarea
+                        id="siteDescription"
+                        defaultValue="Where Luxury Meets Adventure"
+                      />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="contactEmail">Contact Email</Label>
-                      <Input id="contactEmail" defaultValue="info@alpinemotors.com" />
+                      <Input
+                        id="contactEmail"
+                        defaultValue="info@alpinemotors.com"
+                      />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="contactPhone">Contact Phone</Label>
                       <Input id="contactPhone" defaultValue="(555) 123-4567" />
@@ -1293,13 +1533,17 @@ export default function Admin() {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="standard">Mon-Fri: 8AM-8PM, Sat-Sun: 9AM-7PM</SelectItem>
-                          <SelectItem value="extended">Mon-Sun: 8AM-10PM</SelectItem>
+                          <SelectItem value="standard">
+                            Mon-Fri: 8AM-8PM, Sat-Sun: 9AM-7PM
+                          </SelectItem>
+                          <SelectItem value="extended">
+                            Mon-Sun: 8AM-10PM
+                          </SelectItem>
                           <SelectItem value="custom">Custom Hours</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="currency">Default Currency</Label>
                       <Select defaultValue="usd">
@@ -1313,7 +1557,7 @@ export default function Admin() {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="taxRate">Tax Rate (%)</Label>
                       <Input id="taxRate" type="number" defaultValue="8.25" />

@@ -9,7 +9,7 @@ const categories: Category[] = [
     description: "Premium SUVs with luxury features and advanced technology",
     icon: "🚙",
     color: "bg-blue-500",
-    count: 15
+    count: 15,
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const categories: Category[] = [
     description: "Premium sedans with comfort, style, and performance",
     icon: "🚗",
     color: "bg-green-500",
-    count: 24
+    count: 24,
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const categories: Category[] = [
     description: "High-performance sports vehicles for driving enthusiasts",
     icon: "🏎️",
     color: "bg-red-500",
-    count: 12
+    count: 12,
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const categories: Category[] = [
     description: "Eco-friendly electric cars with cutting-edge technology",
     icon: "⚡",
     color: "bg-yellow-500",
-    count: 8
+    count: 8,
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const categories: Category[] = [
     description: "Powerful pickup trucks for work and adventure",
     icon: "🚚",
     color: "bg-gray-500",
-    count: 15
+    count: 15,
   },
   {
     id: 6,
@@ -54,14 +54,14 @@ const categories: Category[] = [
     description: "Open-top driving experience with style and freedom",
     icon: "🏖️",
     color: "bg-purple-500",
-    count: 6
-  }
+    count: 6,
+  },
 ];
 
 // Get all categories
 export const handleGetCategories: RequestHandler = (req, res) => {
   const response: CategoriesResponse = {
-    categories
+    categories,
   };
   res.json(response);
 };
@@ -69,8 +69,8 @@ export const handleGetCategories: RequestHandler = (req, res) => {
 // Get category by slug
 export const handleGetCategory: RequestHandler = (req, res) => {
   const slug = req.params.slug;
-  const category = categories.find(c => c.slug === slug);
-  
+  const category = categories.find((c) => c.slug === slug);
+
   if (!category) {
     return res.status(404).json({ error: "Category not found" });
   }

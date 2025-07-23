@@ -7,7 +7,7 @@ import {
   handleCreateCar,
   handleUpdateCar,
   handleDeleteCar,
-  handleGetFeaturedCars
+  handleGetFeaturedCars,
 } from "./routes/cars";
 import { handleGetCategories, handleGetCategory } from "./routes/categories";
 import {
@@ -16,7 +16,7 @@ import {
   handleCreateMessage,
   handleUpdateMessageStatus,
   handleDeleteMessage,
-  handleGetMessageStats
+  handleGetMessageStats,
 } from "./routes/messages";
 
 export function createServer() {
