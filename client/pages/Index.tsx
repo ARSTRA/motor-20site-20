@@ -16,13 +16,45 @@ const stats = [
 
 export default function Index() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [featuredCars, setFeaturedCars] = useState<Car[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % featuredCars.length);
-    }, 5000);
-    return () => clearInterval(timer);
+    fetchFeaturedCars();
+    fetchCategories();
   }, []);
+
+  useEffect(() => {
+    if (featuredCars.length > 0) {
+      const timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % featuredCars.length);
+      }, 5000);
+      return () => clearInterval(timer);
+    }
+  }, [featuredCars]);
+
+  const fetchFeaturedCars = async () => {
+    try {
+      const response = await fetch("/api/cars/featured");
+      const data = await response.json();
+      setFeaturedCars(data.cars);
+    } catch (error) {
+      console.error("Error fetching featured cars:", error);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("/api/categories");
+      const data = await response.json();
+      setCategories(data.categories);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      setLoading(false);
+    }
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % featuredCars.length);
