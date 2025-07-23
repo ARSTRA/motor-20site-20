@@ -115,15 +115,22 @@ export default function Header() {
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-ocean-500 to-forest-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link 
-              to="/inventory" 
+            <Link
+              to="/inventory"
               className="text-gray-700 hover:text-ocean-600 transition-colors font-medium relative group"
             >
               Inventory
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-ocean-500 to-forest-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link 
-              to="/financing" 
+            <Link
+              to="/about"
+              className="text-gray-700 hover:text-ocean-600 transition-colors font-medium relative group"
+            >
+              About
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-ocean-500 to-forest-500 group-hover:w-full transition-all duration-300"></span>
+            </Link>
+            <Link
+              to="/financing"
               className="text-gray-700 hover:text-ocean-600 transition-colors font-medium relative group"
             >
               Financing
