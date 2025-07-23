@@ -455,9 +455,11 @@ export default function Inventory() {
               <Phone className="h-4 w-4 mr-2" />
               Call
             </Button>
-            <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-              View Details
-            </Button>
+            <Link to={`/vehicle/${car.id}`}>
+              <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                View Details
+              </Button>
+            </Link>
           </div>
         </div>
       </CardContent>
