@@ -431,28 +431,37 @@ export default function About() {
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
                 <Card
                   key={index}
-                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2"
+                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2 bg-white/95 backdrop-blur-sm"
                 >
-                  <div className="relative">
+                  <div className="relative overflow-hidden">
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-80 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        // Fallback to a placeholder if image fails to load
+                        e.currentTarget.src = 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg';
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <UserCheck className="h-6 w-6 text-white" />
+                      </div>
+                    </div>
                   </div>
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <CardContent className="p-6 sm:p-8">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-ocean-600 transition-colors duration-300">
                       {member.name}
                     </h3>
-                    <Badge className="mb-4 bg-gradient-to-r from-ocean-500 to-forest-500 text-white">
+                    <Badge className="mb-4 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-3 py-1">
                       {member.position}
                     </Badge>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                       {member.bio}
                     </p>
                   </CardContent>
