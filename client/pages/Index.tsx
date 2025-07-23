@@ -5,58 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/Layout";
-
-// Mock data for featured cars
-const featuredCars = [
-  {
-    id: 1,
-    name: "2024 BMW X5 M Competition",
-    price: 125000,
-    image: "/api/placeholder/800/600",
-    category: "Luxury SUV",
-    year: 2024,
-    mileage: 0,
-    fuel: "Gas",
-    rating: 4.9,
-    featured: true,
-    description: "Ultimate luxury SUV with unmatched performance"
-  },
-  {
-    id: 2,
-    name: "2023 Mercedes-Benz S-Class",
-    price: 110000,
-    image: "/api/placeholder/800/600",
-    category: "Luxury Sedan",
-    year: 2023,
-    mileage: 5200,
-    fuel: "Hybrid",
-    rating: 4.8,
-    featured: true,
-    description: "The pinnacle of luxury and technology"
-  },
-  {
-    id: 3,
-    name: "2024 Porsche 911 Turbo S",
-    price: 230000,
-    image: "/api/placeholder/800/600",
-    category: "Sports Car",
-    year: 2024,
-    mileage: 1200,
-    fuel: "Gas",
-    rating: 5.0,
-    featured: true,
-    description: "Legendary sports car performance"
-  }
-];
-
-const categories = [
-  { name: "Luxury Sedans", count: 24, icon: "🚗", color: "bg-blue-500" },
-  { name: "SUVs", count: 18, icon: "🚙", color: "bg-green-500" },
-  { name: "Sports Cars", count: 12, icon: "🏎️", color: "bg-red-500" },
-  { name: "Electric", count: 8, icon: "⚡", color: "bg-yellow-500" },
-  { name: "Trucks", count: 15, icon: "🚚", color: "bg-gray-500" },
-  { name: "Convertibles", count: 6, icon: "🏖️", color: "bg-purple-500" }
-];
+import { Car, Category } from "@shared/api";
 
 const stats = [
   { label: "Vehicles in Stock", value: "150+", icon: "🚗" },
