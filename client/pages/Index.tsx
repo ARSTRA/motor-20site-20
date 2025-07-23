@@ -258,7 +258,7 @@ export default function Index() {
                     <Badge variant="secondary">{car.category}</Badge>
                     <div className="flex items-center gap-1">
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-medium">{car.rating}</span>
+                      <span className="text-sm font-medium">4.9</span>
                     </div>
                   </div>
                   
