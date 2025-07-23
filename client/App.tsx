@@ -15,6 +15,7 @@ import CategoryPage from "./pages/CategoryPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Financing from "./pages/Financing";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 
