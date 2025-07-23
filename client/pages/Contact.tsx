@@ -222,7 +222,7 @@ export default function Contact() {
             {/* Quick Contact Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">< 2hr</div>
+                <div className="text-4xl font-bold text-gold-300 mb-2">&lt; 2hr</div>
                 <div className="text-ocean-100">Response Time</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
