@@ -291,7 +291,7 @@ export default function Inventory() {
     isListView?: boolean;
   }) => (
     <Card
-      className={`group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-transparent hover:border-ocean-200 ${isListView ? "flex" : ""}`}
+      className={`group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-transparent hover:border-ocean-200 hover:shadow-ocean-500/10 ${isListView ? "flex flex-col lg:flex-row" : ""}`}
     >
       <div className={`relative ${isListView ? "w-80 flex-shrink-0" : ""}`}>
         <div
