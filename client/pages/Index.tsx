@@ -143,31 +143,42 @@ export default function Index() {
                 Where luxury meets adventure. Experience our curated collection
                 of premium vehicles designed for those who demand excellence.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md sm:max-w-none">
-                <Link to="/inventory">
+              <div className="flex flex-col sm:flex-row gap-6 max-w-md sm:max-w-none items-center sm:items-start">
+                <Link to="/inventory" className="w-full sm:w-auto">
                   <Button
                     size="lg"
-                    className="text-lg px-8 py-4 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+                    className="w-full sm:w-auto text-lg px-8 py-4 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
                   >
                     Explore Collection
                   </Button>
                 </Link>
-                <Link to="/contact">
-                  <Button
-                    size="lg"
-                    className="text-lg px-8 py-4 bg-gradient-to-r from-sunset-500 via-gold-500 to-forest-500 hover:from-sunset-600 hover:via-gold-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/30 hover:border-white/50"
-                  >
-                    <span className="absolute inset-0 bg-gradient-to-r from-gold-300/30 via-sunset-300/30 to-forest-300/30 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
-                    <span className="absolute inset-0 bg-gradient-to-45deg from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
-                    <span className="relative flex items-center gap-3 z-10">
-                      <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
-                        <Calendar className="h-5 w-5" />
-                      </div>
-                      <span className="tracking-wide">Book Experience</span>
-                      <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
-                    </span>
-                  </Button>
-                </Link>
+
+                {/* Enhanced Book Experience Button with decorative elements */}
+                <div className="relative w-full sm:w-auto">
+                  {/* Floating decorative elements */}
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.5s] opacity-70"></div>
+                  <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gradient-to-r from-forest-400 to-ocean-400 rounded-full animate-bounce [animation-delay:1s] opacity-70"></div>
+
+                  <Link to="/contact" className="w-full sm:w-auto block">
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto text-lg px-8 py-4 bg-gradient-to-r from-sunset-500 via-gold-500 to-forest-500 hover:from-sunset-600 hover:via-gold-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/30 hover:border-white/50"
+                    >
+                      <span className="absolute inset-0 bg-gradient-to-r from-gold-300/30 via-sunset-300/30 to-forest-300/30 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+                      <span className="absolute inset-0 bg-gradient-to-45deg from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
+                      <span className="relative flex items-center gap-3 z-10 justify-center sm:justify-start">
+                        <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                          <Calendar className="h-5 w-5" />
+                        </div>
+                        <span className="tracking-wide">Book Experience</span>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse group-hover:bg-white/80"></div>
+                      </span>
+                    </Button>
+                  </Link>
+
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-sunset-500/20 via-gold-500/20 to-forest-500/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
               </div>
             </div>
           </div>
