@@ -36,7 +36,7 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/financing" element={<PlaceholderPage title="Financing Options" description="Explore our flexible financing solutions and get pre-approved today." />} />
+            <Route path="/financing" element={<Financing />} />
             <Route path="/trade-in" element={<PlaceholderPage title="Trade-In Services" description="Get top value for your current vehicle with our trade-in program." />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/car/:id" element={<PlaceholderPage title="Vehicle Details" description="Detailed information about this specific vehicle." />} />
