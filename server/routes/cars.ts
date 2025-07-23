@@ -112,7 +112,7 @@ const mockCars: Car[] = [
     transmission: "Automatic",
     description:
       "Revolutionary electric performance sedan with incredible acceleration and range.",
-    images: ["/api/placeholder/800/600", "/api/placeholder/800/600"],
+    images: ["https://images.pexels.com/photos/258083/pexels-photo-258083.jpeg", "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg"],
     category: "electric",
     featured: false,
     status: "available",
