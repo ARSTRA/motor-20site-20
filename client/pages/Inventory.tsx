@@ -342,12 +342,17 @@ export default function Inventory() {
           </Badge>
         </div>
         <div className="absolute top-4 right-4 flex gap-2">
-          <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
-            <Heart className="h-4 w-4 text-sunset-500" />
+          <button
+            onClick={() => alert('Added to favorites!')}
+            className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg group/heart"
+          >
+            <Heart className="h-4 w-4 text-sunset-500 group-hover/heart:fill-sunset-500 transition-all duration-300" />
           </button>
-          <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
-            <Eye className="h-4 w-4 text-ocean-500" />
-          </button>
+          <Link to={`/vehicle/${car.id}`}>
+            <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg group/eye">
+              <Eye className="h-4 w-4 text-ocean-500 group-hover/eye:text-ocean-600 transition-colors duration-300" />
+            </button>
+          </Link>
         </div>
       </div>
 
