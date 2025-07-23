@@ -94,16 +94,18 @@ export default function Index() {
               }`}
             >
               <div
-                className="w-full h-full bg-cover bg-center"
+                className="w-full h-full bg-cover bg-center relative"
                 style={{
-                  background: `linear-gradient(135deg, #0ea5e9 0%, #22c55e 30%, #f97316 60%, #eab308 100%)`,
+                  backgroundImage: `url(${car.images[0]})`,
                 }}
               >
+                <div className="absolute inset-0 bg-black/40"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-96 h-64 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 flex items-center justify-center">
                     <div className="text-white text-center">
-                      <div className="text-6xl mb-4">🚗</div>
-                      <p className="text-lg opacity-75">{car.name}</p>
+                      <h3 className="text-2xl font-bold mb-2">{car.name}</h3>
+                      <p className="text-lg opacity-90 mb-2">{car.description}</p>
+                      <p className="text-xl font-bold text-gold-300">${car.price.toLocaleString()}</p>
                     </div>
                   </div>
                 </div>
