@@ -359,16 +359,16 @@ export default function About() {
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <Button asChild className="bg-white text-ocean-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                <a href="/inventory">
+                <Link to="/inventory">
                   <Car className="h-5 w-5 mr-2" />
                   Browse Inventory
-                </a>
+                </Link>
               </Button>
               <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-8 py-4 text-lg rounded-xl backdrop-blur-sm">
-                <a href="/contact">
+                <Link to="/contact">
                   <MapPin className="h-5 w-5 mr-2" />
                   Visit Our Showroom
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
