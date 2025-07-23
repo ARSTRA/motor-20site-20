@@ -81,10 +81,10 @@ const mockCars: Car[] = [
     description:
       "Legendary sports car performance with timeless design and incredible engineering.",
     images: [
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
+      "https://images.pexels.com/photos/29831802/pexels-photo-29831802.jpeg",
+      "https://images.pexels.com/photos/3741057/pexels-photo-3741057.jpeg",
+      "https://images.pexels.com/photos/5640629/pexels-photo-5640629.jpeg",
+      "https://images.pexels.com/photos/25857424/pexels-photo-25857424.jpeg",
     ],
     category: "sports-car",
     featured: true,
