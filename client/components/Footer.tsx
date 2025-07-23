@@ -103,8 +103,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/financing" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
+                <Link to="/about" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
                   <span className="w-2 h-2 bg-sunset-500 rounded-full mr-3 group-hover:bg-sunset-400 transition-colors"></span>
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/financing" className="text-gray-300 hover:text-ocean-400 transition-colors flex items-center group">
+                  <span className="w-2 h-2 bg-gold-500 rounded-full mr-3 group-hover:bg-gold-400 transition-colors"></span>
                   Financing Options
                 </Link>
               </li>
