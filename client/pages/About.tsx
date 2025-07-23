@@ -153,11 +153,11 @@ export default function About() {
                   where exceptional vehicles meet unparalleled service in the heart of the mountains.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
-                    Our Story
+                  <Button asChild className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <Link to="/contact">Our Story</Link>
                   </Button>
-                  <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-xl backdrop-blur-sm">
-                    Meet the Team
+                  <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-xl backdrop-blur-sm">
+                    <Link to="/contact">Meet the Team</Link>
                   </Button>
                 </div>
               </div>
