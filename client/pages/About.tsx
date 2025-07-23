@@ -235,24 +235,37 @@ export default function About() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-24 bg-gradient-to-r from-ocean-50 via-forest-50 to-sunset-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <section className="py-20 sm:py-24 bg-gradient-to-r from-ocean-50 via-forest-50 to-sunset-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-4">
+                Our Achievement Numbers
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Decades of excellence reflected in the trust of our customers
+              </p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {stats.map((stat, index) => (
                 <Card
                   key={index}
-                  className="text-center border-none shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                  className="text-center border-none shadow-xl bg-white/90 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group"
                 >
-                  <CardContent className="p-8">
+                  <CardContent className="p-6 sm:p-8">
                     <div
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-${stat.color}-500 to-${stat.color}-600 mb-4`}
+                      className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${
+                        stat.color === 'ocean' ? 'from-ocean-500 to-ocean-600' :
+                        stat.color === 'forest' ? 'from-forest-500 to-forest-600' :
+                        stat.color === 'sunset' ? 'from-sunset-500 to-sunset-600' :
+                        'from-gold-500 to-gold-600'
+                      } mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                     >
-                      <stat.icon className="h-8 w-8 text-white" />
+                      <stat.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
-                    <h3 className="text-4xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 group-hover:text-ocean-600 transition-colors duration-300">
                       {stat.value}
                     </h3>
-                    <p className="text-gray-600 font-medium">{stat.label}</p>
+                    <p className="text-sm sm:text-base text-gray-600 font-medium">{stat.label}</p>
                   </CardContent>
                 </Card>
               ))}
