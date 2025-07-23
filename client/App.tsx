@@ -23,6 +23,15 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/financing" element={<PlaceholderPage title="Financing Options" description="Explore our flexible financing solutions and get pre-approved today." />} />
+          <Route path="/trade-in" element={<PlaceholderPage title="Trade-In Services" description="Get top value for your current vehicle with our trade-in program." />} />
+          <Route path="/category/:category" element={<PlaceholderPage title="Vehicle Category" description="Browse vehicles in this specific category." />} />
+          <Route path="/car/:id" element={<PlaceholderPage title="Vehicle Details" description="Detailed information about this specific vehicle." />} />
+          <Route path="/privacy" element={<PlaceholderPage title="Privacy Policy" description="Our commitment to protecting your privacy and data." />} />
+          <Route path="/terms" element={<PlaceholderPage title="Terms of Service" description="Terms and conditions for using our services." />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
