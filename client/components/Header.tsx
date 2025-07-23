@@ -147,17 +147,69 @@ export default function Header() {
 
           {/* CTA Buttons with gradient styling */}
           <div className="flex items-center gap-4">
-            <Button 
-              className="hidden md:flex bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              Get Quote
-            </Button>
-            <Button 
-              variant="outline" 
-              className="hidden sm:flex border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300"
-            >
-              Schedule Tour
-            </Button>
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="flex items-center gap-3 border-2 border-ocean-500 text-ocean-600 hover:bg-ocean-500 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300"
+                  >
+                    <User className="h-5 w-5" />
+                    <span className="hidden md:block">{user.firstName}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56 bg-white shadow-xl border-2 border-gray-100 rounded-2xl p-2">
+                  <div className="px-3 py-2 border-b border-gray-100 mb-2">
+                    <p className="font-semibold text-gray-900">{user.firstName} {user.lastName}</p>
+                    <p className="text-sm text-gray-600">{user.email}</p>
+                  </div>
+                  <DropdownMenuItem asChild>
+                    <Link to="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-ocean-50 cursor-pointer">
+                      <User className="h-4 w-4 text-ocean-600" />
+                      Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-forest-50 cursor-pointer">
+                      <Settings className="h-4 w-4 text-forest-600" />
+                      Settings
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/inventory" className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-sunset-50 cursor-pointer">
+                      <Car className="h-4 w-4 text-sunset-600" />
+                      My Vehicles
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={handleLogout}
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 cursor-pointer text-red-600"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button
+                    variant="outline"
+                    className="hidden sm:flex border-2 border-ocean-500 text-ocean-600 hover:bg-ocean-500 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300"
+                  >
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button
+                    className="hidden md:flex bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  >
+                    Get Started
+                  </Button>
+                </Link>
+              </>
+            )}
             <Button variant="ghost" size="icon" className="lg:hidden hover:bg-ocean-100 rounded-xl">
               <Menu className="h-6 w-6 text-ocean-600" />
             </Button>
