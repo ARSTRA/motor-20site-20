@@ -544,15 +544,48 @@ export default function Index() {
                 Get Instant Quote
               </Button>
             </Link>
-            <Link to="/financing">
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-10 py-4 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-2xl transition-all duration-300"
-              >
-                Financing Options
-              </Button>
-            </Link>
+            <div className="relative group">
+              {/* Floating decorative elements around the button */}
+              <div className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full animate-pulse opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -bottom-3 -right-3 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.7s] opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full animate-ping [animation-delay:1.2s] opacity-40"></div>
+
+              <Link to="/financing">
+                <Button
+                  size="lg"
+                  className="text-lg px-10 py-4 bg-gradient-to-r from-ocean-600 via-forest-600 to-gold-600 hover:from-ocean-500 hover:via-forest-500 hover:to-gold-500 text-white font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/40 hover:border-white/70"
+                >
+                  {/* Animated background layers */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-ocean-300/20 via-forest-300/20 to-gold-300/20 transform scale-0 group-hover:scale-100 transition-transform duration-500 ease-out rounded-2xl"></span>
+
+                  {/* Button content */}
+                  <span className="relative flex items-center gap-3 z-10">
+                    <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-all duration-300 group-hover:rotate-12">
+                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">Financing Options</span>
+                    <div className="flex gap-1">
+                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
+                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
+                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.6s] group-hover:bg-white"></div>
+                    </div>
+                  </span>
+
+                  {/* Particle effect overlay */}
+                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute top-2 left-4 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:0.3s]"></div>
+                    <div className="absolute top-6 right-6 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:0.8s]"></div>
+                    <div className="absolute bottom-3 left-8 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:1.1s]"></div>
+                  </span>
+                </Button>
+              </Link>
+
+              {/* Glow effect behind button */}
+              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ocean-500/30 via-forest-500/30 to-gold-500/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110"></div>
+            </div>
           </div>
         </div>
       </section>
