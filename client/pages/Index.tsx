@@ -136,19 +136,27 @@ export default function Index() {
                 of premium vehicles designed for those who demand excellence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="text-lg px-8 py-4 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-                >
-                  Explore Collection
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 py-4 text-white border-2 border-gold-400 hover:bg-gold-400 hover:text-gray-900 font-bold shadow-xl transition-all duration-300"
-                >
-                  Book Experience
-                </Button>
+                <Link to="/inventory">
+                  <Button
+                    size="lg"
+                    className="text-lg px-8 py-4 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    Explore Collection
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-lg px-8 py-4 text-white border-2 border-gold-400 hover:bg-gold-400 hover:text-gray-900 font-bold shadow-xl transition-all duration-300 relative overflow-hidden group"
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-gold-400/20 to-sunset-400/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <span className="relative flex items-center gap-2">
+                      <Calendar className="h-5 w-5" />
+                      Book Experience
+                    </span>
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
