@@ -19,7 +19,7 @@ import { Car, Category } from "@shared/api";
 const stats = [
   { label: "Vehicles in Stock", value: "150+", icon: "🚗" },
   { label: "Happy Customers", value: "2.5K+", icon: "😊" },
-  { label: "Years Experience", value: "25+", icon: "🏆" },
+  { label: "Years Experience", value: "25+", icon: "��" },
   { label: "Service Centers", value: "8", icon: "🔧" },
 ];
 
@@ -431,12 +431,14 @@ export default function Index() {
           </div>
 
           <div className="text-center mt-16">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500 hover:from-ocean-600 hover:via-forest-600 hover:to-sunset-600 text-white font-bold px-12 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg"
-            >
-              Explore Complete Collection
-            </Button>
+            <Link to="/inventory">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500 hover:from-ocean-600 hover:via-forest-600 hover:to-sunset-600 text-white font-bold px-12 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg"
+              >
+                Explore Complete Collection
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
