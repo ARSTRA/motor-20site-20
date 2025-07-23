@@ -20,7 +20,7 @@ const stats = [
   { label: "Vehicles in Stock", value: "150+", icon: "🚗" },
   { label: "Happy Customers", value: "2.5K+", icon: "😊" },
   { label: "Years Experience", value: "25+", icon: "🏆" },
-  { label: "Service Centers", value: "8", icon: "��" },
+  { label: "Service Centers", value: "8", icon: "🔧" },
 ];
 
 export default function Index() {
@@ -344,12 +344,17 @@ export default function Index() {
                     </Badge>
                   </div>
                   <div className="absolute top-4 right-4 flex gap-2">
-                    <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
+                    <button
+                      onClick={() => alert('Saved to favorites!')}
+                      className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg"
+                    >
                       <Heart className="h-4 w-4 text-sunset-500" />
                     </button>
-                    <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
-                      <Eye className="h-4 w-4 text-ocean-500" />
-                    </button>
+                    <Link to={`/vehicle/${car.id}`}>
+                      <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
+                        <Eye className="h-4 w-4 text-ocean-500" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
 
