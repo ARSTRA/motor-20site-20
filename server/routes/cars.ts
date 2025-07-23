@@ -172,7 +172,7 @@ export const handleGetCars: RequestHandler = (req, res) => {
     filteredCars = filteredCars.filter(car => car.fuel.toLowerCase() === filters.fuel.toLowerCase());
   }
   if (filters.featured !== undefined) {
-    filteredCars = filteredCars.filter(car => car.featured === (filters.featured === 'true'));
+    filteredCars = filteredCars.filter(car => car.featured === Boolean(filters.featured));
   }
   if (filters.search) {
     const searchTerm = filters.search.toLowerCase();
