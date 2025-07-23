@@ -202,16 +202,16 @@ export default function Index() {
 
       {/* Enhanced Quick Search Bar */}
       <section className="bg-white shadow-2xl -mt-20 relative z-30 mx-4 lg:mx-8 rounded-2xl border-t-4 border-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500">
-        <div className="max-w-6xl mx-auto p-8">
+        <div className="max-w-6xl mx-auto p-6 sm:p-8">
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-2">
               Find Your Perfect Match
             </h3>
-            <p className="text-gray-600">
+            <p className="text-sm sm:text-base text-gray-600">
               Advanced search to discover your ideal luxury vehicle
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-3">
                 Make
