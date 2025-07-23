@@ -59,6 +59,15 @@ const App = () => (
               }
             />
             <Route
+              path="/vehicle/:id"
+              element={
+                <PlaceholderPage
+                  title="Vehicle Details"
+                  description="Detailed information about this specific vehicle."
+                />
+              }
+            />
+            <Route
               path="/privacy"
               element={
                 <PlaceholderPage
