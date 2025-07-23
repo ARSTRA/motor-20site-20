@@ -280,14 +280,14 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
             {categories.map((category) => (
               <Link
                 key={category.id}
                 to={`/category/${category.slug}`}
                 className="group"
               >
-                <Card className="text-center p-8 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 bg-gradient-to-br from-white to-gray-50 border-2 border-transparent hover:border-ocean-200 rounded-2xl">
+                <Card className="text-center p-4 sm:p-6 lg:p-8 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 bg-gradient-to-br from-white to-gray-50 border-2 border-transparent hover:border-ocean-200 rounded-2xl">
                   <CardContent className="p-0">
                     <div className="w-20 h-20 bg-gradient-to-br from-ocean-400 via-forest-400 to-sunset-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                       <span className="text-3xl">{category.icon}</span>
