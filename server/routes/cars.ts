@@ -53,7 +53,7 @@ const mockCars: Car[] = [
     transmission: "Automatic",
     description:
       "The pinnacle of luxury and technology. Exceptional comfort with innovative features.",
-    images: ["/api/placeholder/800/600", "/api/placeholder/800/600"],
+    images: ["https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg", "https://images.pexels.com/photos/25857424/pexels-photo-25857424.jpeg"],
     category: "luxury-sedan",
     featured: true,
     status: "available",
