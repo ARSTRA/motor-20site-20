@@ -180,7 +180,7 @@ export default function Inventory() {
         <div className="px-2">
           <Slider
             value={priceRange}
-            onValueChange={setPriceRange}
+            onValueChange={(value) => setPriceRange(value as [number, number])}
             max={500000}
             min={0}
             step={5000}
@@ -197,7 +197,7 @@ export default function Inventory() {
         <div className="px-2">
           <Slider
             value={yearRange}
-            onValueChange={setYearRange}
+            onValueChange={(value) => setYearRange(value as [number, number])}
             max={2024}
             min={2015}
             step={1}
@@ -228,7 +228,7 @@ export default function Inventory() {
         <Checkbox
           id="featured"
           checked={showFeaturedOnly}
-          onCheckedChange={setShowFeaturedOnly}
+          onCheckedChange={(checked) => setShowFeaturedOnly(checked === true)}
         />
         <label htmlFor="featured" className="text-sm font-bold text-gray-700">
           Show Featured Only
