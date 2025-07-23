@@ -1,6 +1,23 @@
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import {
+  handleGetCars,
+  handleGetCar,
+  handleCreateCar,
+  handleUpdateCar,
+  handleDeleteCar,
+  handleGetFeaturedCars
+} from "./routes/cars";
+import { handleGetCategories, handleGetCategory } from "./routes/categories";
+import {
+  handleGetMessages,
+  handleGetMessage,
+  handleCreateMessage,
+  handleUpdateMessageStatus,
+  handleDeleteMessage,
+  handleGetMessageStats
+} from "./routes/messages";
 
 export function createServer() {
   const app = express();
