@@ -70,17 +70,17 @@ export default function Index() {
       <section className="relative h-[70vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10" />
         
-        {featuredCars.map((car, index) => (
+        {featuredCars.length > 0 ? featuredCars.map((car, index) => (
           <div
             key={car.id}
             className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
-              index === currentSlide ? 'translate-x-0' : 
+              index === currentSlide ? 'translate-x-0' :
               index < currentSlide ? '-translate-x-full' : 'translate-x-full'
             }`}
           >
-            <div 
+            <div
               className="w-full h-full bg-cover bg-center bg-automotive-500"
-              style={{ 
+              style={{
                 background: `linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%)`
               }}
             >
@@ -94,7 +94,14 @@ export default function Index() {
               </div>
             </div>
           </div>
-        ))}
+        )) : (
+          <div className="absolute inset-0 bg-gradient-to-r from-automotive-500 to-automotive-600 flex items-center justify-center">
+            <div className="text-white text-center">
+              <div className="text-6xl mb-4">🚗</div>
+              <p className="text-lg opacity-75">Loading featured vehicles...</p>
+            </div>
+          </div>
+        )}
 
         {/* Hero Content */}
         <div className="relative z-20 h-full flex items-center">
