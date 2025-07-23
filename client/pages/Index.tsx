@@ -155,13 +155,16 @@ export default function Index() {
                 <Link to="/contact">
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="text-lg px-8 py-4 text-white border-2 border-gold-400 hover:bg-gold-400 hover:text-gray-900 font-bold shadow-xl transition-all duration-300 relative overflow-hidden group"
+                    className="text-lg px-8 py-4 bg-gradient-to-r from-sunset-500 via-gold-500 to-forest-500 hover:from-sunset-600 hover:via-gold-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/30 hover:border-white/50"
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-gold-400/20 to-sunset-400/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <span className="relative flex items-center gap-2">
-                      <Calendar className="h-5 w-5" />
-                      Book Experience
+                    <span className="absolute inset-0 bg-gradient-to-r from-gold-300/30 via-sunset-300/30 to-forest-300/30 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+                    <span className="absolute inset-0 bg-gradient-to-45deg from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
+                    <span className="relative flex items-center gap-3 z-10">
+                      <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                        <Calendar className="h-5 w-5" />
+                      </div>
+                      <span className="tracking-wide">Book Experience</span>
+                      <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
                     </span>
                   </Button>
                 </Link>
