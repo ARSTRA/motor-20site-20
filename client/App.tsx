@@ -40,15 +40,7 @@ const App = () => (
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/financing" element={<Financing />} />
-            <Route
-              path="/trade-in"
-              element={
-                <PlaceholderPage
-                  title="Trade-In Services"
-                  description="Get top value for your current vehicle with our trade-in program."
-                />
-              }
-            />
+            <Route path="/trade-in" element={<TradeIn />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route
               path="/car/:id"
