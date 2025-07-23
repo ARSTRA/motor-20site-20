@@ -55,6 +55,12 @@ const PremiumAutoLogo = () => (
 );
 
 export default function Header() {
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <header className="bg-white shadow-xl sticky top-0 z-50 border-b-4 border-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500">
       {/* Top contact bar with gradient */}
