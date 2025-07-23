@@ -512,7 +512,7 @@ export default function Index() {
             perfect vehicle with Alpine Motors. Experience personalized service,
             exclusive offers, and the luxury you deserve.
           </p>
-          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row lg:flex-row gap-4 sm:gap-6 justify-center items-center flex-wrap">
             <Link to="/contact">
               <Button
                 size="lg"
