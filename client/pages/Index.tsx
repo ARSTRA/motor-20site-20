@@ -332,11 +332,13 @@ export default function Index() {
                 className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-transparent hover:border-ocean-200"
               >
                 <div className="relative">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-ocean-100 via-forest-100 to-sunset-100 flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-ocean-500/20 via-forest-500/20 to-sunset-500/20"></div>
-                    <div className="text-6xl relative z-10 group-hover:scale-110 transition-transform duration-300">
-                      🚗
-                    </div>
+                  <div className="aspect-[4/3] relative overflow-hidden rounded-t-2xl">
+                    <img
+                      src={car.images[0]}
+                      alt={car.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   </div>
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-lg">
