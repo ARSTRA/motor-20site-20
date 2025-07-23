@@ -468,10 +468,10 @@ export default function Index() {
               Trusted by thousands of satisfied customers
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
                   <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                     {stat.icon}
                   </div>
