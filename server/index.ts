@@ -34,5 +34,25 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
+  // Cars API routes
+  app.get("/api/cars", handleGetCars);
+  app.get("/api/cars/featured", handleGetFeaturedCars);
+  app.get("/api/cars/:id", handleGetCar);
+  app.post("/api/cars", handleCreateCar);
+  app.put("/api/cars/:id", handleUpdateCar);
+  app.delete("/api/cars/:id", handleDeleteCar);
+
+  // Categories API routes
+  app.get("/api/categories", handleGetCategories);
+  app.get("/api/categories/:slug", handleGetCategory);
+
+  // Messages API routes
+  app.get("/api/messages", handleGetMessages);
+  app.get("/api/messages/stats", handleGetMessageStats);
+  app.get("/api/messages/:id", handleGetMessage);
+  app.post("/api/messages", handleCreateMessage);
+  app.put("/api/messages/:id/status", handleUpdateMessageStatus);
+  app.delete("/api/messages/:id", handleDeleteMessage);
+
   return app;
 }
