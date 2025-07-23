@@ -23,9 +23,9 @@ const mockCars: Car[] = [
     description:
       "Ultimate luxury SUV with unmatched performance and cutting-edge technology. Perfect blend of comfort and power.",
     images: [
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
+      "https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg",
+      "https://images.pexels.com/photos/1005617/pexels-photo-1005617.jpeg",
+      "https://images.pexels.com/photos/25857424/pexels-photo-25857424.jpeg",
     ],
     category: "luxury-suv",
     featured: true,
