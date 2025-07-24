@@ -172,15 +172,15 @@ export default function About() {
           {/* Navigation Buttons */}
           <button
             onClick={prevImage}
-            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 z-10"
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-ocean-500/30 to-forest-500/30 backdrop-blur-sm hover:from-ocean-500/50 hover:to-forest-500/50 text-white p-3 rounded-full transition-all duration-300 z-10 border border-white/30 hover:border-white/50 shadow-xl hover:shadow-2xl hover:scale-110 group"
           >
-            <ChevronLeft className="h-6 w-6" />
+            <ChevronLeft className="h-6 w-6 group-hover:-translate-x-0.5 transition-transform duration-300" />
           </button>
           <button
             onClick={nextImage}
-            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 z-10"
+            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-ocean-500/30 to-forest-500/30 backdrop-blur-sm hover:from-ocean-500/50 hover:to-forest-500/50 text-white p-3 rounded-full transition-all duration-300 z-10 border border-white/30 hover:border-white/50 shadow-xl hover:shadow-2xl hover:scale-110 group"
           >
-            <ChevronRight className="h-6 w-6" />
+            <ChevronRight className="h-6 w-6 group-hover:translate-x-0.5 transition-transform duration-300" />
           </button>
 
           {/* Hero Content */}
