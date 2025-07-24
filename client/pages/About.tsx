@@ -519,26 +519,62 @@ export default function About() {
               perfect blend of luxury, performance, and personalized service.
               Your adventure awaits.
             </p>
-            <div className="flex flex-wrap justify-center gap-6">
-              <Button
-                asChild
-                className="bg-white text-ocean-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-              >
-                <Link to="/inventory">
-                  <Car className="h-5 w-5 mr-2" />
-                  Browse Inventory
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-8 py-4 text-lg rounded-xl backdrop-blur-sm"
-              >
-                <Link to="/contact">
-                  <MapPin className="h-5 w-5 mr-2" />
-                  Visit Our Showroom
-                </Link>
-              </Button>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <div className="relative group">
+                <Button
+                  asChild
+                  className="bg-white text-ocean-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                >
+                  <Link to="/inventory">
+                    <span className="absolute inset-0 bg-gradient-to-r from-ocean-500/10 to-forest-500/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <span className="relative flex items-center gap-2">
+                      <div className="bg-ocean-100 p-1.5 rounded-full group-hover:bg-ocean-200 transition-colors duration-300">
+                        <Car className="h-5 w-5" />
+                      </div>
+                      Browse Inventory
+                    </span>
+                  </Link>
+                </Button>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-ping opacity-60"></div>
+              </div>
+
+              <div className="relative group">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-8 py-4 text-lg rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                >
+                  <Link to="/contact">
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                    <span className="relative flex items-center gap-2">
+                      <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      Visit Our Showroom
+                    </span>
+                  </Link>
+                </Button>
+                <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-white/60 rounded-full animate-pulse opacity-70"></div>
+              </div>
+
+              {/* Additional Professional Button */}
+              <div className="relative group">
+                <Button
+                  asChild
+                  className="bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-500 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden border border-white/30"
+                >
+                  <Link to="/trade-in">
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform scale-0 group-hover:scale-100 transition-transform duration-500"></span>
+                    <span className="relative flex items-center gap-2">
+                      <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                        <TrendingUp className="h-5 w-5" />
+                      </div>
+                      Trade-In Program
+                    </span>
+                  </Link>
+                </Button>
+                <div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:0.5s] opacity-80"></div>
+              </div>
             </div>
           </div>
         </section>
