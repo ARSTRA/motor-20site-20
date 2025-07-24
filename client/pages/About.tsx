@@ -305,7 +305,7 @@ export default function About() {
         </section>
 
         {/* Our Story Section */}
-        <section className="py-24 bg-white">
+        <section id="story-section" className="py-24 bg-white scroll-mt-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
               <Badge className="mb-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-4 py-2">
