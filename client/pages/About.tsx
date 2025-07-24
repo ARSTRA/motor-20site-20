@@ -44,6 +44,17 @@ export default function About() {
     },
   ];
 
+  // Auto-slide functionality
+  useEffect(() => {
+    if (heroImages.length > 0) {
+      const timer = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+      }, 5000); // Change image every 5 seconds
+
+      return () => clearInterval(timer);
+    }
+  }, [heroImages.length]);
+
   const stats = [
     {
       icon: Calendar,
