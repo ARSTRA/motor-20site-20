@@ -202,9 +202,15 @@ export default function About() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     asChild
-                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
                   >
-                    <Link to="/contact">Our Story</Link>
+                    <Link to="#story-section">
+                      <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                      <span className="relative flex items-center gap-2">
+                        <span className="text-xl">📖</span>
+                        Our Story
+                      </span>
+                    </Link>
                   </Button>
                   <div className="relative group">
                     {/* Floating decorative elements around the button */}
