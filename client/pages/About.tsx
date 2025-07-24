@@ -270,17 +270,28 @@ export default function About() {
           </div>
 
           {/* Image Indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
             {heroImages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`relative transition-all duration-300 group ${
                   index === currentImageIndex
-                    ? "bg-white scale-125"
-                    : "bg-white/50 hover:bg-white/75"
+                    ? "w-8 h-3"
+                    : "w-3 h-3"
                 }`}
-              />
+              >
+                <div
+                  className={`w-full h-full rounded-full transition-all duration-300 ${
+                    index === currentImageIndex
+                      ? "bg-gradient-to-r from-gold-400 to-sunset-400 shadow-lg"
+                      : "bg-white/50 hover:bg-white/75 group-hover:scale-125"
+                  }`}
+                />
+                {index === currentImageIndex && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-pulse opacity-50"></div>
+                )}
+              </button>
             ))}
           </div>
         </section>
