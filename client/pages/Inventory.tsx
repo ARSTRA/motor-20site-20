@@ -486,38 +486,45 @@ export default function Inventory() {
           <div className="absolute bottom-10 right-10 w-40 h-40 bg-ocean-400 rounded-full blur-3xl animate-pulse [animation-delay:1s]"></div>
           <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-forest-400 rounded-full blur-2xl animate-pulse [animation-delay:2s]"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <Badge
-              variant="outline"
-              className="mb-6 text-gold-300 border-gold-300 px-4 py-2"
+              className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/30 px-6 py-3 text-lg font-semibold shadow-xl backdrop-blur-sm"
             >
-              Premium Collection
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                Premium Collection
+              </span>
             </Badge>
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              Luxury Vehicle
-              <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <span className="text-white drop-shadow-2xl">Luxury Vehicle</span>
+              <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-sunset-400 bg-clip-text text-transparent block drop-shadow-lg">
                 Inventory
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
               Discover our complete collection of premium vehicles. Each car is
               meticulously inspected and comes with our guarantee of quality and
               excellence.
             </p>
-            <div className="flex items-center justify-center gap-4 text-lg">
-              <div className="flex items-center gap-2">
-                <span className="text-4xl font-bold text-gold-300">
-                  {totalCount}
-                </span>
-                <span>Premium Vehicles</span>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-lg">
+              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-xl">
+                <div className="w-12 h-12 bg-gradient-to-r from-gold-500 to-sunset-500 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-2xl font-bold text-white">{totalCount}</span>
+                </div>
+                <div className="text-left">
+                  <div className="text-gold-300 font-bold">Premium</div>
+                  <div className="text-white">Vehicles</div>
+                </div>
               </div>
-              <span className="text-gold-300">•</span>
-              <div className="flex items-center gap-2">
-                <span className="text-4xl font-bold text-gold-300">
-                  {categories.length}
-                </span>
-                <span>Categories</span>
+              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-xl">
+                <div className="w-12 h-12 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-2xl font-bold text-white">{categories.length}</span>
+                </div>
+                <div className="text-left">
+                  <div className="text-ocean-300 font-bold">Luxury</div>
+                  <div className="text-white">Categories</div>
+                </div>
               </div>
             </div>
           </div>
