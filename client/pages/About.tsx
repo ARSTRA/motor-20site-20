@@ -29,6 +29,15 @@ import {
 export default function About() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Auto-slide functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
   const heroImages = [
     {
       url: "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg",
