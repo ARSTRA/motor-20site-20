@@ -206,13 +206,38 @@ export default function About() {
                   >
                     <Link to="/contact">Our Story</Link>
                   </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-xl backdrop-blur-sm transition-all duration-300"
-                  >
-                    <Link to="/contact">Meet the Team</Link>
-                  </Button>
+                  <div className="relative group">
+                    {/* Floating decorative elements around the button */}
+                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.5s] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gradient-to-r from-forest-400 to-ocean-400 rounded-full animate-bounce [animation-delay:1s] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <Button
+                      asChild
+                      className="bg-gradient-to-r from-sunset-500 via-gold-500 to-forest-500 hover:from-sunset-600 hover:via-gold-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/30 hover:border-white/60"
+                    >
+                      <Link to="#team-section" className="relative z-10">
+                        {/* Animated background layers */}
+                        <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+                        <span className="absolute inset-0 bg-gradient-to-r from-gold-300/20 via-sunset-300/20 to-forest-300/20 transform scale-0 group-hover:scale-100 transition-transform duration-500 ease-out rounded-xl"></span>
+
+                        {/* Button content */}
+                        <span className="relative flex items-center gap-3 z-10">
+                          <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                            <Users className="h-5 w-5" />
+                          </div>
+                          <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">Meet the Team</span>
+                          <div className="flex gap-1">
+                            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
+                            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
+                            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.6s] group-hover:bg-white"></div>
+                          </div>
+                        </span>
+                      </Link>
+                    </Button>
+
+                    {/* Glow effect behind button */}
+                    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-sunset-500/30 via-gold-500/30 to-forest-500/30 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110"></div>
+                  </div>
                 </div>
               </div>
             </div>
