@@ -239,41 +239,77 @@ export default function Financing() {
               our expert team delivers personalized options with competitive rates and unmatched service.
               Get pre-approved in under 2 minutes and experience the Alpine Motors difference.
             </p>
-            <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-12">
-              <Button
-                size="lg"
-                className="text-xl px-12 py-6 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-              >
-                <Zap className="h-6 w-6 mr-3" />
-                Get Pre-Approved Now
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-xl px-12 py-6 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-3xl transition-all duration-300"
-              >
-                <Calculator className="h-6 w-6 mr-3" />
-                Calculate Payment
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+              <div className="relative group">
+                <Button
+                  size="lg"
+                  className="text-xl px-12 py-6 bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-500 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-600 text-white font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border-2 border-white/30"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                  <span className="relative flex items-center gap-3">
+                    <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                      <Zap className="h-6 w-6" />
+                    </div>
+                    Get Pre-Approved Now
+                  </span>
+                </Button>
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full animate-pulse opacity-70"></div>
+              </div>
+
+              <div className="relative group">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-xl px-12 py-6 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-3xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                  <span className="relative flex items-center gap-3">
+                    <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                      <Calculator className="h-6 w-6" />
+                    </div>
+                    Calculate Payment
+                  </span>
+                </Button>
+              </div>
             </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">
-                  3.49%
+            {/* Enhanced Quick Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full p-2">
+                    <Percent className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">
+                    3.49%
+                  </div>
                 </div>
-                <div className="text-ocean-100">Starting APR</div>
+                <div className="text-ocean-100 font-semibold">Starting APR Rate</div>
+                <div className="text-xs text-white/70 mt-1">For qualified buyers</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">
-                  2 Min
+
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-forest-400 to-ocean-400 rounded-full p-2">
+                    <Clock className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">
+                    2 Min
+                  </div>
                 </div>
-                <div className="text-ocean-100">Pre-Approval</div>
+                <div className="text-ocean-100 font-semibold">Quick Pre-Approval</div>
+                <div className="text-xs text-white/70 mt-1">Instant decision</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">95%</div>
-                <div className="text-ocean-100">Approval Rate</div>
+
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-sunset-400 to-gold-400 rounded-full p-2">
+                    <TrendingUp className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">95%</div>
+                </div>
+                <div className="text-ocean-100 font-semibold">Approval Success</div>
+                <div className="text-xs text-white/70 mt-1">Customer satisfaction</div>
               </div>
             </div>
           </div>
