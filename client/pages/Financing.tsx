@@ -195,11 +195,24 @@ export default function Financing() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-10 w-40 h-40 bg-gold-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-56 h-56 bg-ocean-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-forest-400 rounded-full blur-3xl animate-pulse"></div>
+      <section className="relative text-white py-32 overflow-hidden min-h-[700px] flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(https://images.pexels.com/photos/7144199/pexels-photo-7144199.jpeg)`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-ocean-900/70 to-forest-900/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
+        </div>
+
+        {/* Enhanced floating elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-10 w-40 h-40 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-56 h-56 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl animate-pulse [animation-delay:1s]"></div>
+          <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-r from-forest-400 to-gold-400 rounded-full blur-3xl animate-pulse [animation-delay:2s]"></div>
+          <div className="absolute top-20 right-1/4 w-24 h-24 bg-gradient-to-r from-sunset-400 to-ocean-400 rounded-full blur-2xl animate-pulse [animation-delay:3s]"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center">
