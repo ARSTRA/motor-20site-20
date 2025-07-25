@@ -214,29 +214,30 @@ export default function Financing() {
           <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-r from-forest-400 to-gold-400 rounded-full blur-3xl animate-pulse [animation-delay:2s]"></div>
           <div className="absolute top-20 right-1/4 w-24 h-24 bg-gradient-to-r from-sunset-400 to-ocean-400 rounded-full blur-2xl animate-pulse [animation-delay:3s]"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="mb-8">
-              <div className="inline-block p-6 bg-white/10 backdrop-blur-sm rounded-3xl mb-8">
-                <Calculator className="h-16 w-16 text-white mx-auto" />
+              <div className="inline-block p-8 bg-gradient-to-r from-gold-500/20 via-sunset-500/20 to-ocean-500/20 backdrop-blur-sm rounded-full mb-8 border-2 border-white/30 shadow-2xl">
+                <Calculator className="h-20 w-20 text-white mx-auto" />
               </div>
             </div>
             <Badge
-              variant="outline"
-              className="mb-6 text-gold-300 border-gold-300 px-6 py-3 text-lg"
+              className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/40 px-8 py-4 text-xl font-bold shadow-2xl backdrop-blur-sm"
             >
+              <DollarSign className="h-5 w-5 mr-2" />
               Flexible Financing Solutions
             </Badge>
-            <h1 className="text-6xl lg:text-7xl font-bold mb-8">
-              Drive Your Dream
-              <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+              <span className="text-white drop-shadow-2xl">Drive Your Dream</span>
+              <span className="bg-gradient-to-r from-gold-300 via-sunset-300 to-gold-400 bg-clip-text text-transparent block drop-shadow-lg">
                 Today
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Explore our comprehensive financing options designed to make
-              luxury vehicle ownership accessible. Get pre-approved in minutes
-              and drive home your perfect vehicle today.
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-12 max-w-5xl mx-auto leading-relaxed drop-shadow-lg">
+              Transform your automotive dreams into reality with our comprehensive financing solutions.
+              Whether you're seeking traditional loans, luxury leasing, or certified pre-owned financing,
+              our expert team delivers personalized options with competitive rates and unmatched service.
+              Get pre-approved in under 2 minutes and experience the Alpine Motors difference.
             </p>
             <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-12">
               <Button
