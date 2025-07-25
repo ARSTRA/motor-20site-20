@@ -316,6 +316,92 @@ export default function Financing() {
         </div>
       </section>
 
+      {/* Professional Financing Process Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
+              Our Process
+            </Badge>
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent mb-6">
+              Your Path to Luxury Vehicle Ownership
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Experience our streamlined financing process designed to make luxury vehicle ownership accessible,
+              transparent, and tailored to your unique financial needs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+            {/* Step 1 */}
+            <div className="relative group">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
+                <img
+                  src="https://images.pexels.com/photos/4968639/pexels-photo-4968639.jpeg"
+                  alt="Financial calculation and planning"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-gold-500 to-sunset-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
+                  1
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-ocean-600 transition-colors duration-300">
+                Apply & Calculate
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Start with our advanced payment calculator to explore different financing scenarios.
+                Submit your pre-approval application with bank-level security and get instant results.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative group">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
+                <img
+                  src="https://images.pexels.com/photos/5816286/pexels-photo-5816286.jpeg"
+                  alt="Financial consultation and documentation"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-forest-500 to-ocean-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
+                  2
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-forest-600 transition-colors duration-300">
+                Expert Review
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Our certified financing specialists review your application and work with multiple lenders
+                to secure the most competitive rates and terms tailored to your credit profile.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative group">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
+                <img
+                  src="https://images.pexels.com/photos/8062357/pexels-photo-8062357.jpeg"
+                  alt="Secure payment and transaction"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
+                  3
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-sunset-600 transition-colors duration-300">
+                Secure & Drive
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Complete your secure transaction with our digital signing process and comprehensive
+                insurance options. Drive away in your luxury vehicle with confidence and peace of mind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Financing Calculator */}
       <section className="py-16 bg-gradient-to-br from-gray-50 to-ocean-50">
         <div className="max-w-6xl mx-auto px-4">
