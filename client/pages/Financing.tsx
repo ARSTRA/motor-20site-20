@@ -1001,46 +1001,90 @@ export default function Financing() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="w-32 h-32 bg-white/10 rounded-full blur-3xl animate-pulse absolute top-10 left-10"></div>
-            <div className="w-40 h-40 bg-white/10 rounded-full blur-3xl animate-pulse absolute bottom-10 right-10"></div>
-          </div>
+      <section className="py-24 relative text-white overflow-hidden min-h-[600px] flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(https://images.pexels.com/photos/8424993/pexels-photo-8424993.jpeg)`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-ocean-900/70 to-forest-900/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
         </div>
-        <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
+
+        {/* Floating elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="w-32 h-32 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full blur-3xl animate-pulse absolute top-10 left-10"></div>
+          <div className="w-40 h-40 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl animate-pulse absolute bottom-10 right-10 [animation-delay:1s]"></div>
+          <div className="w-24 h-24 bg-gradient-to-r from-forest-400 to-gold-400 rounded-full blur-2xl animate-pulse absolute top-1/2 right-1/4 [animation-delay:2s]"></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="mb-8">
-            <div className="inline-block p-6 bg-white/10 backdrop-blur-sm rounded-3xl mb-8">
-              <span className="text-7xl">🤝</span>
+            <div className="inline-block p-8 bg-gradient-to-r from-gold-500/20 via-sunset-500/20 to-ocean-500/20 backdrop-blur-sm rounded-full mb-8 border-2 border-white/30 shadow-2xl">
+              <div className="text-6xl">🤝</div>
             </div>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-            Ready to Get
-            <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            <span className="text-white drop-shadow-2xl">Ready to Get</span>
+            <span className="bg-gradient-to-r from-gold-300 via-sunset-300 to-gold-400 bg-clip-text text-transparent block drop-shadow-lg">
               Pre-Approved?
             </span>
           </h2>
-          <p className="text-xl lg:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto text-gray-100">
-            Our financing specialists are standing by to help you secure the
-            perfect loan for your dream vehicle. Get started today and drive
-            home tomorrow.
+          <p className="text-lg sm:text-xl lg:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto text-gray-100 drop-shadow-lg">
+            Our dedicated financing specialists are standing by 24/7 to help you secure the perfect loan
+            for your dream vehicle. With over 25 years of experience and relationships with top lenders,
+            we guarantee competitive rates and personalized service. Get started today and drive home tomorrow.
           </p>
-          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
-            <Button
-              size="lg"
-              className="text-xl px-12 py-6 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-            >
-              <Phone className="h-5 w-5 mr-3" />
-              Call (555) 123-4567
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-xl px-12 py-6 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-3xl transition-all duration-300"
-            >
-              <Mail className="h-5 w-5 mr-3" />
-              Email a Specialist
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="relative group">
+              <Button
+                size="lg"
+                className="text-xl px-12 py-6 bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-500 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-600 text-white font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border-2 border-white/30"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span className="relative flex items-center gap-3">
+                  <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                    <Phone className="h-5 w-5" />
+                  </div>
+                  Call (555) 123-4567
+                </span>
+              </Button>
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full animate-pulse opacity-70"></div>
+            </div>
+
+            <div className="relative group">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-xl px-12 py-6 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-3xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                <span className="relative flex items-center gap-3">
+                  <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                    <Mail className="h-5 w-5" />
+                  </div>
+                  Email a Specialist
+                </span>
+              </Button>
+            </div>
+          </div>
+
+          {/* Additional contact options */}
+          <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-gray-200">
+            <div className="flex items-center gap-3">
+              <Clock className="h-5 w-5 text-gold-300" />
+              <span>24/7 Support Available</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Shield className="h-5 w-5 text-gold-300" />
+              <span>Secure & Confidential</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Award className="h-5 w-5 text-gold-300" />
+              <span>Expert Specialists</span>
+            </div>
           </div>
         </div>
       </section>
