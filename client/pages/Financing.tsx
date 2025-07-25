@@ -865,36 +865,73 @@ export default function Financing() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-4">
+      {/* Enhanced Benefits Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-r from-sunset-400 to-gold-400 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
+              Alpine Advantage
+            </Badge>
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent mb-6">
               Why Choose Alpine Motors Financing?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the difference of working with a trusted luxury
-              automotive financing partner
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Experience the pinnacle of automotive financing with our comprehensive suite of services,
+              competitive rates, and unwavering commitment to customer satisfaction. We don't just provide loans—we create pathways to luxury.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <Card
                 key={index}
-                className="text-center p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border-2 border-gray-100"
+                className="group text-center p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 rounded-2xl border-2 border-transparent hover:border-ocean-200 bg-white/80 backdrop-blur-sm relative overflow-hidden"
               >
-                <CardContent className="p-0">
-                  <div className="mb-6 flex justify-center">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <CardContent className="p-0 relative z-10">
+                  <div className="mb-6 flex justify-center relative">
+                    <div className="bg-gradient-to-br from-ocean-100 to-forest-100 rounded-full p-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                      {benefit.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-ocean-600 transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                     {benefit.description}
                   </p>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-12 h-1 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full mx-auto"></div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Additional Trust Indicators */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-ocean-600 mb-2">25+</div>
+              <div className="text-sm text-gray-600">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-forest-600 mb-2">$2B+</div>
+              <div className="text-sm text-gray-600">Loans Processed</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-sunset-600 mb-2">50K+</div>
+              <div className="text-sm text-gray-600">Happy Customers</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gold-600 mb-2">A+</div>
+              <div className="text-sm text-gray-600">BBB Rating</div>
+            </div>
           </div>
         </div>
       </section>
