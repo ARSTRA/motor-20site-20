@@ -99,11 +99,11 @@ const PremiumAutoLogo = () => (
           />
 
           {/* Premium Luxury Car Silhouette - Enhanced */}
-          <g transform="translate(24, 30) scale(0.8)" filter="url(#glow)">
+          <g transform="translate(24, 30) scale(0.8)" filter="url(#alpineGlow)">
             {/* Car Body */}
             <path
               d="M2 8 L4 6 L12 6 L14 8 L18 8 L18 12 L16 12 L16 14 L14 14 L14 12 L4 12 L4 14 L2 14 L2 12 L0 12 L0 8 Z"
-              fill="url(#carGradient)"
+              fill="url(#alpineCarGradient)"
             />
             {/* Car Windows */}
             <path
