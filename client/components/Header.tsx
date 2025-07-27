@@ -69,22 +69,22 @@ const PremiumAutoLogo = () => (
           {/* Alpine Mountain Range - Enhanced */}
           <path
             d="M4 36 L12 24 L20 28 L28 20 L36 26 L44 18 L52 24 L60 32 L60 48 L4 48 Z"
-            fill="url(#mountainGradient)"
+            fill="url(#alpineMountainGradient)"
             opacity="0.9"
-            filter="url(#glow)"
+            filter="url(#alpineGlow)"
           />
 
           {/* Second Mountain Layer for Depth */}
           <path
             d="M8 40 L16 32 L24 36 L32 28 L40 34 L48 26 L56 32 L60 38 L60 48 L8 48 Z"
-            fill="url(#mountainGradient)"
+            fill="url(#alpineMountainGradient)"
             opacity="0.6"
           />
 
           {/* Luxury Road/Path - Enhanced */}
           <path
             d="M4 42 Q16 40 32 42 Q48 44 60 42 L60 48 L4 48 Z"
-            fill="url(#alpineGradient)"
+            fill="url(#alpineLogoGradient)"
             opacity="0.9"
           />
 
