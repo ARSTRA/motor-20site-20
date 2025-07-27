@@ -121,7 +121,7 @@ const PremiumAutoLogo = () => (
           </g>
 
           {/* Alpine "A" Monogram in Center */}
-          <g transform="translate(28, 20)" filter="url(#glow)">
+          <g transform="translate(28, 20)" filter="url(#alpineGlow)">
             <path
               d="M4 0 L8 12 L6 12 L5.5 10 L2.5 10 L2 12 L0 12 L4 0 Z M3.5 8 L4.5 8 L4 6 Z"
               fill="#ffffff"
@@ -131,8 +131,8 @@ const PremiumAutoLogo = () => (
 
           {/* Luxury Brand Elements - Decorative Corners */}
           <g opacity="0.6">
-            <path d="M8 8 L12 8 L12 10 L10 10 L10 12 L8 12 Z" fill="url(#alpineGradient)" />
-            <path d="M52 8 L56 8 L56 12 L54 12 L54 10 L52 10 Z" fill="url(#alpineGradient)" />
+            <path d="M8 8 L12 8 L12 10 L10 10 L10 12 L8 12 Z" fill="url(#alpineLogoGradient)" />
+            <path d="M52 8 L56 8 L56 12 L54 12 L54 10 L52 10 Z" fill="url(#alpineLogoGradient)" />
           </g>
 
           {/* Professional Shine Effects */}
@@ -141,7 +141,7 @@ const PremiumAutoLogo = () => (
             cy="32"
             r="30"
             fill="none"
-            stroke="url(#alpineGradient)"
+            stroke="url(#alpineLogoGradient)"
             strokeWidth="1"
             opacity="0.4"
           />
