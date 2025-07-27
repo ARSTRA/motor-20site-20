@@ -24,166 +24,19 @@ import { useAuth } from "@/contexts/AuthContext";
 
 // Professional Alpine Motors Logo with Luxury Automotive Theme
 const PremiumAutoLogo = () => (
-  <div className="flex items-center gap-4 group hover:scale-105 transition-all duration-300">
+  <div className="flex items-center gap-3 group hover:scale-105 transition-all duration-300">
     <div className="relative">
-      {/* Professional Logo Container with Background Image */}
-      <div className="relative w-16 h-16 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 hover:border-white/40 transition-all duration-300">
-        {/* Luxury Car Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg)`,
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-ocean-600/80 via-forest-600/70 to-sunset-600/80"></div>
-        </div>
-
-        {/* Professional Alpine Motors Logo SVG */}
-        <svg width="64" height="64" viewBox="0 0 64 64" className="relative z-10">
-          <defs>
-            <linearGradient id="alpineLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#0ea5e9" />
-              <stop offset="30%" stopColor="#22c55e" />
-              <stop offset="60%" stopColor="#f97316" />
-              <stop offset="100%" stopColor="#facc15" />
-            </linearGradient>
-            <linearGradient id="alpineMountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#1f2937" />
-              <stop offset="50%" stopColor="#374151" />
-              <stop offset="100%" stopColor="#4b5563" />
-            </linearGradient>
-            <linearGradient id="alpineCarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="50%" stopColor="#f8fafc" />
-              <stop offset="100%" stopColor="#e2e8f0" />
-            </linearGradient>
-            <filter id="alpineGlow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-
-          {/* Alpine Mountain Range - Enhanced */}
-          <path
-            d="M4 36 L12 24 L20 28 L28 20 L36 26 L44 18 L52 24 L60 32 L60 48 L4 48 Z"
-            fill="url(#alpineMountainGradient)"
-            opacity="0.9"
-            filter="url(#alpineGlow)"
-          />
-
-          {/* Second Mountain Layer for Depth */}
-          <path
-            d="M8 40 L16 32 L24 36 L32 28 L40 34 L48 26 L56 32 L60 38 L60 48 L8 48 Z"
-            fill="url(#alpineMountainGradient)"
-            opacity="0.6"
-          />
-
-          {/* Luxury Road/Path - Enhanced */}
-          <path
-            d="M4 42 Q16 40 32 42 Q48 44 60 42 L60 48 L4 48 Z"
-            fill="url(#alpineLogoGradient)"
-            opacity="0.9"
-          />
-
-          {/* Road Center Line */}
-          <path
-            d="M4 45 Q16 43 32 45 Q48 47 60 45"
-            stroke="#ffffff"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.8"
-            strokeDasharray="3,2"
-          />
-
-          {/* Premium Luxury Car Silhouette - Enhanced */}
-          <g transform="translate(24, 30) scale(0.8)" filter="url(#alpineGlow)">
-            {/* Car Body */}
-            <path
-              d="M2 8 L4 6 L12 6 L14 8 L18 8 L18 12 L16 12 L16 14 L14 14 L14 12 L4 12 L4 14 L2 14 L2 12 L0 12 L0 8 Z"
-              fill="url(#alpineCarGradient)"
-            />
-            {/* Car Windows */}
-            <path
-              d="M5 6 L6 5 L10 5 L11 6 L11 8 L5 8 Z"
-              fill="#1e293b"
-              opacity="0.7"
-            />
-            {/* Car Wheels */}
-            <circle cx="4" cy="12" r="2" fill="#1f2937" />
-            <circle cx="14" cy="12" r="2" fill="#1f2937" />
-            <circle cx="4" cy="12" r="1" fill="#6b7280" />
-            <circle cx="14" cy="12" r="1" fill="#6b7280" />
-            {/* Car Details */}
-            <rect x="7" y="9" width="4" height="1" fill="#1e293b" opacity="0.5" />
-          </g>
-
-          {/* Alpine "A" Monogram in Center */}
-          <g transform="translate(28, 20)" filter="url(#alpineGlow)">
-            <path
-              d="M4 0 L8 12 L6 12 L5.5 10 L2.5 10 L2 12 L0 12 L4 0 Z M3.5 8 L4.5 8 L4 6 Z"
-              fill="#ffffff"
-              opacity="0.9"
-            />
-          </g>
-
-          {/* Luxury Brand Elements - Decorative Corners */}
-          <g opacity="0.6">
-            <path d="M8 8 L12 8 L12 10 L10 10 L10 12 L8 12 Z" fill="url(#alpineLogoGradient)" />
-            <path d="M52 8 L56 8 L56 12 L54 12 L54 10 L52 10 Z" fill="url(#alpineLogoGradient)" />
-          </g>
-
-          {/* Professional Shine Effects */}
-          <circle
-            cx="32"
-            cy="32"
-            r="30"
-            fill="none"
-            stroke="url(#alpineLogoGradient)"
-            strokeWidth="1"
-            opacity="0.4"
-          />
-          <circle
-            cx="32"
-            cy="32"
-            r="28"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="0.5"
-            opacity="0.3"
-          />
-        </svg>
+      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ocean-500 via-forest-500 to-sunset-500 flex items-center justify-center shadow-lg">
+        <div className="text-white font-bold text-xl">A</div>
       </div>
-
-      {/* Floating Animation Elements */}
-      <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-pulse opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full animate-pulse [animation-delay:0.5s] opacity-60 group-hover:opacity-90 transition-opacity duration-300"></div>
     </div>
-
-    <div className="flex flex-col">
-      {/* Brand Name with Professional Typography */}
-      <h1 className="text-2xl sm:text-3xl font-bold leading-tight tracking-tight">
-        <span className="bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent hover:from-ocean-500 hover:via-forest-500 hover:to-sunset-500 transition-all duration-300">
-          Alpine
-        </span>
-        <span className="ml-1 bg-gradient-to-r from-sunset-600 via-gold-600 to-ocean-600 bg-clip-text text-transparent hover:from-sunset-500 hover:via-gold-500 hover:to-ocean-500 transition-all duration-300">
-          Motors
-        </span>
+    <div>
+      <h1 className="text-2xl font-bold bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent">
+        Alpine Motors
       </h1>
-
-      {/* Professional Tagline with Enhanced Styling */}
-      <p className="text-xs sm:text-sm font-semibold text-gray-700 hover:text-forest-600 transition-colors duration-300 tracking-wide">
-        <span className="inline-flex items-center gap-1">
-          <span className="w-1.5 h-1.5 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-pulse"></span>
-          Where Luxury Meets Adventure
-          <span className="w-1.5 h-1.5 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full animate-pulse [animation-delay:0.5s]"></span>
-        </span>
+      <p className="text-sm text-forest-600 font-medium">
+        Where Luxury Meets Adventure
       </p>
-
-      {/* Subtle Brand Accent Line */}
-      <div className="mt-1 h-0.5 w-full bg-gradient-to-r from-ocean-300 via-forest-300 to-sunset-300 rounded-full opacity-50 group-hover:opacity-80 transition-opacity duration-300"></div>
     </div>
   </div>
 );
