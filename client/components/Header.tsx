@@ -41,23 +41,23 @@ const PremiumAutoLogo = () => (
         {/* Professional Alpine Motors Logo SVG */}
         <svg width="64" height="64" viewBox="0 0 64 64" className="relative z-10">
           <defs>
-            <linearGradient id="alpineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="alpineLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#0ea5e9" />
               <stop offset="30%" stopColor="#22c55e" />
               <stop offset="60%" stopColor="#f97316" />
               <stop offset="100%" stopColor="#facc15" />
             </linearGradient>
-            <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="alpineMountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#1f2937" />
               <stop offset="50%" stopColor="#374151" />
               <stop offset="100%" stopColor="#4b5563" />
             </linearGradient>
-            <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="alpineCarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#ffffff" />
               <stop offset="50%" stopColor="#f8fafc" />
               <stop offset="100%" stopColor="#e2e8f0" />
             </linearGradient>
-            <filter id="glow">
+            <filter id="alpineGlow">
               <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
               <feMerge>
                 <feMergeNode in="coloredBlur"/>
