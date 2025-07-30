@@ -17,10 +17,34 @@ import Layout from "@/components/Layout";
 import { Car, Category } from "@shared/api";
 
 const stats = [
-  { label: "Vehicles in Stock", value: "150+", icon: "🚗" },
-  { label: "Happy Customers", value: "2.5K+", icon: "😊" },
-  { label: "Years Experience", value: "25+", icon: "🏆" },
-  { label: "Service Centers", value: "8", icon: "🔧" },
+  {
+    label: "Premium Vehicles in Stock",
+    value: "150+",
+    image: "https://images.pexels.com/photos/6169027/pexels-photo-6169027.jpeg",
+    description: "Meticulously curated collection of luxury and performance vehicles, each inspected and certified to our highest standards.",
+    feature: "Certified Quality"
+  },
+  {
+    label: "Satisfied Members",
+    value: "2.5K+",
+    image: "https://images.pexels.com/photos/4173201/pexels-photo-4173201.jpeg",
+    description: "Trusted by thousands of discerning customers who've discovered their perfect vehicle through our personalized service experience.",
+    feature: "5-Star Service"
+  },
+  {
+    label: "Years of Excellence",
+    value: "25+",
+    image: "https://images.pexels.com/photos/6817005/pexels-photo-6817005.jpeg",
+    description: "A quarter-century of automotive expertise, building lasting relationships and delivering exceptional luxury car experiences.",
+    feature: "Proven Heritage"
+  },
+  {
+    label: "Professional Service Centers",
+    value: "8",
+    image: "https://images.pexels.com/photos/8985613/pexels-photo-8985613.jpeg",
+    description: "State-of-the-art service facilities staffed by certified technicians, ensuring your vehicle receives the finest care and maintenance.",
+    feature: "Expert Care"
+  },
 ];
 
 export default function Index() {
