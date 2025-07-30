@@ -294,31 +294,98 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {categories.map((category) => (
               <Link
                 key={category.id}
                 to={`/category/${category.slug}`}
                 className="group"
               >
-                <Card className="text-center p-4 sm:p-6 lg:p-8 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 bg-gradient-to-br from-white to-gray-50 border-2 border-transparent hover:border-ocean-200 rounded-2xl">
+                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-3 bg-white rounded-3xl border-2 border-transparent hover:border-ocean-200 relative">
                   <CardContent className="p-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-ocean-400 via-forest-400 to-sunset-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                      <span className="text-3xl">{category.icon}</span>
+                    {/* Professional Car Image Background */}
+                    <div className="relative h-56 overflow-hidden rounded-t-3xl">
+                      <img
+                        src={category.icon}
+                        alt={category.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                          // Fallback to default luxury car image if specific image fails
+                          e.currentTarget.src = 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg';
+                        }}
+                      />
+                      {/* Gradient Overlay */}
+                      <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent`}></div>
+
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <Badge className={`bg-gradient-to-r ${category.color} text-white font-bold shadow-lg px-3 py-1`}>
+                          Premium
+                        </Badge>
+                      </div>
+
+                      {/* Vehicle Count Badge */}
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold text-gray-800 shadow-lg">
+                          {category.count} Vehicles
+                        </div>
+                      </div>
+
+                      {/* Category Title Overlay */}
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-lg group-hover:text-gold-300 transition-colors duration-300">
+                          {category.name}
+                        </h3>
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="text-sm text-white/90 bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                            Explore Collection →
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-ocean-600 transition-colors">
-                      {category.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 font-medium">
-                      <span className="text-ocean-600 font-bold">
-                        {category.count}
-                      </span>{" "}
-                      premium vehicles
-                    </p>
-                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-xs text-forest-600 font-semibold">
-                        Explore Collection →
-                      </span>
+
+                    {/* Enhanced Content Section */}
+                    <div className="p-6">
+                      <p className="text-gray-600 leading-relaxed mb-4 text-sm sm:text-base">
+                        {category.description}
+                      </p>
+
+                      {/* Professional CTA Button */}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
+                            {category.count}
+                          </span>
+                          <span className="text-sm text-gray-500">Available</span>
+                        </div>
+                        <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                          <Button size="sm" className={`bg-gradient-to-r ${category.color} text-white rounded-xl shadow-lg hover:shadow-xl`}>
+                            View All
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Professional Features Indicator */}
+                      <div className="mt-4 grid grid-cols-3 gap-2 opacity-75 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="text-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-ocean-100 to-ocean-200 rounded-full flex items-center justify-center mx-auto mb-1">
+                            <div className="w-2 h-2 bg-gradient-to-r from-ocean-500 to-ocean-600 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500">Luxury</span>
+                        </div>
+                        <div className="text-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-forest-100 to-forest-200 rounded-full flex items-center justify-center mx-auto mb-1">
+                            <div className="w-2 h-2 bg-gradient-to-r from-forest-500 to-forest-600 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500">Quality</span>
+                        </div>
+                        <div className="text-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-sunset-100 to-sunset-200 rounded-full flex items-center justify-center mx-auto mb-1">
+                            <div className="w-2 h-2 bg-gradient-to-r from-sunset-500 to-sunset-600 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500">Premium</span>
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
