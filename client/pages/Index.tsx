@@ -276,7 +276,7 @@ export default function Index() {
       </section>
 
       {/* Enhanced Categories Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50">
+      <section id="categories" className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <Badge
