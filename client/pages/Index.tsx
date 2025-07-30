@@ -558,35 +558,125 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Enhanced Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-ocean-700 via-forest-700 to-sunset-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-gold-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-ocean-400 rounded-full blur-3xl"></div>
+      {/* Enhanced Professional Stats Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-gold-500 to-sunset-500 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-forest-500 to-ocean-500 rounded-full blur-3xl opacity-50"></div>
         </div>
+
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">
+          <div className="text-center mb-20">
+            <Badge variant="outline" className="mb-6 text-gold-400 border-gold-400 px-6 py-2 text-sm font-bold">
+              Our Proven Track Record
+            </Badge>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
               Excellence in Numbers
             </h2>
-            <p className="text-xl text-gray-200">
-              Trusted by thousands of satisfied customers
+            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Every statistic tells a story of dedication, quality, and the trust our customers place in Alpine Motors
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {stat.icon}
+              <div key={index} className="group relative">
+                <Card className="overflow-hidden bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105 hover:shadow-2xl rounded-3xl">
+                  <div className="relative">
+                    {/* Professional Image Header */}
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={stat.image}
+                        alt={stat.label}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg';
+                        }}
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+
+                      {/* Feature Badge */}
+                      <div className="absolute top-6 left-6">
+                        <Badge className="bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-xl px-4 py-2 text-sm">
+                          {stat.feature}
+                        </Badge>
+                      </div>
+
+                      {/* Large Number Display */}
+                      <div className="absolute bottom-6 left-6">
+                        <div className="text-6xl lg:text-7xl font-black text-white drop-shadow-2xl group-hover:text-gold-300 transition-colors duration-300">
+                          {stat.value}
+                        </div>
+                      </div>
+
+                      {/* Floating Animation Elements */}
+                      <div className="absolute top-8 right-8 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-8 h-8 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full animate-pulse"></div>
+                      </div>
+                      <div className="absolute bottom-8 right-8 opacity-40 group-hover:opacity-80 transition-opacity duration-300">
+                        <div className="w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.5s]"></div>
+                      </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <CardContent className="p-8">
+                      <h3 className="text-2xl lg:text-3xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent group-hover:from-gold-300 group-hover:to-white transition-all duration-300">
+                        {stat.label}
+                      </h3>
+
+                      <p className="text-gray-300 leading-relaxed text-lg mb-6 group-hover:text-gray-200 transition-colors duration-300">
+                        {stat.description}
+                      </p>
+
+                      {/* Professional Indicators */}
+                      <div className="grid grid-cols-3 gap-4 opacity-75 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="text-center">
+                          <div className="w-12 h-12 bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:from-ocean-400/30 group-hover:to-ocean-500/30 transition-all duration-300">
+                            <div className="w-3 h-3 bg-gradient-to-r from-ocean-400 to-ocean-500 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-400 font-medium">Quality</span>
+                        </div>
+                        <div className="text-center">
+                          <div className="w-12 h-12 bg-gradient-to-r from-forest-500/20 to-forest-600/20 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:from-forest-400/30 group-hover:to-forest-500/30 transition-all duration-300">
+                            <div className="w-3 h-3 bg-gradient-to-r from-forest-400 to-forest-500 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-400 font-medium">Trust</span>
+                        </div>
+                        <div className="text-center">
+                          <div className="w-12 h-12 bg-gradient-to-r from-gold-500/20 to-gold-600/20 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:from-gold-400/30 group-hover:to-gold-500/30 transition-all duration-300">
+                            <div className="w-3 h-3 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-400 font-medium">Excellence</span>
+                        </div>
+                      </div>
+                    </CardContent>
                   </div>
-                  <div className="text-4xl font-bold mb-3 text-gold-300">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-200 font-medium">{stat.label}</div>
-                </div>
+
+                  {/* Subtle Border Glow Effect */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-ocean-500/10 via-forest-500/10 to-gold-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                </Card>
               </div>
             ))}
+          </div>
+
+          {/* Additional Trust Indicators */}
+          <div className="mt-20 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gold-400 mb-2">A+ Rating</div>
+                <p className="text-gray-300">Better Business Bureau</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gold-400 mb-2">98% Satisfaction</div>
+                <p className="text-gray-300">Customer Reviews</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gold-400 mb-2">Industry Leader</div>
+                <p className="text-gray-300">Luxury Vehicle Sales</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
