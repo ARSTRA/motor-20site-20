@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -447,6 +447,40 @@ export default function Admin() {
                     <strong>Sales Admin:</strong> sales@alpinemotors.com /
                     sales123
                   </p>
+                </div>
+              </div>
+
+              {/* Customer Portal Links */}
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <p className="text-sm font-semibold text-gray-700 mb-4 text-center">
+                  Customer Portal Access
+                </p>
+                <div className="flex flex-col gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={() => navigate("/login")}
+                    className="w-full border-ocean-200 text-ocean-600 hover:bg-ocean-50 hover:text-ocean-700 transition-all duration-300"
+                  >
+                    <Users className="h-4 w-4 mr-2" />
+                    Customer Login
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => navigate("/register")}
+                    className="w-full border-forest-200 text-forest-600 hover:bg-forest-50 hover:text-forest-700 transition-all duration-300"
+                  >
+                    <UserPlus className="h-4 w-4 mr-2" />
+                    Create Customer Account
+                  </Button>
+                </div>
+                <div className="mt-3 text-center">
+                  <Button
+                    variant="ghost"
+                    onClick={() => navigate("/")}
+                    className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
+                  >
+                    ← Back to Main Website
+                  </Button>
                 </div>
               </div>
             </CardContent>

@@ -17,10 +17,34 @@ import Layout from "@/components/Layout";
 import { Car, Category } from "@shared/api";
 
 const stats = [
-  { label: "Vehicles in Stock", value: "150+", icon: "🚗" },
-  { label: "Happy Customers", value: "2.5K+", icon: "😊" },
-  { label: "Years Experience", value: "25+", icon: "🏆" },
-  { label: "Service Centers", value: "8", icon: "🔧" },
+  {
+    label: "Premium Vehicles in Stock",
+    value: "150+",
+    image: "https://images.pexels.com/photos/6169027/pexels-photo-6169027.jpeg",
+    description: "Meticulously curated collection of luxury and performance vehicles, each inspected and certified to our highest standards.",
+    feature: "Certified Quality"
+  },
+  {
+    label: "Satisfied Members",
+    value: "2.5K+",
+    image: "https://images.pexels.com/photos/4173201/pexels-photo-4173201.jpeg",
+    description: "Trusted by thousands of discerning customers who've discovered their perfect vehicle through our personalized service experience.",
+    feature: "5-Star Service"
+  },
+  {
+    label: "Years of Excellence",
+    value: "25+",
+    image: "https://images.pexels.com/photos/6817005/pexels-photo-6817005.jpeg",
+    description: "A quarter-century of automotive expertise, building lasting relationships and delivering exceptional luxury car experiences.",
+    feature: "Proven Heritage"
+  },
+  {
+    label: "Professional Service Centers",
+    value: "8",
+    image: "https://images.pexels.com/photos/8985613/pexels-photo-8985613.jpeg",
+    description: "State-of-the-art service facilities staffed by certified technicians, ensuring your vehicle receives the finest care and maintenance.",
+    feature: "Expert Care"
+  },
 ];
 
 export default function Index() {
@@ -94,16 +118,18 @@ export default function Index() {
               }`}
             >
               <div
-                className="w-full h-full bg-cover bg-center"
+                className="w-full h-full bg-cover bg-center relative"
                 style={{
-                  background: `linear-gradient(135deg, #0ea5e9 0%, #22c55e 30%, #f97316 60%, #eab308 100%)`,
+                  backgroundImage: `url(${car.images[0]})`,
                 }}
               >
+                <div className="absolute inset-0 bg-black/40"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-96 h-64 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 flex items-center justify-center">
                     <div className="text-white text-center">
-                      <div className="text-6xl mb-4">🚗</div>
-                      <p className="text-lg opacity-75">{car.name}</p>
+                      <h3 className="text-2xl font-bold mb-2">{car.name}</h3>
+                      <p className="text-lg opacity-90 mb-2">{car.description}</p>
+                      <p className="text-xl font-bold text-gold-300">${car.price.toLocaleString()}</p>
                     </div>
                   </div>
                 </div>
@@ -111,42 +137,72 @@ export default function Index() {
             </div>
           ))
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-r from-automotive-500 to-automotive-600 flex items-center justify-center">
-            <div className="text-white text-center">
-              <div className="text-6xl mb-4">🚗</div>
-              <p className="text-lg opacity-75">Loading featured vehicles...</p>
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg)`,
+            }}
+          >
+            <div className="absolute inset-0 bg-black/50"></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-white text-center">
+                <div className="text-6xl mb-4">🚗</div>
+                <p className="text-lg opacity-75">Loading featured vehicles...</p>
+              </div>
             </div>
           </div>
         )}
 
         {/* Hero Content */}
         <div className="relative z-20 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-4 w-full">
-            <div className="max-w-2xl">
-              <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                 Discover Your
                 <span className="bg-gradient-to-r from-gold-400 via-sunset-400 to-gold-400 bg-clip-text text-transparent block">
                   Perfect Journey
                 </span>
               </h1>
-              <p className="text-xl lg:text-2xl text-gray-100 mb-8 leading-relaxed max-w-2xl">
+              <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-8 leading-relaxed max-w-2xl">
                 Where luxury meets adventure. Experience our curated collection
                 of premium vehicles designed for those who demand excellence.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="text-lg px-8 py-4 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-                >
-                  Explore Collection
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 py-4 text-white border-2 border-gold-400 hover:bg-gold-400 hover:text-gray-900 font-bold shadow-xl transition-all duration-300"
-                >
-                  Book Experience
-                </Button>
+              <div className="flex flex-col sm:flex-row gap-6 max-w-md sm:max-w-none items-center sm:items-start">
+                <Link to="/inventory" className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto text-lg px-8 py-4 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    Explore Collection
+                  </Button>
+                </Link>
+
+                {/* Enhanced Book Experience Button with decorative elements */}
+                <div className="relative w-full sm:w-auto">
+                  {/* Floating decorative elements */}
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.5s] opacity-70"></div>
+                  <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gradient-to-r from-forest-400 to-ocean-400 rounded-full animate-bounce [animation-delay:1s] opacity-70"></div>
+
+                  <Link to="/contact" className="w-full sm:w-auto block">
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto text-lg px-8 py-4 bg-gradient-to-r from-sunset-500 via-gold-500 to-forest-500 hover:from-sunset-600 hover:via-gold-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/30 hover:border-white/50"
+                    >
+                      <span className="absolute inset-0 bg-gradient-to-r from-gold-300/30 via-sunset-300/30 to-forest-300/30 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+                      <span className="absolute inset-0 bg-gradient-to-45deg from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
+                      <span className="relative flex items-center gap-3 z-10 justify-center sm:justify-start">
+                        <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                          <Calendar className="h-5 w-5" />
+                        </div>
+                        <span className="tracking-wide">Book Experience</span>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse group-hover:bg-white/80"></div>
+                      </span>
+                    </Button>
+                  </Link>
+
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-sunset-500/20 via-gold-500/20 to-forest-500/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -184,16 +240,16 @@ export default function Index() {
 
       {/* Enhanced Quick Search Bar */}
       <section className="bg-white shadow-2xl -mt-20 relative z-30 mx-4 lg:mx-8 rounded-2xl border-t-4 border-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500">
-        <div className="max-w-6xl mx-auto p-8">
+        <div className="max-w-6xl mx-auto p-6 sm:p-8">
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-2">
               Find Your Perfect Match
             </h3>
-            <p className="text-gray-600">
+            <p className="text-sm sm:text-base text-gray-600">
               Advanced search to discover your ideal luxury vehicle
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-3">
                 Make
@@ -233,16 +289,18 @@ export default function Index() {
               </select>
             </div>
             <div className="flex items-end">
-              <Button className="w-full h-12 bg-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500 hover:from-ocean-600 hover:via-forest-600 hover:to-sunset-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                Search Vehicles
-              </Button>
+              <Link to="/inventory" className="w-full">
+                <Button className="w-full h-12 bg-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500 hover:from-ocean-600 hover:via-forest-600 hover:to-sunset-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                  Search Vehicles
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Enhanced Categories Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50">
+      <section id="categories" className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <Badge
@@ -260,31 +318,98 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {categories.map((category) => (
               <Link
                 key={category.id}
                 to={`/category/${category.slug}`}
                 className="group"
               >
-                <Card className="text-center p-8 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 bg-gradient-to-br from-white to-gray-50 border-2 border-transparent hover:border-ocean-200 rounded-2xl">
+                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-3 bg-white rounded-3xl border-2 border-transparent hover:border-ocean-200 relative">
                   <CardContent className="p-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-ocean-400 via-forest-400 to-sunset-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                      <span className="text-3xl">{category.icon}</span>
+                    {/* Professional Car Image Background */}
+                    <div className="relative h-56 overflow-hidden rounded-t-3xl">
+                      <img
+                        src={category.icon}
+                        alt={category.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                          // Fallback to default luxury car image if specific image fails
+                          e.currentTarget.src = 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg';
+                        }}
+                      />
+                      {/* Gradient Overlay */}
+                      <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent`}></div>
+
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <Badge className={`bg-gradient-to-r ${category.color} text-white font-bold shadow-lg px-3 py-1`}>
+                          Premium
+                        </Badge>
+                      </div>
+
+                      {/* Vehicle Count Badge */}
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold text-gray-800 shadow-lg">
+                          {category.count} Vehicles
+                        </div>
+                      </div>
+
+                      {/* Category Title Overlay */}
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-lg group-hover:text-gold-300 transition-colors duration-300">
+                          {category.name}
+                        </h3>
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="text-sm text-white/90 bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                            Explore Collection →
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-ocean-600 transition-colors">
-                      {category.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 font-medium">
-                      <span className="text-ocean-600 font-bold">
-                        {category.count}
-                      </span>{" "}
-                      premium vehicles
-                    </p>
-                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-xs text-forest-600 font-semibold">
-                        Explore Collection →
-                      </span>
+
+                    {/* Enhanced Content Section */}
+                    <div className="p-6">
+                      <p className="text-gray-600 leading-relaxed mb-4 text-sm sm:text-base">
+                        {category.description}
+                      </p>
+
+                      {/* Professional CTA Button */}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
+                            {category.count}
+                          </span>
+                          <span className="text-sm text-gray-500">Available</span>
+                        </div>
+                        <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                          <Button size="sm" className={`bg-gradient-to-r ${category.color} text-white rounded-xl shadow-lg hover:shadow-xl`}>
+                            View All
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Professional Features Indicator */}
+                      <div className="mt-4 grid grid-cols-3 gap-2 opacity-75 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="text-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-ocean-100 to-ocean-200 rounded-full flex items-center justify-center mx-auto mb-1">
+                            <div className="w-2 h-2 bg-gradient-to-r from-ocean-500 to-ocean-600 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500">Luxury</span>
+                        </div>
+                        <div className="text-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-forest-100 to-forest-200 rounded-full flex items-center justify-center mx-auto mb-1">
+                            <div className="w-2 h-2 bg-gradient-to-r from-forest-500 to-forest-600 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500">Quality</span>
+                        </div>
+                        <div className="text-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-sunset-100 to-sunset-200 rounded-full flex items-center justify-center mx-auto mb-1">
+                            <div className="w-2 h-2 bg-gradient-to-r from-sunset-500 to-sunset-600 rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500">Premium</span>
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -313,18 +438,20 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredCars.map((car) => (
               <Card
                 key={car.id}
                 className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-transparent hover:border-ocean-200"
               >
                 <div className="relative">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-ocean-100 via-forest-100 to-sunset-100 flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-ocean-500/20 via-forest-500/20 to-sunset-500/20"></div>
-                    <div className="text-6xl relative z-10 group-hover:scale-110 transition-transform duration-300">
-                      🚗
-                    </div>
+                  <div className="aspect-[4/3] relative overflow-hidden rounded-t-2xl">
+                    <img
+                      src={car.images[0]}
+                      alt={car.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   </div>
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-lg">
@@ -332,12 +459,27 @@ export default function Index() {
                     </Badge>
                   </div>
                   <div className="absolute top-4 right-4 flex gap-2">
-                    <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
+                    <button
+                      onClick={() => {
+                        // Add to favorites functionality
+                        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+                        if (!favorites.includes(car.id)) {
+                          favorites.push(car.id);
+                          localStorage.setItem('favorites', JSON.stringify(favorites));
+                          alert(`${car.name} added to favorites!`);
+                        } else {
+                          alert(`${car.name} is already in your favorites!`);
+                        }
+                      }}
+                      className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg"
+                    >
                       <Heart className="h-4 w-4 text-sunset-500" />
                     </button>
-                    <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
-                      <Eye className="h-4 w-4 text-ocean-500" />
-                    </button>
+                    <Link to={`/vehicle/${car.id}`}>
+                      <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
+                        <Eye className="h-4 w-4 text-ocean-500" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
 
@@ -402,9 +544,11 @@ export default function Index() {
                         ${car.price.toLocaleString()}
                       </span>
                     </div>
-                    <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                      View Details
-                    </Button>
+                    <Link to={`/vehicle/${car.id}`}>
+                      <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                        View Details
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -412,45 +556,191 @@ export default function Index() {
           </div>
 
           <div className="text-center mt-16">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500 hover:from-ocean-600 hover:via-forest-600 hover:to-sunset-600 text-white font-bold px-12 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg"
-            >
-              Explore Complete Collection
-            </Button>
+            <Link to="/inventory">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-ocean-500 via-forest-500 to-sunset-500 hover:from-ocean-600 hover:via-forest-600 hover:to-sunset-600 text-white font-bold px-12 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg"
+              >
+                Explore Complete Collection
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Enhanced Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-ocean-700 via-forest-700 to-sunset-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-gold-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-ocean-400 rounded-full blur-3xl"></div>
+      {/* Enhanced Professional Stats Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-gold-500 to-sunset-500 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-forest-500 to-ocean-500 rounded-full blur-3xl opacity-50"></div>
         </div>
+
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">
+          <div className="text-center mb-20">
+            <Badge variant="outline" className="mb-6 text-gold-400 border-gold-400 px-6 py-2 text-sm font-bold">
+              Our Proven Track Record
+            </Badge>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
               Excellence in Numbers
             </h2>
-            <p className="text-xl text-gray-200">
-              Trusted by thousands of satisfied customers
+            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Every statistic tells a story of dedication, quality, and the trust our customers place in Alpine Motors
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {stat.icon}
+              <div key={index} className="group relative">
+                <Card className="overflow-hidden bg-gradient-to-br from-white/8 to-white/12 backdrop-blur-lg border-2 border-white/30 hover:border-gold-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-gold-500/20 rounded-3xl">
+                  <div className="relative">
+                    {/* Enhanced Professional Image Header */}
+                    <div className="relative h-72 overflow-hidden">
+                      <img
+                        src={stat.image}
+                        alt={stat.label}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg';
+                        }}
+                      />
+                      {/* Enhanced Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
+
+                      {/* Large Prominent Feature Theme Badge */}
+                      <div className="absolute top-6 left-6 right-6">
+                        <div className="bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-black px-6 py-3 rounded-2xl shadow-2xl border-2 border-white/30 backdrop-blur-sm">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                                <div className="w-4 h-4 bg-gradient-to-r from-black/60 to-black/80 rounded-full"></div>
+                              </div>
+                              <div>
+                                <div className="text-lg font-black tracking-wide">{stat.feature}</div>
+                                <div className="text-xs font-semibold opacity-80">Premium Standard</div>
+                              </div>
+                            </div>
+                            <div className="flex gap-1">
+                              {[...Array(5)].map((_, i) => (
+                                <div key={i} className="w-2 h-2 bg-black/60 rounded-full"></div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Enhanced Large Number Display with Theme Context */}
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="bg-gradient-to-r from-black/60 to-black/80 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                          <div className="flex items-end justify-between">
+                            <div>
+                              <div className="text-6xl lg:text-8xl font-black text-white drop-shadow-2xl group-hover:text-gold-300 transition-colors duration-300 leading-none">
+                                {stat.value}
+                              </div>
+                              <div className="text-white/80 text-lg font-bold mt-2 group-hover:text-gold-200 transition-colors duration-300">
+                                {stat.label}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="w-16 h-16 bg-gradient-to-r from-gold-400/30 to-gold-600/30 rounded-2xl flex items-center justify-center mb-2 group-hover:from-gold-300/40 group-hover:to-gold-500/40 transition-all duration-300">
+                                <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
+                              </div>
+                              <div className="text-white/60 text-sm font-semibold">Verified</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Enhanced Floating Animation Elements */}
+                      <div className="absolute top-20 right-8 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-12 h-12 bg-gradient-to-r from-ocean-400/30 to-forest-400/30 rounded-2xl animate-pulse backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                          <div className="w-4 h-4 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-20 right-8 opacity-40 group-hover:opacity-80 transition-opacity duration-300">
+                        <div className="w-8 h-8 bg-gradient-to-r from-gold-400/40 to-sunset-400/40 rounded-xl animate-bounce [animation-delay:0.5s] backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                          <div className="w-3 h-3 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Enhanced Content Section with Theme Integration */}
+                    <CardContent className="p-8 bg-gradient-to-br from-gray-900/60 to-black/60 backdrop-blur-sm">
+                      {/* Theme Reinforcement Section */}
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="w-14 h-14 bg-gradient-to-r from-gold-500/20 to-gold-600/20 rounded-2xl flex items-center justify-center border border-gold-400/30">
+                            <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-600 rounded-lg"></div>
+                          </div>
+                          <div>
+                            <div className="text-xl font-black text-white mb-1">{stat.feature}</div>
+                            <div className="text-gold-400 text-sm font-semibold">Industry Standard</div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-gold-400 text-3xl font-black">{stat.value}</div>
+                          <div className="text-white/60 text-sm">Achievement</div>
+                        </div>
+                      </div>
+
+                      <p className="text-gray-200 leading-relaxed text-lg mb-8 group-hover:text-white transition-colors duration-300">
+                        {stat.description}
+                      </p>
+
+                      {/* Enhanced Professional Theme Indicators */}
+                      <div className="grid grid-cols-3 gap-6 border-t border-white/10 pt-6">
+                        <div className="text-center group/indicator">
+                          <div className="w-16 h-16 bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-ocean-400/30 group-hover/indicator:to-ocean-500/30 transition-all duration-300 border border-ocean-400/20">
+                            <div className="w-6 h-6 bg-gradient-to-r from-ocean-400 to-ocean-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
+                          </div>
+                          <div className="text-white font-bold text-sm mb-1">Premium</div>
+                          <div className="text-ocean-400 text-xs font-medium">Quality</div>
+                        </div>
+                        <div className="text-center group/indicator">
+                          <div className="w-16 h-16 bg-gradient-to-r from-forest-500/20 to-forest-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-forest-400/30 group-hover/indicator:to-forest-500/30 transition-all duration-300 border border-forest-400/20">
+                            <div className="w-6 h-6 bg-gradient-to-r from-forest-400 to-forest-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
+                          </div>
+                          <div className="text-white font-bold text-sm mb-1">Trusted</div>
+                          <div className="text-forest-400 text-xs font-medium">Service</div>
+                        </div>
+                        <div className="text-center group/indicator">
+                          <div className="w-16 h-16 bg-gradient-to-r from-gold-500/20 to-gold-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-gold-400/30 group-hover/indicator:to-gold-500/30 transition-all duration-300 border border-gold-400/20">
+                            <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
+                          </div>
+                          <div className="text-white font-bold text-sm mb-1">Elite</div>
+                          <div className="text-gold-400 text-xs font-medium">Excellence</div>
+                        </div>
+                      </div>
+                    </CardContent>
                   </div>
-                  <div className="text-4xl font-bold mb-3 text-gold-300">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-200 font-medium">{stat.label}</div>
-                </div>
+
+                  {/* Enhanced Border Glow Effect with Theme Colors */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-gold-500/20 via-ocean-500/10 to-forest-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+                  {/* Corner Accent Elements */}
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 w-4 h-4 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
+                </Card>
               </div>
             ))}
+          </div>
+
+          {/* Additional Trust Indicators */}
+          <div className="mt-20 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gold-400 mb-2">A+ Rating</div>
+                <p className="text-gray-300">Better Business Bureau</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gold-400 mb-2">98% Satisfaction</div>
+                <p className="text-gray-300">Customer Reviews</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gold-400 mb-2">Industry Leader</div>
+                <p className="text-gray-300">Luxury Vehicle Sales</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -481,27 +771,66 @@ export default function Index() {
             perfect vehicle with Alpine Motors. Experience personalized service,
             exclusive offers, and the luxury you deserve.
           </p>
-          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
-            <Button
-              size="lg"
-              className="text-lg px-10 py-4 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-            >
-              Schedule Private Viewing
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-10 py-4 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-2xl transition-all duration-300"
-            >
-              Get Instant Quote
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-10 py-4 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-2xl transition-all duration-300"
-            >
-              Financing Options
-            </Button>
+          <div className="flex flex-col sm:flex-row lg:flex-row gap-6 sm:gap-8 justify-center items-center flex-wrap max-w-5xl mx-auto">
+            <Link to="/contact">
+              <Button
+                size="lg"
+                className="text-lg px-10 py-4 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+              >
+                Schedule Private Viewing
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-10 py-4 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-2xl transition-all duration-300"
+              >
+                Get Instant Quote
+              </Button>
+            </Link>
+            <div className="relative group">
+              {/* Floating decorative elements around the button */}
+              <div className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full animate-pulse opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -bottom-3 -right-3 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.7s] opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full animate-ping [animation-delay:1.2s] opacity-40"></div>
+
+              <Link to="/financing">
+                <Button
+                  size="lg"
+                  className="text-lg px-10 py-4 bg-gradient-to-r from-ocean-600 via-forest-600 to-gold-600 hover:from-ocean-500 hover:via-forest-500 hover:to-gold-500 text-white font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/40 hover:border-white/70"
+                >
+                  {/* Animated background layers */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-ocean-300/20 via-forest-300/20 to-gold-300/20 transform scale-0 group-hover:scale-100 transition-transform duration-500 ease-out rounded-2xl"></span>
+
+                  {/* Button content */}
+                  <span className="relative flex items-center gap-3 z-10">
+                    <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-all duration-300 group-hover:rotate-12">
+                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">Financing Options</span>
+                    <div className="flex gap-1">
+                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
+                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
+                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.6s] group-hover:bg-white"></div>
+                    </div>
+                  </span>
+
+                  {/* Particle effect overlay */}
+                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute top-2 left-4 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:0.3s]"></div>
+                    <div className="absolute top-6 right-6 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:0.8s]"></div>
+                    <div className="absolute bottom-3 left-8 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:1.1s]"></div>
+                  </span>
+                </Button>
+              </Link>
+
+              {/* Glow effect behind button */}
+              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ocean-500/30 via-forest-500/30 to-gold-500/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110"></div>
+            </div>
           </div>
         </div>
       </section>

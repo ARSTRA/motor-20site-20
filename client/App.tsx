@@ -18,6 +18,8 @@ import Financing from "./pages/Financing";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import PlaceholderPage from "./pages/PlaceholderPage";
+import TradeIn from "./pages/TradeIn";
+import VehicleDetail from "./pages/VehicleDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,25 +41,10 @@ const App = () => (
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/financing" element={<Financing />} />
-            <Route
-              path="/trade-in"
-              element={
-                <PlaceholderPage
-                  title="Trade-In Services"
-                  description="Get top value for your current vehicle with our trade-in program."
-                />
-              }
-            />
+            <Route path="/trade-in" element={<TradeIn />} />
             <Route path="/category/:category" element={<CategoryPage />} />
-            <Route
-              path="/car/:id"
-              element={
-                <PlaceholderPage
-                  title="Vehicle Details"
-                  description="Detailed information about this specific vehicle."
-                />
-              }
-            />
+            <Route path="/car/:id" element={<VehicleDetail />} />
+            <Route path="/vehicle/:id" element={<VehicleDetail />} />
             <Route
               path="/privacy"
               element={

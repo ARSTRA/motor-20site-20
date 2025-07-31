@@ -291,16 +291,42 @@ export default function Inventory() {
     isListView?: boolean;
   }) => (
     <Card
-      className={`group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-transparent hover:border-ocean-200 ${isListView ? "flex" : ""}`}
+      className={`group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-transparent hover:border-ocean-200 hover:shadow-ocean-500/10 ${isListView ? "flex flex-col lg:flex-row" : ""}`}
     >
       <div className={`relative ${isListView ? "w-80 flex-shrink-0" : ""}`}>
         <div
-          className={`${isListView ? "aspect-[4/3]" : "aspect-[4/3]"} bg-gradient-to-br from-ocean-100 via-forest-100 to-sunset-100 flex items-center justify-center relative overflow-hidden`}
+          className={`${isListView ? "aspect-[4/3]" : "aspect-[4/3]"} relative overflow-hidden rounded-t-2xl`}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-ocean-500/20 via-forest-500/20 to-sunset-500/20"></div>
-          <div className="text-6xl relative z-10 group-hover:scale-110 transition-transform duration-300">
-            🚗
-          </div>
+          {car.images && car.images.length > 0 ? (
+            <>
+              <img
+                src={car.images[0]}
+                alt={car.name}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onError={(e) => {
+                  // Fallback to gradient if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              {/* Fallback gradient background (hidden by default) */}
+              <div className="hidden absolute inset-0 bg-gradient-to-br from-ocean-100 via-forest-100 to-sunset-100 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-ocean-500/20 via-forest-500/20 to-sunset-500/20"></div>
+                <div className="text-6xl relative z-10 group-hover:scale-110 transition-transform duration-300">
+                  🚗
+                </div>
+              </div>
+            </>
+          ) : (
+            // Fallback when no images available
+            <div className="absolute inset-0 bg-gradient-to-br from-ocean-100 via-forest-100 to-sunset-100 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-ocean-500/20 via-forest-500/20 to-sunset-500/20"></div>
+              <div className="text-6xl relative z-10 group-hover:scale-110 transition-transform duration-300">
+                🚗
+              </div>
+            </div>
+          )}
         </div>
         <div className="absolute top-4 left-4 flex gap-2">
           {car.featured && (
@@ -316,12 +342,27 @@ export default function Inventory() {
           </Badge>
         </div>
         <div className="absolute top-4 right-4 flex gap-2">
-          <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
-            <Heart className="h-4 w-4 text-sunset-500" />
+          <button
+            onClick={() => {
+              // Add to favorites functionality
+              const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+              if (!favorites.includes(car.id)) {
+                favorites.push(car.id);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                alert(`${car.name} added to favorites!`);
+              } else {
+                alert(`${car.name} is already in your favorites!`);
+              }
+            }}
+            className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg group/heart"
+          >
+            <Heart className="h-4 w-4 text-sunset-500 group-hover/heart:fill-sunset-500 transition-all duration-300" />
           </button>
-          <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
-            <Eye className="h-4 w-4 text-ocean-500" />
-          </button>
+          <Link to={`/vehicle/${car.id}`}>
+            <button className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg group/eye">
+              <Eye className="h-4 w-4 text-ocean-500 group-hover/eye:text-ocean-600 transition-colors duration-300" />
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -424,9 +465,11 @@ export default function Inventory() {
               <Phone className="h-4 w-4 mr-2" />
               Call
             </Button>
-            <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-              View Details
-            </Button>
+            <Link to={`/vehicle/${car.id}`}>
+              <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                View Details
+              </Button>
+            </Link>
           </div>
         </div>
       </CardContent>
@@ -436,43 +479,74 @@ export default function Inventory() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-gold-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-ocean-400 rounded-full blur-3xl"></div>
+      <section className="relative text-white py-24 overflow-hidden min-h-[600px] flex items-center">
+        {/* Background Image with Parallax Effect */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000"
+          style={{
+            backgroundImage: `url(https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg)`,
+          }}
+        >
+          {/* Enhanced Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-ocean-900/60 to-forest-900/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
+
+        {/* Dynamic Background Elements */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl animate-pulse [animation-delay:1s]"></div>
+          <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-gradient-to-r from-forest-400 to-gold-400 rounded-full blur-2xl animate-pulse [animation-delay:2s]"></div>
+          <div className="absolute top-20 right-1/4 w-16 h-16 bg-gradient-to-r from-sunset-400 to-ocean-400 rounded-full blur-xl animate-pulse [animation-delay:3s]"></div>
+        </div>
+
+        {/* Animated Grid Pattern Overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+            backgroundSize: '40px 40px',
+            animation: 'float 8s ease-in-out infinite'
+          }}></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <Badge
-              variant="outline"
-              className="mb-6 text-gold-300 border-gold-300 px-4 py-2"
+              className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/30 px-6 py-3 text-lg font-semibold shadow-xl backdrop-blur-sm"
             >
-              Premium Collection
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                Premium Collection
+              </span>
             </Badge>
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              Luxury Vehicle
-              <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <span className="text-white drop-shadow-2xl">Luxury Vehicle</span>
+              <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-sunset-400 bg-clip-text text-transparent block drop-shadow-lg">
                 Inventory
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
               Discover our complete collection of premium vehicles. Each car is
               meticulously inspected and comes with our guarantee of quality and
               excellence.
             </p>
-            <div className="flex items-center justify-center gap-4 text-lg">
-              <div className="flex items-center gap-2">
-                <span className="text-4xl font-bold text-gold-300">
-                  {totalCount}
-                </span>
-                <span>Premium Vehicles</span>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-lg">
+              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-xl">
+                <div className="w-12 h-12 bg-gradient-to-r from-gold-500 to-sunset-500 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-2xl font-bold text-white">{totalCount}</span>
+                </div>
+                <div className="text-left">
+                  <div className="text-gold-300 font-bold">Premium</div>
+                  <div className="text-white">Vehicles</div>
+                </div>
               </div>
-              <span className="text-gold-300">•</span>
-              <div className="flex items-center gap-2">
-                <span className="text-4xl font-bold text-gold-300">
-                  {categories.length}
-                </span>
-                <span>Categories</span>
+              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-xl">
+                <div className="w-12 h-12 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-2xl font-bold text-white">{categories.length}</span>
+                </div>
+                <div className="text-left">
+                  <div className="text-ocean-300 font-bold">Luxury</div>
+                  <div className="text-white">Categories</div>
+                </div>
               </div>
             </div>
           </div>
@@ -586,36 +660,50 @@ export default function Inventory() {
             {/* Vehicle Grid/List */}
             <div className="flex-1">
               {loading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
                   {[...Array(6)].map((_, i) => (
                     <div
                       key={i}
-                      className="bg-gray-200 animate-pulse rounded-2xl h-96"
-                    ></div>
+                      className="bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse rounded-2xl h-96 relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full animate-shimmer"></div>
+                    </div>
                   ))}
                 </div>
               ) : cars.length === 0 ? (
-                <div className="text-center py-16">
-                  <div className="text-6xl mb-4">🔍</div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    No vehicles found
+                <div className="text-center py-20">
+                  <div className="w-24 h-24 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="text-4xl">🔍</div>
+                  </div>
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-4">
+                    No Vehicles Found
                   </h3>
-                  <p className="text-gray-600 mb-8">
-                    Try adjusting your filters to see more results
+                  <p className="text-gray-600 mb-8 text-lg max-w-md mx-auto">
+                    We couldn't find any vehicles matching your criteria. Try adjusting your filters or search terms.
                   </p>
-                  <Button
-                    onClick={clearFilters}
-                    className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white"
-                  >
-                    Clear All Filters
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      onClick={clearFilters}
+                      className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    >
+                      Clear All Filters
+                    </Button>
+                    <Link to="/contact">
+                      <Button
+                        variant="outline"
+                        className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white font-bold px-8 py-3 rounded-xl transition-all duration-300"
+                      >
+                        Contact Expert
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               ) : (
                 <>
                   <div
                     className={
                       viewMode === "grid"
-                        ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+                        ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8"
                         : "space-y-6"
                     }
                   >
@@ -690,24 +778,30 @@ export default function Inventory() {
             for
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-8 py-3 rounded-xl">
-              <Phone className="h-4 w-4 mr-2" />
-              Call (555) 123-4567
-            </Button>
-            <Button
-              variant="outline"
-              className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white font-bold px-8 py-3 rounded-xl"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Email Us
-            </Button>
-            <Button
-              variant="outline"
-              className="border-2 border-forest-500 text-forest-600 hover:bg-forest-500 hover:text-white font-bold px-8 py-3 rounded-xl"
-            >
-              <MapPin className="h-4 w-4 mr-2" />
-              Visit Showroom
-            </Button>
+            <a href="tel:+15551234567">
+              <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-8 py-3 rounded-xl">
+                <Phone className="h-4 w-4 mr-2" />
+                Call (555) 123-4567
+              </Button>
+            </a>
+            <a href="mailto:info@alpinemotors.com">
+              <Button
+                variant="outline"
+                className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white font-bold px-8 py-3 rounded-xl"
+              >
+                <Mail className="h-4 w-4 mr-2" />
+                Email Us
+              </Button>
+            </a>
+            <Link to="/contact">
+              <Button
+                variant="outline"
+                className="border-2 border-forest-500 text-forest-600 hover:bg-forest-500 hover:text-white font-bold px-8 py-3 rounded-xl"
+              >
+                <MapPin className="h-4 w-4 mr-2" />
+                Visit Showroom
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -31,18 +31,29 @@ export default function About() {
 
   const heroImages = [
     {
-      url: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2083&q=80",
+      url: "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg",
       alt: "Luxury car showroom with premium vehicles",
     },
     {
-      url: "https://images.unsplash.com/photo-1562911791-c7a97b729ec5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Modern car dealership exterior with alpine mountain backdrop",
+      url: "https://images.pexels.com/photos/9764732/pexels-photo-9764732.jpeg",
+      alt: "Modern luxury sports car in showroom",
     },
     {
-      url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Professional automotive service center",
+      url: "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
+      alt: "Professional automotive service center team",
     },
   ];
+
+  // Auto-slide functionality
+  useEffect(() => {
+    if (heroImages.length > 0) {
+      const timer = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+      }, 5000); // Change image every 5 seconds
+
+      return () => clearInterval(timer);
+    }
+  }, [heroImages.length]);
 
   const stats = [
     {
@@ -68,7 +79,7 @@ export default function About() {
       description:
         "We believe in transparent, honest dealings with every customer, building trust through reliability and ethical business practices.",
       image:
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80",
+        "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
     },
     {
       icon: Sparkles,
@@ -76,7 +87,7 @@ export default function About() {
       description:
         "Every vehicle in our collection represents the pinnacle of automotive excellence, carefully curated for the discerning driver.",
       image:
-        "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        "https://images.pexels.com/photos/9764732/pexels-photo-9764732.jpeg",
     },
     {
       icon: Heart,
@@ -84,7 +95,7 @@ export default function About() {
       description:
         "Your satisfaction drives our passion. We're dedicated to creating extraordinary experiences that exceed expectations.",
       image:
-        "https://images.unsplash.com/photo-1551522435-a13afa10f103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg",
     },
   ];
 
@@ -126,21 +137,21 @@ export default function About() {
       name: "Michael Rodriguez",
       position: "Founder & CEO",
       image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
       bio: "25+ years automotive industry veteran with a passion for luxury vehicles and exceptional customer service.",
     },
     {
       name: "Sarah Chen",
       position: "VP of Operations",
       image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b1c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+        "https://images.pexels.com/photos/7693223/pexels-photo-7693223.jpeg",
       bio: "Expert in operational excellence and customer experience optimization with extensive luxury retail background.",
     },
     {
       name: "David Johnson",
       position: "Head of Sales",
       image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+        "https://images.pexels.com/photos/33100454/pexels-photo-33100454.jpeg",
       bio: "Award-winning sales professional specializing in luxury automotive with a track record of customer satisfaction.",
     },
   ];
@@ -164,7 +175,7 @@ export default function About() {
             <img
               src={heroImages[currentImageIndex].url}
               alt={heroImages[currentImageIndex].alt}
-              className="w-full h-full object-cover transition-opacity duration-1000"
+              className="w-full h-full object-cover transition-all duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
           </div>
@@ -172,87 +183,142 @@ export default function About() {
           {/* Navigation Buttons */}
           <button
             onClick={prevImage}
-            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 z-10"
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-ocean-500/30 to-forest-500/30 backdrop-blur-sm hover:from-ocean-500/50 hover:to-forest-500/50 text-white p-3 rounded-full transition-all duration-300 z-10 border border-white/30 hover:border-white/50 shadow-xl hover:shadow-2xl hover:scale-110 group"
           >
-            <ChevronLeft className="h-6 w-6" />
+            <ChevronLeft className="h-6 w-6 group-hover:-translate-x-0.5 transition-transform duration-300" />
           </button>
           <button
             onClick={nextImage}
-            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 z-10"
+            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-ocean-500/30 to-forest-500/30 backdrop-blur-sm hover:from-ocean-500/50 hover:to-forest-500/50 text-white p-3 rounded-full transition-all duration-300 z-10 border border-white/30 hover:border-white/50 shadow-xl hover:shadow-2xl hover:scale-110 group"
           >
-            <ChevronRight className="h-6 w-6" />
+            <ChevronRight className="h-6 w-6 group-hover:translate-x-0.5 transition-transform duration-300" />
           </button>
 
           {/* Hero Content */}
           <div className="relative z-10 h-full flex items-center">
-            <div className="max-w-7xl mx-auto px-4 text-white">
-              <div className="max-w-3xl">
-                <Badge className="mb-6 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-4 py-2 text-lg">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+              <div className="max-w-4xl">
+                <Badge className="mb-6 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-4 py-2 text-lg shadow-lg">
                   <Sparkles className="h-5 w-5 mr-2" />
                   Where Luxury Meets Adventure
                 </Badge>
-                <h1 className="text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
                   About Alpine Motors
                 </h1>
-                <p className="text-2xl font-light mb-8 text-gray-200 leading-relaxed">
+                <p className="text-lg sm:text-xl lg:text-2xl font-light mb-8 text-gray-200 leading-relaxed max-w-3xl">
                   For over 25 years, we've been redefining the luxury automotive
                   experience, where exceptional vehicles meet unparalleled
                   service in the heart of the mountains.
                 </p>
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     asChild
-                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
+                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
                   >
-                    <Link to="/contact">Our Story</Link>
+                    <Link to="#story-section">
+                      <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                      <span className="relative flex items-center gap-2">
+                        <span className="text-xl">📖</span>
+                        Our Story
+                      </span>
+                    </Link>
                   </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-xl backdrop-blur-sm"
-                  >
-                    <Link to="/contact">Meet the Team</Link>
-                  </Button>
+                  <div className="relative group">
+                    {/* Floating decorative elements around the button */}
+                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.5s] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gradient-to-r from-forest-400 to-ocean-400 rounded-full animate-bounce [animation-delay:1s] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <Button
+                      asChild
+                      className="bg-gradient-to-r from-sunset-500 via-gold-500 to-forest-500 hover:from-sunset-600 hover:via-gold-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/30 hover:border-white/60"
+                    >
+                      <Link to="#team-section" className="relative z-10">
+                        {/* Animated background layers */}
+                        <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+                        <span className="absolute inset-0 bg-gradient-to-r from-gold-300/20 via-sunset-300/20 to-forest-300/20 transform scale-0 group-hover:scale-100 transition-transform duration-500 ease-out rounded-xl"></span>
+
+                        {/* Button content */}
+                        <span className="relative flex items-center gap-3 z-10">
+                          <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                            <Users className="h-5 w-5" />
+                          </div>
+                          <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">Meet the Team</span>
+                          <div className="flex gap-1">
+                            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
+                            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
+                            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.6s] group-hover:bg-white"></div>
+                          </div>
+                        </span>
+                      </Link>
+                    </Button>
+
+                    {/* Glow effect behind button */}
+                    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-sunset-500/30 via-gold-500/30 to-forest-500/30 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Image Indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
             {heroImages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`relative transition-all duration-300 group ${
                   index === currentImageIndex
-                    ? "bg-white scale-125"
-                    : "bg-white/50 hover:bg-white/75"
+                    ? "w-8 h-3"
+                    : "w-3 h-3"
                 }`}
-              />
+              >
+                <div
+                  className={`w-full h-full rounded-full transition-all duration-300 ${
+                    index === currentImageIndex
+                      ? "bg-gradient-to-r from-gold-400 to-sunset-400 shadow-lg"
+                      : "bg-white/50 hover:bg-white/75 group-hover:scale-125"
+                  }`}
+                />
+                {index === currentImageIndex && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-pulse opacity-50"></div>
+                )}
+              </button>
             ))}
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="py-24 bg-gradient-to-r from-ocean-50 via-forest-50 to-sunset-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <section className="py-20 sm:py-24 bg-gradient-to-r from-ocean-50 via-forest-50 to-sunset-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-4">
+                Our Achievement Numbers
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Decades of excellence reflected in the trust of our customers
+              </p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {stats.map((stat, index) => (
                 <Card
                   key={index}
-                  className="text-center border-none shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                  className="text-center border-none shadow-xl bg-white/90 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group"
                 >
-                  <CardContent className="p-8">
+                  <CardContent className="p-6 sm:p-8">
                     <div
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-${stat.color}-500 to-${stat.color}-600 mb-4`}
+                      className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${
+                        stat.color === 'ocean' ? 'from-ocean-500 to-ocean-600' :
+                        stat.color === 'forest' ? 'from-forest-500 to-forest-600' :
+                        stat.color === 'sunset' ? 'from-sunset-500 to-sunset-600' :
+                        'from-gold-500 to-gold-600'
+                      } mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                     >
-                      <stat.icon className="h-8 w-8 text-white" />
+                      <stat.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
-                    <h3 className="text-4xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 group-hover:text-ocean-600 transition-colors duration-300">
                       {stat.value}
                     </h3>
-                    <p className="text-gray-600 font-medium">{stat.label}</p>
+                    <p className="text-sm sm:text-base text-gray-600 font-medium">{stat.label}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -261,7 +327,7 @@ export default function About() {
         </section>
 
         {/* Our Story Section */}
-        <section className="py-24 bg-white">
+        <section id="story-section" className="py-24 bg-white scroll-mt-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
               <Badge className="mb-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-4 py-2">
@@ -282,12 +348,13 @@ export default function About() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-              <div>
+              <div className="relative group">
                 <img
-                  src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  src="https://images.pexels.com/photos/331988/pexels-photo-331988.jpeg"
                   alt="Alpine Motors historical founding"
-                  className="w-full h-96 object-cover rounded-3xl shadow-2xl"
+                  className="w-full h-96 object-cover rounded-3xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
@@ -368,30 +435,34 @@ export default function About() {
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {values.map((value, index) => (
                 <Card
                   key={index}
-                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2"
+                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2 bg-white/95 backdrop-blur-sm"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <img
                       src={value.image}
                       alt={value.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        // Fallback to a default image if specific image fails
+                        e.currentTarget.src = 'https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg';
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div className="absolute bottom-4 left-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm mb-3">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm mb-3 group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300">
                         <value.icon className="h-6 w-6 text-white" />
                       </div>
                     </div>
                   </div>
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <CardContent className="p-6 sm:p-8">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 group-hover:text-ocean-600 transition-colors duration-300">
                       {value.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                       {value.description}
                     </p>
                   </CardContent>
@@ -402,7 +473,7 @@ export default function About() {
         </section>
 
         {/* Team Section */}
-        <section className="py-24 bg-white">
+        <section id="team-section" className="py-24 bg-white scroll-mt-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
               <Badge className="mb-4 bg-gradient-to-r from-gold-500 to-sunset-500 text-white px-4 py-2">
@@ -417,28 +488,37 @@ export default function About() {
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
                 <Card
                   key={index}
-                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2"
+                  className="group hover:shadow-2xl transition-all duration-500 border-none overflow-hidden hover:-translate-y-2 bg-white/95 backdrop-blur-sm"
                 >
-                  <div className="relative">
+                  <div className="relative overflow-hidden">
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-80 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        // Fallback to a placeholder if image fails to load
+                        e.currentTarget.src = 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg';
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <UserCheck className="h-6 w-6 text-white" />
+                      </div>
+                    </div>
                   </div>
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <CardContent className="p-6 sm:p-8">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-ocean-600 transition-colors duration-300">
                       {member.name}
                     </h3>
-                    <Badge className="mb-4 bg-gradient-to-r from-ocean-500 to-forest-500 text-white">
+                    <Badge className="mb-4 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-3 py-1">
                       {member.position}
                     </Badge>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                       {member.bio}
                     </p>
                   </CardContent>
@@ -461,26 +541,62 @@ export default function About() {
               perfect blend of luxury, performance, and personalized service.
               Your adventure awaits.
             </p>
-            <div className="flex flex-wrap justify-center gap-6">
-              <Button
-                asChild
-                className="bg-white text-ocean-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-              >
-                <Link to="/inventory">
-                  <Car className="h-5 w-5 mr-2" />
-                  Browse Inventory
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-8 py-4 text-lg rounded-xl backdrop-blur-sm"
-              >
-                <Link to="/contact">
-                  <MapPin className="h-5 w-5 mr-2" />
-                  Visit Our Showroom
-                </Link>
-              </Button>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <div className="relative group">
+                <Button
+                  asChild
+                  className="bg-white text-ocean-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                >
+                  <Link to="/inventory">
+                    <span className="absolute inset-0 bg-gradient-to-r from-ocean-500/10 to-forest-500/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <span className="relative flex items-center gap-2">
+                      <div className="bg-ocean-100 p-1.5 rounded-full group-hover:bg-ocean-200 transition-colors duration-300">
+                        <Car className="h-5 w-5" />
+                      </div>
+                      Browse Inventory
+                    </span>
+                  </Link>
+                </Button>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-ping opacity-60"></div>
+              </div>
+
+              <div className="relative group">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-8 py-4 text-lg rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                >
+                  <Link to="/contact">
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                    <span className="relative flex items-center gap-2">
+                      <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      Visit Our Showroom
+                    </span>
+                  </Link>
+                </Button>
+                <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-white/60 rounded-full animate-pulse opacity-70"></div>
+              </div>
+
+              {/* Additional Professional Button */}
+              <div className="relative group">
+                <Button
+                  asChild
+                  className="bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-500 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden border border-white/30"
+                >
+                  <Link to="/trade-in">
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform scale-0 group-hover:scale-100 transition-transform duration-500"></span>
+                    <span className="relative flex items-center gap-2">
+                      <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                        <TrendingUp className="h-5 w-5" />
+                      </div>
+                      Trade-In Program
+                    </span>
+                  </Link>
+                </Button>
+                <div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:0.5s] opacity-80"></div>
+              </div>
             </div>
           </div>
         </section>

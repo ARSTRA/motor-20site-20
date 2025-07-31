@@ -20,6 +20,11 @@ import {
   Users,
   Headphones,
   Navigation,
+  Target,
+  Trophy,
+  Globe,
+  TrendingUp,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -83,237 +88,447 @@ export default function Contact() {
   const contactMethods = [
     {
       icon: <Phone className="h-8 w-8" />,
-      title: "Call Us",
-      description: "Speak directly with our luxury automotive specialists",
+      title: "Call Our Experts",
+      description:
+        "Speak directly with our certified luxury automotive specialists for immediate assistance and expert guidance",
       contact: "(555) 123-4567",
       hours: "Mon-Fri: 8AM-8PM | Sat-Sun: 9AM-7PM",
       color: "from-ocean-500 to-ocean-600",
       action: "Call Now",
+      image:
+        "https://images.pexels.com/photos/7689884/pexels-photo-7689884.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
+      features: [
+        "Certified Specialists",
+        "Immediate Assistance",
+        "Professional Consultation",
+      ],
     },
     {
       icon: <Mail className="h-8 w-8" />,
-      title: "Email Us",
-      description: "Send us your questions and we'll respond within 2 hours",
+      title: "Email Support",
+      description:
+        "Send detailed inquiries and receive comprehensive responses from our expert automotive consultants",
       contact: "info@alpinemotors.com",
-      hours: "24/7 Response",
+      hours: "24/7 Response Within 2 Hours",
       color: "from-forest-500 to-forest-600",
       action: "Send Email",
+      image:
+        "https://images.pexels.com/photos/7223036/pexels-photo-7223036.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/5699479/pexels-photo-5699479.jpeg",
+      features: [
+        "Detailed Responses",
+        "Expert Analysis",
+        "Personalized Recommendations",
+      ],
     },
     {
       icon: <MessageSquare className="h-8 w-8" />,
       title: "Live Chat",
-      description: "Chat with our team for instant assistance",
+      description:
+        "Connect instantly with our knowledgeable luxury automotive specialists for real-time assistance",
       contact: "Available Now",
       hours: "9AM-9PM Daily",
       color: "from-sunset-500 to-sunset-600",
       action: "Start Chat",
+      image:
+        "https://images.pexels.com/photos/7689884/pexels-photo-7689884.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
+      features: ["Instant Response", "Real-time Support", "Live Consultation"],
     },
     {
       icon: <MapPin className="h-8 w-8" />,
-      title: "Visit Showroom",
-      description: "Experience our luxury vehicles in person",
+      title: "Visit Our Showroom",
+      description:
+        "Experience our luxury collection in our state-of-the-art Mountain View facility with expert guidance",
       contact: "123 Alpine Way, Mountain View, CA",
-      hours: "Open 7 Days",
+      hours: "Open 7 Days a Week",
       color: "from-gold-500 to-gold-600",
       action: "Get Directions",
+      image:
+        "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg",
+      features: [
+        "Private Consultation",
+        "Test Drive Experience",
+        "Luxury Environment",
+      ],
     },
   ];
 
   const specialists = [
     {
       name: "Sarah Johnson",
-      title: "Luxury Vehicle Specialist",
-      specialty: "Sports Cars & Performance Vehicles",
-      image: "👩‍💼",
+      title: "Senior Luxury Vehicle Specialist",
+      specialty: "Sports Cars & High-Performance Vehicles",
+      image:
+        "https://images.pexels.com/photos/7693223/pexels-photo-7693223.jpeg",
       phone: "(555) 123-4567 ext. 101",
       email: "sarah.johnson@alpinemotors.com",
       languages: ["English", "Spanish"],
+      experience: "12+ Years",
+      expertiseImage:
+        "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg",
+      description:
+        "Specializing in exotic sports cars and performance vehicles, Sarah helps discerning clients find their perfect high-performance machine.",
+      achievements: [
+        "Top Sales Performer",
+        "Porsche Certified",
+        "Ferrari Specialist",
+      ],
     },
     {
       name: "Michael Chen",
-      title: "Financing Director",
-      specialty: "Automotive Financing & Leasing",
-      image: "👨‍💼",
+      title: "Director of Financial Services",
+      specialty: "Automotive Financing & Investment Solutions",
+      image:
+        "https://images.pexels.com/photos/33100454/pexels-photo-33100454.jpeg",
       phone: "(555) 123-4567 ext. 102",
       email: "michael.chen@alpinemotors.com",
-      languages: ["English", "Mandarin"],
+      languages: ["English", "Mandarin", "Cantonese"],
+      experience: "15+ Years",
+      expertiseImage:
+        "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg",
+      description:
+        "Expert in luxury vehicle financing with access to exclusive rates and lease programs for high-net-worth individuals.",
+      achievements: [
+        "Financial Services Excellence",
+        "Certified Financial Planner",
+        "Luxury Auto Finance Expert",
+      ],
     },
     {
       name: "Amanda Rodriguez",
-      title: "Customer Experience Manager",
-      specialty: "Luxury SUVs & Family Vehicles",
-      image: "👩‍💼",
+      title: "Luxury Experience Manager",
+      specialty: "Premium SUVs & Family Luxury Vehicles",
+      image:
+        "https://images.pexels.com/photos/7693223/pexels-photo-7693223.jpeg",
       phone: "(555) 123-4567 ext. 103",
       email: "amanda.rodriguez@alpinemotors.com",
       languages: ["English", "Spanish", "French"],
+      experience: "10+ Years",
+      expertiseImage:
+        "https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg",
+      description:
+        "Curating exceptional experiences for families seeking luxury, safety, and sophistication in their vehicle choice.",
+      achievements: [
+        "Customer Excellence Award",
+        "Range Rover Certified",
+        "Family Vehicle Specialist",
+      ],
     },
     {
       name: "David Thompson",
-      title: "Service Advisor",
-      specialty: "Vehicle Maintenance & Care",
-      image: "👨‍💼",
+      title: "Master Service Advisor",
+      specialty: "Precision Care & Maintenance Excellence",
+      image:
+        "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
       phone: "(555) 123-4567 ext. 104",
       email: "david.thompson@alpinemotors.com",
-      languages: ["English"],
+      languages: ["English", "Italian"],
+      experience: "18+ Years",
+      expertiseImage:
+        "https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg",
+      description:
+        "Master technician ensuring your luxury investment receives the meticulous care and attention it deserves.",
+      achievements: [
+        "ASE Master Technician",
+        "BMW Master Certified",
+        "Mercedes-Benz Expert",
+      ],
     },
   ];
 
   const faqs = [
     {
-      question: "How can I schedule a test drive?",
+      question: "How can I schedule a private test drive experience?",
       answer:
-        "You can schedule a test drive by calling us, filling out our contact form, or visiting our showroom. We offer flexible scheduling including evenings and weekends.",
+        "Schedule your exclusive test drive by calling our specialists, using our online form, or visiting our showroom. We offer private, personalized sessions including evening and weekend appointments with dedicated specialists.",
     },
     {
-      question: "What financing options are available?",
+      question: "What luxury financing options are available?",
       answer:
-        "We offer competitive financing rates starting at 3.49% APR, lease programs, and cash purchase incentives. Our financing specialists can help you find the perfect solution.",
+        "We offer premium financing solutions including competitive rates from 3.49% APR, exclusive lease programs, and cash purchase incentives. Our certified financial specialists create tailored solutions for high-net-worth clients.",
     },
     {
-      question: "Do you accept trade-ins?",
+      question: "Do you provide comprehensive trade-in valuations?",
       answer:
-        "Yes! We accept trade-ins and offer competitive valuations. Our team can provide an estimate over the phone or schedule an in-person appraisal.",
+        "Absolutely! We provide professional appraisals and competitive valuations for your current vehicle. Our experts can provide preliminary estimates by phone or schedule comprehensive in-person evaluations.",
     },
     {
-      question: "What is your return policy?",
+      question: "What is your customer satisfaction guarantee?",
       answer:
-        "We offer a 7-day satisfaction guarantee. If you're not completely satisfied with your purchase, you can return it within 7 days for a full refund.",
+        "We offer a comprehensive 7-day satisfaction guarantee. If you're not completely satisfied with your luxury vehicle purchase, you can return it within 7 days for a full refund - no questions asked.",
     },
     {
-      question: "Do you provide vehicle delivery?",
+      question: "Do you provide white-glove delivery service?",
       answer:
-        "Yes, we offer complimentary delivery within 50 miles of our showroom. For longer distances, we can arrange transport for a reasonable fee.",
+        "Yes, we offer complimentary concierge delivery within 50 miles of our showroom. For longer distances, we arrange secure, professional transport with full insurance coverage at competitive rates.",
     },
     {
-      question: "What warranty comes with the vehicles?",
+      question: "What comprehensive warranties protect my investment?",
       answer:
-        "All our vehicles come with comprehensive warranties. New vehicles include manufacturer warranties, and our certified pre-owned vehicles include extended coverage.",
+        "All vehicles include extensive warranty protection. New vehicles feature full manufacturer warranties plus extended coverage options, while our certified pre-owned vehicles include comprehensive extended protection plans.",
     },
   ];
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-10 left-10 w-40 h-40 bg-gold-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-56 h-56 bg-ocean-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-forest-400 rounded-full blur-3xl animate-pulse"></div>
+      {/* Hero Section with Professional Background */}
+      <section className="relative text-white py-32 overflow-hidden min-h-[700px] flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg)`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-ocean-900/70 to-forest-900/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
+
+        {/* Enhanced floating elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-10 w-40 h-40 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-56 h-56 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl animate-pulse [animation-delay:1s]"></div>
+          <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-r from-forest-400 to-gold-400 rounded-full blur-3xl animate-pulse [animation-delay:2s]"></div>
+          <div className="absolute top-20 right-1/4 w-24 h-24 bg-gradient-to-r from-sunset-400 to-ocean-400 rounded-full blur-2xl animate-pulse [animation-delay:3s]"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="mb-8">
-              <div className="inline-block p-6 bg-white/10 backdrop-blur-sm rounded-3xl mb-8">
-                <Headphones className="h-16 w-16 text-white mx-auto" />
+              <div className="inline-block p-8 bg-gradient-to-r from-gold-500/20 via-sunset-500/20 to-ocean-500/20 backdrop-blur-sm rounded-full mb-8 border-2 border-white/30 shadow-2xl">
+                <Headphones className="h-20 w-20 text-white mx-auto" />
               </div>
             </div>
-            <Badge
-              variant="outline"
-              className="mb-6 text-gold-300 border-gold-300 px-6 py-3 text-lg"
-            >
-              Premium Customer Service
+            <Badge className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/40 px-8 py-4 text-xl font-bold shadow-2xl backdrop-blur-sm">
+              <Sparkles className="h-5 w-5 mr-2" />
+              Premium Customer Service Excellence
             </Badge>
-            <h1 className="text-6xl lg:text-7xl font-bold mb-8">
-              Get in Touch
-              <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
-                With Our Team
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+              <span className="text-white drop-shadow-2xl">Get in Touch</span>
+              <span className="bg-gradient-to-r from-gold-300 via-sunset-300 to-gold-400 bg-clip-text text-transparent block drop-shadow-lg">
+                With Our Expert Team
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Whether you're ready for a test drive, need financing assistance,
-              or have questions about our luxury vehicles, our dedicated team is
-              here to provide personalized service every step of the way.
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-12 max-w-5xl mx-auto leading-relaxed drop-shadow-lg">
+              Whether you're seeking your dream luxury vehicle, require expert
+              financing guidance, or need specialized service support, our
+              dedicated team of certified professionals delivers personalized
+              excellence at every touchpoint of your automotive journey.
             </p>
-            <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-12">
-              <Button
-                size="lg"
-                className="text-xl px-12 py-6 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-              >
-                <Phone className="h-6 w-6 mr-3" />
-                Call (555) 123-4567
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-xl px-12 py-6 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-3xl transition-all duration-300"
-              >
-                <Calendar className="h-6 w-6 mr-3" />
-                Schedule Visit
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+              <div className="relative group">
+                <Button
+                  size="lg"
+                  className="text-xl px-12 py-6 bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-500 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-600 text-white font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border-2 border-white/30"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                  <span className="relative flex items-center gap-3">
+                    <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                      <Phone className="h-6 w-6" />
+                    </div>
+                    Call (555) 123-4567
+                  </span>
+                </Button>
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full animate-pulse opacity-70"></div>
+              </div>
+
+              <div className="relative group">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-xl px-12 py-6 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-3xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                  <span className="relative flex items-center gap-3">
+                    <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                      <Calendar className="h-6 w-6" />
+                    </div>
+                    Schedule Private Visit
+                  </span>
+                </Button>
+              </div>
             </div>
 
-            {/* Quick Contact Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">
-                  &lt; 2hr
+            {/* Enhanced Quick Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full p-2">
+                    <Clock className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">
+                    &lt; 2hr
+                  </div>
                 </div>
-                <div className="text-ocean-100">Response Time</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">
-                  7 Days
+                <div className="text-ocean-100 font-semibold">
+                  Expert Response Time
                 </div>
-                <div className="text-ocean-100">Weekly Service</div>
+                <div className="text-xs text-white/70 mt-1">
+                  Guaranteed during business hours
+                </div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">5★</div>
-                <div className="text-ocean-100">Customer Rating</div>
+
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-forest-400 to-ocean-400 rounded-full p-2">
+                    <Users className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">
+                    24/7
+                  </div>
+                </div>
+                <div className="text-ocean-100 font-semibold">
+                  Premium Support
+                </div>
+                <div className="text-xs text-white/70 mt-1">
+                  Always available when you need us
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-sunset-400 to-gold-400 rounded-full p-2">
+                    <Star className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">
+                    5★
+                  </div>
+                </div>
+                <div className="text-ocean-100 font-semibold">
+                  Customer Excellence
+                </div>
+                <div className="text-xs text-white/70 mt-1">
+                  Consistently rated by clients
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Methods */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-ocean-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge
-              variant="outline"
-              className="mb-4 text-ocean-600 border-ocean-300 px-4 py-2"
-            >
-              Contact Options
+      {/* Enhanced Contact Methods with Professional Images */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
+              Professional Contact Options
             </Badge>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-4">
-              How Would You Like to Connect?
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent mb-6">
+              How Would You Prefer to Connect?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose the contact method that works best for you. We're here to
-              help every step of the way.
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Choose your preferred communication method and connect with our
+              certified specialists who are ready to provide personalized
+              service tailored to your luxury automotive needs.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {contactMethods.map((method, index) => (
               <Card
                 key={index}
-                className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 rounded-3xl border-2 border-transparent hover:border-ocean-200"
+                className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 rounded-3xl border-2 border-transparent hover:border-ocean-200 overflow-hidden bg-white/95 backdrop-blur-sm"
               >
-                <CardHeader
-                  className={`bg-gradient-to-r ${method.color} text-white rounded-t-3xl p-6`}
-                >
-                  <div className="text-center">
-                    <div className="mb-4 flex justify-center">
+                {/* Professional Background Image */}
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={method.bgImage}
+                    alt={`${method.title} background`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+                  {/* Professional Portrait */}
+                  <div className="absolute top-4 right-4 w-16 h-16 rounded-full overflow-hidden border-4 border-white/80 shadow-lg">
+                    <img
+                      src={method.image}
+                      alt={`${method.title} specialist`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Contact Method Icon */}
+                  <div className="absolute top-4 left-4">
+                    <div
+                      className={`bg-gradient-to-r ${method.color} rounded-full p-3 shadow-lg`}
+                    >
                       {method.icon}
                     </div>
-                    <CardTitle className="text-xl font-bold">
+                  </div>
+
+                  {/* Method Title Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
                       {method.title}
-                    </CardTitle>
-                    <p className="text-sm opacity-90 mt-2">
-                      {method.description}
-                    </p>
+                    </h3>
                   </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="text-center mb-6">
-                    <div className="text-lg font-bold text-gray-900 mb-2">
-                      {method.contact}
+                </div>
+
+                <CardContent className="p-8">
+                  <p className="text-gray-700 mb-6 leading-relaxed text-lg">
+                    {method.description}
+                  </p>
+
+                  <div className="space-y-4 mb-6">
+                    <div className="bg-gradient-to-r from-gray-50 to-ocean-50 rounded-xl p-4">
+                      <div className="text-xl font-bold text-gray-900 mb-1">
+                        {method.contact}
+                      </div>
+                      <div className="text-sm text-gray-600 font-medium mb-3">
+                        {method.hours}
+                      </div>
+
+                      {/* Expert Features */}
+                      <div className="space-y-2">
+                        <div className="text-sm font-semibold text-gray-800 mb-2">
+                          Expert Services:
+                        </div>
+                        {method.features.map((feature, featureIndex) => (
+                          <div
+                            key={featureIndex}
+                            className="flex items-center gap-2"
+                          >
+                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                            <span className="text-sm text-gray-600 font-medium">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="text-sm text-gray-600">{method.hours}</div>
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-xl">
-                    {method.action}
+
+                  <Button
+                    onClick={() => {
+                      if (method.action === "Call Now") {
+                        window.open("tel:+15551234567", "_self");
+                      } else if (method.action === "Send Email") {
+                        window.open("mailto:info@alpinemotors.com", "_self");
+                      } else if (method.action === "Get Directions") {
+                        window.open(
+                          "https://maps.google.com/maps?q=123+Alpine+Drive,+Mountain+View,+CA",
+                          "_blank",
+                        );
+                      } else {
+                        // For live chat or other actions
+                        alert(
+                          `${method.action} feature will be available soon. Please call us at (555) 123-4567 for immediate assistance.`,
+                        );
+                      }
+                    }}
+                    className={`w-full bg-gradient-to-r ${method.color} hover:shadow-xl text-white font-bold py-4 rounded-xl text-lg transform hover:scale-105 transition-all duration-300`}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      {method.icon}
+                      {method.action}
+                    </span>
                   </Button>
                 </CardContent>
               </Card>
@@ -322,58 +537,218 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Forms */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge
-              variant="outline"
-              className="mb-4 text-forest-600 border-forest-300 px-4 py-2"
-            >
-              Send Us a Message
+      {/* Enhanced Team Specialists Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
+              Meet Our Expert Team
             </Badge>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-forest-600 to-sunset-600 bg-clip-text text-transparent mb-4">
-              Tell Us How We Can Help
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-sunset-600 via-gold-600 to-ocean-600 bg-clip-text text-transparent mb-6">
+              Your Dedicated Automotive Professionals
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Fill out our contact form and we'll get back to you within 2 hours
-              during business hours
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Our certified specialists bring decades of combined experience in
+              luxury automotive sales, financing, and service excellence. Each
+              team member is committed to delivering personalized attention and
+              expert guidance throughout your journey.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {specialists.map((specialist, index) => (
+              <Card
+                key={index}
+                className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 rounded-3xl border-2 border-transparent hover:border-sunset-200 overflow-hidden bg-white/95 backdrop-blur-sm"
+              >
+                <div className="relative">
+                  {/* Professional Background */}
+                  <div className="h-64 relative overflow-hidden">
+                    <img
+                      src={specialist.expertiseImage}
+                      alt={`${specialist.name} expertise`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+                    {/* Professional Portrait */}
+                    <div className="absolute bottom-4 left-4 w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                      <img
+                        src={specialist.image}
+                        alt={specialist.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src =
+                            "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg";
+                        }}
+                      />
+                    </div>
+
+                    {/* Experience Badge */}
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-gradient-to-r from-gold-500 to-sunset-500 text-white font-bold shadow-lg">
+                        {specialist.experience}
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-sunset-600 transition-colors duration-300">
+                        {specialist.name}
+                      </h3>
+                      <Badge className="mb-3 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-4 py-2 text-sm font-semibold">
+                        {specialist.title}
+                      </Badge>
+                      <p className="text-sunset-600 font-semibold text-lg mb-3">
+                        {specialist.specialty}
+                      </p>
+                      <p className="text-gray-600 leading-relaxed">
+                        {specialist.description}
+                      </p>
+                    </div>
+
+                    {/* Achievements */}
+                    <div className="mb-6">
+                      <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <Trophy className="h-4 w-4 text-gold-500" />
+                        Achievements & Certifications
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {specialist.achievements.map(
+                          (achievement, achIndex) => (
+                            <Badge
+                              key={achIndex}
+                              variant="secondary"
+                              className="text-xs bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700"
+                            >
+                              {achievement}
+                            </Badge>
+                          ),
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Contact Information */}
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center gap-3">
+                        <Phone className="h-4 w-4 text-ocean-500" />
+                        <span className="text-gray-700 font-medium">
+                          {specialist.phone}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Mail className="h-4 w-4 text-forest-500" />
+                        <span className="text-gray-700 text-sm">
+                          {specialist.email}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Globe className="h-4 w-4 text-sunset-500" />
+                        <div className="flex gap-2">
+                          {specialist.languages.map((lang, langIndex) => (
+                            <Badge
+                              key={langIndex}
+                              variant="outline"
+                              className="text-xs border-sunset-300 text-sunset-600"
+                            >
+                              {lang}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <Button
+                      onClick={() => {
+                        const specialistEmail =
+                          specialist.name.toLowerCase().replace(" ", ".") +
+                          "@alpinemotors.com";
+                        window.open(
+                          `mailto:${specialistEmail}?subject=Consultation Request&body=Hi ${specialist.name.split(" ")[0]}, I would like to schedule a consultation regarding luxury automotive services.`,
+                          "_self",
+                        );
+                      }}
+                      className="w-full bg-gradient-to-r from-sunset-500 via-gold-500 to-sunset-500 hover:from-sunset-600 hover:via-gold-600 hover:to-sunset-600 text-white font-bold py-3 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <MessageSquare className="h-4 w-4" />
+                        Connect with {specialist.name.split(" ")[0]}
+                      </span>
+                    </Button>
+                  </CardContent>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Contact Form */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
+              Professional Consultation
+            </Badge>
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-forest-600 via-ocean-600 to-sunset-600 bg-clip-text text-transparent mb-6">
+              Tell Us How We Can Serve You
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Share your automotive goals and preferences with our expert team.
+              We'll respond within 2 hours during business hours with
+              personalized recommendations and next steps tailored to your
+              specific needs.
             </p>
           </div>
 
           <Card className="shadow-2xl border-2 border-gray-100 rounded-3xl overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-forest-500 to-sunset-500 text-white">
-              <CardTitle className="text-2xl font-bold text-center flex items-center justify-center gap-3">
-                <MessageSquare className="h-6 w-6" />
-                Contact Form
+            <CardHeader
+              className="relative bg-gradient-to-r from-forest-500 to-ocean-500 text-white py-12"
+              style={{
+                backgroundImage: `url(https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg)`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-forest-900/80 to-ocean-900/80"></div>
+              <CardTitle className="relative z-10 text-3xl font-bold text-center flex items-center justify-center gap-3">
+                <MessageSquare className="h-8 w-8" />
+                Professional Consultation Request
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
               {showSuccess ? (
                 <div className="text-center space-y-6">
-                  <div className="inline-block p-6 bg-green-100 rounded-full">
-                    <CheckCircle className="h-16 w-16 text-green-600" />
+                  <div className="inline-block p-8 bg-green-100 rounded-full shadow-lg">
+                    <CheckCircle className="h-20 w-20 text-green-600" />
                   </div>
-                  <h3 className="text-3xl font-bold text-green-600">
+                  <h3 className="text-4xl font-bold text-green-600">
                     Message Sent Successfully!
                   </h3>
-                  <p className="text-xl text-gray-700">
-                    Thank you for contacting Alpine Motors. We'll respond to
-                    your inquiry within 2 hours during business hours.
+                  <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                    Thank you for contacting Alpine Motors. Our expert team will
+                    review your inquiry and respond with personalized
+                    recommendations within 2 hours during business hours.
                   </p>
                   <Button
                     onClick={() => setShowSuccess(false)}
-                    className="bg-gradient-to-r from-ocean-500 to-forest-500"
+                    className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-8 py-4 rounded-xl text-lg"
                   >
                     Send Another Message
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-8">
                   {/* Personal Information */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="firstName">First Name *</Label>
+                      <Label
+                        htmlFor="firstName"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        First Name *
+                      </Label>
                       <Input
                         id="firstName"
                         value={contactForm.firstName}
@@ -383,12 +758,17 @@ export default function Contact() {
                             firstName: e.target.value,
                           })
                         }
-                        className="mt-2 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
+                        className="mt-3 border-2 border-forest-200 focus:border-forest-500 rounded-xl h-12 text-lg"
                         required
                       />
                     </div>
                     <div>
-                      <Label htmlFor="lastName">Last Name *</Label>
+                      <Label
+                        htmlFor="lastName"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Last Name *
+                      </Label>
                       <Input
                         id="lastName"
                         value={contactForm.lastName}
@@ -398,7 +778,7 @@ export default function Contact() {
                             lastName: e.target.value,
                           })
                         }
-                        className="mt-2 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
+                        className="mt-3 border-2 border-forest-200 focus:border-forest-500 rounded-xl h-12 text-lg"
                         required
                       />
                     </div>
@@ -406,7 +786,12 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label
+                        htmlFor="email"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Email Address *
+                      </Label>
                       <Input
                         id="email"
                         type="email"
@@ -417,12 +802,17 @@ export default function Contact() {
                             email: e.target.value,
                           })
                         }
-                        className="mt-2 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl"
+                        className="mt-3 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl h-12 text-lg"
                         required
                       />
                     </div>
                     <div>
-                      <Label htmlFor="phone">Phone Number</Label>
+                      <Label
+                        htmlFor="phone"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Phone Number
+                      </Label>
                       <Input
                         id="phone"
                         type="tel"
@@ -433,7 +823,7 @@ export default function Contact() {
                             phone: e.target.value,
                           })
                         }
-                        className="mt-2 border-2 border-sunset-200 focus:border-sunset-500 rounded-xl"
+                        className="mt-3 border-2 border-sunset-200 focus:border-sunset-500 rounded-xl h-12 text-lg"
                       />
                     </div>
                   </div>
@@ -441,40 +831,48 @@ export default function Contact() {
                   {/* Inquiry Details */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="inquiryType">Type of Inquiry *</Label>
+                      <Label
+                        htmlFor="inquiryType"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Type of Inquiry *
+                      </Label>
                       <Select
                         value={contactForm.inquiryType}
                         onValueChange={(value) =>
                           setContactForm({ ...contactForm, inquiryType: value })
                         }
                       >
-                        <SelectTrigger className="mt-2 border-2 border-gold-200 focus:border-gold-500 rounded-xl">
+                        <SelectTrigger className="mt-3 border-2 border-gold-200 focus:border-gold-500 rounded-xl h-12">
                           <SelectValue placeholder="Select inquiry type" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="test-drive">
-                            Schedule Test Drive
+                            Schedule Private Test Drive
                           </SelectItem>
                           <SelectItem value="purchase">
-                            Vehicle Purchase Inquiry
+                            Luxury Vehicle Purchase Inquiry
                           </SelectItem>
                           <SelectItem value="financing">
-                            Financing Questions
+                            Premium Financing Consultation
                           </SelectItem>
                           <SelectItem value="trade-in">
-                            Trade-In Valuation
+                            Professional Trade-In Valuation
                           </SelectItem>
                           <SelectItem value="service">
-                            Service & Maintenance
+                            Service & Maintenance Excellence
                           </SelectItem>
                           <SelectItem value="general">
-                            General Information
+                            General Information Request
                           </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div>
-                      <Label htmlFor="vehicleInterest">
+                      <Label
+                        htmlFor="vehicleInterest"
+                        className="text-lg font-semibold text-gray-700"
+                      >
                         Vehicle of Interest
                       </Label>
                       <Input
@@ -486,8 +884,8 @@ export default function Contact() {
                             vehicleInterest: e.target.value,
                           })
                         }
-                        placeholder="e.g., BMW X5, Mercedes S-Class"
-                        className="mt-2 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl"
+                        placeholder="e.g., BMW X5 M, Mercedes S-Class, Porsche 911"
+                        className="mt-3 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl h-12 text-lg"
                       />
                     </div>
                   </div>
@@ -495,7 +893,12 @@ export default function Contact() {
                   {/* Preferred Contact Time */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="preferredDate">Preferred Date</Label>
+                      <Label
+                        htmlFor="preferredDate"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Preferred Date
+                      </Label>
                       <Input
                         id="preferredDate"
                         type="date"
@@ -506,11 +909,16 @@ export default function Contact() {
                             preferredDate: e.target.value,
                           })
                         }
-                        className="mt-2 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
+                        className="mt-3 border-2 border-forest-200 focus:border-forest-500 rounded-xl h-12 text-lg"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="preferredTime">Preferred Time</Label>
+                      <Label
+                        htmlFor="preferredTime"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Preferred Time
+                      </Label>
                       <Select
                         value={contactForm.preferredTime}
                         onValueChange={(value) =>
@@ -520,7 +928,7 @@ export default function Contact() {
                           })
                         }
                       >
-                        <SelectTrigger className="mt-2 border-2 border-sunset-200 focus:border-sunset-500 rounded-xl">
+                        <SelectTrigger className="mt-3 border-2 border-sunset-200 focus:border-sunset-500 rounded-xl h-12">
                           <SelectValue placeholder="Select preferred time" />
                         </SelectTrigger>
                         <SelectContent>
@@ -542,7 +950,12 @@ export default function Contact() {
 
                   {/* Message */}
                   <div>
-                    <Label htmlFor="message">Message *</Label>
+                    <Label
+                      htmlFor="message"
+                      className="text-lg font-semibold text-gray-700"
+                    >
+                      Detailed Message *
+                    </Label>
                     <Textarea
                       id="message"
                       value={contactForm.message}
@@ -552,34 +965,36 @@ export default function Contact() {
                           message: e.target.value,
                         })
                       }
-                      placeholder="Tell us more about your inquiry, specific questions, or how we can help you..."
-                      className="mt-2 border-2 border-gray-200 focus:border-ocean-500 rounded-xl min-h-[120px]"
+                      placeholder="Please share your specific automotive goals, preferences, budget range, timeline, and any questions you have. The more details you provide, the better we can tailor our recommendations to your needs..."
+                      className="mt-3 border-2 border-gray-200 focus:border-ocean-500 rounded-xl min-h-[150px] text-lg"
                       required
                     />
                   </div>
 
-                  <Alert className="border-blue-200 bg-blue-50">
-                    <Shield className="h-4 w-4 text-blue-600" />
-                    <AlertDescription className="text-blue-800">
-                      Your information is secure and will only be used to
-                      respond to your inquiry. We respect your privacy.
+                  <Alert className="border-blue-200 bg-blue-50 p-6">
+                    <Shield className="h-6 w-6 text-blue-600" />
+                    <AlertDescription className="text-blue-800 text-lg ml-2">
+                      Your information is protected with bank-level security and
+                      will only be used to provide personalized service. We
+                      respect your privacy and never share your details with
+                      third parties.
                     </AlertDescription>
                   </Alert>
 
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-gradient-to-r from-forest-500 to-sunset-500 hover:from-forest-600 hover:to-sunset-600 text-white font-bold py-4 rounded-xl text-lg"
+                    className="w-full bg-gradient-to-r from-forest-500 via-ocean-500 to-sunset-500 hover:from-forest-600 hover:via-ocean-600 hover:to-sunset-600 text-white font-bold py-6 rounded-xl text-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                   >
                     {loading ? (
-                      <div className="flex items-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                        Sending Message...
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
+                        Sending Your Message...
                       </div>
                     ) : (
-                      <div className="flex items-center justify-center">
-                        <Send className="h-5 w-5 mr-3" />
-                        Send Message
+                      <div className="flex items-center justify-center gap-3">
+                        <Send className="h-6 w-6" />
+                        Send Professional Consultation Request
                       </div>
                     )}
                   </Button>
@@ -590,208 +1005,19 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Team Specialists */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-sunset-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge
-              variant="outline"
-              className="mb-4 text-sunset-600 border-sunset-300 px-4 py-2"
-            >
-              Our Team
+      {/* Enhanced FAQ Section with Professional Styling */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-forest-50 to-ocean-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
+              Expert Knowledge Base
             </Badge>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-sunset-600 to-gold-600 bg-clip-text text-transparent mb-4">
-              Meet Your Automotive Specialists
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our experienced team is dedicated to providing personalized
-              service and expert guidance
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {specialists.map((specialist, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border-2 border-gray-100"
-              >
-                <CardContent className="p-6">
-                  <div className="text-6xl mb-4">{specialist.image}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {specialist.name}
-                  </h3>
-                  <Badge
-                    variant="outline"
-                    className="mb-4 text-sunset-600 border-sunset-300"
-                  >
-                    {specialist.title}
-                  </Badge>
-                  <p className="text-gray-600 mb-4 text-sm">
-                    {specialist.specialty}
-                  </p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center justify-center gap-2">
-                      <Phone className="h-4 w-4 text-ocean-500" />
-                      <span className="text-gray-600">{specialist.phone}</span>
-                    </div>
-                    <div className="flex items-center justify-center gap-2">
-                      <Mail className="h-4 w-4 text-forest-500" />
-                      <span className="text-gray-600 text-xs">
-                        {specialist.email}
-                      </span>
-                    </div>
-                    <div className="flex justify-center gap-1 mt-3">
-                      {specialist.languages.map((lang, langIndex) => (
-                        <Badge
-                          key={langIndex}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {lang}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <Button className="w-full mt-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white rounded-xl">
-                    Contact {specialist.name.split(" ")[0]}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Location & Hours */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Location Info */}
-            <Card className="shadow-2xl border-2 border-gray-100 rounded-3xl">
-              <CardHeader className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white rounded-t-3xl">
-                <CardTitle className="text-2xl font-bold flex items-center gap-3">
-                  <MapPin className="h-6 w-6" />
-                  Visit Our Showroom
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-8">
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
-                      Alpine Motors Luxury Showroom
-                    </h3>
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-3">
-                        <MapPin className="h-5 w-5 text-ocean-500 mt-1" />
-                        <div>
-                          <p className="font-semibold text-gray-900">
-                            123 Alpine Way
-                          </p>
-                          <p className="text-gray-600">
-                            Mountain View, CA 94041
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Phone className="h-5 w-5 text-forest-500" />
-                        <p className="text-gray-700">(555) 123-4567</p>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Mail className="h-5 w-5 text-sunset-500" />
-                        <p className="text-gray-700">info@alpinemotors.com</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="border-t pt-6">
-                    <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                      <Clock className="h-5 w-5 text-gold-500" />
-                      Business Hours
-                    </h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Monday - Friday
-                        </p>
-                        <p className="text-gray-600">8:00 AM - 8:00 PM</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-800">Saturday</p>
-                        <p className="text-gray-600">9:00 AM - 7:00 PM</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-800">Sunday</p>
-                        <p className="text-gray-600">10:00 AM - 6:00 PM</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-800">Holidays</p>
-                        <p className="text-gray-600">By Appointment</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Button className="flex-1 bg-gradient-to-r from-ocean-500 to-forest-500 text-white rounded-xl">
-                      <Navigation className="h-4 w-4 mr-2" />
-                      Get Directions
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="flex-1 border-2 border-sunset-500 text-sunset-600 rounded-xl"
-                    >
-                      <Calendar className="h-4 w-4 mr-2" />
-                      Schedule Visit
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Map Placeholder */}
-            <Card className="shadow-2xl border-2 border-gray-100 rounded-3xl">
-              <CardHeader className="bg-gradient-to-r from-sunset-500 to-gold-500 text-white rounded-t-3xl">
-                <CardTitle className="text-2xl font-bold">
-                  Location Map
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="aspect-[4/3] bg-gradient-to-br from-ocean-100 via-forest-100 to-sunset-100 rounded-b-3xl flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-ocean-500/20 via-forest-500/20 to-sunset-500/20"></div>
-                  <div className="text-center relative z-10">
-                    <MapPin className="h-16 w-16 text-ocean-600 mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                      Interactive Map
-                    </h3>
-                    <p className="text-gray-600 mb-6">
-                      Located in the heart of Mountain View
-                    </p>
-                    <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white rounded-xl">
-                      Open in Maps
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-forest-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge
-              variant="outline"
-              className="mb-4 text-forest-600 border-forest-300 px-4 py-2"
-            >
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-forest-600 via-ocean-600 to-sunset-600 bg-clip-text text-transparent mb-6">
               Frequently Asked Questions
-            </Badge>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-forest-600 to-ocean-600 bg-clip-text text-transparent mb-4">
-              Quick Answers to Common Questions
             </h2>
-            <p className="text-xl text-gray-600">
-              Find answers to the most common questions about our services and
-              vehicles
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Find expert answers to the most common questions about our luxury
+              automotive services, financing options, and vehicle care programs.
             </p>
           </div>
 
@@ -799,16 +1025,16 @@ export default function Contact() {
             {faqs.map((faq, index) => (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-shadow rounded-2xl border-2 border-gray-100"
+                className="hover:shadow-xl transition-all duration-300 rounded-2xl border-2 border-gray-100 hover:border-ocean-200 bg-white/95 backdrop-blur-sm"
               >
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-forest-500 to-ocean-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                <CardContent className="p-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-4">
+                    <div className="w-10 h-10 bg-gradient-to-r from-forest-500 to-ocean-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                       {index + 1}
                     </div>
                     {faq.question}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed ml-11">
+                  <p className="text-gray-600 leading-relaxed ml-14 text-lg">
                     {faq.answer}
                   </p>
                 </CardContent>
@@ -816,134 +1042,103 @@ export default function Contact() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">
-              Don't see your question answered?
+          <div className="text-center mt-16">
+            <p className="text-gray-600 mb-6 text-lg">
+              Have additional questions? Our expert team is here to help.
             </p>
-            <Button className="bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-8 py-3 rounded-xl">
-              <MessageSquare className="h-4 w-4 mr-2" />
-              Ask Our Team
+            <Button className="bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-10 py-4 rounded-xl text-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+              <MessageSquare className="h-5 w-5 mr-3" />
+              Speak with Our Specialists
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Customer Reviews */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge
-              variant="outline"
-              className="mb-4 text-gold-600 border-gold-300 px-4 py-2"
-            >
-              Customer Reviews
-            </Badge>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-gold-600 to-sunset-600 bg-clip-text text-transparent mb-4">
-              What Our Customers Say
-            </h2>
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-6 w-6 fill-gold-400 text-gold-400"
-                  />
-                ))}
-              </div>
-              <span className="text-2xl font-bold text-gold-600">5.0</span>
-              <span className="text-gray-600">• 2,500+ Reviews</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Jennifer Martinez",
-                location: "Palo Alto, CA",
-                rating: 5,
-                review:
-                  "Exceptional service from start to finish. The team helped me find the perfect BMW X5 and made the entire process seamless. Highly recommend!",
-              },
-              {
-                name: "Robert Chen",
-                location: "San Francisco, CA",
-                rating: 5,
-                review:
-                  "Outstanding customer service and expertise. They found me exactly what I was looking for and provided excellent financing options.",
-              },
-              {
-                name: "Emily Thompson",
-                location: "San Jose, CA",
-                rating: 5,
-                review:
-                  "Professional, knowledgeable, and genuinely caring team. They made my luxury car purchase experience truly memorable.",
-              },
-            ].map((review, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-xl transition-all duration-300 rounded-2xl border-2 border-gray-100"
-              >
-                <CardContent className="p-6">
-                  <div className="flex mb-4">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-gold-400 text-gold-400"
-                      />
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">"{review.review}"</p>
-                  <div className="border-t pt-4">
-                    <p className="font-bold text-gray-900">{review.name}</p>
-                    <p className="text-sm text-gray-600">{review.location}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      {/* Premium Emergency Support Section */}
+      <section className="py-20 relative text-white overflow-hidden min-h-[500px] flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(https://images.pexels.com/photos/8424993/pexels-photo-8424993.jpeg)`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-ocean-900/70 to-forest-900/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
         </div>
-      </section>
 
-      {/* Emergency Contact */}
-      <section className="py-16 bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="w-32 h-32 bg-white/10 rounded-full blur-3xl animate-pulse absolute top-10 left-10"></div>
-            <div className="w-40 h-40 bg-white/10 rounded-full blur-3xl animate-pulse absolute bottom-10 right-10"></div>
-          </div>
+        {/* Floating elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="w-32 h-32 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full blur-3xl animate-pulse absolute top-10 left-10"></div>
+          <div className="w-40 h-40 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl animate-pulse absolute bottom-10 right-10 [animation-delay:1s]"></div>
+          <div className="w-24 h-24 bg-gradient-to-r from-forest-400 to-gold-400 rounded-full blur-2xl animate-pulse absolute top-1/2 right-1/4 [animation-delay:2s]"></div>
         </div>
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="mb-8">
-            <div className="inline-block p-6 bg-white/10 backdrop-blur-sm rounded-3xl mb-8">
-              <span className="text-7xl">🚨</span>
+            <div className="inline-block p-8 bg-gradient-to-r from-gold-500/20 via-sunset-500/20 to-ocean-500/20 backdrop-blur-sm rounded-full mb-8 border-2 border-white/30 shadow-2xl">
+              <div className="text-6xl">🚨</div>
             </div>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-            Need Immediate
-            <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
-              Assistance?
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            <span className="text-white drop-shadow-2xl">Need Immediate</span>
+            <span className="bg-gradient-to-r from-gold-300 via-sunset-300 to-gold-400 bg-clip-text text-transparent block drop-shadow-lg">
+              Premium Assistance?
             </span>
           </h2>
-          <p className="text-xl lg:text-2xl mb-8 leading-relaxed max-w-2xl mx-auto text-gray-100">
-            For urgent matters, roadside assistance, or after-hours service
-            needs, our emergency support team is available 24/7.
+          <p className="text-lg sm:text-xl lg:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto text-gray-100 drop-shadow-lg">
+            For urgent matters, premium roadside assistance, or after-hours
+            luxury service needs, our dedicated emergency support team is
+            available 24/7 to ensure your complete peace of mind.
           </p>
-          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
-            <Button
-              size="lg"
-              className="text-xl px-12 py-6 bg-red-600 hover:bg-red-700 font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-            >
-              <Phone className="h-5 w-5 mr-3" />
-              Emergency: (555) 911-HELP
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-xl px-12 py-6 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-3xl transition-all duration-300"
-            >
-              <MessageSquare className="h-5 w-5 mr-3" />
-              24/7 Live Chat
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="relative group">
+              <Button
+                size="lg"
+                className="text-xl px-12 py-6 bg-red-600 hover:bg-red-700 text-white font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border-2 border-white/30"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span className="relative flex items-center gap-3">
+                  <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                    <Phone className="h-6 w-6" />
+                  </div>
+                  Emergency: (555) 911-HELP
+                </span>
+              </Button>
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full animate-pulse opacity-70"></div>
+            </div>
+
+            <div className="relative group">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-xl px-12 py-6 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-3xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                <span className="relative flex items-center gap-3">
+                  <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                    <MessageSquare className="h-6 w-6" />
+                  </div>
+                  24/7 Premium Chat
+                </span>
+              </Button>
+            </div>
+          </div>
+
+          {/* Additional premium support features */}
+          <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-gray-200">
+            <div className="flex items-center gap-3">
+              <Shield className="h-5 w-5 text-gold-300" />
+              <span>Premium Protection</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Clock className="h-5 w-5 text-gold-300" />
+              <span>24/7 Availability</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Award className="h-5 w-5 text-gold-300" />
+              <span>Expert Specialists</span>
+            </div>
           </div>
         </div>
       </section>

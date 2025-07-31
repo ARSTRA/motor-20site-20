@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   Calculator,
@@ -65,7 +65,7 @@ export default function Financing() {
   const [showResults, setShowResults] = useState(false);
 
   // Calculate monthly payment
-  const calculatePayment = () => {
+  const calculatePayment = useCallback(() => {
     const principal = loanAmount[0] - downPayment[0];
     const months = loanTerm[0];
 
@@ -84,7 +84,12 @@ export default function Financing() {
       (Math.pow(1 + monthlyRate, months) - 1);
 
     setMonthlyPayment(Math.round(payment));
-  };
+  }, [loanAmount, downPayment, loanTerm, creditScore]);
+
+  // Auto-calculate when values change
+  useEffect(() => {
+    calculatePayment();
+  }, [calculatePayment]);
 
   const handlePreApprovalSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -195,72 +200,208 @@ export default function Financing() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-10 w-40 h-40 bg-gold-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-56 h-56 bg-ocean-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-forest-400 rounded-full blur-3xl animate-pulse"></div>
+      <section className="relative text-white py-32 overflow-hidden min-h-[700px] flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(https://images.pexels.com/photos/7144199/pexels-photo-7144199.jpeg)`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-ocean-900/70 to-forest-900/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
+
+        {/* Enhanced floating elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-10 w-40 h-40 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-56 h-56 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl animate-pulse [animation-delay:1s]"></div>
+          <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-r from-forest-400 to-gold-400 rounded-full blur-3xl animate-pulse [animation-delay:2s]"></div>
+          <div className="absolute top-20 right-1/4 w-24 h-24 bg-gradient-to-r from-sunset-400 to-ocean-400 rounded-full blur-2xl animate-pulse [animation-delay:3s]"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="mb-8">
-              <div className="inline-block p-6 bg-white/10 backdrop-blur-sm rounded-3xl mb-8">
-                <Calculator className="h-16 w-16 text-white mx-auto" />
+              <div className="inline-block p-8 bg-gradient-to-r from-gold-500/20 via-sunset-500/20 to-ocean-500/20 backdrop-blur-sm rounded-full mb-8 border-2 border-white/30 shadow-2xl">
+                <Calculator className="h-20 w-20 text-white mx-auto" />
               </div>
             </div>
             <Badge
-              variant="outline"
-              className="mb-6 text-gold-300 border-gold-300 px-6 py-3 text-lg"
+              className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/40 px-8 py-4 text-xl font-bold shadow-2xl backdrop-blur-sm"
             >
+              <DollarSign className="h-5 w-5 mr-2" />
               Flexible Financing Solutions
             </Badge>
-            <h1 className="text-6xl lg:text-7xl font-bold mb-8">
-              Drive Your Dream
-              <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+              <span className="text-white drop-shadow-2xl">Drive Your Dream</span>
+              <span className="bg-gradient-to-r from-gold-300 via-sunset-300 to-gold-400 bg-clip-text text-transparent block drop-shadow-lg">
                 Today
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Explore our comprehensive financing options designed to make
-              luxury vehicle ownership accessible. Get pre-approved in minutes
-              and drive home your perfect vehicle today.
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-12 max-w-5xl mx-auto leading-relaxed drop-shadow-lg">
+              Transform your automotive dreams into reality with our comprehensive financing solutions.
+              Whether you're seeking traditional loans, luxury leasing, or certified pre-owned financing,
+              our expert team delivers personalized options with competitive rates and unmatched service.
+              Get pre-approved in under 2 minutes and experience the Alpine Motors difference.
             </p>
-            <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-12">
-              <Button
-                size="lg"
-                className="text-xl px-12 py-6 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-              >
-                <Zap className="h-6 w-6 mr-3" />
-                Get Pre-Approved Now
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-xl px-12 py-6 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-3xl transition-all duration-300"
-              >
-                <Calculator className="h-6 w-6 mr-3" />
-                Calculate Payment
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+              <div className="relative group">
+                <Button
+                  size="lg"
+                  className="text-xl px-12 py-6 bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-500 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-600 text-white font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border-2 border-white/30"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                  <span className="relative flex items-center gap-3">
+                    <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                      <Zap className="h-6 w-6" />
+                    </div>
+                    Get Pre-Approved Now
+                  </span>
+                </Button>
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full animate-pulse opacity-70"></div>
+              </div>
+
+              <div className="relative group">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-xl px-12 py-6 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-3xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                  <span className="relative flex items-center gap-3">
+                    <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                      <Calculator className="h-6 w-6" />
+                    </div>
+                    Calculate Payment
+                  </span>
+                </Button>
+              </div>
             </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">
-                  3.49%
+            {/* Enhanced Quick Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full p-2">
+                    <Percent className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">
+                    3.49%
+                  </div>
                 </div>
-                <div className="text-ocean-100">Starting APR</div>
+                <div className="text-ocean-100 font-semibold">Starting APR Rate</div>
+                <div className="text-xs text-white/70 mt-1">For qualified buyers</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">
-                  2 Min
+
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-forest-400 to-ocean-400 rounded-full p-2">
+                    <Clock className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">
+                    2 Min
+                  </div>
                 </div>
-                <div className="text-ocean-100">Pre-Approval</div>
+                <div className="text-ocean-100 font-semibold">Quick Pre-Approval</div>
+                <div className="text-xs text-white/70 mt-1">Instant decision</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl font-bold text-gold-300 mb-2">95%</div>
-                <div className="text-ocean-100">Approval Rate</div>
+
+              <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-gradient-to-r from-sunset-400 to-gold-400 rounded-full p-2">
+                    <TrendingUp className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">95%</div>
+                </div>
+                <div className="text-ocean-100 font-semibold">Approval Success</div>
+                <div className="text-xs text-white/70 mt-1">Customer satisfaction</div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Professional Financing Process Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
+              Our Process
+            </Badge>
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent mb-6">
+              Your Path to Luxury Vehicle Ownership
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Experience our streamlined financing process designed to make luxury vehicle ownership accessible,
+              transparent, and tailored to your unique financial needs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+            {/* Step 1 */}
+            <div className="relative group">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
+                <img
+                  src="https://images.pexels.com/photos/4968639/pexels-photo-4968639.jpeg"
+                  alt="Financial calculation and planning"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-gold-500 to-sunset-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
+                  1
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-ocean-600 transition-colors duration-300">
+                Apply & Calculate
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Start with our advanced payment calculator to explore different financing scenarios.
+                Submit your pre-approval application with bank-level security and get instant results.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative group">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
+                <img
+                  src="https://images.pexels.com/photos/5816286/pexels-photo-5816286.jpeg"
+                  alt="Financial consultation and documentation"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-forest-500 to-ocean-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
+                  2
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-forest-600 transition-colors duration-300">
+                Expert Review
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Our certified financing specialists review your application and work with multiple lenders
+                to secure the most competitive rates and terms tailored to your credit profile.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative group">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
+                <img
+                  src="https://images.pexels.com/photos/8062357/pexels-photo-8062357.jpeg"
+                  alt="Secure payment and transaction"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
+                  3
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-sunset-600 transition-colors duration-300">
+                Secure & Drive
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Complete your secure transaction with our digital signing process and comprehensive
+                insurance options. Drive away in your luxury vehicle with confidence and peace of mind.
+              </p>
             </div>
           </div>
         </div>
@@ -430,7 +571,19 @@ export default function Financing() {
                       </AlertDescription>
                     </Alert>
 
-                    <Button className="w-full bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600 text-white font-bold py-3 rounded-xl">
+                    <Button
+                      onClick={() => {
+                        // Scroll to pre-approval form
+                        const preApprovalSection = document.querySelector('[class*="pre-approval"], [class*="Pre-Approval"]');
+                        if (preApprovalSection) {
+                          preApprovalSection.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                          // Fallback alert
+                          alert(`Pre-Approval Available!\n\nEstimated Monthly Payment: $${monthlyPayment}\n\nScroll down to complete your pre-approval application.`);
+                        }
+                      }}
+                      className="w-full bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600 text-white font-bold py-3 rounded-xl"
+                    >
                       Get Pre-Approved for This Amount
                     </Button>
                   </div>
@@ -499,9 +652,11 @@ export default function Financing() {
                       </div>
                     ))}
                   </div>
-                  <Button className="w-full mt-6 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-xl">
-                    Learn More
-                  </Button>
+                  <Link to="/contact">
+                    <Button className="w-full mt-6 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-xl">
+                      Learn More
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
@@ -729,36 +884,73 @@ export default function Financing() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-4">
+      {/* Enhanced Benefits Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-r from-sunset-400 to-gold-400 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
+              Alpine Advantage
+            </Badge>
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent mb-6">
               Why Choose Alpine Motors Financing?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the difference of working with a trusted luxury
-              automotive financing partner
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Experience the pinnacle of automotive financing with our comprehensive suite of services,
+              competitive rates, and unwavering commitment to customer satisfaction. We don't just provide loans—we create pathways to luxury.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <Card
                 key={index}
-                className="text-center p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border-2 border-gray-100"
+                className="group text-center p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 rounded-2xl border-2 border-transparent hover:border-ocean-200 bg-white/80 backdrop-blur-sm relative overflow-hidden"
               >
-                <CardContent className="p-0">
-                  <div className="mb-6 flex justify-center">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <CardContent className="p-0 relative z-10">
+                  <div className="mb-6 flex justify-center relative">
+                    <div className="bg-gradient-to-br from-ocean-100 to-forest-100 rounded-full p-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                      {benefit.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-ocean-600 transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                     {benefit.description}
                   </p>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-12 h-1 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full mx-auto"></div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Additional Trust Indicators */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-ocean-600 mb-2">25+</div>
+              <div className="text-sm text-gray-600">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-forest-600 mb-2">$2B+</div>
+              <div className="text-sm text-gray-600">Loans Processed</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-sunset-600 mb-2">50K+</div>
+              <div className="text-sm text-gray-600">Happy Customers</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gold-600 mb-2">A+</div>
+              <div className="text-sm text-gray-600">BBB Rating</div>
+            </div>
           </div>
         </div>
       </section>
@@ -828,46 +1020,90 @@ export default function Financing() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="w-32 h-32 bg-white/10 rounded-full blur-3xl animate-pulse absolute top-10 left-10"></div>
-            <div className="w-40 h-40 bg-white/10 rounded-full blur-3xl animate-pulse absolute bottom-10 right-10"></div>
-          </div>
+      <section className="py-24 relative text-white overflow-hidden min-h-[600px] flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(https://images.pexels.com/photos/8424993/pexels-photo-8424993.jpeg)`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-ocean-900/70 to-forest-900/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
         </div>
-        <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
+
+        {/* Floating elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="w-32 h-32 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full blur-3xl animate-pulse absolute top-10 left-10"></div>
+          <div className="w-40 h-40 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full blur-3xl animate-pulse absolute bottom-10 right-10 [animation-delay:1s]"></div>
+          <div className="w-24 h-24 bg-gradient-to-r from-forest-400 to-gold-400 rounded-full blur-2xl animate-pulse absolute top-1/2 right-1/4 [animation-delay:2s]"></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="mb-8">
-            <div className="inline-block p-6 bg-white/10 backdrop-blur-sm rounded-3xl mb-8">
-              <span className="text-7xl">🤝</span>
+            <div className="inline-block p-8 bg-gradient-to-r from-gold-500/20 via-sunset-500/20 to-ocean-500/20 backdrop-blur-sm rounded-full mb-8 border-2 border-white/30 shadow-2xl">
+              <div className="text-6xl">🤝</div>
             </div>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-            Ready to Get
-            <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            <span className="text-white drop-shadow-2xl">Ready to Get</span>
+            <span className="bg-gradient-to-r from-gold-300 via-sunset-300 to-gold-400 bg-clip-text text-transparent block drop-shadow-lg">
               Pre-Approved?
             </span>
           </h2>
-          <p className="text-xl lg:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto text-gray-100">
-            Our financing specialists are standing by to help you secure the
-            perfect loan for your dream vehicle. Get started today and drive
-            home tomorrow.
+          <p className="text-lg sm:text-xl lg:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto text-gray-100 drop-shadow-lg">
+            Our dedicated financing specialists are standing by 24/7 to help you secure the perfect loan
+            for your dream vehicle. With over 25 years of experience and relationships with top lenders,
+            we guarantee competitive rates and personalized service. Get started today and drive home tomorrow.
           </p>
-          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
-            <Button
-              size="lg"
-              className="text-xl px-12 py-6 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-            >
-              <Phone className="h-5 w-5 mr-3" />
-              Call (555) 123-4567
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-xl px-12 py-6 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-3xl transition-all duration-300"
-            >
-              <Mail className="h-5 w-5 mr-3" />
-              Email a Specialist
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="relative group">
+              <Button
+                size="lg"
+                className="text-xl px-12 py-6 bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-500 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-600 text-white font-bold rounded-3xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border-2 border-white/30"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span className="relative flex items-center gap-3">
+                  <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                    <Phone className="h-5 w-5" />
+                  </div>
+                  Call (555) 123-4567
+                </span>
+              </Button>
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full animate-pulse opacity-70"></div>
+            </div>
+
+            <div className="relative group">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-xl px-12 py-6 border-2 border-white text-white hover:bg-white hover:text-ocean-600 font-bold rounded-3xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                <span className="relative flex items-center gap-3">
+                  <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
+                    <Mail className="h-5 w-5" />
+                  </div>
+                  Email a Specialist
+                </span>
+              </Button>
+            </div>
+          </div>
+
+          {/* Additional contact options */}
+          <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-gray-200">
+            <div className="flex items-center gap-3">
+              <Clock className="h-5 w-5 text-gold-300" />
+              <span>24/7 Support Available</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Shield className="h-5 w-5 text-gold-300" />
+              <span>Secure & Confidential</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Award className="h-5 w-5 text-gold-300" />
+              <span>Expert Specialists</span>
+            </div>
           </div>
         </div>
       </section>
