@@ -138,7 +138,7 @@ const mockCars: Car[] = [
     fuel: "Gas",
     transmission: "Automatic",
     description:
-      "Luxury SUV with exceptional off-road capability and refined on-road manners.",
+      "Luxury SUV with exceptional off-road capability and refined on-road manners. Features advanced Terrain Response 2 system, air suspension with adaptive dynamics, and premium Meridian sound system for the ultimate luxury adventure vehicle experience.",
     images: [
       "https://images.pexels.com/photos/1005617/pexels-photo-1005617.jpeg",
       "https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg",
