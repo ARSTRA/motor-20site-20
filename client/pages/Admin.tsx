@@ -2714,6 +2714,169 @@ export default function Admin() {
                   </div>
                 </DialogContent>
               </Dialog>
+
+              {/* Record Payment Dialog */}
+              <Dialog open={recordPaymentDialog} onOpenChange={setRecordPaymentDialog}>
+                <DialogContent className="sm:max-w-2xl">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Plus className="h-5 w-5 text-sunset-600" />
+                      Record New Payment
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="paymentCustomerName">Customer Name *</Label>
+                        <Input
+                          id="paymentCustomerName"
+                          value={recordPaymentForm.customerName}
+                          onChange={(e) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              customerName: e.target.value,
+                            })
+                          }
+                          placeholder="Enter customer name"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="paymentCustomerId">Customer ID</Label>
+                        <Input
+                          id="paymentCustomerId"
+                          value={recordPaymentForm.customerId}
+                          onChange={(e) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              customerId: e.target.value,
+                            })
+                          }
+                          placeholder="Optional customer ID"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="paymentAmount">Amount *</Label>
+                        <Input
+                          id="paymentAmount"
+                          type="number"
+                          value={recordPaymentForm.amount}
+                          onChange={(e) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              amount: e.target.value,
+                            })
+                          }
+                          placeholder="0.00"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="paymentType">Payment Type</Label>
+                        <Select
+                          value={recordPaymentForm.type}
+                          onValueChange={(value) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              type: value,
+                            })
+                          }
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="purchase">Purchase</SelectItem>
+                            <SelectItem value="financing">Financing</SelectItem>
+                            <SelectItem value="deposit">Deposit</SelectItem>
+                            <SelectItem value="refund">Refund</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="paymentMethod">Payment Method</Label>
+                        <Select
+                          value={recordPaymentForm.method}
+                          onValueChange={(value) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              method: value,
+                            })
+                          }
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="credit_card">Credit Card</SelectItem>
+                            <SelectItem value="bank_transfer">Bank Transfer</SelectItem>
+                            <SelectItem value="cash">Cash</SelectItem>
+                            <SelectItem value="check">Check</SelectItem>
+                            <SelectItem value="crypto">Cryptocurrency</SelectItem>
+                            <SelectItem value="digital_wallet">Digital Wallet</SelectItem>
+                            <SelectItem value="apple_pay">Apple Pay</SelectItem>
+                            <SelectItem value="google_pay">Google Pay</SelectItem>
+                            <SelectItem value="paypal">PayPal</SelectItem>
+                            <SelectItem value="zelle">Zelle</SelectItem>
+                            <SelectItem value="cashapp">Cash App</SelectItem>
+                            <SelectItem value="venmo">Venmo</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label htmlFor="paymentVehicleId">Vehicle ID</Label>
+                        <Input
+                          id="paymentVehicleId"
+                          value={recordPaymentForm.vehicleId}
+                          onChange={(e) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              vehicleId: e.target.value,
+                            })
+                          }
+                          placeholder="Optional vehicle ID"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="paymentVehicleName">Vehicle Details</Label>
+                      <Input
+                        id="paymentVehicleName"
+                        value={recordPaymentForm.vehicleName}
+                        onChange={(e) =>
+                          setRecordPaymentForm({
+                            ...recordPaymentForm,
+                            vehicleName: e.target.value,
+                          })
+                        }
+                        placeholder="e.g., 2024 BMW X5 M Competition"
+                      />
+                    </div>
+
+                    <div className="flex gap-3 pt-4">
+                      <Button
+                        variant="outline"
+                        className="flex-1"
+                        onClick={() => setRecordPaymentDialog(false)}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        className="flex-1 bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600"
+                        onClick={handleRecordPayment}
+                        disabled={isLoading}
+                      >
+                        {isLoading ? "Recording..." : "Record Payment"}
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </TabsContent>
           </Tabs>
         </div>
