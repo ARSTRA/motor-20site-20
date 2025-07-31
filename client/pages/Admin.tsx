@@ -73,6 +73,10 @@ import {
   FileText,
   PieChart,
   LineChart,
+  Smartphone,
+  Coins,
+  Building2,
+  Banknote,
 } from "lucide-react";
 
 // Admin Authentication
