@@ -1500,7 +1500,7 @@ export default function Admin() {
                   <Button
                     variant="outline"
                     onClick={() => setPaymentMethodsDialog(true)}
-                    className="border-ocean-200 text-ocean-600 hover:bg-ocean-50"
+                    className="border-ocean-200 text-ocean-600 hover:bg-ocean-50 hover:border-ocean-300 transition-all duration-300 shadow-sm hover:shadow-md"
                   >
                     <Settings className="h-4 w-4 mr-2" />
                     Payment Methods
