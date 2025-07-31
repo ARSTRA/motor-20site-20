@@ -327,57 +327,162 @@ export default function About() {
         </section>
 
         {/* Our Story Section */}
-        <section id="story-section" className="py-24 bg-white scroll-mt-20">
+        <section id="story-section" className="py-24 bg-gradient-to-br from-white via-ocean-50/30 to-forest-50/30 scroll-mt-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
-              <Badge className="mb-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-4 py-2">
-                Our Journey
+              <Badge className="mb-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-6 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <span className="flex items-center gap-2">
+                  <span className="text-2xl">🏔️</span>
+                  Our Journey
+                </span>
               </Badge>
-              <h2 className="text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 A Legacy of
                 <span className="bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent">
                   {" "}
                   Excellence
                 </span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Founded in the scenic mountains of California, Alpine Motors
-                began as a dream to create an automotive experience that
-                combines luxury, adventure, and uncompromising quality.
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                🚗 Founded in the scenic mountains of California, Alpine Motors began as a dream to create an automotive experience that combines luxury, adventure, and uncompromising quality. We've built more than a dealership - we've created a destination where automotive dreams come to life.
               </p>
             </div>
 
+            {/* Enhanced Story Grid with Multiple Images */}
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-              <div className="relative group">
-                <img
-                  src="https://images.pexels.com/photos/331988/pexels-photo-331988.jpeg"
-                  alt="Alpine Motors historical founding"
-                  className="w-full h-96 object-cover rounded-3xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="space-y-6">
+                {/* Main Story Image */}
+                <div className="relative group">
+                  <img
+                    src="https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg"
+                    alt="Alpine Motors luxury showroom and founding story"
+                    className="w-full h-96 object-cover rounded-3xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
+                      <p className="font-semibold">Our Premium Showroom</p>
+                      <p className="text-sm">Where luxury meets excellence</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Secondary Images Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative group">
+                    <img
+                      src="https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg"
+                      alt="Customer service excellence"
+                      className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ocean-500/60 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                      <p className="text-white font-medium p-3 text-sm">Customer First Approach</p>
+                    </div>
+                  </div>
+                  <div className="relative group">
+                    <img
+                      src="https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg"
+                      alt="Advanced automotive technology"
+                      className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/60 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                      <p className="text-white font-medium p-3 text-sm">Innovation & Technology</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+
+              <div className="space-y-8">
+                <h3 className="text-4xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-ocean-700 to-forest-700 bg-clip-text text-transparent">
                   The Alpine Motors Story
                 </h3>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  What started as a small family dealership has evolved into a
-                  premier destination for luxury vehicle enthusiasts. Our
-                  founder, Michael Rodriguez, envisioned a place where customers
-                  could experience the finest automobiles against the backdrop
-                  of nature's grandeur.
-                </p>
-                <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                  Today, we're proud to represent the world's most prestigious
-                  automotive brands, offering not just vehicles, but gateways to
-                  extraordinary adventures. Every car we sell comes with our
-                  promise of excellence and a commitment to your driving dreams.
-                </p>
-                <div className="flex gap-4">
-                  <CheckCircle className="h-6 w-6 text-forest-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700">
-                    25+ years of automotive excellence and innovation
-                  </span>
+
+                {/* Story Cards */}
+                <div className="space-y-6">
+                  <Card className="bg-gradient-to-r from-ocean-50 to-forest-50 border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="bg-gradient-to-r from-ocean-500 to-forest-500 p-2 rounded-full">
+                          <Star className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900 mb-2">The Beginning (1998)</h4>
+                          <p className="text-gray-700 leading-relaxed">
+                            What started as a small family dealership has evolved into a premier destination for luxury vehicle enthusiasts. Our founder, Michael Rodriguez, envisioned a place where customers could experience the finest automobiles against the backdrop of nature's grandeur.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-gradient-to-r from-sunset-50 to-gold-50 border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="bg-gradient-to-r from-sunset-500 to-gold-500 p-2 rounded-full">
+                          <Trophy className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900 mb-2">Our Mission Today</h4>
+                          <p className="text-gray-700 leading-relaxed">
+                            Today, we're proud to represent the world's most prestigious automotive brands, offering not just vehicles, but gateways to extraordinary adventures. Every car we sell comes with our promise of excellence and a commitment to your driving dreams.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-gradient-to-r from-forest-50 to-ocean-50 border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="bg-gradient-to-r from-forest-500 to-ocean-500 p-2 rounded-full">
+                          <Heart className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900 mb-2">Our Promise</h4>
+                          <p className="text-gray-700 leading-relaxed">
+                            We believe every customer deserves an extraordinary experience. From the moment you walk into our showroom to years after your purchase, we're committed to exceeding your expectations with personalized service, transparent dealings, and unwavering support.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                  <Button
+                    asChild
+                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  >
+                    <Link to="/inventory">
+                      <Car className="h-5 w-5 mr-2" />
+                      Explore Our Collection
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  >
+                    <Link to="/contact">
+                      <MapPin className="h-5 w-5 mr-2" />
+                      Schedule a Visit
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Achievement Highlights */}
+                <div className="grid grid-cols-2 gap-4 pt-6">
+                  <div className="text-center p-4 bg-gradient-to-br from-ocean-50 to-forest-50 rounded-xl">
+                    <CheckCircle className="h-8 w-8 text-forest-500 mx-auto mb-2" />
+                    <p className="font-bold text-2xl text-gray-900">25+</p>
+                    <p className="text-sm text-gray-600">Years of Excellence</p>
+                  </div>
+                  <div className="text-center p-4 bg-gradient-to-br from-sunset-50 to-gold-50 rounded-xl">
+                    <Users className="h-8 w-8 text-sunset-500 mx-auto mb-2" />
+                    <p className="font-bold text-2xl text-gray-900">50K+</p>
+                    <p className="text-sm text-gray-600">Happy Customers</p>
+                  </div>
                 </div>
               </div>
             </div>
