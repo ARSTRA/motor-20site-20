@@ -289,6 +289,51 @@ export default function Admin() {
     },
   ]);
 
+  const [adminUsers, setAdminUsers] = useState(ADMIN_CREDENTIALS);
+
+  const [activityLogs] = useState([
+    {
+      id: 1,
+      action: "User Login",
+      user: "Michael Rodriguez",
+      timestamp: "2024-01-22T14:30:00Z",
+      details: "Super admin login from IP: 192.168.1.100",
+      type: "success",
+    },
+    {
+      id: 2,
+      action: "Vehicle Added",
+      user: "Sarah Chen",
+      timestamp: "2024-01-22T13:15:00Z",
+      details: "Added 2024 BMW X7 to inventory",
+      type: "info",
+    },
+    {
+      id: 3,
+      action: "Payment Processed",
+      user: "David Johnson",
+      timestamp: "2024-01-22T11:45:00Z",
+      details: "Processed $125,000 payment for Mercedes S-Class",
+      type: "success",
+    },
+    {
+      id: 4,
+      action: "Failed Login Attempt",
+      user: "Unknown",
+      timestamp: "2024-01-22T09:20:00Z",
+      details: "Failed login attempt from IP: 203.0.113.45",
+      type: "warning",
+    },
+    {
+      id: 5,
+      action: "Customer Data Export",
+      user: "Michael Rodriguez",
+      timestamp: "2024-01-21T16:00:00Z",
+      details: "Exported customer database (1,247 records)",
+      type: "info",
+    },
+  ]);
+
   // Check if admin is already logged in
   useEffect(() => {
     const storedAdmin = localStorage.getItem("alpine_admin");
