@@ -43,24 +43,8 @@ const App = () => (
             <Route path="/financing" element={<Financing />} />
             <Route path="/trade-in" element={<TradeIn />} />
             <Route path="/category/:category" element={<CategoryPage />} />
-            <Route
-              path="/car/:id"
-              element={
-                <PlaceholderPage
-                  title="Vehicle Details"
-                  description="Detailed information about this specific vehicle."
-                />
-              }
-            />
-            <Route
-              path="/vehicle/:id"
-              element={
-                <PlaceholderPage
-                  title="Vehicle Details"
-                  description="Detailed information about this specific vehicle."
-                />
-              }
-            />
+            <Route path="/car/:id" element={<VehicleDetail />} />
+            <Route path="/vehicle/:id" element={<VehicleDetail />} />
             <Route
               path="/privacy"
               element={
