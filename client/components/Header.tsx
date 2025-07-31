@@ -405,16 +405,7 @@ export default function Header() {
                     Get Started
                   </Button>
                 </Link>
-                <Link to="/admin">
-                  <Button
-                    variant="ghost"
-                    className="hidden lg:flex items-center gap-2 text-gray-500 hover:text-ocean-600 hover:bg-ocean-50 px-3 py-2 rounded-lg transition-all duration-300 text-sm"
-                    title="Admin Portal"
-                  >
-                    <Shield className="h-4 w-4" />
-                    <span className="text-xs">Admin</span>
-                  </Button>
-                </Link>
+
               </>
             )}
             <Button
