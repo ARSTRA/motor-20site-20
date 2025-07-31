@@ -64,13 +64,8 @@ export default function Financing() {
 
   const [showResults, setShowResults] = useState(false);
 
-  // Auto-calculate when values change
-  useEffect(() => {
-    calculatePayment();
-  }, [loanAmount, downPayment, loanTerm, creditScore]);
-
   // Calculate monthly payment
-  const calculatePayment = () => {
+  const calculatePayment = useCallback(() => {
     const principal = loanAmount[0] - downPayment[0];
     const months = loanTerm[0];
 
@@ -89,7 +84,12 @@ export default function Financing() {
       (Math.pow(1 + monthlyRate, months) - 1);
 
     setMonthlyPayment(Math.round(payment));
-  };
+  }, [loanAmount, downPayment, loanTerm, creditScore]);
+
+  // Auto-calculate when values change
+  useEffect(() => {
+    calculatePayment();
+  }, [calculatePayment]);
 
   const handlePreApprovalSubmit = (e: React.FormEvent) => {
     e.preventDefault();
