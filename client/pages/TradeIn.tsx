@@ -86,21 +86,33 @@ const testimonials = [
     location: "Beverly Hills, CA",
     rating: 5,
     comment: "They offered $3,000 more than the other dealership! The process was seamless and professional.",
-    vehicle: "2019 BMW X5"
+    vehicle: "2019 BMW X5",
+    image: "https://images.pexels.com/photos/9052276/pexels-photo-9052276.jpeg",
+    role: "Business Executive",
+    gradient: "from-ocean-500 to-forest-500",
+    accent: "ocean"
   },
   {
     name: "Michael Chen",
     location: "Manhattan, NY",
     rating: 5,
     comment: "Incredible service. Got my appraisal in 25 minutes and walked out with cash the same day.",
-    vehicle: "2020 Mercedes S-Class"
+    vehicle: "2020 Mercedes S-Class",
+    image: "https://images.pexels.com/photos/12437056/pexels-photo-12437056.jpeg",
+    role: "Investment Manager",
+    gradient: "from-forest-500 to-gold-500",
+    accent: "forest"
   },
   {
     name: "Jennifer Rodriguez",
     location: "Miami, FL",
     rating: 5,
     comment: "Fair pricing, no pressure, and they handled all the paperwork. Highly recommend!",
-    vehicle: "2021 Tesla Model S"
+    vehicle: "2021 Tesla Model S",
+    image: "https://images.pexels.com/photos/33227416/pexels-photo-33227416.jpeg",
+    role: "Marketing Director",
+    gradient: "from-gold-500 to-sunset-500",
+    accent: "sunset"
   }
 ];
 
