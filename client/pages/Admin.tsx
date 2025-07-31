@@ -1493,7 +1493,11 @@ export default function Admin() {
                   Payment Management
                 </h2>
                 <div className="flex gap-3">
-                  <Button variant="outline">
+                  <Button
+                    variant="outline"
+                    onClick={handleExportPaymentReport}
+                    className="border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all duration-300"
+                  >
                     <Download className="h-4 w-4 mr-2" />
                     Export Report
                   </Button>
