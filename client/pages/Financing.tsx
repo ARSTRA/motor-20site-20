@@ -566,7 +566,19 @@ export default function Financing() {
                       </AlertDescription>
                     </Alert>
 
-                    <Button className="w-full bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600 text-white font-bold py-3 rounded-xl">
+                    <Button
+                      onClick={() => {
+                        // Scroll to pre-approval form
+                        const preApprovalSection = document.querySelector('[class*="pre-approval"], [class*="Pre-Approval"]');
+                        if (preApprovalSection) {
+                          preApprovalSection.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                          // Fallback alert
+                          alert(`Pre-Approval Available!\n\nEstimated Monthly Payment: $${monthlyPayment}\n\nScroll down to complete your pre-approval application.`);
+                        }
+                      }}
+                      className="w-full bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600 text-white font-bold py-3 rounded-xl"
+                    >
                       Get Pre-Approved for This Amount
                     </Button>
                   </div>
@@ -635,9 +647,11 @@ export default function Financing() {
                       </div>
                     ))}
                   </div>
-                  <Button className="w-full mt-6 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-xl">
-                    Learn More
-                  </Button>
+                  <Link to="/contact">
+                    <Button className="w-full mt-6 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-xl">
+                      Learn More
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
