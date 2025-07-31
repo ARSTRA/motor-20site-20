@@ -40,29 +40,52 @@ const PremiumAutoLogo = () => (
         </div>
 
         {/* Professional Alpine Motors Logo SVG */}
-        <svg width="64" height="64" viewBox="0 0 64 64" className="relative z-10">
+        <svg
+          width="64"
+          height="64"
+          viewBox="0 0 64 64"
+          className="relative z-10"
+        >
           <defs>
-            <linearGradient id="alpineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="alpineGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#0ea5e9" />
               <stop offset="30%" stopColor="#22c55e" />
               <stop offset="60%" stopColor="#f97316" />
               <stop offset="100%" stopColor="#facc15" />
             </linearGradient>
-            <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="mountainGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#1f2937" />
               <stop offset="50%" stopColor="#374151" />
               <stop offset="100%" stopColor="#4b5563" />
             </linearGradient>
-            <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="carGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#ffffff" />
               <stop offset="50%" stopColor="#f8fafc" />
               <stop offset="100%" stopColor="#e2e8f0" />
             </linearGradient>
             <filter id="glow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
           </defs>
@@ -118,7 +141,14 @@ const PremiumAutoLogo = () => (
             <circle cx="4" cy="12" r="1" fill="#6b7280" />
             <circle cx="14" cy="12" r="1" fill="#6b7280" />
             {/* Car Details */}
-            <rect x="7" y="9" width="4" height="1" fill="#1e293b" opacity="0.5" />
+            <rect
+              x="7"
+              y="9"
+              width="4"
+              height="1"
+              fill="#1e293b"
+              opacity="0.5"
+            />
           </g>
 
           {/* Alpine "A" Monogram in Center */}
@@ -132,8 +162,14 @@ const PremiumAutoLogo = () => (
 
           {/* Luxury Brand Elements - Decorative Corners */}
           <g opacity="0.6">
-            <path d="M8 8 L12 8 L12 10 L10 10 L10 12 L8 12 Z" fill="url(#alpineGradient)" />
-            <path d="M52 8 L56 8 L56 12 L54 12 L54 10 L52 10 Z" fill="url(#alpineGradient)" />
+            <path
+              d="M8 8 L12 8 L12 10 L10 10 L10 12 L8 12 Z"
+              fill="url(#alpineGradient)"
+            />
+            <path
+              d="M52 8 L56 8 L56 12 L54 12 L54 10 L52 10 Z"
+              fill="url(#alpineGradient)"
+            />
           </g>
 
           {/* Professional Shine Effects */}

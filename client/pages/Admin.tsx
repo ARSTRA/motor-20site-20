@@ -458,7 +458,7 @@ export default function Admin() {
                 <div className="flex flex-col gap-3">
                   <Button
                     variant="outline"
-                    onClick={() => navigate('/login')}
+                    onClick={() => navigate("/login")}
                     className="w-full border-ocean-200 text-ocean-600 hover:bg-ocean-50 hover:text-ocean-700 transition-all duration-300"
                   >
                     <Users className="h-4 w-4 mr-2" />
@@ -466,7 +466,7 @@ export default function Admin() {
                   </Button>
                   <Button
                     variant="outline"
-                    onClick={() => navigate('/register')}
+                    onClick={() => navigate("/register")}
                     className="w-full border-forest-200 text-forest-600 hover:bg-forest-50 hover:text-forest-700 transition-all duration-300"
                   >
                     <UserPlus className="h-4 w-4 mr-2" />
@@ -476,7 +476,7 @@ export default function Admin() {
                 <div className="mt-3 text-center">
                   <Button
                     variant="ghost"
-                    onClick={() => navigate('/')}
+                    onClick={() => navigate("/")}
                     className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
                   >
                     ← Back to Main Website

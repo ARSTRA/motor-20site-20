@@ -89,50 +89,74 @@ export default function Contact() {
     {
       icon: <Phone className="h-8 w-8" />,
       title: "Call Our Experts",
-      description: "Speak directly with our certified luxury automotive specialists for immediate assistance and expert guidance",
+      description:
+        "Speak directly with our certified luxury automotive specialists for immediate assistance and expert guidance",
       contact: "(555) 123-4567",
       hours: "Mon-Fri: 8AM-8PM | Sat-Sun: 9AM-7PM",
       color: "from-ocean-500 to-ocean-600",
       action: "Call Now",
-      image: "https://images.pexels.com/photos/7689884/pexels-photo-7689884.jpeg",
-      bgImage: "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
-      features: ["Certified Specialists", "Immediate Assistance", "Professional Consultation"]
+      image:
+        "https://images.pexels.com/photos/7689884/pexels-photo-7689884.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
+      features: [
+        "Certified Specialists",
+        "Immediate Assistance",
+        "Professional Consultation",
+      ],
     },
     {
       icon: <Mail className="h-8 w-8" />,
       title: "Email Support",
-      description: "Send detailed inquiries and receive comprehensive responses from our expert automotive consultants",
+      description:
+        "Send detailed inquiries and receive comprehensive responses from our expert automotive consultants",
       contact: "info@alpinemotors.com",
       hours: "24/7 Response Within 2 Hours",
       color: "from-forest-500 to-forest-600",
       action: "Send Email",
-      image: "https://images.pexels.com/photos/7223036/pexels-photo-7223036.jpeg",
-      bgImage: "https://images.pexels.com/photos/5699479/pexels-photo-5699479.jpeg",
-      features: ["Detailed Responses", "Expert Analysis", "Personalized Recommendations"]
+      image:
+        "https://images.pexels.com/photos/7223036/pexels-photo-7223036.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/5699479/pexels-photo-5699479.jpeg",
+      features: [
+        "Detailed Responses",
+        "Expert Analysis",
+        "Personalized Recommendations",
+      ],
     },
     {
       icon: <MessageSquare className="h-8 w-8" />,
       title: "Live Chat",
-      description: "Connect instantly with our knowledgeable luxury automotive specialists for real-time assistance",
+      description:
+        "Connect instantly with our knowledgeable luxury automotive specialists for real-time assistance",
       contact: "Available Now",
       hours: "9AM-9PM Daily",
       color: "from-sunset-500 to-sunset-600",
       action: "Start Chat",
-      image: "https://images.pexels.com/photos/7689884/pexels-photo-7689884.jpeg",
-      bgImage: "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
-      features: ["Instant Response", "Real-time Support", "Live Consultation"]
+      image:
+        "https://images.pexels.com/photos/7689884/pexels-photo-7689884.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg",
+      features: ["Instant Response", "Real-time Support", "Live Consultation"],
     },
     {
       icon: <MapPin className="h-8 w-8" />,
       title: "Visit Our Showroom",
-      description: "Experience our luxury collection in our state-of-the-art Mountain View facility with expert guidance",
+      description:
+        "Experience our luxury collection in our state-of-the-art Mountain View facility with expert guidance",
       contact: "123 Alpine Way, Mountain View, CA",
       hours: "Open 7 Days a Week",
       color: "from-gold-500 to-gold-600",
       action: "Get Directions",
-      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
-      bgImage: "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg",
-      features: ["Private Consultation", "Test Drive Experience", "Luxury Environment"]
+      image:
+        "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg",
+      features: [
+        "Private Consultation",
+        "Test Drive Experience",
+        "Luxury Environment",
+      ],
     },
   ];
 
@@ -141,53 +165,81 @@ export default function Contact() {
       name: "Sarah Johnson",
       title: "Senior Luxury Vehicle Specialist",
       specialty: "Sports Cars & High-Performance Vehicles",
-      image: "https://images.pexels.com/photos/7693223/pexels-photo-7693223.jpeg",
+      image:
+        "https://images.pexels.com/photos/7693223/pexels-photo-7693223.jpeg",
       phone: "(555) 123-4567 ext. 101",
       email: "sarah.johnson@alpinemotors.com",
       languages: ["English", "Spanish"],
       experience: "12+ Years",
-      expertiseImage: "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg",
-      description: "Specializing in exotic sports cars and performance vehicles, Sarah helps discerning clients find their perfect high-performance machine.",
-      achievements: ["Top Sales Performer", "Porsche Certified", "Ferrari Specialist"],
+      expertiseImage:
+        "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg",
+      description:
+        "Specializing in exotic sports cars and performance vehicles, Sarah helps discerning clients find their perfect high-performance machine.",
+      achievements: [
+        "Top Sales Performer",
+        "Porsche Certified",
+        "Ferrari Specialist",
+      ],
     },
     {
       name: "Michael Chen",
       title: "Director of Financial Services",
       specialty: "Automotive Financing & Investment Solutions",
-      image: "https://images.pexels.com/photos/33100454/pexels-photo-33100454.jpeg",
+      image:
+        "https://images.pexels.com/photos/33100454/pexels-photo-33100454.jpeg",
       phone: "(555) 123-4567 ext. 102",
       email: "michael.chen@alpinemotors.com",
       languages: ["English", "Mandarin", "Cantonese"],
       experience: "15+ Years",
-      expertiseImage: "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg",
-      description: "Expert in luxury vehicle financing with access to exclusive rates and lease programs for high-net-worth individuals.",
-      achievements: ["Financial Services Excellence", "Certified Financial Planner", "Luxury Auto Finance Expert"],
+      expertiseImage:
+        "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg",
+      description:
+        "Expert in luxury vehicle financing with access to exclusive rates and lease programs for high-net-worth individuals.",
+      achievements: [
+        "Financial Services Excellence",
+        "Certified Financial Planner",
+        "Luxury Auto Finance Expert",
+      ],
     },
     {
       name: "Amanda Rodriguez",
       title: "Luxury Experience Manager",
       specialty: "Premium SUVs & Family Luxury Vehicles",
-      image: "https://images.pexels.com/photos/7693223/pexels-photo-7693223.jpeg",
+      image:
+        "https://images.pexels.com/photos/7693223/pexels-photo-7693223.jpeg",
       phone: "(555) 123-4567 ext. 103",
       email: "amanda.rodriguez@alpinemotors.com",
       languages: ["English", "Spanish", "French"],
       experience: "10+ Years",
-      expertiseImage: "https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg",
-      description: "Curating exceptional experiences for families seeking luxury, safety, and sophistication in their vehicle choice.",
-      achievements: ["Customer Excellence Award", "Range Rover Certified", "Family Vehicle Specialist"],
+      expertiseImage:
+        "https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg",
+      description:
+        "Curating exceptional experiences for families seeking luxury, safety, and sophistication in their vehicle choice.",
+      achievements: [
+        "Customer Excellence Award",
+        "Range Rover Certified",
+        "Family Vehicle Specialist",
+      ],
     },
     {
       name: "David Thompson",
       title: "Master Service Advisor",
       specialty: "Precision Care & Maintenance Excellence",
-      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
+      image:
+        "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
       phone: "(555) 123-4567 ext. 104",
       email: "david.thompson@alpinemotors.com",
       languages: ["English", "Italian"],
       experience: "18+ Years",
-      expertiseImage: "https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg",
-      description: "Master technician ensuring your luxury investment receives the meticulous care and attention it deserves.",
-      achievements: ["ASE Master Technician", "BMW Master Certified", "Mercedes-Benz Expert"],
+      expertiseImage:
+        "https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg",
+      description:
+        "Master technician ensuring your luxury investment receives the meticulous care and attention it deserves.",
+      achievements: [
+        "ASE Master Technician",
+        "BMW Master Certified",
+        "Mercedes-Benz Expert",
+      ],
     },
   ];
 
@@ -254,9 +306,7 @@ export default function Contact() {
                 <Headphones className="h-20 w-20 text-white mx-auto" />
               </div>
             </div>
-            <Badge
-              className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/40 px-8 py-4 text-xl font-bold shadow-2xl backdrop-blur-sm"
-            >
+            <Badge className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/40 px-8 py-4 text-xl font-bold shadow-2xl backdrop-blur-sm">
               <Sparkles className="h-5 w-5 mr-2" />
               Premium Customer Service Excellence
             </Badge>
@@ -267,8 +317,10 @@ export default function Contact() {
               </span>
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-12 max-w-5xl mx-auto leading-relaxed drop-shadow-lg">
-              Whether you're seeking your dream luxury vehicle, require expert financing guidance, or need specialized service support, 
-              our dedicated team of certified professionals delivers personalized excellence at every touchpoint of your automotive journey.
+              Whether you're seeking your dream luxury vehicle, require expert
+              financing guidance, or need specialized service support, our
+              dedicated team of certified professionals delivers personalized
+              excellence at every touchpoint of your automotive journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
               <div className="relative group">
@@ -315,8 +367,12 @@ export default function Contact() {
                     &lt; 2hr
                   </div>
                 </div>
-                <div className="text-ocean-100 font-semibold">Expert Response Time</div>
-                <div className="text-xs text-white/70 mt-1">Guaranteed during business hours</div>
+                <div className="text-ocean-100 font-semibold">
+                  Expert Response Time
+                </div>
+                <div className="text-xs text-white/70 mt-1">
+                  Guaranteed during business hours
+                </div>
               </div>
 
               <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
@@ -328,8 +384,12 @@ export default function Contact() {
                     24/7
                   </div>
                 </div>
-                <div className="text-ocean-100 font-semibold">Premium Support</div>
-                <div className="text-xs text-white/70 mt-1">Always available when you need us</div>
+                <div className="text-ocean-100 font-semibold">
+                  Premium Support
+                </div>
+                <div className="text-xs text-white/70 mt-1">
+                  Always available when you need us
+                </div>
               </div>
 
               <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
@@ -337,10 +397,16 @@ export default function Contact() {
                   <div className="bg-gradient-to-r from-sunset-400 to-gold-400 rounded-full p-2">
                     <Star className="h-5 w-5 text-white" />
                   </div>
-                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">5★</div>
+                  <div className="text-4xl font-bold text-gold-300 group-hover:text-gold-200 transition-colors duration-300">
+                    5★
+                  </div>
                 </div>
-                <div className="text-ocean-100 font-semibold">Customer Excellence</div>
-                <div className="text-xs text-white/70 mt-1">Consistently rated by clients</div>
+                <div className="text-ocean-100 font-semibold">
+                  Customer Excellence
+                </div>
+                <div className="text-xs text-white/70 mt-1">
+                  Consistently rated by clients
+                </div>
               </div>
             </div>
           </div>
@@ -351,17 +417,16 @@ export default function Contact() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge
-              className="mb-6 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-6 py-3 text-lg font-semibold shadow-lg"
-            >
+            <Badge className="mb-6 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
               Professional Contact Options
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent mb-6">
               How Would You Prefer to Connect?
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Choose your preferred communication method and connect with our certified specialists who are ready to provide 
-              personalized service tailored to your luxury automotive needs.
+              Choose your preferred communication method and connect with our
+              certified specialists who are ready to provide personalized
+              service tailored to your luxury automotive needs.
             </p>
           </div>
 
@@ -379,7 +444,7 @@ export default function Contact() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                  
+
                   {/* Professional Portrait */}
                   <div className="absolute top-4 right-4 w-16 h-16 rounded-full overflow-hidden border-4 border-white/80 shadow-lg">
                     <img
@@ -391,7 +456,9 @@ export default function Contact() {
 
                   {/* Contact Method Icon */}
                   <div className="absolute top-4 left-4">
-                    <div className={`bg-gradient-to-r ${method.color} rounded-full p-3 shadow-lg`}>
+                    <div
+                      className={`bg-gradient-to-r ${method.color} rounded-full p-3 shadow-lg`}
+                    >
                       {method.icon}
                     </div>
                   </div>
@@ -408,21 +475,30 @@ export default function Contact() {
                   <p className="text-gray-700 mb-6 leading-relaxed text-lg">
                     {method.description}
                   </p>
-                  
+
                   <div className="space-y-4 mb-6">
                     <div className="bg-gradient-to-r from-gray-50 to-ocean-50 rounded-xl p-4">
                       <div className="text-xl font-bold text-gray-900 mb-1">
                         {method.contact}
                       </div>
-                      <div className="text-sm text-gray-600 font-medium mb-3">{method.hours}</div>
+                      <div className="text-sm text-gray-600 font-medium mb-3">
+                        {method.hours}
+                      </div>
 
                       {/* Expert Features */}
                       <div className="space-y-2">
-                        <div className="text-sm font-semibold text-gray-800 mb-2">Expert Services:</div>
+                        <div className="text-sm font-semibold text-gray-800 mb-2">
+                          Expert Services:
+                        </div>
                         {method.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center gap-2">
+                          <div
+                            key={featureIndex}
+                            className="flex items-center gap-2"
+                          >
                             <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                            <span className="text-sm text-gray-600 font-medium">{feature}</span>
+                            <span className="text-sm text-gray-600 font-medium">
+                              {feature}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -431,15 +507,20 @@ export default function Contact() {
 
                   <Button
                     onClick={() => {
-                      if (method.action === 'Call Now') {
-                        window.open('tel:+15551234567', '_self');
-                      } else if (method.action === 'Send Email') {
-                        window.open('mailto:info@alpinemotors.com', '_self');
-                      } else if (method.action === 'Get Directions') {
-                        window.open('https://maps.google.com/maps?q=123+Alpine+Drive,+Mountain+View,+CA', '_blank');
+                      if (method.action === "Call Now") {
+                        window.open("tel:+15551234567", "_self");
+                      } else if (method.action === "Send Email") {
+                        window.open("mailto:info@alpinemotors.com", "_self");
+                      } else if (method.action === "Get Directions") {
+                        window.open(
+                          "https://maps.google.com/maps?q=123+Alpine+Drive,+Mountain+View,+CA",
+                          "_blank",
+                        );
                       } else {
                         // For live chat or other actions
-                        alert(`${method.action} feature will be available soon. Please call us at (555) 123-4567 for immediate assistance.`);
+                        alert(
+                          `${method.action} feature will be available soon. Please call us at (555) 123-4567 for immediate assistance.`,
+                        );
                       }
                     }}
                     className={`w-full bg-gradient-to-r ${method.color} hover:shadow-xl text-white font-bold py-4 rounded-xl text-lg transform hover:scale-105 transition-all duration-300`}
@@ -460,17 +541,17 @@ export default function Contact() {
       <section className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge
-              className="mb-6 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-6 py-3 text-lg font-semibold shadow-lg"
-            >
+            <Badge className="mb-6 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
               Meet Our Expert Team
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-sunset-600 via-gold-600 to-ocean-600 bg-clip-text text-transparent mb-6">
               Your Dedicated Automotive Professionals
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Our certified specialists bring decades of combined experience in luxury automotive sales, financing, and service excellence. 
-              Each team member is committed to delivering personalized attention and expert guidance throughout your journey.
+              Our certified specialists bring decades of combined experience in
+              luxury automotive sales, financing, and service excellence. Each
+              team member is committed to delivering personalized attention and
+              expert guidance throughout your journey.
             </p>
           </div>
 
@@ -489,7 +570,7 @@ export default function Contact() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                    
+
                     {/* Professional Portrait */}
                     <div className="absolute bottom-4 left-4 w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-xl">
                       <img
@@ -497,7 +578,8 @@ export default function Contact() {
                         alt={specialist.name}
                         className="w-full h-full object-cover"
                         onError={(e) => {
-                          e.currentTarget.src = 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg';
+                          e.currentTarget.src =
+                            "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg";
                         }}
                       />
                     </div>
@@ -515,9 +597,7 @@ export default function Contact() {
                       <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-sunset-600 transition-colors duration-300">
                         {specialist.name}
                       </h3>
-                      <Badge
-                        className="mb-3 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-4 py-2 text-sm font-semibold"
-                      >
+                      <Badge className="mb-3 bg-gradient-to-r from-ocean-500 to-forest-500 text-white px-4 py-2 text-sm font-semibold">
                         {specialist.title}
                       </Badge>
                       <p className="text-sunset-600 font-semibold text-lg mb-3">
@@ -535,15 +615,17 @@ export default function Contact() {
                         Achievements & Certifications
                       </h4>
                       <div className="flex flex-wrap gap-2">
-                        {specialist.achievements.map((achievement, achIndex) => (
-                          <Badge
-                            key={achIndex}
-                            variant="secondary"
-                            className="text-xs bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700"
-                          >
-                            {achievement}
-                          </Badge>
-                        ))}
+                        {specialist.achievements.map(
+                          (achievement, achIndex) => (
+                            <Badge
+                              key={achIndex}
+                              variant="secondary"
+                              className="text-xs bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700"
+                            >
+                              {achievement}
+                            </Badge>
+                          ),
+                        )}
                       </div>
                     </div>
 
@@ -551,11 +633,15 @@ export default function Contact() {
                     <div className="space-y-3 mb-6">
                       <div className="flex items-center gap-3">
                         <Phone className="h-4 w-4 text-ocean-500" />
-                        <span className="text-gray-700 font-medium">{specialist.phone}</span>
+                        <span className="text-gray-700 font-medium">
+                          {specialist.phone}
+                        </span>
                       </div>
                       <div className="flex items-center gap-3">
                         <Mail className="h-4 w-4 text-forest-500" />
-                        <span className="text-gray-700 text-sm">{specialist.email}</span>
+                        <span className="text-gray-700 text-sm">
+                          {specialist.email}
+                        </span>
                       </div>
                       <div className="flex items-center gap-3">
                         <Globe className="h-4 w-4 text-sunset-500" />
@@ -575,8 +661,13 @@ export default function Contact() {
 
                     <Button
                       onClick={() => {
-                        const specialistEmail = specialist.name.toLowerCase().replace(' ', '.') + '@alpinemotors.com';
-                        window.open(`mailto:${specialistEmail}?subject=Consultation Request&body=Hi ${specialist.name.split(" ")[0]}, I would like to schedule a consultation regarding luxury automotive services.`, '_self');
+                        const specialistEmail =
+                          specialist.name.toLowerCase().replace(" ", ".") +
+                          "@alpinemotors.com";
+                        window.open(
+                          `mailto:${specialistEmail}?subject=Consultation Request&body=Hi ${specialist.name.split(" ")[0]}, I would like to schedule a consultation regarding luxury automotive services.`,
+                          "_self",
+                        );
                       }}
                       className="w-full bg-gradient-to-r from-sunset-500 via-gold-500 to-sunset-500 hover:from-sunset-600 hover:via-gold-600 hover:to-sunset-600 text-white font-bold py-3 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
@@ -597,27 +688,27 @@ export default function Contact() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge
-              className="mb-6 bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-6 py-3 text-lg font-semibold shadow-lg"
-            >
+            <Badge className="mb-6 bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
               Professional Consultation
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-forest-600 via-ocean-600 to-sunset-600 bg-clip-text text-transparent mb-6">
               Tell Us How We Can Serve You
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Share your automotive goals and preferences with our expert team. We'll respond within 2 hours during business hours 
-              with personalized recommendations and next steps tailored to your specific needs.
+              Share your automotive goals and preferences with our expert team.
+              We'll respond within 2 hours during business hours with
+              personalized recommendations and next steps tailored to your
+              specific needs.
             </p>
           </div>
 
           <Card className="shadow-2xl border-2 border-gray-100 rounded-3xl overflow-hidden">
-            <CardHeader 
+            <CardHeader
               className="relative bg-gradient-to-r from-forest-500 to-ocean-500 text-white py-12"
               style={{
                 backgroundImage: `url(https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg)`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-forest-900/80 to-ocean-900/80"></div>
@@ -636,8 +727,9 @@ export default function Contact() {
                     Message Sent Successfully!
                   </h3>
                   <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                    Thank you for contacting Alpine Motors. Our expert team will review your inquiry and respond 
-                    with personalized recommendations within 2 hours during business hours.
+                    Thank you for contacting Alpine Motors. Our expert team will
+                    review your inquiry and respond with personalized
+                    recommendations within 2 hours during business hours.
                   </p>
                   <Button
                     onClick={() => setShowSuccess(false)}
@@ -651,7 +743,12 @@ export default function Contact() {
                   {/* Personal Information */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="firstName" className="text-lg font-semibold text-gray-700">First Name *</Label>
+                      <Label
+                        htmlFor="firstName"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        First Name *
+                      </Label>
                       <Input
                         id="firstName"
                         value={contactForm.firstName}
@@ -666,7 +763,12 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="lastName" className="text-lg font-semibold text-gray-700">Last Name *</Label>
+                      <Label
+                        htmlFor="lastName"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Last Name *
+                      </Label>
                       <Input
                         id="lastName"
                         value={contactForm.lastName}
@@ -684,7 +786,12 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="email" className="text-lg font-semibold text-gray-700">Email Address *</Label>
+                      <Label
+                        htmlFor="email"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Email Address *
+                      </Label>
                       <Input
                         id="email"
                         type="email"
@@ -700,7 +807,12 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="phone" className="text-lg font-semibold text-gray-700">Phone Number</Label>
+                      <Label
+                        htmlFor="phone"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Phone Number
+                      </Label>
                       <Input
                         id="phone"
                         type="tel"
@@ -719,7 +831,12 @@ export default function Contact() {
                   {/* Inquiry Details */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="inquiryType" className="text-lg font-semibold text-gray-700">Type of Inquiry *</Label>
+                      <Label
+                        htmlFor="inquiryType"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Type of Inquiry *
+                      </Label>
                       <Select
                         value={contactForm.inquiryType}
                         onValueChange={(value) =>
@@ -752,7 +869,10 @@ export default function Contact() {
                       </Select>
                     </div>
                     <div>
-                      <Label htmlFor="vehicleInterest" className="text-lg font-semibold text-gray-700">
+                      <Label
+                        htmlFor="vehicleInterest"
+                        className="text-lg font-semibold text-gray-700"
+                      >
                         Vehicle of Interest
                       </Label>
                       <Input
@@ -773,7 +893,12 @@ export default function Contact() {
                   {/* Preferred Contact Time */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="preferredDate" className="text-lg font-semibold text-gray-700">Preferred Date</Label>
+                      <Label
+                        htmlFor="preferredDate"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Preferred Date
+                      </Label>
                       <Input
                         id="preferredDate"
                         type="date"
@@ -788,7 +913,12 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="preferredTime" className="text-lg font-semibold text-gray-700">Preferred Time</Label>
+                      <Label
+                        htmlFor="preferredTime"
+                        className="text-lg font-semibold text-gray-700"
+                      >
+                        Preferred Time
+                      </Label>
                       <Select
                         value={contactForm.preferredTime}
                         onValueChange={(value) =>
@@ -820,7 +950,12 @@ export default function Contact() {
 
                   {/* Message */}
                   <div>
-                    <Label htmlFor="message" className="text-lg font-semibold text-gray-700">Detailed Message *</Label>
+                    <Label
+                      htmlFor="message"
+                      className="text-lg font-semibold text-gray-700"
+                    >
+                      Detailed Message *
+                    </Label>
                     <Textarea
                       id="message"
                       value={contactForm.message}
@@ -839,8 +974,10 @@ export default function Contact() {
                   <Alert className="border-blue-200 bg-blue-50 p-6">
                     <Shield className="h-6 w-6 text-blue-600" />
                     <AlertDescription className="text-blue-800 text-lg ml-2">
-                      Your information is protected with bank-level security and will only be used to provide personalized service. 
-                      We respect your privacy and never share your details with third parties.
+                      Your information is protected with bank-level security and
+                      will only be used to provide personalized service. We
+                      respect your privacy and never share your details with
+                      third parties.
                     </AlertDescription>
                   </Alert>
 
@@ -872,16 +1009,15 @@ export default function Contact() {
       <section className="py-20 bg-gradient-to-br from-gray-50 via-forest-50 to-ocean-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge
-              className="mb-6 bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-6 py-3 text-lg font-semibold shadow-lg"
-            >
+            <Badge className="mb-6 bg-gradient-to-r from-forest-500 to-ocean-500 text-white px-6 py-3 text-lg font-semibold shadow-lg">
               Expert Knowledge Base
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-forest-600 via-ocean-600 to-sunset-600 bg-clip-text text-transparent mb-6">
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Find expert answers to the most common questions about our luxury automotive services, financing options, and vehicle care programs.
+              Find expert answers to the most common questions about our luxury
+              automotive services, financing options, and vehicle care programs.
             </p>
           </div>
 
@@ -951,8 +1087,9 @@ export default function Contact() {
             </span>
           </h2>
           <p className="text-lg sm:text-xl lg:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto text-gray-100 drop-shadow-lg">
-            For urgent matters, premium roadside assistance, or after-hours luxury service needs, 
-            our dedicated emergency support team is available 24/7 to ensure your complete peace of mind.
+            For urgent matters, premium roadside assistance, or after-hours
+            luxury service needs, our dedicated emergency support team is
+            available 24/7 to ensure your complete peace of mind.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <div className="relative group">
