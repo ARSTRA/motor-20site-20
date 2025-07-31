@@ -753,6 +753,85 @@ export default function Admin() {
     }
   };
 
+  const handleRecordPayment = async () => {
+    if (!recordPaymentForm.customerName || !recordPaymentForm.amount) {
+      alert("Please fill in required fields");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const newPayment: Payment = {
+        id: Date.now(),
+        customerId: recordPaymentForm.customerId ? parseInt(recordPaymentForm.customerId) : 0,
+        customerName: recordPaymentForm.customerName,
+        amount: parseFloat(recordPaymentForm.amount),
+        type: recordPaymentForm.type as Payment["type"],
+        status: "completed",
+        method: recordPaymentForm.method as Payment["method"],
+        vehicleId: recordPaymentForm.vehicleId ? parseInt(recordPaymentForm.vehicleId) : undefined,
+        vehicleName: recordPaymentForm.vehicleName || undefined,
+        createdAt: new Date().toISOString(),
+      };
+      setPayments([newPayment, ...payments]);
+      alert("Payment recorded successfully!");
+      setRecordPaymentForm({
+        customerId: "",
+        customerName: "",
+        amount: "",
+        type: "purchase",
+        method: "credit_card",
+        vehicleId: "",
+        vehicleName: "",
+      });
+      setRecordPaymentDialog(false);
+    } catch (error) {
+      alert("Failed to record payment");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleExportPaymentReport = async () => {
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      const reportData = {
+        payments: payments,
+        summary: {
+          totalPayments: payments.length,
+          completedPayments: payments.filter(p => p.status === "completed").length,
+          pendingPayments: payments.filter(p => p.status === "pending").length,
+          failedPayments: payments.filter(p => p.status === "failed").length,
+          totalAmount: payments.reduce((sum, p) => sum + p.amount, 0),
+          completedAmount: payments.filter(p => p.status === "completed").reduce((sum, p) => sum + p.amount, 0),
+        },
+        paymentMethods: paymentMethods.filter(m => m.isActive),
+        exportedAt: new Date().toISOString(),
+        exportedBy: adminUser?.name,
+      };
+
+      const dataStr = JSON.stringify(reportData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `payment-report-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      alert("Payment report exported successfully!");
+    } catch (error) {
+      alert("Failed to export payment report");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // Admin Login Form
   if (!adminUser) {
     return (
