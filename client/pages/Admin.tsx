@@ -205,6 +205,16 @@ export default function Admin() {
     details: "",
     isActive: true,
   });
+  const [recordPaymentDialog, setRecordPaymentDialog] = useState(false);
+  const [recordPaymentForm, setRecordPaymentForm] = useState({
+    customerId: "",
+    customerName: "",
+    amount: "",
+    type: "purchase",
+    method: "credit_card",
+    vehicleId: "",
+    vehicleName: "",
+  });
 
   // Mock data
   const [stats] = useState<DashboardStats>({
