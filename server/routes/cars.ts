@@ -79,7 +79,7 @@ const mockCars: Car[] = [
     fuel: "Gas",
     transmission: "Automatic",
     description:
-      "Legendary sports car performance with timeless design and incredible engineering.",
+      "Legendary sports car performance with timeless design and incredible engineering. This Turbo S features the most powerful 911 engine ever built, sophisticated all-wheel drive system, and racing-derived aerodynamics for ultimate track and street performance.",
     images: [
       "https://images.pexels.com/photos/29831802/pexels-photo-29831802.jpeg",
       "https://images.pexels.com/photos/3741057/pexels-photo-3741057.jpeg",
