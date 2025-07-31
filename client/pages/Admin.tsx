@@ -167,6 +167,20 @@ export default function Admin() {
   const [loginError, setLoginError] = useState("");
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordDialog, setPasswordDialog] = useState(false);
+  const [adminUsersDialog, setAdminUsersDialog] = useState(false);
+  const [activityLogsDialog, setActivityLogsDialog] = useState(false);
+  const [changePasswordForm, setChangePasswordForm] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [newAdminForm, setNewAdminForm] = useState({
+    name: "",
+    username: "",
+    password: "",
+    role: "sales_admin",
+  });
 
   // Mock data
   const [stats] = useState<DashboardStats>({
