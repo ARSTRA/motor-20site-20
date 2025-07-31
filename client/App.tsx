@@ -20,6 +20,7 @@ import About from "./pages/About";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import TradeIn from "./pages/TradeIn";
 import VehicleDetail from "./pages/VehicleDetail";
+import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
