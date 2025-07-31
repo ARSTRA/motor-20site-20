@@ -582,10 +582,10 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {stats.map((stat, index) => (
               <div key={index} className="group relative">
-                <Card className="overflow-hidden bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105 hover:shadow-2xl rounded-3xl">
+                <Card className="overflow-hidden bg-gradient-to-br from-white/8 to-white/12 backdrop-blur-lg border-2 border-white/30 hover:border-gold-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-gold-500/20 rounded-3xl">
                   <div className="relative">
-                    {/* Professional Image Header */}
-                    <div className="relative h-64 overflow-hidden">
+                    {/* Enhanced Professional Image Header */}
+                    <div className="relative h-72 overflow-hidden">
                       <img
                         src={stat.image}
                         alt={stat.label}
@@ -594,68 +594,122 @@ export default function Index() {
                           e.currentTarget.src = 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg';
                         }}
                       />
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                      {/* Enhanced Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
 
-                      {/* Feature Badge */}
-                      <div className="absolute top-6 left-6">
-                        <Badge className="bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-xl px-4 py-2 text-sm">
-                          {stat.feature}
-                        </Badge>
-                      </div>
-
-                      {/* Large Number Display */}
-                      <div className="absolute bottom-6 left-6">
-                        <div className="text-6xl lg:text-7xl font-black text-white drop-shadow-2xl group-hover:text-gold-300 transition-colors duration-300">
-                          {stat.value}
+                      {/* Large Prominent Feature Theme Badge */}
+                      <div className="absolute top-6 left-6 right-6">
+                        <div className="bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-black px-6 py-3 rounded-2xl shadow-2xl border-2 border-white/30 backdrop-blur-sm">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                                <div className="w-4 h-4 bg-gradient-to-r from-black/60 to-black/80 rounded-full"></div>
+                              </div>
+                              <div>
+                                <div className="text-lg font-black tracking-wide">{stat.feature}</div>
+                                <div className="text-xs font-semibold opacity-80">Premium Standard</div>
+                              </div>
+                            </div>
+                            <div className="flex gap-1">
+                              {[...Array(5)].map((_, i) => (
+                                <div key={i} className="w-2 h-2 bg-black/60 rounded-full"></div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Floating Animation Elements */}
-                      <div className="absolute top-8 right-8 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-8 h-8 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full animate-pulse"></div>
+                      {/* Enhanced Large Number Display with Theme Context */}
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="bg-gradient-to-r from-black/60 to-black/80 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                          <div className="flex items-end justify-between">
+                            <div>
+                              <div className="text-6xl lg:text-8xl font-black text-white drop-shadow-2xl group-hover:text-gold-300 transition-colors duration-300 leading-none">
+                                {stat.value}
+                              </div>
+                              <div className="text-white/80 text-lg font-bold mt-2 group-hover:text-gold-200 transition-colors duration-300">
+                                {stat.label}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="w-16 h-16 bg-gradient-to-r from-gold-400/30 to-gold-600/30 rounded-2xl flex items-center justify-center mb-2 group-hover:from-gold-300/40 group-hover:to-gold-500/40 transition-all duration-300">
+                                <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
+                              </div>
+                              <div className="text-white/60 text-sm font-semibold">Verified</div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="absolute bottom-8 right-8 opacity-40 group-hover:opacity-80 transition-opacity duration-300">
-                        <div className="w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.5s]"></div>
+
+                      {/* Enhanced Floating Animation Elements */}
+                      <div className="absolute top-20 right-8 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-12 h-12 bg-gradient-to-r from-ocean-400/30 to-forest-400/30 rounded-2xl animate-pulse backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                          <div className="w-4 h-4 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-20 right-8 opacity-40 group-hover:opacity-80 transition-opacity duration-300">
+                        <div className="w-8 h-8 bg-gradient-to-r from-gold-400/40 to-sunset-400/40 rounded-xl animate-bounce [animation-delay:0.5s] backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                          <div className="w-3 h-3 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full"></div>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Content Section */}
-                    <CardContent className="p-8">
-                      <h3 className="text-2xl lg:text-3xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent group-hover:from-gold-300 group-hover:to-white transition-all duration-300">
-                        {stat.label}
-                      </h3>
+                    {/* Enhanced Content Section with Theme Integration */}
+                    <CardContent className="p-8 bg-gradient-to-br from-gray-900/60 to-black/60 backdrop-blur-sm">
+                      {/* Theme Reinforcement Section */}
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="w-14 h-14 bg-gradient-to-r from-gold-500/20 to-gold-600/20 rounded-2xl flex items-center justify-center border border-gold-400/30">
+                            <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-600 rounded-lg"></div>
+                          </div>
+                          <div>
+                            <div className="text-xl font-black text-white mb-1">{stat.feature}</div>
+                            <div className="text-gold-400 text-sm font-semibold">Industry Standard</div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-gold-400 text-3xl font-black">{stat.value}</div>
+                          <div className="text-white/60 text-sm">Achievement</div>
+                        </div>
+                      </div>
 
-                      <p className="text-gray-300 leading-relaxed text-lg mb-6 group-hover:text-gray-200 transition-colors duration-300">
+                      <p className="text-gray-200 leading-relaxed text-lg mb-8 group-hover:text-white transition-colors duration-300">
                         {stat.description}
                       </p>
 
-                      {/* Professional Indicators */}
-                      <div className="grid grid-cols-3 gap-4 opacity-75 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="text-center">
-                          <div className="w-12 h-12 bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:from-ocean-400/30 group-hover:to-ocean-500/30 transition-all duration-300">
-                            <div className="w-3 h-3 bg-gradient-to-r from-ocean-400 to-ocean-500 rounded-full"></div>
+                      {/* Enhanced Professional Theme Indicators */}
+                      <div className="grid grid-cols-3 gap-6 border-t border-white/10 pt-6">
+                        <div className="text-center group/indicator">
+                          <div className="w-16 h-16 bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-ocean-400/30 group-hover/indicator:to-ocean-500/30 transition-all duration-300 border border-ocean-400/20">
+                            <div className="w-6 h-6 bg-gradient-to-r from-ocean-400 to-ocean-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
                           </div>
-                          <span className="text-xs text-gray-400 font-medium">Quality</span>
+                          <div className="text-white font-bold text-sm mb-1">Premium</div>
+                          <div className="text-ocean-400 text-xs font-medium">Quality</div>
                         </div>
-                        <div className="text-center">
-                          <div className="w-12 h-12 bg-gradient-to-r from-forest-500/20 to-forest-600/20 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:from-forest-400/30 group-hover:to-forest-500/30 transition-all duration-300">
-                            <div className="w-3 h-3 bg-gradient-to-r from-forest-400 to-forest-500 rounded-full"></div>
+                        <div className="text-center group/indicator">
+                          <div className="w-16 h-16 bg-gradient-to-r from-forest-500/20 to-forest-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-forest-400/30 group-hover/indicator:to-forest-500/30 transition-all duration-300 border border-forest-400/20">
+                            <div className="w-6 h-6 bg-gradient-to-r from-forest-400 to-forest-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
                           </div>
-                          <span className="text-xs text-gray-400 font-medium">Trust</span>
+                          <div className="text-white font-bold text-sm mb-1">Trusted</div>
+                          <div className="text-forest-400 text-xs font-medium">Service</div>
                         </div>
-                        <div className="text-center">
-                          <div className="w-12 h-12 bg-gradient-to-r from-gold-500/20 to-gold-600/20 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:from-gold-400/30 group-hover:to-gold-500/30 transition-all duration-300">
-                            <div className="w-3 h-3 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full"></div>
+                        <div className="text-center group/indicator">
+                          <div className="w-16 h-16 bg-gradient-to-r from-gold-500/20 to-gold-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-gold-400/30 group-hover/indicator:to-gold-500/30 transition-all duration-300 border border-gold-400/20">
+                            <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
                           </div>
-                          <span className="text-xs text-gray-400 font-medium">Excellence</span>
+                          <div className="text-white font-bold text-sm mb-1">Elite</div>
+                          <div className="text-gold-400 text-xs font-medium">Excellence</div>
                         </div>
                       </div>
                     </CardContent>
                   </div>
 
-                  {/* Subtle Border Glow Effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-ocean-500/10 via-forest-500/10 to-gold-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                  {/* Enhanced Border Glow Effect with Theme Colors */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-gold-500/20 via-ocean-500/10 to-forest-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+                  {/* Corner Accent Elements */}
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 w-4 h-4 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
                 </Card>
               </div>
             ))}
