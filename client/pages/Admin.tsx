@@ -691,6 +691,54 @@ export default function Admin() {
     }
   };
 
+  // Payment methods management functions
+  const handleAddPaymentMethod = async () => {
+    if (!newPaymentMethodForm.name || !newPaymentMethodForm.details) {
+      alert("Please fill in all required fields");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const newMethod: PaymentMethod = {
+        id: Date.now(),
+        ...newPaymentMethodForm,
+        processingFee: 0,
+        icon: "CreditCard",
+        createdAt: new Date().toISOString(),
+      };
+      setPaymentMethods([...paymentMethods, newMethod]);
+      alert("Payment method added successfully!");
+      setNewPaymentMethodForm({
+        name: "",
+        type: "traditional",
+        category: "bank_transfer",
+        details: "",
+        isActive: true,
+      });
+    } catch (error) {
+      alert("Failed to add payment method");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleTogglePaymentMethod = (id: number) => {
+    setPaymentMethods(
+      paymentMethods.map((method) =>
+        method.id === id ? { ...method, isActive: !method.isActive } : method
+      )
+    );
+  };
+
+  const handleDeletePaymentMethod = (id: number) => {
+    if (confirm("Are you sure you want to delete this payment method?")) {
+      setPaymentMethods(paymentMethods.filter((method) => method.id !== id));
+      alert("Payment method deleted successfully!");
+    }
+  };
+
   // Admin Login Form
   if (!adminUser) {
     return (
