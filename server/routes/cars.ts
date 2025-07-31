@@ -21,7 +21,7 @@ const mockCars: Car[] = [
     fuel: "Gas",
     transmission: "Automatic",
     description:
-      "Ultimate luxury SUV with unmatched performance and cutting-edge technology. Perfect blend of comfort and power.",
+      "Ultimate luxury SUV with unmatched performance and cutting-edge technology. Perfect blend of comfort and power. This M Competition variant represents the pinnacle of BMW's SUV engineering, featuring exclusive M performance enhancements, sport-tuned suspension, and race-inspired aerodynamics.",
     images: [
       "https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg",
       "https://images.pexels.com/photos/1005617/pexels-photo-1005617.jpeg",
