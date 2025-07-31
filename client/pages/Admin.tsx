@@ -1767,6 +1767,7 @@ export default function Admin() {
                           <SelectItem value="usd">USD ($)</SelectItem>
                           <SelectItem value="eur">EUR (€)</SelectItem>
                           <SelectItem value="gbp">GBP (£)</SelectItem>
+                          <SelectItem value="ngn">NGN (₦)</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
