@@ -73,6 +73,10 @@ import {
   FileText,
   PieChart,
   LineChart,
+  Smartphone,
+  Coins,
+  Building2,
+  Banknote,
 } from "lucide-react";
 
 // Admin Authentication
@@ -143,9 +147,33 @@ interface Payment {
   amount: number;
   type: "purchase" | "financing" | "deposit" | "refund";
   status: "completed" | "pending" | "failed" | "refunded";
-  method: "credit_card" | "bank_transfer" | "check" | "cash";
+  method:
+    | "credit_card"
+    | "bank_transfer"
+    | "check"
+    | "cash"
+    | "crypto"
+    | "digital_wallet"
+    | "apple_pay"
+    | "google_pay"
+    | "paypal"
+    | "zelle"
+    | "cashapp"
+    | "venmo";
   vehicleId?: number;
   vehicleName?: string;
+  createdAt: string;
+}
+
+interface PaymentMethod {
+  id: number;
+  name: string;
+  type: "traditional" | "digital" | "crypto";
+  category: string;
+  details: string;
+  isActive: boolean;
+  processingFee: number;
+  icon: string;
   createdAt: string;
 }
 
@@ -167,6 +195,38 @@ export default function Admin() {
   const [loginError, setLoginError] = useState("");
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordDialog, setPasswordDialog] = useState(false);
+  const [adminUsersDialog, setAdminUsersDialog] = useState(false);
+  const [activityLogsDialog, setActivityLogsDialog] = useState(false);
+  const [paymentMethodsDialog, setPaymentMethodsDialog] = useState(false);
+  const [changePasswordForm, setChangePasswordForm] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [newAdminForm, setNewAdminForm] = useState({
+    name: "",
+    username: "",
+    password: "",
+    role: "sales_admin",
+  });
+  const [newPaymentMethodForm, setNewPaymentMethodForm] = useState({
+    name: "",
+    type: "traditional",
+    category: "bank_transfer",
+    details: "",
+    isActive: true,
+  });
+  const [recordPaymentDialog, setRecordPaymentDialog] = useState(false);
+  const [recordPaymentForm, setRecordPaymentForm] = useState({
+    customerId: "",
+    customerName: "",
+    amount: "",
+    type: "purchase",
+    method: "credit_card",
+    vehicleId: "",
+    vehicleName: "",
+  });
 
   // Mock data
   const [stats] = useState<DashboardStats>({
@@ -275,6 +335,197 @@ export default function Admin() {
     },
   ]);
 
+  const [adminUsers, setAdminUsers] = useState(ADMIN_CREDENTIALS);
+
+  const [activityLogs] = useState([
+    {
+      id: 1,
+      action: "User Login",
+      user: "Michael Rodriguez",
+      timestamp: "2024-01-22T14:30:00Z",
+      details: "Super admin login from IP: 192.168.1.100",
+      type: "success",
+    },
+    {
+      id: 2,
+      action: "Vehicle Added",
+      user: "Sarah Chen",
+      timestamp: "2024-01-22T13:15:00Z",
+      details: "Added 2024 BMW X7 to inventory",
+      type: "info",
+    },
+    {
+      id: 3,
+      action: "Payment Processed",
+      user: "David Johnson",
+      timestamp: "2024-01-22T11:45:00Z",
+      details: "Processed $125,000 payment for Mercedes S-Class",
+      type: "success",
+    },
+    {
+      id: 4,
+      action: "Failed Login Attempt",
+      user: "Unknown",
+      timestamp: "2024-01-22T09:20:00Z",
+      details: "Failed login attempt from IP: 203.0.113.45",
+      type: "warning",
+    },
+    {
+      id: 5,
+      action: "Customer Data Export",
+      user: "Michael Rodriguez",
+      timestamp: "2024-01-21T16:00:00Z",
+      details: "Exported customer database (1,247 records)",
+      type: "info",
+    },
+  ]);
+
+  const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([
+    {
+      id: 1,
+      name: "Credit/Debit Cards",
+      type: "traditional",
+      category: "credit_card",
+      details: "Visa, MasterCard, American Express accepted",
+      isActive: true,
+      processingFee: 2.9,
+      icon: "CreditCard",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 2,
+      name: "Bank Wire Transfer",
+      type: "traditional",
+      category: "bank_transfer",
+      details: "Direct bank transfers, ACH payments",
+      isActive: true,
+      processingFee: 0.5,
+      icon: "Building2",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 3,
+      name: "Cash Payment",
+      type: "traditional",
+      category: "cash",
+      details: "In-person cash transactions",
+      isActive: true,
+      processingFee: 0,
+      icon: "Banknote",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 4,
+      name: "PayPal",
+      type: "digital",
+      category: "paypal",
+      details: "PayPal payments and PayPal Credit",
+      isActive: true,
+      processingFee: 3.49,
+      icon: "Smartphone",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 5,
+      name: "Apple Pay",
+      type: "digital",
+      category: "apple_pay",
+      details: "Apple Pay contactless payments",
+      isActive: true,
+      processingFee: 2.9,
+      icon: "Smartphone",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 6,
+      name: "Google Pay",
+      type: "digital",
+      category: "google_pay",
+      details: "Google Pay digital wallet",
+      isActive: true,
+      processingFee: 2.9,
+      icon: "Smartphone",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 7,
+      name: "Zelle",
+      type: "digital",
+      category: "zelle",
+      details: "Instant bank-to-bank transfers via Zelle",
+      isActive: true,
+      processingFee: 0,
+      icon: "Zap",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 8,
+      name: "Cash App",
+      type: "digital",
+      category: "cashapp",
+      details: "Cash App mobile payments",
+      isActive: true,
+      processingFee: 2.9,
+      icon: "Smartphone",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 9,
+      name: "Venmo",
+      type: "digital",
+      category: "venmo",
+      details: "Venmo social payments",
+      isActive: false,
+      processingFee: 2.9,
+      icon: "Users",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 10,
+      name: "Bitcoin (BTC)",
+      type: "crypto",
+      category: "bitcoin",
+      details: "Bitcoin cryptocurrency payments",
+      isActive: true,
+      processingFee: 1.0,
+      icon: "Coins",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 11,
+      name: "Ethereum (ETH)",
+      type: "crypto",
+      category: "ethereum",
+      details: "Ethereum cryptocurrency payments",
+      isActive: true,
+      processingFee: 1.0,
+      icon: "Coins",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 12,
+      name: "USD Coin (USDC)",
+      type: "crypto",
+      category: "usdc",
+      details: "USD Coin stablecoin payments",
+      isActive: true,
+      processingFee: 0.5,
+      icon: "Coins",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+    {
+      id: 13,
+      name: "Tether (USDT)",
+      type: "crypto",
+      category: "usdt",
+      details: "Tether stablecoin payments",
+      isActive: true,
+      processingFee: 0.5,
+      icon: "Coins",
+      createdAt: "2024-01-01T10:00:00Z",
+    },
+  ]);
+
   // Check if admin is already logged in
   useEffect(() => {
     const storedAdmin = localStorage.getItem("alpine_admin");
@@ -361,6 +612,252 @@ export default function Admin() {
   // Payment management functions
   const handleUpdatePaymentStatus = (id: number, status: Payment["status"]) => {
     setPayments(payments.map((p) => (p.id === id ? { ...p, status } : p)));
+  };
+
+  // Security settings handlers
+  const handleChangePassword = async () => {
+    if (changePasswordForm.newPassword !== changePasswordForm.confirmPassword) {
+      alert("New passwords do not match");
+      return;
+    }
+    if (changePasswordForm.newPassword.length < 6) {
+      alert("Password must be at least 6 characters long");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      alert("Password changed successfully!");
+      setChangePasswordForm({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setPasswordDialog(false);
+    } catch (error) {
+      alert("Failed to change password");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleAddAdminUser = async () => {
+    if (
+      !newAdminForm.name ||
+      !newAdminForm.username ||
+      !newAdminForm.password
+    ) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    if (adminUsers.some((user) => user.username === newAdminForm.username)) {
+      alert("Username already exists");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setAdminUsers([...adminUsers, { ...newAdminForm }]);
+      alert("Admin user added successfully!");
+      setNewAdminForm({
+        name: "",
+        username: "",
+        password: "",
+        role: "sales_admin",
+      });
+    } catch (error) {
+      alert("Failed to add admin user");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleDeleteAdminUser = (username: string) => {
+    if (username === adminUser?.username) {
+      alert("Cannot delete your own account");
+      return;
+    }
+
+    if (confirm(`Are you sure you want to delete admin user: ${username}?`)) {
+      setAdminUsers(adminUsers.filter((user) => user.username !== username));
+      alert("Admin user deleted successfully!");
+    }
+  };
+
+  const handleExportSystemData = async () => {
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      const exportData = {
+        vehicles: vehicles,
+        customers: customers,
+        payments: payments,
+        adminUsers: adminUsers.map((user) => ({
+          username: user.username,
+          role: user.role,
+          name: user.name,
+        })),
+        activityLogs: activityLogs,
+        exportedAt: new Date().toISOString(),
+        exportedBy: adminUser?.name,
+      };
+
+      const dataStr = JSON.stringify(exportData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: "application/json" });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `alpine-motors-export-${new Date().toISOString().split("T")[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      alert("System data exported successfully!");
+    } catch (error) {
+      alert("Failed to export system data");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Payment methods management functions
+  const handleAddPaymentMethod = async () => {
+    if (!newPaymentMethodForm.name || !newPaymentMethodForm.details) {
+      alert("Please fill in all required fields");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const newMethod: PaymentMethod = {
+        id: Date.now(),
+        ...newPaymentMethodForm,
+        processingFee: 0,
+        icon: "CreditCard",
+        createdAt: new Date().toISOString(),
+      };
+      setPaymentMethods([...paymentMethods, newMethod]);
+      alert("Payment method added successfully!");
+      setNewPaymentMethodForm({
+        name: "",
+        type: "traditional",
+        category: "bank_transfer",
+        details: "",
+        isActive: true,
+      });
+    } catch (error) {
+      alert("Failed to add payment method");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleTogglePaymentMethod = (id: number) => {
+    setPaymentMethods(
+      paymentMethods.map((method) =>
+        method.id === id ? { ...method, isActive: !method.isActive } : method,
+      ),
+    );
+  };
+
+  const handleDeletePaymentMethod = (id: number) => {
+    if (confirm("Are you sure you want to delete this payment method?")) {
+      setPaymentMethods(paymentMethods.filter((method) => method.id !== id));
+      alert("Payment method deleted successfully!");
+    }
+  };
+
+  const handleRecordPayment = async () => {
+    if (!recordPaymentForm.customerName || !recordPaymentForm.amount) {
+      alert("Please fill in required fields");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const newPayment: Payment = {
+        id: Date.now(),
+        customerId: recordPaymentForm.customerId
+          ? parseInt(recordPaymentForm.customerId)
+          : 0,
+        customerName: recordPaymentForm.customerName,
+        amount: parseFloat(recordPaymentForm.amount),
+        type: recordPaymentForm.type as Payment["type"],
+        status: "completed",
+        method: recordPaymentForm.method as Payment["method"],
+        vehicleId: recordPaymentForm.vehicleId
+          ? parseInt(recordPaymentForm.vehicleId)
+          : undefined,
+        vehicleName: recordPaymentForm.vehicleName || undefined,
+        createdAt: new Date().toISOString(),
+      };
+      setPayments([newPayment, ...payments]);
+      alert("Payment recorded successfully!");
+      setRecordPaymentForm({
+        customerId: "",
+        customerName: "",
+        amount: "",
+        type: "purchase",
+        method: "credit_card",
+        vehicleId: "",
+        vehicleName: "",
+      });
+      setRecordPaymentDialog(false);
+    } catch (error) {
+      alert("Failed to record payment");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleExportPaymentReport = async () => {
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      const reportData = {
+        payments: payments,
+        summary: {
+          totalPayments: payments.length,
+          completedPayments: payments.filter((p) => p.status === "completed")
+            .length,
+          pendingPayments: payments.filter((p) => p.status === "pending")
+            .length,
+          failedPayments: payments.filter((p) => p.status === "failed").length,
+          totalAmount: payments.reduce((sum, p) => sum + p.amount, 0),
+          completedAmount: payments
+            .filter((p) => p.status === "completed")
+            .reduce((sum, p) => sum + p.amount, 0),
+        },
+        paymentMethods: paymentMethods.filter((m) => m.isActive),
+        exportedAt: new Date().toISOString(),
+        exportedBy: adminUser?.name,
+      };
+
+      const dataStr = JSON.stringify(reportData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: "application/json" });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `payment-report-${new Date().toISOString().split("T")[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      alert("Payment report exported successfully!");
+    } catch (error) {
+      alert("Failed to export payment report");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Admin Login Form
@@ -1103,15 +1600,105 @@ export default function Admin() {
                   Payment Management
                 </h2>
                 <div className="flex gap-3">
-                  <Button variant="outline">
+                  <Button
+                    variant="outline"
+                    onClick={handleExportPaymentReport}
+                    className="border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all duration-300"
+                  >
                     <Download className="h-4 w-4 mr-2" />
                     Export Report
                   </Button>
-                  <Button className="bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600">
+                  <Button
+                    variant="outline"
+                    onClick={() => setPaymentMethodsDialog(true)}
+                    className="border-ocean-200 text-ocean-600 hover:bg-ocean-50 hover:border-ocean-300 transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <Settings className="h-4 w-4 mr-2" />
+                    Payment Methods
+                  </Button>
+                  <Button
+                    className="bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    onClick={() => setRecordPaymentDialog(true)}
+                  >
                     <Plus className="h-4 w-4 mr-2" />
                     Record Payment
                   </Button>
                 </div>
+              </div>
+
+              {/* Payment Methods Overview Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <Card className="bg-gradient-to-br from-ocean-50 to-ocean-100 border-ocean-200">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <CreditCard className="h-8 w-8 text-ocean-600" />
+                      <div>
+                        <p className="text-sm text-ocean-700">Traditional</p>
+                        <p className="text-xl font-bold text-ocean-800">
+                          {
+                            paymentMethods.filter(
+                              (m) => m.type === "traditional" && m.isActive,
+                            ).length
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-forest-50 to-forest-100 border-forest-200">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <Smartphone className="h-8 w-8 text-forest-600" />
+                      <div>
+                        <p className="text-sm text-forest-700">
+                          Digital Wallets
+                        </p>
+                        <p className="text-xl font-bold text-forest-800">
+                          {
+                            paymentMethods.filter(
+                              (m) => m.type === "digital" && m.isActive,
+                            ).length
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-sunset-50 to-sunset-100 border-sunset-200">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <Coins className="h-8 w-8 text-sunset-600" />
+                      <div>
+                        <p className="text-sm text-sunset-700">
+                          Cryptocurrency
+                        </p>
+                        <p className="text-xl font-bold text-sunset-800">
+                          {
+                            paymentMethods.filter(
+                              (m) => m.type === "crypto" && m.isActive,
+                            ).length
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-gold-50 to-gold-100 border-gold-200">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <Zap className="h-8 w-8 text-gold-600" />
+                      <div>
+                        <p className="text-sm text-gold-700">Total Active</p>
+                        <p className="text-xl font-bold text-gold-800">
+                          {paymentMethods.filter((m) => m.isActive).length}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -1494,24 +2081,41 @@ export default function Admin() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start hover:bg-ocean-50 hover:border-ocean-300 transition-colors"
+                      onClick={() => setPasswordDialog(true)}
+                    >
                       <Lock className="h-4 w-4 mr-2" />
                       Change Admin Password
                     </Button>
 
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start hover:bg-forest-50 hover:border-forest-300 transition-colors"
+                      onClick={() => setAdminUsersDialog(true)}
+                    >
                       <UserPlus className="h-4 w-4 mr-2" />
                       Manage Admin Users
                     </Button>
 
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start hover:bg-sunset-50 hover:border-sunset-300 transition-colors"
+                      onClick={() => setActivityLogsDialog(true)}
+                    >
                       <Activity className="h-4 w-4 mr-2" />
                       View Activity Logs
                     </Button>
 
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start hover:bg-gold-50 hover:border-gold-300 transition-colors"
+                      onClick={handleExportSystemData}
+                      disabled={isLoading}
+                    >
                       <Download className="h-4 w-4 mr-2" />
-                      Export System Data
+                      {isLoading ? "Exporting..." : "Export System Data"}
                     </Button>
                   </CardContent>
                 </Card>
@@ -1588,6 +2192,7 @@ export default function Admin() {
                           <SelectItem value="usd">USD ($)</SelectItem>
                           <SelectItem value="eur">EUR (€)</SelectItem>
                           <SelectItem value="gbp">GBP (£)</SelectItem>
+                          <SelectItem value="ngn">NGN (₦)</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -1599,6 +2204,826 @@ export default function Admin() {
                   </CardContent>
                 </Card>
               </div>
+
+              {/* Security Settings Dialogs */}
+
+              {/* Change Password Dialog */}
+              <Dialog open={passwordDialog} onOpenChange={setPasswordDialog}>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Lock className="h-5 w-5 text-ocean-600" />
+                      Change Admin Password
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div>
+                      <Label htmlFor="currentPassword">Current Password</Label>
+                      <Input
+                        id="currentPassword"
+                        type="password"
+                        value={changePasswordForm.currentPassword}
+                        onChange={(e) =>
+                          setChangePasswordForm({
+                            ...changePasswordForm,
+                            currentPassword: e.target.value,
+                          })
+                        }
+                        placeholder="Enter current password"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="newPassword">New Password</Label>
+                      <Input
+                        id="newPassword"
+                        type="password"
+                        value={changePasswordForm.newPassword}
+                        onChange={(e) =>
+                          setChangePasswordForm({
+                            ...changePasswordForm,
+                            newPassword: e.target.value,
+                          })
+                        }
+                        placeholder="Enter new password"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="confirmPassword">
+                        Confirm New Password
+                      </Label>
+                      <Input
+                        id="confirmPassword"
+                        type="password"
+                        value={changePasswordForm.confirmPassword}
+                        onChange={(e) =>
+                          setChangePasswordForm({
+                            ...changePasswordForm,
+                            confirmPassword: e.target.value,
+                          })
+                        }
+                        placeholder="Confirm new password"
+                      />
+                    </div>
+                    <div className="flex gap-3 pt-4">
+                      <Button
+                        variant="outline"
+                        className="flex-1"
+                        onClick={() => setPasswordDialog(false)}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        className="flex-1 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600"
+                        onClick={handleChangePassword}
+                        disabled={isLoading}
+                      >
+                        {isLoading ? "Changing..." : "Change Password"}
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              {/* Manage Admin Users Dialog */}
+              <Dialog
+                open={adminUsersDialog}
+                onOpenChange={setAdminUsersDialog}
+              >
+                <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <UserPlus className="h-5 w-5 text-forest-600" />
+                      Manage Admin Users
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-6">
+                    {/* Add New Admin User */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg">
+                          Add New Admin User
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="adminName">Full Name</Label>
+                            <Input
+                              id="adminName"
+                              value={newAdminForm.name}
+                              onChange={(e) =>
+                                setNewAdminForm({
+                                  ...newAdminForm,
+                                  name: e.target.value,
+                                })
+                              }
+                              placeholder="John Doe"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="adminUsername">
+                              Username (Email)
+                            </Label>
+                            <Input
+                              id="adminUsername"
+                              type="email"
+                              value={newAdminForm.username}
+                              onChange={(e) =>
+                                setNewAdminForm({
+                                  ...newAdminForm,
+                                  username: e.target.value,
+                                })
+                              }
+                              placeholder="admin@alpinemotors.com"
+                            />
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="adminPassword">Password</Label>
+                            <Input
+                              id="adminPassword"
+                              type="password"
+                              value={newAdminForm.password}
+                              onChange={(e) =>
+                                setNewAdminForm({
+                                  ...newAdminForm,
+                                  password: e.target.value,
+                                })
+                              }
+                              placeholder="Minimum 6 characters"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="adminRole">Role</Label>
+                            <Select
+                              value={newAdminForm.role}
+                              onValueChange={(value) =>
+                                setNewAdminForm({
+                                  ...newAdminForm,
+                                  role: value,
+                                })
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="super_admin">
+                                  Super Admin
+                                </SelectItem>
+                                <SelectItem value="manager">Manager</SelectItem>
+                                <SelectItem value="sales_admin">
+                                  Sales Admin
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                        <Button
+                          onClick={handleAddAdminUser}
+                          disabled={isLoading}
+                          className="w-full bg-gradient-to-r from-forest-500 to-sunset-500 hover:from-forest-600 hover:to-sunset-600"
+                        >
+                          {isLoading ? "Adding..." : "Add Admin User"}
+                        </Button>
+                      </CardContent>
+                    </Card>
+
+                    {/* Existing Admin Users */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg">
+                          Existing Admin Users
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="p-0">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Name</TableHead>
+                              <TableHead>Username</TableHead>
+                              <TableHead>Role</TableHead>
+                              <TableHead>Actions</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {adminUsers.map((user, index) => (
+                              <TableRow key={index}>
+                                <TableCell className="font-medium">
+                                  {user.name}
+                                  {user.username === adminUser?.username && (
+                                    <Badge className="ml-2 bg-gold-100 text-gold-800">
+                                      Current User
+                                    </Badge>
+                                  )}
+                                </TableCell>
+                                <TableCell>{user.username}</TableCell>
+                                <TableCell>
+                                  <Badge
+                                    className={
+                                      user.role === "super_admin"
+                                        ? "bg-red-100 text-red-800"
+                                        : user.role === "manager"
+                                          ? "bg-blue-100 text-blue-800"
+                                          : "bg-green-100 text-green-800"
+                                    }
+                                  >
+                                    {user.role.replace("_", " ").toUpperCase()}
+                                  </Badge>
+                                </TableCell>
+                                <TableCell>
+                                  <div className="flex gap-2">
+                                    <Button size="sm" variant="outline">
+                                      <Edit className="h-3 w-3" />
+                                    </Button>
+                                    {user.username !== adminUser?.username && (
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() =>
+                                          handleDeleteAdminUser(user.username)
+                                        }
+                                      >
+                                        <Trash2 className="h-3 w-3 text-red-600" />
+                                      </Button>
+                                    )}
+                                  </div>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </CardContent>
+                    </Card>
+
+                    <div className="flex justify-end">
+                      <Button
+                        variant="outline"
+                        onClick={() => setAdminUsersDialog(false)}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              {/* Activity Logs Dialog */}
+              <Dialog
+                open={activityLogsDialog}
+                onOpenChange={setActivityLogsDialog}
+              >
+                <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Activity className="h-5 w-5 text-sunset-600" />
+                      System Activity Logs
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <p className="text-sm text-gray-600">
+                        Recent system activities and security events
+                      </p>
+                      <Button variant="outline" size="sm">
+                        <Download className="h-4 w-4 mr-2" />
+                        Export Logs
+                      </Button>
+                    </div>
+
+                    <Card>
+                      <CardContent className="p-0">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Timestamp</TableHead>
+                              <TableHead>Action</TableHead>
+                              <TableHead>User</TableHead>
+                              <TableHead>Details</TableHead>
+                              <TableHead>Type</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {activityLogs.map((log) => (
+                              <TableRow key={log.id}>
+                                <TableCell className="text-sm">
+                                  {new Date(log.timestamp).toLocaleString()}
+                                </TableCell>
+                                <TableCell className="font-medium">
+                                  {log.action}
+                                </TableCell>
+                                <TableCell>{log.user}</TableCell>
+                                <TableCell className="max-w-md truncate text-sm text-gray-600">
+                                  {log.details}
+                                </TableCell>
+                                <TableCell>
+                                  <Badge
+                                    className={
+                                      log.type === "success"
+                                        ? "bg-green-100 text-green-800"
+                                        : log.type === "warning"
+                                          ? "bg-yellow-100 text-yellow-800"
+                                          : log.type === "error"
+                                            ? "bg-red-100 text-red-800"
+                                            : "bg-blue-100 text-blue-800"
+                                    }
+                                  >
+                                    {log.type.toUpperCase()}
+                                  </Badge>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </CardContent>
+                    </Card>
+
+                    <div className="flex justify-between items-center pt-4">
+                      <p className="text-sm text-gray-500">
+                        Showing latest 5 activities. Full logs can be exported.
+                      </p>
+                      <Button
+                        variant="outline"
+                        onClick={() => setActivityLogsDialog(false)}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              {/* Payment Methods Management Dialog */}
+              <Dialog
+                open={paymentMethodsDialog}
+                onOpenChange={setPaymentMethodsDialog}
+              >
+                <DialogContent className="sm:max-w-6xl max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <CreditCard className="h-5 w-5 text-ocean-600" />
+                      Payment Methods Management
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-6">
+                    {/* Add New Payment Method */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg">
+                          Add New Payment Method
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                          <div>
+                            <Label htmlFor="methodName">Method Name</Label>
+                            <Input
+                              id="methodName"
+                              value={newPaymentMethodForm.name}
+                              onChange={(e) =>
+                                setNewPaymentMethodForm({
+                                  ...newPaymentMethodForm,
+                                  name: e.target.value,
+                                })
+                              }
+                              placeholder="e.g., Bitcoin, PayPal"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="methodType">Type</Label>
+                            <Select
+                              value={newPaymentMethodForm.type}
+                              onValueChange={(value) =>
+                                setNewPaymentMethodForm({
+                                  ...newPaymentMethodForm,
+                                  type: value as
+                                    | "traditional"
+                                    | "digital"
+                                    | "crypto",
+                                })
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="traditional">
+                                  Traditional
+                                </SelectItem>
+                                <SelectItem value="digital">
+                                  Digital Wallet
+                                </SelectItem>
+                                <SelectItem value="crypto">
+                                  Cryptocurrency
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div>
+                            <Label htmlFor="methodCategory">Category</Label>
+                            <Select
+                              value={newPaymentMethodForm.category}
+                              onValueChange={(value) =>
+                                setNewPaymentMethodForm({
+                                  ...newPaymentMethodForm,
+                                  category: value,
+                                })
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="bank_transfer">
+                                  Bank Transfer
+                                </SelectItem>
+                                <SelectItem value="credit_card">
+                                  Credit Card
+                                </SelectItem>
+                                <SelectItem value="cash">Cash</SelectItem>
+                                <SelectItem value="paypal">PayPal</SelectItem>
+                                <SelectItem value="apple_pay">
+                                  Apple Pay
+                                </SelectItem>
+                                <SelectItem value="google_pay">
+                                  Google Pay
+                                </SelectItem>
+                                <SelectItem value="zelle">Zelle</SelectItem>
+                                <SelectItem value="cashapp">
+                                  Cash App
+                                </SelectItem>
+                                <SelectItem value="venmo">Venmo</SelectItem>
+                                <SelectItem value="bitcoin">Bitcoin</SelectItem>
+                                <SelectItem value="ethereum">
+                                  Ethereum
+                                </SelectItem>
+                                <SelectItem value="usdc">USD Coin</SelectItem>
+                                <SelectItem value="usdt">Tether</SelectItem>
+                                <SelectItem value="other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="flex items-end">
+                            <Button
+                              onClick={handleAddPaymentMethod}
+                              disabled={isLoading}
+                              className="w-full bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600"
+                            >
+                              {isLoading ? "Adding..." : "Add Method"}
+                            </Button>
+                          </div>
+                        </div>
+                        <div>
+                          <Label htmlFor="methodDetails">
+                            Details & Instructions
+                          </Label>
+                          <Textarea
+                            id="methodDetails"
+                            value={newPaymentMethodForm.details}
+                            onChange={(e) =>
+                              setNewPaymentMethodForm({
+                                ...newPaymentMethodForm,
+                                details: e.target.value,
+                              })
+                            }
+                            placeholder="Provide payment instructions, wallet addresses, account details, etc."
+                            rows={3}
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Payment Methods by Category */}
+                    <div className="grid gap-6">
+                      {["traditional", "digital", "crypto"].map((type) => (
+                        <Card key={type}>
+                          <CardHeader>
+                            <CardTitle className="flex items-center gap-2 capitalize">
+                              {type === "traditional" && (
+                                <Building2 className="h-5 w-5 text-ocean-600" />
+                              )}
+                              {type === "digital" && (
+                                <Smartphone className="h-5 w-5 text-forest-600" />
+                              )}
+                              {type === "crypto" && (
+                                <Coins className="h-5 w-5 text-sunset-600" />
+                              )}
+                              {type} Payment Methods
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="p-0">
+                            <Table>
+                              <TableHeader>
+                                <TableRow>
+                                  <TableHead>Method</TableHead>
+                                  <TableHead>Category</TableHead>
+                                  <TableHead>Details</TableHead>
+                                  <TableHead>Processing Fee</TableHead>
+                                  <TableHead>Status</TableHead>
+                                  <TableHead>Actions</TableHead>
+                                </TableRow>
+                              </TableHeader>
+                              <TableBody>
+                                {paymentMethods
+                                  .filter((method) => method.type === type)
+                                  .map((method) => (
+                                    <TableRow key={method.id}>
+                                      <TableCell>
+                                        <div className="flex items-center gap-3">
+                                          {method.icon === "CreditCard" && (
+                                            <CreditCard className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Building2" && (
+                                            <Building2 className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Banknote" && (
+                                            <Banknote className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Smartphone" && (
+                                            <Smartphone className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Coins" && (
+                                            <Coins className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Zap" && (
+                                            <Zap className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Users" && (
+                                            <Users className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          <div>
+                                            <p className="font-medium">
+                                              {method.name}
+                                            </p>
+                                            <p className="text-sm text-gray-500">
+                                              Added{" "}
+                                              {new Date(
+                                                method.createdAt,
+                                              ).toLocaleDateString()}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </TableCell>
+                                      <TableCell>
+                                        <Badge
+                                          variant="outline"
+                                          className="capitalize"
+                                        >
+                                          {method.category.replace("_", " ")}
+                                        </Badge>
+                                      </TableCell>
+                                      <TableCell className="max-w-xs">
+                                        <p className="text-sm text-gray-600 truncate">
+                                          {method.details}
+                                        </p>
+                                      </TableCell>
+                                      <TableCell>
+                                        <span className="font-medium">
+                                          {method.processingFee}%
+                                        </span>
+                                      </TableCell>
+                                      <TableCell>
+                                        <div className="flex items-center gap-2">
+                                          <Switch
+                                            checked={method.isActive}
+                                            onCheckedChange={() =>
+                                              handleTogglePaymentMethod(
+                                                method.id,
+                                              )
+                                            }
+                                          />
+                                          <Badge
+                                            className={
+                                              method.isActive
+                                                ? "bg-green-100 text-green-800"
+                                                : "bg-gray-100 text-gray-800"
+                                            }
+                                          >
+                                            {method.isActive
+                                              ? "Active"
+                                              : "Inactive"}
+                                          </Badge>
+                                        </div>
+                                      </TableCell>
+                                      <TableCell>
+                                        <div className="flex gap-2">
+                                          <Button size="sm" variant="outline">
+                                            <Edit className="h-3 w-3" />
+                                          </Button>
+                                          <Button
+                                            size="sm"
+                                            variant="outline"
+                                            onClick={() =>
+                                              handleDeletePaymentMethod(
+                                                method.id,
+                                              )
+                                            }
+                                          >
+                                            <Trash2 className="h-3 w-3 text-red-600" />
+                                          </Button>
+                                        </div>
+                                      </TableCell>
+                                    </TableRow>
+                                  ))}
+                              </TableBody>
+                            </Table>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+
+                    <div className="flex justify-end">
+                      <Button
+                        variant="outline"
+                        onClick={() => setPaymentMethodsDialog(false)}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              {/* Record Payment Dialog */}
+              <Dialog
+                open={recordPaymentDialog}
+                onOpenChange={setRecordPaymentDialog}
+              >
+                <DialogContent className="sm:max-w-2xl">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Plus className="h-5 w-5 text-sunset-600" />
+                      Record New Payment
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="paymentCustomerName">
+                          Customer Name *
+                        </Label>
+                        <Input
+                          id="paymentCustomerName"
+                          value={recordPaymentForm.customerName}
+                          onChange={(e) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              customerName: e.target.value,
+                            })
+                          }
+                          placeholder="Enter customer name"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="paymentCustomerId">Customer ID</Label>
+                        <Input
+                          id="paymentCustomerId"
+                          value={recordPaymentForm.customerId}
+                          onChange={(e) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              customerId: e.target.value,
+                            })
+                          }
+                          placeholder="Optional customer ID"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="paymentAmount">Amount *</Label>
+                        <Input
+                          id="paymentAmount"
+                          type="number"
+                          value={recordPaymentForm.amount}
+                          onChange={(e) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              amount: e.target.value,
+                            })
+                          }
+                          placeholder="0.00"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="paymentType">Payment Type</Label>
+                        <Select
+                          value={recordPaymentForm.type}
+                          onValueChange={(value) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              type: value,
+                            })
+                          }
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="purchase">Purchase</SelectItem>
+                            <SelectItem value="financing">Financing</SelectItem>
+                            <SelectItem value="deposit">Deposit</SelectItem>
+                            <SelectItem value="refund">Refund</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="paymentMethod">Payment Method</Label>
+                        <Select
+                          value={recordPaymentForm.method}
+                          onValueChange={(value) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              method: value,
+                            })
+                          }
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="credit_card">
+                              Credit Card
+                            </SelectItem>
+                            <SelectItem value="bank_transfer">
+                              Bank Transfer
+                            </SelectItem>
+                            <SelectItem value="cash">Cash</SelectItem>
+                            <SelectItem value="check">Check</SelectItem>
+                            <SelectItem value="crypto">
+                              Cryptocurrency
+                            </SelectItem>
+                            <SelectItem value="digital_wallet">
+                              Digital Wallet
+                            </SelectItem>
+                            <SelectItem value="apple_pay">Apple Pay</SelectItem>
+                            <SelectItem value="google_pay">
+                              Google Pay
+                            </SelectItem>
+                            <SelectItem value="paypal">PayPal</SelectItem>
+                            <SelectItem value="zelle">Zelle</SelectItem>
+                            <SelectItem value="cashapp">Cash App</SelectItem>
+                            <SelectItem value="venmo">Venmo</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label htmlFor="paymentVehicleId">Vehicle ID</Label>
+                        <Input
+                          id="paymentVehicleId"
+                          value={recordPaymentForm.vehicleId}
+                          onChange={(e) =>
+                            setRecordPaymentForm({
+                              ...recordPaymentForm,
+                              vehicleId: e.target.value,
+                            })
+                          }
+                          placeholder="Optional vehicle ID"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="paymentVehicleName">
+                        Vehicle Details
+                      </Label>
+                      <Input
+                        id="paymentVehicleName"
+                        value={recordPaymentForm.vehicleName}
+                        onChange={(e) =>
+                          setRecordPaymentForm({
+                            ...recordPaymentForm,
+                            vehicleName: e.target.value,
+                          })
+                        }
+                        placeholder="e.g., 2024 BMW X5 M Competition"
+                      />
+                    </div>
+
+                    <div className="flex gap-3 pt-4">
+                      <Button
+                        variant="outline"
+                        className="flex-1"
+                        onClick={() => setRecordPaymentDialog(false)}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        className="flex-1 bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600"
+                        onClick={handleRecordPayment}
+                        disabled={isLoading}
+                      >
+                        {isLoading ? "Recording..." : "Record Payment"}
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </TabsContent>
           </Tabs>
         </div>

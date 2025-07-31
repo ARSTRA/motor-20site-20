@@ -20,6 +20,7 @@ import About from "./pages/About";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import TradeIn from "./pages/TradeIn";
 import VehicleDetail from "./pages/VehicleDetail";
+import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/financing" element={<Financing />} />
             <Route path="/trade-in" element={<TradeIn />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/car/:id" element={<VehicleDetail />} />
             <Route path="/vehicle/:id" element={<VehicleDetail />} />

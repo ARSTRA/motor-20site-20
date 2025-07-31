@@ -24,6 +24,7 @@ import {
   Zap,
   ChevronLeft,
   ChevronRight,
+  DollarSign,
 } from "lucide-react";
 
 export default function About() {
@@ -212,16 +213,32 @@ export default function About() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
-                    asChild
-                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const storySection =
+                        document.getElementById("story-section");
+                      if (storySection) {
+                        storySection.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        });
+                      }
+                    }}
+                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-10 py-5 text-xl font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-500 relative overflow-hidden group cursor-pointer border-2 border-white/20 hover:border-white/40"
                   >
-                    <Link to="#story-section">
-                      <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-                      <span className="relative flex items-center gap-2">
-                        <span className="text-xl">📖</span>
-                        Our Story
-                      </span>
-                    </Link>
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-ocean-300/10 to-forest-300/10 transform scale-0 group-hover:scale-100 transition-transform duration-500 rounded-2xl"></span>
+                    <span className="relative flex items-center gap-3">
+                      <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-all duration-300 group-hover:rotate-12">
+                        <span className="text-2xl">📖</span>
+                      </div>
+                      <span className="tracking-wide">Our Story</span>
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse [animation-delay:0.6s] group-hover:bg-white"></div>
+                      </div>
+                    </span>
                   </Button>
                   <div className="relative group">
                     {/* Floating decorative elements around the button */}
@@ -242,7 +259,9 @@ export default function About() {
                           <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
                             <Users className="h-5 w-5" />
                           </div>
-                          <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">Meet the Team</span>
+                          <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">
+                            Meet the Team
+                          </span>
                           <div className="flex gap-1">
                             <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
                             <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
@@ -267,9 +286,7 @@ export default function About() {
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
                 className={`relative transition-all duration-300 group ${
-                  index === currentImageIndex
-                    ? "w-8 h-3"
-                    : "w-3 h-3"
+                  index === currentImageIndex ? "w-8 h-3" : "w-3 h-3"
                 }`}
               >
                 <div
@@ -307,10 +324,13 @@ export default function About() {
                   <CardContent className="p-6 sm:p-8">
                     <div
                       className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${
-                        stat.color === 'ocean' ? 'from-ocean-500 to-ocean-600' :
-                        stat.color === 'forest' ? 'from-forest-500 to-forest-600' :
-                        stat.color === 'sunset' ? 'from-sunset-500 to-sunset-600' :
-                        'from-gold-500 to-gold-600'
+                        stat.color === "ocean"
+                          ? "from-ocean-500 to-ocean-600"
+                          : stat.color === "forest"
+                            ? "from-forest-500 to-forest-600"
+                            : stat.color === "sunset"
+                              ? "from-sunset-500 to-sunset-600"
+                              : "from-gold-500 to-gold-600"
                       } mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                     >
                       <stat.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
@@ -318,7 +338,9 @@ export default function About() {
                     <h3 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 group-hover:text-ocean-600 transition-colors duration-300">
                       {stat.value}
                     </h3>
-                    <p className="text-sm sm:text-base text-gray-600 font-medium">{stat.label}</p>
+                    <p className="text-sm sm:text-base text-gray-600 font-medium">
+                      {stat.label}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -327,57 +349,193 @@ export default function About() {
         </section>
 
         {/* Our Story Section */}
-        <section id="story-section" className="py-24 bg-white scroll-mt-20">
+        <section
+          id="story-section"
+          className="py-24 bg-gradient-to-br from-white via-ocean-50/30 to-forest-50/30 scroll-mt-24"
+        >
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
-              <Badge className="mb-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-4 py-2">
-                Our Journey
+              <Badge className="mb-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-6 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <span className="flex items-center gap-2">
+                  <span className="text-2xl">🏔️</span>
+                  Our Journey
+                </span>
               </Badge>
-              <h2 className="text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 A Legacy of
                 <span className="bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600 bg-clip-text text-transparent">
                   {" "}
                   Excellence
                 </span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Founded in the scenic mountains of California, Alpine Motors
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                🚗 Founded in the scenic mountains of California, Alpine Motors
                 began as a dream to create an automotive experience that
-                combines luxury, adventure, and uncompromising quality.
+                combines luxury, adventure, and uncompromising quality. We've
+                built more than a dealership - we've created a destination where
+                automotive dreams come to life.
               </p>
             </div>
 
+            {/* Enhanced Story Grid with Multiple Images */}
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-              <div className="relative group">
-                <img
-                  src="https://images.pexels.com/photos/331988/pexels-photo-331988.jpeg"
-                  alt="Alpine Motors historical founding"
-                  className="w-full h-96 object-cover rounded-3xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="space-y-6">
+                {/* Main Story Image */}
+                <div className="relative group">
+                  <img
+                    src="https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg"
+                    alt="Alpine Motors luxury showroom and founding story"
+                    className="w-full h-96 object-cover rounded-3xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
+                      <p className="font-semibold">Our Premium Showroom</p>
+                      <p className="text-sm">Where luxury meets excellence</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Secondary Images Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative group">
+                    <img
+                      src="https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg"
+                      alt="Customer service excellence"
+                      className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ocean-500/60 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                      <p className="text-white font-medium p-3 text-sm">
+                        Customer First Approach
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative group">
+                    <img
+                      src="https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg"
+                      alt="Advanced automotive technology"
+                      className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/60 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                      <p className="text-white font-medium p-3 text-sm">
+                        Innovation & Technology
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+
+              <div className="space-y-8">
+                <h3 className="text-4xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-ocean-700 to-forest-700 bg-clip-text text-transparent">
                   The Alpine Motors Story
                 </h3>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  What started as a small family dealership has evolved into a
-                  premier destination for luxury vehicle enthusiasts. Our
-                  founder, Michael Rodriguez, envisioned a place where customers
-                  could experience the finest automobiles against the backdrop
-                  of nature's grandeur.
-                </p>
-                <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                  Today, we're proud to represent the world's most prestigious
-                  automotive brands, offering not just vehicles, but gateways to
-                  extraordinary adventures. Every car we sell comes with our
-                  promise of excellence and a commitment to your driving dreams.
-                </p>
-                <div className="flex gap-4">
-                  <CheckCircle className="h-6 w-6 text-forest-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700">
-                    25+ years of automotive excellence and innovation
-                  </span>
+
+                {/* Story Cards */}
+                <div className="space-y-6">
+                  <Card className="bg-gradient-to-r from-ocean-50 to-forest-50 border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="bg-gradient-to-r from-ocean-500 to-forest-500 p-2 rounded-full">
+                          <Star className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900 mb-2">
+                            The Beginning (1998)
+                          </h4>
+                          <p className="text-gray-700 leading-relaxed">
+                            What started as a small family dealership has
+                            evolved into a premier destination for luxury
+                            vehicle enthusiasts. Our founder, Michael Rodriguez,
+                            envisioned a place where customers could experience
+                            the finest automobiles against the backdrop of
+                            nature's grandeur.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-gradient-to-r from-sunset-50 to-gold-50 border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="bg-gradient-to-r from-sunset-500 to-gold-500 p-2 rounded-full">
+                          <Trophy className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900 mb-2">
+                            Our Mission Today
+                          </h4>
+                          <p className="text-gray-700 leading-relaxed">
+                            Today, we're proud to represent the world's most
+                            prestigious automotive brands, offering not just
+                            vehicles, but gateways to extraordinary adventures.
+                            Every car we sell comes with our promise of
+                            excellence and a commitment to your driving dreams.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-gradient-to-r from-forest-50 to-ocean-50 border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="bg-gradient-to-r from-forest-500 to-ocean-500 p-2 rounded-full">
+                          <Heart className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900 mb-2">
+                            Our Promise
+                          </h4>
+                          <p className="text-gray-700 leading-relaxed">
+                            We believe every customer deserves an extraordinary
+                            experience. From the moment you walk into our
+                            showroom to years after your purchase, we're
+                            committed to exceeding your expectations with
+                            personalized service, transparent dealings, and
+                            unwavering support.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                  <Button
+                    asChild
+                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  >
+                    <Link to="/inventory">
+                      <Car className="h-5 w-5 mr-2" />
+                      Explore Our Collection
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  >
+                    <Link to="/contact">
+                      <MapPin className="h-5 w-5 mr-2" />
+                      Schedule a Visit
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Achievement Highlights */}
+                <div className="grid grid-cols-2 gap-4 pt-6">
+                  <div className="text-center p-4 bg-gradient-to-br from-ocean-50 to-forest-50 rounded-xl">
+                    <CheckCircle className="h-8 w-8 text-forest-500 mx-auto mb-2" />
+                    <p className="font-bold text-2xl text-gray-900">25+</p>
+                    <p className="text-sm text-gray-600">Years of Excellence</p>
+                  </div>
+                  <div className="text-center p-4 bg-gradient-to-br from-sunset-50 to-gold-50 rounded-xl">
+                    <Users className="h-8 w-8 text-sunset-500 mx-auto mb-2" />
+                    <p className="font-bold text-2xl text-gray-900">50K+</p>
+                    <p className="text-sm text-gray-600">Happy Customers</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -448,7 +606,8 @@ export default function About() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       onError={(e) => {
                         // Fallback to a default image if specific image fails
-                        e.currentTarget.src = 'https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg';
+                        e.currentTarget.src =
+                          "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -501,7 +660,8 @@ export default function About() {
                       className="w-full h-80 object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
                         // Fallback to a placeholder if image fails to load
-                        e.currentTarget.src = 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg';
+                        e.currentTarget.src =
+                          "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -541,62 +701,107 @@ export default function About() {
               perfect blend of luxury, performance, and personalized service.
               Your adventure awaits.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <div className="flex flex-col sm:flex-row justify-center gap-8">
+              {/* Primary CTA - Browse Inventory */}
               <div className="relative group">
                 <Button
                   asChild
-                  className="bg-white text-ocean-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                  className="bg-white text-ocean-600 hover:bg-gray-100 px-10 py-5 text-xl font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-110 relative overflow-hidden border-2 border-white"
                 >
                   <Link to="/inventory">
-                    <span className="absolute inset-0 bg-gradient-to-r from-ocean-500/10 to-forest-500/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <span className="relative flex items-center gap-2">
-                      <div className="bg-ocean-100 p-1.5 rounded-full group-hover:bg-ocean-200 transition-colors duration-300">
-                        <Car className="h-5 w-5" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-ocean-500/20 to-forest-500/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                    <span className="relative flex items-center gap-3">
+                      <div className="bg-gradient-to-r from-ocean-500 to-forest-500 p-2.5 rounded-full group-hover:rotate-12 transition-transform duration-300 shadow-lg">
+                        <Car className="h-6 w-6 text-white" />
                       </div>
-                      Browse Inventory
+                      <span className="tracking-wide">Browse Inventory</span>
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-ocean-500 rounded-full animate-bounce [animation-delay:0.1s]"></div>
+                        <div className="w-2 h-2 bg-forest-500 rounded-full animate-bounce [animation-delay:0.3s]"></div>
+                        <div className="w-2 h-2 bg-sunset-500 rounded-full animate-bounce [animation-delay:0.5s]"></div>
+                      </div>
                     </span>
                   </Link>
                 </Button>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-ping opacity-60"></div>
+                {/* Floating elements */}
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gradient-to-r from-forest-400 to-ocean-400 rounded-full animate-pulse opacity-60"></div>
               </div>
 
+              {/* Secondary CTA - Visit Showroom */}
               <div className="relative group">
                 <Button
                   asChild
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-8 py-4 text-lg rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                  className="border-3 border-white text-white hover:bg-white hover:text-ocean-600 px-10 py-5 text-xl font-semibold rounded-2xl backdrop-blur-md transition-all duration-500 hover:scale-110 relative overflow-hidden shadow-2xl hover:shadow-3xl"
                 >
                   <Link to="/contact">
-                    <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
-                    <span className="relative flex items-center gap-2">
-                      <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
-                        <MapPin className="h-5 w-5" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                    <span className="relative flex items-center gap-3">
+                      <div className="bg-white/30 p-2.5 rounded-full group-hover:bg-white/50 transition-all duration-300 group-hover:rotate-12 backdrop-blur-sm">
+                        <MapPin className="h-6 w-6" />
                       </div>
-                      Visit Our Showroom
+                      <span className="tracking-wide">Visit Our Showroom</span>
+                      <div className="bg-white/20 px-2 py-1 rounded-full text-sm font-bold">
+                        📍
+                      </div>
                     </span>
                   </Link>
                 </Button>
-                <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-white/60 rounded-full animate-pulse opacity-70"></div>
+                <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-white/80 rounded-full animate-pulse opacity-70"></div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-gold-300 rounded-full animate-bounce [animation-delay:0.8s]"></div>
               </div>
 
-              {/* Additional Professional Button */}
+              {/* Tertiary CTA - Trade-In Program */}
               <div className="relative group">
                 <Button
                   asChild
-                  className="bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-500 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden border border-white/30"
+                  className="bg-gradient-to-r from-gold-500 via-sunset-500 to-gold-600 hover:from-gold-600 hover:via-sunset-600 hover:to-gold-700 text-white px-10 py-5 text-xl font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-110 relative overflow-hidden border-2 border-white/40"
                 >
                   <Link to="/trade-in">
-                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 transform scale-0 group-hover:scale-100 transition-transform duration-500"></span>
-                    <span className="relative flex items-center gap-2">
-                      <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300">
-                        <TrendingUp className="h-5 w-5" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-white/30 transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-2xl"></span>
+                    <span className="relative flex items-center gap-3">
+                      <div className="bg-white/25 p-2.5 rounded-full group-hover:bg-white/40 transition-all duration-300 group-hover:rotate-12 backdrop-blur-sm">
+                        <TrendingUp className="h-6 w-6" />
                       </div>
-                      Trade-In Program
+                      <span className="tracking-wide">Trade-In Program</span>
+                      <div className="bg-white/20 px-2 py-1 rounded-full text-sm font-bold">
+                        💰
+                      </div>
                     </span>
                   </Link>
                 </Button>
-                <div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:0.5s] opacity-80"></div>
+                {/* Enhanced floating elements */}
+                <div className="absolute top-0 right-0 w-3 h-3 bg-white rounded-full animate-bounce [animation-delay:0.5s] opacity-80"></div>
+                <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-gold-200 rounded-full animate-ping [animation-delay:1s] opacity-60"></div>
+                <div className="absolute -top-2 left-2 w-1.5 h-1.5 bg-sunset-200 rounded-full animate-pulse [animation-delay:1.5s] opacity-70"></div>
               </div>
+            </div>
+
+            {/* Additional Call-to-Action Links */}
+            <div className="mt-12 flex justify-center gap-8 text-white/80">
+              <Link
+                to="/financing"
+                className="flex items-center gap-2 hover:text-white transition-colors duration-300 group"
+              >
+                <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                  <DollarSign className="h-5 w-5" />
+                </div>
+                <span className="underline decoration-white/50 hover:decoration-white transition-all duration-300">
+                  Financing Options
+                </span>
+              </Link>
+              <Link
+                to="/dashboard"
+                className="flex items-center gap-2 hover:text-white transition-colors duration-300 group"
+              >
+                <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors duration-300">
+                  <UserCheck className="h-5 w-5" />
+                </div>
+                <span className="underline decoration-white/50 hover:decoration-white transition-all duration-300">
+                  Customer Portal
+                </span>
+              </Link>
             </div>
           </div>
         </section>

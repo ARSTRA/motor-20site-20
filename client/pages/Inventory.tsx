@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import {
   Search,
   Filter,
@@ -17,6 +17,8 @@ import {
   Phone,
   Mail,
   X,
+  ShoppingCart,
+  DollarSign,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -305,8 +307,10 @@ export default function Inventory() {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 onError={(e) => {
                   // Fallback to gradient if image fails to load
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  e.currentTarget.style.display = "none";
+                  e.currentTarget.nextElementSibling?.classList.remove(
+                    "hidden",
+                  );
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -345,10 +349,12 @@ export default function Inventory() {
           <button
             onClick={() => {
               // Add to favorites functionality
-              const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+              const favorites = JSON.parse(
+                localStorage.getItem("favorites") || "[]",
+              );
               if (!favorites.includes(car.id)) {
                 favorites.push(car.id);
-                localStorage.setItem('favorites', JSON.stringify(favorites));
+                localStorage.setItem("favorites", JSON.stringify(favorites));
                 alert(`${car.name} added to favorites!`);
               } else {
                 alert(`${car.name} is already in your favorites!`);
@@ -458,13 +464,32 @@ export default function Inventory() {
             </span>
           </div>
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              className="border-2 border-ocean-500 text-ocean-600 hover:bg-ocean-500 hover:text-white font-bold px-4 py-2 rounded-xl transition-all duration-300"
+            <Link
+              to="/cart"
+              onClick={() => {
+                // Add to cart functionality
+                const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+                const existingItem = cart.find(
+                  (item: any) => item.id === car.id,
+                );
+
+                if (!existingItem) {
+                  cart.push({
+                    id: car.id,
+                    name: car.name,
+                    price: car.price,
+                    image: car.images[0] || "",
+                    addedAt: new Date().toISOString(),
+                  });
+                  localStorage.setItem("cart", JSON.stringify(cart));
+                }
+              }}
             >
-              <Phone className="h-4 w-4 mr-2" />
-              Call
-            </Button>
+              <Button className="bg-gradient-to-r from-gold-500 to-sunset-500 hover:from-gold-600 hover:to-sunset-600 text-white font-bold px-5 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 border-2 border-white/20 hover:border-white/40">
+                <ShoppingCart className="h-4 w-4 mr-2" />
+                Buy Now
+              </Button>
+            </Link>
             <Link to={`/vehicle/${car.id}`}>
               <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                 View Details
@@ -502,17 +527,18 @@ export default function Inventory() {
 
         {/* Animated Grid Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: '40px 40px',
-            animation: 'float 8s ease-in-out infinite'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+              backgroundSize: "40px 40px",
+              animation: "float 8s ease-in-out infinite",
+            }}
+          ></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <Badge
-              className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/30 px-6 py-3 text-lg font-semibold shadow-xl backdrop-blur-sm"
-            >
+            <Badge className="mb-6 bg-gradient-to-r from-gold-500/90 to-sunset-500/90 text-white border-white/30 px-6 py-3 text-lg font-semibold shadow-xl backdrop-blur-sm">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
                 Premium Collection
@@ -532,7 +558,9 @@ export default function Inventory() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-lg">
               <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-xl">
                 <div className="w-12 h-12 bg-gradient-to-r from-gold-500 to-sunset-500 rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-2xl font-bold text-white">{totalCount}</span>
+                  <span className="text-2xl font-bold text-white">
+                    {totalCount}
+                  </span>
                 </div>
                 <div className="text-left">
                   <div className="text-gold-300 font-bold">Premium</div>
@@ -541,7 +569,9 @@ export default function Inventory() {
               </div>
               <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-xl">
                 <div className="w-12 h-12 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-2xl font-bold text-white">{categories.length}</span>
+                  <span className="text-2xl font-bold text-white">
+                    {categories.length}
+                  </span>
                 </div>
                 <div className="text-left">
                   <div className="text-ocean-300 font-bold">Luxury</div>
@@ -679,7 +709,8 @@ export default function Inventory() {
                     No Vehicles Found
                   </h3>
                   <p className="text-gray-600 mb-8 text-lg max-w-md mx-auto">
-                    We couldn't find any vehicles matching your criteria. Try adjusting your filters or search terms.
+                    We couldn't find any vehicles matching your criteria. Try
+                    adjusting your filters or search terms.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button
