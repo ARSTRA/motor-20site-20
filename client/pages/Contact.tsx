@@ -414,7 +414,21 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <Button className={`w-full bg-gradient-to-r ${method.color} hover:shadow-xl text-white font-bold py-4 rounded-xl text-lg transform hover:scale-105 transition-all duration-300`}>
+                  <Button
+                    onClick={() => {
+                      if (method.action === 'Call Now') {
+                        window.open('tel:+15551234567', '_self');
+                      } else if (method.action === 'Send Email') {
+                        window.open('mailto:info@alpinemotors.com', '_self');
+                      } else if (method.action === 'Get Directions') {
+                        window.open('https://maps.google.com/maps?q=123+Alpine+Drive,+Mountain+View,+CA', '_blank');
+                      } else {
+                        // For live chat or other actions
+                        alert(`${method.action} feature will be available soon. Please call us at (555) 123-4567 for immediate assistance.`);
+                      }
+                    }}
+                    className={`w-full bg-gradient-to-r ${method.color} hover:shadow-xl text-white font-bold py-4 rounded-xl text-lg transform hover:scale-105 transition-all duration-300`}
+                  >
                     <span className="flex items-center justify-center gap-2">
                       {method.icon}
                       {method.action}
@@ -544,7 +558,13 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <Button className="w-full bg-gradient-to-r from-sunset-500 via-gold-500 to-sunset-500 hover:from-sunset-600 hover:via-gold-600 hover:to-sunset-600 text-white font-bold py-3 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <Button
+                      onClick={() => {
+                        const specialistEmail = specialist.name.toLowerCase().replace(' ', '.') + '@alpinemotors.com';
+                        window.open(`mailto:${specialistEmail}?subject=Consultation Request&body=Hi ${specialist.name.split(" ")[0]}, I would like to schedule a consultation regarding luxury automotive services.`, '_self');
+                      }}
+                      className="w-full bg-gradient-to-r from-sunset-500 via-gold-500 to-sunset-500 hover:from-sunset-600 hover:via-gold-600 hover:to-sunset-600 text-white font-bold py-3 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
                       <span className="flex items-center justify-center gap-2">
                         <MessageSquare className="h-4 w-4" />
                         Connect with {specialist.name.split(" ")[0]}
