@@ -1505,7 +1505,10 @@ export default function Admin() {
                     <Settings className="h-4 w-4 mr-2" />
                     Payment Methods
                   </Button>
-                  <Button className="bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600">
+                  <Button
+                    className="bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    onClick={() => setRecordPaymentDialog(true)}
+                  >
                     <Plus className="h-4 w-4 mr-2" />
                     Record Payment
                   </Button>
