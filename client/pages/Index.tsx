@@ -460,7 +460,17 @@ export default function Index() {
                   </div>
                   <div className="absolute top-4 right-4 flex gap-2">
                     <button
-                      onClick={() => alert('Saved to favorites!')}
+                      onClick={() => {
+                        // Add to favorites functionality
+                        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+                        if (!favorites.includes(car.id)) {
+                          favorites.push(car.id);
+                          localStorage.setItem('favorites', JSON.stringify(favorites));
+                          alert(`${car.name} added to favorites!`);
+                        } else {
+                          alert(`${car.name} is already in your favorites!`);
+                        }
+                      }}
                       className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg"
                     >
                       <Heart className="h-4 w-4 text-sunset-500" />
