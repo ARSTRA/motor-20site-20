@@ -359,38 +359,148 @@ export default function TradeIn() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-ocean-700 to-forest-700 bg-clip-text text-transparent mb-6">
+      {/* Enhanced Professional Testimonials Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50 relative overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-ocean-400/20 to-forest-400/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-gold-400/20 to-sunset-400/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-forest-400/10 to-ocean-400/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-20">
+            <Badge variant="outline" className="mb-6 text-ocean-600 border-ocean-300 px-6 py-2 text-sm font-bold">
+              Customer Success Stories
+            </Badge>
+            <h2 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-ocean-700 via-forest-700 to-sunset-700 bg-clip-text text-transparent mb-6">
               What Our Customers Say
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join thousands of satisfied customers who got top value for their vehicles
+            <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Real experiences from satisfied customers who discovered exceptional value and service through our trade-in program
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-white hover:shadow-xl transition-shadow duration-300">
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-gold-400 text-gold-400" />
-                    ))}
+              <div key={index} className="group relative">
+                <Card className="overflow-hidden bg-white/80 backdrop-blur-lg border-2 border-white/50 hover:border-white/80 transition-all duration-500 hover:scale-105 hover:shadow-2xl rounded-3xl relative">
+                  {/* Professional Customer Image Header */}
+                  <div className="relative h-80 overflow-hidden">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = 'https://images.pexels.com/photos/3831645/pexels-photo-3831645.jpeg';
+                      }}
+                    />
+                    {/* Professional Gradient Overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent`}></div>
+
+                    {/* Rating Badge */}
+                    <div className="absolute top-6 left-6">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-xl border border-white/30">
+                        <div className="flex items-center gap-2">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-gold-400 text-gold-400" />
+                          ))}
+                          <span className="text-sm font-bold text-gray-800 ml-1">5.0</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Customer Info Overlay */}
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                        <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-gold-300 transition-colors duration-300">
+                          {testimonial.name}
+                        </h3>
+                        <p className="text-white/80 text-sm font-medium">{testimonial.role}</p>
+                        <p className="text-white/60 text-sm">{testimonial.location}</p>
+                      </div>
+                    </div>
+
+                    {/* Decorative Corner Elements */}
+                    <div className={`absolute top-6 right-6 w-8 h-8 bg-gradient-to-r ${testimonial.gradient} rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                    <div className={`absolute bottom-6 right-6 w-4 h-4 bg-gradient-to-r ${testimonial.gradient} rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300`}></div>
                   </div>
-                  <p className="text-gray-600 mb-6 italic leading-relaxed">
-                    "{testimonial.comment}"
-                  </p>
-                  <div className="border-t pt-4">
-                    <p className="font-bold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.location}</p>
-                    <p className="text-sm text-ocean-600 font-semibold mt-1">{testimonial.vehicle}</p>
-                  </div>
-                </CardContent>
-              </Card>
+
+                  {/* Enhanced Content Section */}
+                  <CardContent className="p-8 bg-gradient-to-br from-white/95 to-gray-50/95 backdrop-blur-sm">
+                    {/* Quote Content */}
+                    <div className="mb-6">
+                      <div className={`w-12 h-12 bg-gradient-to-r ${testimonial.gradient} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                        <span className="text-2xl text-white font-bold">"</span>
+                      </div>
+                      <p className="text-gray-700 text-lg leading-relaxed italic font-medium group-hover:text-gray-800 transition-colors duration-300">
+                        {testimonial.comment}
+                      </p>
+                    </div>
+
+                    {/* Vehicle and Achievement Info */}
+                    <div className="border-t border-gray-200 pt-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <p className="text-sm text-gray-500 mb-1">Vehicle Traded</p>
+                          <p className={`font-bold text-${testimonial.accent}-600 text-lg`}>{testimonial.vehicle}</p>
+                        </div>
+                        <div className={`w-16 h-16 bg-gradient-to-r ${testimonial.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <CheckCircle className="h-8 w-8 text-white" />
+                        </div>
+                      </div>
+
+                      {/* Professional Indicators */}
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="text-center">
+                          <div className={`w-10 h-10 bg-gradient-to-r ${testimonial.gradient} rounded-xl flex items-center justify-center mx-auto mb-2 opacity-20 group-hover:opacity-30 transition-opacity duration-300`}>
+                            <div className="w-3 h-3 bg-white rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500 font-medium">Premium</span>
+                        </div>
+                        <div className="text-center">
+                          <div className={`w-10 h-10 bg-gradient-to-r ${testimonial.gradient} rounded-xl flex items-center justify-center mx-auto mb-2 opacity-20 group-hover:opacity-30 transition-opacity duration-300`}>
+                            <div className="w-3 h-3 bg-white rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500 font-medium">Service</span>
+                        </div>
+                        <div className="text-center">
+                          <div className={`w-10 h-10 bg-gradient-to-r ${testimonial.gradient} rounded-xl flex items-center justify-center mx-auto mb-2 opacity-20 group-hover:opacity-30 transition-opacity duration-300`}>
+                            <div className="w-3 h-3 bg-white rounded-full"></div>
+                          </div>
+                          <span className="text-xs text-gray-500 font-medium">Value</span>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+
+                  {/* Subtle Border Glow Effect */}
+                  <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${testimonial.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none`}></div>
+                </Card>
+              </div>
             ))}
+          </div>
+
+          {/* Additional Trust Indicators */}
+          <div className="mt-20 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              <div className="text-center">
+                <div className="text-4xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-2">2,500+</div>
+                <p className="text-gray-600 font-medium">Happy Customers</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold bg-gradient-to-r from-forest-600 to-gold-600 bg-clip-text text-transparent mb-2">$2.8M+</div>
+                <p className="text-gray-600 font-medium">Total Value Paid</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold bg-gradient-to-r from-gold-600 to-sunset-600 bg-clip-text text-transparent mb-2">4.9/5</div>
+                <p className="text-gray-600 font-medium">Average Rating</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold bg-gradient-to-r from-sunset-600 to-ocean-600 bg-clip-text text-transparent mb-2">25 Min</div>
+                <p className="text-gray-600 font-medium">Avg. Appraisal Time</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
