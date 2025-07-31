@@ -143,9 +143,21 @@ interface Payment {
   amount: number;
   type: "purchase" | "financing" | "deposit" | "refund";
   status: "completed" | "pending" | "failed" | "refunded";
-  method: "credit_card" | "bank_transfer" | "check" | "cash";
+  method: "credit_card" | "bank_transfer" | "check" | "cash" | "crypto" | "digital_wallet" | "apple_pay" | "google_pay" | "paypal" | "zelle" | "cashapp" | "venmo";
   vehicleId?: number;
   vehicleName?: string;
+  createdAt: string;
+}
+
+interface PaymentMethod {
+  id: number;
+  name: string;
+  type: "traditional" | "digital" | "crypto";
+  category: string;
+  details: string;
+  isActive: boolean;
+  processingFee: number;
+  icon: string;
   createdAt: string;
 }
 
