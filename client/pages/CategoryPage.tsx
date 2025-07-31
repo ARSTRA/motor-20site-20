@@ -150,12 +150,27 @@ export default function CategoryPage() {
         </div>
 
         <div className="absolute top-6 right-6 flex gap-3">
-          <button className="bg-white/95 backdrop-blur-sm p-4 rounded-2xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-xl group">
+          <button
+            onClick={() => {
+              // Add to favorites functionality
+              const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+              if (!favorites.includes(car.id)) {
+                favorites.push(car.id);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                alert(`${car.name} added to favorites!`);
+              } else {
+                alert(`${car.name} is already in your favorites!`);
+              }
+            }}
+            className="bg-white/95 backdrop-blur-sm p-4 rounded-2xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-xl group"
+          >
             <Heart className="h-5 w-5 text-sunset-500 group-hover:fill-sunset-500 transition-all" />
           </button>
-          <button className="bg-white/95 backdrop-blur-sm p-4 rounded-2xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-xl">
-            <Eye className="h-5 w-5 text-ocean-500" />
-          </button>
+          <Link to={`/vehicle/${car.id}`}>
+            <button className="bg-white/95 backdrop-blur-sm p-4 rounded-2xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-xl">
+              <Eye className="h-5 w-5 text-ocean-500" />
+            </button>
+          </Link>
         </div>
       </div>
 
