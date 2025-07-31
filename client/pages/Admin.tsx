@@ -2393,6 +2393,231 @@ export default function Admin() {
                   </div>
                 </DialogContent>
               </Dialog>
+
+              {/* Payment Methods Management Dialog */}
+              <Dialog open={paymentMethodsDialog} onOpenChange={setPaymentMethodsDialog}>
+                <DialogContent className="sm:max-w-6xl max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <CreditCard className="h-5 w-5 text-ocean-600" />
+                      Payment Methods Management
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-6">
+                    {/* Add New Payment Method */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg">Add New Payment Method</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                          <div>
+                            <Label htmlFor="methodName">Method Name</Label>
+                            <Input
+                              id="methodName"
+                              value={newPaymentMethodForm.name}
+                              onChange={(e) =>
+                                setNewPaymentMethodForm({
+                                  ...newPaymentMethodForm,
+                                  name: e.target.value,
+                                })
+                              }
+                              placeholder="e.g., Bitcoin, PayPal"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="methodType">Type</Label>
+                            <Select
+                              value={newPaymentMethodForm.type}
+                              onValueChange={(value) =>
+                                setNewPaymentMethodForm({
+                                  ...newPaymentMethodForm,
+                                  type: value as "traditional" | "digital" | "crypto",
+                                })
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="traditional">Traditional</SelectItem>
+                                <SelectItem value="digital">Digital Wallet</SelectItem>
+                                <SelectItem value="crypto">Cryptocurrency</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div>
+                            <Label htmlFor="methodCategory">Category</Label>
+                            <Select
+                              value={newPaymentMethodForm.category}
+                              onValueChange={(value) =>
+                                setNewPaymentMethodForm({
+                                  ...newPaymentMethodForm,
+                                  category: value,
+                                })
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="bank_transfer">Bank Transfer</SelectItem>
+                                <SelectItem value="credit_card">Credit Card</SelectItem>
+                                <SelectItem value="cash">Cash</SelectItem>
+                                <SelectItem value="paypal">PayPal</SelectItem>
+                                <SelectItem value="apple_pay">Apple Pay</SelectItem>
+                                <SelectItem value="google_pay">Google Pay</SelectItem>
+                                <SelectItem value="zelle">Zelle</SelectItem>
+                                <SelectItem value="cashapp">Cash App</SelectItem>
+                                <SelectItem value="venmo">Venmo</SelectItem>
+                                <SelectItem value="bitcoin">Bitcoin</SelectItem>
+                                <SelectItem value="ethereum">Ethereum</SelectItem>
+                                <SelectItem value="usdc">USD Coin</SelectItem>
+                                <SelectItem value="usdt">Tether</SelectItem>
+                                <SelectItem value="other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="flex items-end">
+                            <Button
+                              onClick={handleAddPaymentMethod}
+                              disabled={isLoading}
+                              className="w-full bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600"
+                            >
+                              {isLoading ? "Adding..." : "Add Method"}
+                            </Button>
+                          </div>
+                        </div>
+                        <div>
+                          <Label htmlFor="methodDetails">Details & Instructions</Label>
+                          <Textarea
+                            id="methodDetails"
+                            value={newPaymentMethodForm.details}
+                            onChange={(e) =>
+                              setNewPaymentMethodForm({
+                                ...newPaymentMethodForm,
+                                details: e.target.value,
+                              })
+                            }
+                            placeholder="Provide payment instructions, wallet addresses, account details, etc."
+                            rows={3}
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Payment Methods by Category */}
+                    <div className="grid gap-6">
+                      {["traditional", "digital", "crypto"].map((type) => (
+                        <Card key={type}>
+                          <CardHeader>
+                            <CardTitle className="flex items-center gap-2 capitalize">
+                              {type === "traditional" && <Building2 className="h-5 w-5 text-ocean-600" />}
+                              {type === "digital" && <Smartphone className="h-5 w-5 text-forest-600" />}
+                              {type === "crypto" && <Coins className="h-5 w-5 text-sunset-600" />}
+                              {type} Payment Methods
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="p-0">
+                            <Table>
+                              <TableHeader>
+                                <TableRow>
+                                  <TableHead>Method</TableHead>
+                                  <TableHead>Category</TableHead>
+                                  <TableHead>Details</TableHead>
+                                  <TableHead>Processing Fee</TableHead>
+                                  <TableHead>Status</TableHead>
+                                  <TableHead>Actions</TableHead>
+                                </TableRow>
+                              </TableHeader>
+                              <TableBody>
+                                {paymentMethods
+                                  .filter((method) => method.type === type)
+                                  .map((method) => (
+                                    <TableRow key={method.id}>
+                                      <TableCell>
+                                        <div className="flex items-center gap-3">
+                                          {method.icon === "CreditCard" && <CreditCard className="h-5 w-5 text-gray-600" />}
+                                          {method.icon === "Building2" && <Building2 className="h-5 w-5 text-gray-600" />}
+                                          {method.icon === "Banknote" && <Banknote className="h-5 w-5 text-gray-600" />}
+                                          {method.icon === "Smartphone" && <Smartphone className="h-5 w-5 text-gray-600" />}
+                                          {method.icon === "Coins" && <Coins className="h-5 w-5 text-gray-600" />}
+                                          {method.icon === "Zap" && <Zap className="h-5 w-5 text-gray-600" />}
+                                          {method.icon === "Users" && <Users className="h-5 w-5 text-gray-600" />}
+                                          <div>
+                                            <p className="font-medium">{method.name}</p>
+                                            <p className="text-sm text-gray-500">
+                                              Added {new Date(method.createdAt).toLocaleDateString()}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </TableCell>
+                                      <TableCell>
+                                        <Badge variant="outline" className="capitalize">
+                                          {method.category.replace("_", " ")}
+                                        </Badge>
+                                      </TableCell>
+                                      <TableCell className="max-w-xs">
+                                        <p className="text-sm text-gray-600 truncate">
+                                          {method.details}
+                                        </p>
+                                      </TableCell>
+                                      <TableCell>
+                                        <span className="font-medium">
+                                          {method.processingFee}%
+                                        </span>
+                                      </TableCell>
+                                      <TableCell>
+                                        <div className="flex items-center gap-2">
+                                          <Switch
+                                            checked={method.isActive}
+                                            onCheckedChange={() => handleTogglePaymentMethod(method.id)}
+                                          />
+                                          <Badge
+                                            className={
+                                              method.isActive
+                                                ? "bg-green-100 text-green-800"
+                                                : "bg-gray-100 text-gray-800"
+                                            }
+                                          >
+                                            {method.isActive ? "Active" : "Inactive"}
+                                          </Badge>
+                                        </div>
+                                      </TableCell>
+                                      <TableCell>
+                                        <div className="flex gap-2">
+                                          <Button size="sm" variant="outline">
+                                            <Edit className="h-3 w-3" />
+                                          </Button>
+                                          <Button
+                                            size="sm"
+                                            variant="outline"
+                                            onClick={() => handleDeletePaymentMethod(method.id)}
+                                          >
+                                            <Trash2 className="h-3 w-3 text-red-600" />
+                                          </Button>
+                                        </div>
+                                      </TableCell>
+                                    </TableRow>
+                                  ))}
+                              </TableBody>
+                            </Table>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+
+                    <div className="flex justify-end">
+                      <Button
+                        variant="outline"
+                        onClick={() => setPaymentMethodsDialog(false)}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </TabsContent>
           </Tabs>
         </div>
