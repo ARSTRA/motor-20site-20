@@ -1656,24 +1656,41 @@ export default function Admin() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start hover:bg-ocean-50 hover:border-ocean-300 transition-colors"
+                      onClick={() => setPasswordDialog(true)}
+                    >
                       <Lock className="h-4 w-4 mr-2" />
                       Change Admin Password
                     </Button>
 
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start hover:bg-forest-50 hover:border-forest-300 transition-colors"
+                      onClick={() => setAdminUsersDialog(true)}
+                    >
                       <UserPlus className="h-4 w-4 mr-2" />
                       Manage Admin Users
                     </Button>
 
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start hover:bg-sunset-50 hover:border-sunset-300 transition-colors"
+                      onClick={() => setActivityLogsDialog(true)}
+                    >
                       <Activity className="h-4 w-4 mr-2" />
                       View Activity Logs
                     </Button>
 
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start hover:bg-gold-50 hover:border-gold-300 transition-colors"
+                      onClick={handleExportSystemData}
+                      disabled={isLoading}
+                    >
                       <Download className="h-4 w-4 mr-2" />
-                      Export System Data
+                      {isLoading ? "Exporting..." : "Export System Data"}
                     </Button>
                   </CardContent>
                 </Card>
