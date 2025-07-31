@@ -422,6 +422,109 @@ export default function Admin() {
     setPayments(payments.map((p) => (p.id === id ? { ...p, status } : p)));
   };
 
+  // Security settings handlers
+  const handleChangePassword = async () => {
+    if (changePasswordForm.newPassword !== changePasswordForm.confirmPassword) {
+      alert("New passwords do not match");
+      return;
+    }
+    if (changePasswordForm.newPassword.length < 6) {
+      alert("Password must be at least 6 characters long");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      alert("Password changed successfully!");
+      setChangePasswordForm({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setPasswordDialog(false);
+    } catch (error) {
+      alert("Failed to change password");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleAddAdminUser = async () => {
+    if (!newAdminForm.name || !newAdminForm.username || !newAdminForm.password) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    if (adminUsers.some(user => user.username === newAdminForm.username)) {
+      alert("Username already exists");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setAdminUsers([...adminUsers, { ...newAdminForm }]);
+      alert("Admin user added successfully!");
+      setNewAdminForm({
+        name: "",
+        username: "",
+        password: "",
+        role: "sales_admin",
+      });
+    } catch (error) {
+      alert("Failed to add admin user");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleDeleteAdminUser = (username: string) => {
+    if (username === adminUser?.username) {
+      alert("Cannot delete your own account");
+      return;
+    }
+
+    if (confirm(`Are you sure you want to delete admin user: ${username}?`)) {
+      setAdminUsers(adminUsers.filter(user => user.username !== username));
+      alert("Admin user deleted successfully!");
+    }
+  };
+
+  const handleExportSystemData = async () => {
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      const exportData = {
+        vehicles: vehicles,
+        customers: customers,
+        payments: payments,
+        adminUsers: adminUsers.map(user => ({ username: user.username, role: user.role, name: user.name })),
+        activityLogs: activityLogs,
+        exportedAt: new Date().toISOString(),
+        exportedBy: adminUser?.name,
+      };
+
+      const dataStr = JSON.stringify(exportData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `alpine-motors-export-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      alert("System data exported successfully!");
+    } catch (error) {
+      alert("Failed to export system data");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // Admin Login Form
   if (!adminUser) {
     return (
