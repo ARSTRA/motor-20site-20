@@ -52,7 +52,7 @@ const mockCars: Car[] = [
     fuel: "Hybrid",
     transmission: "Automatic",
     description:
-      "The pinnacle of luxury and technology. Exceptional comfort with innovative features.",
+      "The pinnacle of luxury and technology. Exceptional comfort with innovative features. This S-Class features the latest MBUX Hyperscreen technology, executive seating package, and advanced hybrid powertrain for unparalleled efficiency and performance.",
     images: ["https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg", "https://images.pexels.com/photos/25857424/pexels-photo-25857424.jpeg"],
     category: "luxury-sedan",
     featured: true,
