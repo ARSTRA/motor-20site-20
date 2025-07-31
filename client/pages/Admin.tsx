@@ -1778,6 +1778,335 @@ export default function Admin() {
                   </CardContent>
                 </Card>
               </div>
+
+              {/* Security Settings Dialogs */}
+
+              {/* Change Password Dialog */}
+              <Dialog open={passwordDialog} onOpenChange={setPasswordDialog}>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Lock className="h-5 w-5 text-ocean-600" />
+                      Change Admin Password
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div>
+                      <Label htmlFor="currentPassword">Current Password</Label>
+                      <Input
+                        id="currentPassword"
+                        type="password"
+                        value={changePasswordForm.currentPassword}
+                        onChange={(e) =>
+                          setChangePasswordForm({
+                            ...changePasswordForm,
+                            currentPassword: e.target.value,
+                          })
+                        }
+                        placeholder="Enter current password"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="newPassword">New Password</Label>
+                      <Input
+                        id="newPassword"
+                        type="password"
+                        value={changePasswordForm.newPassword}
+                        onChange={(e) =>
+                          setChangePasswordForm({
+                            ...changePasswordForm,
+                            newPassword: e.target.value,
+                          })
+                        }
+                        placeholder="Enter new password"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="confirmPassword">Confirm New Password</Label>
+                      <Input
+                        id="confirmPassword"
+                        type="password"
+                        value={changePasswordForm.confirmPassword}
+                        onChange={(e) =>
+                          setChangePasswordForm({
+                            ...changePasswordForm,
+                            confirmPassword: e.target.value,
+                          })
+                        }
+                        placeholder="Confirm new password"
+                      />
+                    </div>
+                    <div className="flex gap-3 pt-4">
+                      <Button
+                        variant="outline"
+                        className="flex-1"
+                        onClick={() => setPasswordDialog(false)}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        className="flex-1 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600"
+                        onClick={handleChangePassword}
+                        disabled={isLoading}
+                      >
+                        {isLoading ? "Changing..." : "Change Password"}
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              {/* Manage Admin Users Dialog */}
+              <Dialog open={adminUsersDialog} onOpenChange={setAdminUsersDialog}>
+                <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <UserPlus className="h-5 w-5 text-forest-600" />
+                      Manage Admin Users
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-6">
+                    {/* Add New Admin User */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg">Add New Admin User</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="adminName">Full Name</Label>
+                            <Input
+                              id="adminName"
+                              value={newAdminForm.name}
+                              onChange={(e) =>
+                                setNewAdminForm({
+                                  ...newAdminForm,
+                                  name: e.target.value,
+                                })
+                              }
+                              placeholder="John Doe"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="adminUsername">Username (Email)</Label>
+                            <Input
+                              id="adminUsername"
+                              type="email"
+                              value={newAdminForm.username}
+                              onChange={(e) =>
+                                setNewAdminForm({
+                                  ...newAdminForm,
+                                  username: e.target.value,
+                                })
+                              }
+                              placeholder="admin@alpinemotors.com"
+                            />
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="adminPassword">Password</Label>
+                            <Input
+                              id="adminPassword"
+                              type="password"
+                              value={newAdminForm.password}
+                              onChange={(e) =>
+                                setNewAdminForm({
+                                  ...newAdminForm,
+                                  password: e.target.value,
+                                })
+                              }
+                              placeholder="Minimum 6 characters"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="adminRole">Role</Label>
+                            <Select
+                              value={newAdminForm.role}
+                              onValueChange={(value) =>
+                                setNewAdminForm({
+                                  ...newAdminForm,
+                                  role: value,
+                                })
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="super_admin">Super Admin</SelectItem>
+                                <SelectItem value="manager">Manager</SelectItem>
+                                <SelectItem value="sales_admin">Sales Admin</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                        <Button
+                          onClick={handleAddAdminUser}
+                          disabled={isLoading}
+                          className="w-full bg-gradient-to-r from-forest-500 to-sunset-500 hover:from-forest-600 hover:to-sunset-600"
+                        >
+                          {isLoading ? "Adding..." : "Add Admin User"}
+                        </Button>
+                      </CardContent>
+                    </Card>
+
+                    {/* Existing Admin Users */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg">Existing Admin Users</CardTitle>
+                      </CardHeader>
+                      <CardContent className="p-0">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Name</TableHead>
+                              <TableHead>Username</TableHead>
+                              <TableHead>Role</TableHead>
+                              <TableHead>Actions</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {adminUsers.map((user, index) => (
+                              <TableRow key={index}>
+                                <TableCell className="font-medium">
+                                  {user.name}
+                                  {user.username === adminUser?.username && (
+                                    <Badge className="ml-2 bg-gold-100 text-gold-800">
+                                      Current User
+                                    </Badge>
+                                  )}
+                                </TableCell>
+                                <TableCell>{user.username}</TableCell>
+                                <TableCell>
+                                  <Badge
+                                    className={
+                                      user.role === "super_admin"
+                                        ? "bg-red-100 text-red-800"
+                                        : user.role === "manager"
+                                          ? "bg-blue-100 text-blue-800"
+                                          : "bg-green-100 text-green-800"
+                                    }
+                                  >
+                                    {user.role.replace("_", " ").toUpperCase()}
+                                  </Badge>
+                                </TableCell>
+                                <TableCell>
+                                  <div className="flex gap-2">
+                                    <Button size="sm" variant="outline">
+                                      <Edit className="h-3 w-3" />
+                                    </Button>
+                                    {user.username !== adminUser?.username && (
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => handleDeleteAdminUser(user.username)}
+                                      >
+                                        <Trash2 className="h-3 w-3 text-red-600" />
+                                      </Button>
+                                    )}
+                                  </div>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </CardContent>
+                    </Card>
+
+                    <div className="flex justify-end">
+                      <Button
+                        variant="outline"
+                        onClick={() => setAdminUsersDialog(false)}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              {/* Activity Logs Dialog */}
+              <Dialog open={activityLogsDialog} onOpenChange={setActivityLogsDialog}>
+                <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Activity className="h-5 w-5 text-sunset-600" />
+                      System Activity Logs
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <p className="text-sm text-gray-600">
+                        Recent system activities and security events
+                      </p>
+                      <Button variant="outline" size="sm">
+                        <Download className="h-4 w-4 mr-2" />
+                        Export Logs
+                      </Button>
+                    </div>
+
+                    <Card>
+                      <CardContent className="p-0">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Timestamp</TableHead>
+                              <TableHead>Action</TableHead>
+                              <TableHead>User</TableHead>
+                              <TableHead>Details</TableHead>
+                              <TableHead>Type</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {activityLogs.map((log) => (
+                              <TableRow key={log.id}>
+                                <TableCell className="text-sm">
+                                  {new Date(log.timestamp).toLocaleString()}
+                                </TableCell>
+                                <TableCell className="font-medium">
+                                  {log.action}
+                                </TableCell>
+                                <TableCell>{log.user}</TableCell>
+                                <TableCell className="max-w-md truncate text-sm text-gray-600">
+                                  {log.details}
+                                </TableCell>
+                                <TableCell>
+                                  <Badge
+                                    className={
+                                      log.type === "success"
+                                        ? "bg-green-100 text-green-800"
+                                        : log.type === "warning"
+                                          ? "bg-yellow-100 text-yellow-800"
+                                          : log.type === "error"
+                                            ? "bg-red-100 text-red-800"
+                                            : "bg-blue-100 text-blue-800"
+                                    }
+                                  >
+                                    {log.type.toUpperCase()}
+                                  </Badge>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </CardContent>
+                    </Card>
+
+                    <div className="flex justify-between items-center pt-4">
+                      <p className="text-sm text-gray-500">
+                        Showing latest 5 activities. Full logs can be exported.
+                      </p>
+                      <Button
+                        variant="outline"
+                        onClick={() => setActivityLogsDialog(false)}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </TabsContent>
           </Tabs>
         </div>
