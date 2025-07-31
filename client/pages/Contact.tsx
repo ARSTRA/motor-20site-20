@@ -414,7 +414,18 @@ export default function Contact() {
                       <div className="text-xl font-bold text-gray-900 mb-1">
                         {method.contact}
                       </div>
-                      <div className="text-sm text-gray-600 font-medium">{method.hours}</div>
+                      <div className="text-sm text-gray-600 font-medium mb-3">{method.hours}</div>
+
+                      {/* Expert Features */}
+                      <div className="space-y-2">
+                        <div className="text-sm font-semibold text-gray-800 mb-2">Expert Services:</div>
+                        {method.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                            <span className="text-sm text-gray-600 font-medium">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
