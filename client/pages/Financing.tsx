@@ -64,6 +64,11 @@ export default function Financing() {
 
   const [showResults, setShowResults] = useState(false);
 
+  // Auto-calculate when values change
+  useEffect(() => {
+    calculatePayment();
+  }, [loanAmount, downPayment, loanTerm, creditScore]);
+
   // Calculate monthly payment
   const calculatePayment = () => {
     const principal = loanAmount[0] - downPayment[0];
