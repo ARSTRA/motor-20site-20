@@ -1483,11 +1483,78 @@ export default function Admin() {
                     <Download className="h-4 w-4 mr-2" />
                     Export Report
                   </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => setPaymentMethodsDialog(true)}
+                    className="border-ocean-200 text-ocean-600 hover:bg-ocean-50"
+                  >
+                    <Settings className="h-4 w-4 mr-2" />
+                    Payment Methods
+                  </Button>
                   <Button className="bg-gradient-to-r from-sunset-500 to-gold-500 hover:from-sunset-600 hover:to-gold-600">
                     <Plus className="h-4 w-4 mr-2" />
                     Record Payment
                   </Button>
                 </div>
+              </div>
+
+              {/* Payment Methods Overview Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <Card className="bg-gradient-to-br from-ocean-50 to-ocean-100 border-ocean-200">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <CreditCard className="h-8 w-8 text-ocean-600" />
+                      <div>
+                        <p className="text-sm text-ocean-700">Traditional</p>
+                        <p className="text-xl font-bold text-ocean-800">
+                          {paymentMethods.filter(m => m.type === "traditional" && m.isActive).length}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-forest-50 to-forest-100 border-forest-200">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <Smartphone className="h-8 w-8 text-forest-600" />
+                      <div>
+                        <p className="text-sm text-forest-700">Digital Wallets</p>
+                        <p className="text-xl font-bold text-forest-800">
+                          {paymentMethods.filter(m => m.type === "digital" && m.isActive).length}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-sunset-50 to-sunset-100 border-sunset-200">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <Coins className="h-8 w-8 text-sunset-600" />
+                      <div>
+                        <p className="text-sm text-sunset-700">Cryptocurrency</p>
+                        <p className="text-xl font-bold text-sunset-800">
+                          {paymentMethods.filter(m => m.type === "crypto" && m.isActive).length}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-gold-50 to-gold-100 border-gold-200">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <Zap className="h-8 w-8 text-gold-600" />
+                      <div>
+                        <p className="text-sm text-gold-700">Total Active</p>
+                        <p className="text-xl font-bold text-gold-800">
+                          {paymentMethods.filter(m => m.isActive).length}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
