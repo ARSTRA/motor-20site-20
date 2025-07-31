@@ -19,6 +19,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import TradeIn from "./pages/TradeIn";
+import VehicleDetail from "./pages/VehicleDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
