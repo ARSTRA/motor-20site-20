@@ -170,6 +170,7 @@ export default function Admin() {
   const [passwordDialog, setPasswordDialog] = useState(false);
   const [adminUsersDialog, setAdminUsersDialog] = useState(false);
   const [activityLogsDialog, setActivityLogsDialog] = useState(false);
+  const [paymentMethodsDialog, setPaymentMethodsDialog] = useState(false);
   const [changePasswordForm, setChangePasswordForm] = useState({
     currentPassword: "",
     newPassword: "",
@@ -180,6 +181,13 @@ export default function Admin() {
     username: "",
     password: "",
     role: "sales_admin",
+  });
+  const [newPaymentMethodForm, setNewPaymentMethodForm] = useState({
+    name: "",
+    type: "traditional",
+    category: "bank_transfer",
+    details: "",
+    isActive: true,
   });
 
   // Mock data
