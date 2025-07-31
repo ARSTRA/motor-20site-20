@@ -213,16 +213,31 @@ export default function About() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
-                    asChild
-                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const storySection = document.getElementById('story-section');
+                      if (storySection) {
+                        storySection.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'start'
+                        });
+                      }
+                    }}
+                    className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-10 py-5 text-xl font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-500 relative overflow-hidden group cursor-pointer border-2 border-white/20 hover:border-white/40"
                   >
-                    <Link to="#story-section">
-                      <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-                      <span className="relative flex items-center gap-2">
-                        <span className="text-xl">📖</span>
-                        Our Story
-                      </span>
-                    </Link>
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-ocean-300/10 to-forest-300/10 transform scale-0 group-hover:scale-100 transition-transform duration-500 rounded-2xl"></span>
+                    <span className="relative flex items-center gap-3">
+                      <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-all duration-300 group-hover:rotate-12">
+                        <span className="text-2xl">📖</span>
+                      </div>
+                      <span className="tracking-wide">Our Story</span>
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse [animation-delay:0.6s] group-hover:bg-white"></div>
+                      </div>
+                    </span>
                   </Button>
                   <div className="relative group">
                     {/* Floating decorative elements around the button */}
