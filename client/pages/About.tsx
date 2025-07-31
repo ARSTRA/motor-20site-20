@@ -24,6 +24,7 @@ import {
   Zap,
   ChevronLeft,
   ChevronRight,
+  DollarSign,
 } from "lucide-react";
 
 export default function About() {
