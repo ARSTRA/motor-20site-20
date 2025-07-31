@@ -111,7 +111,7 @@ const mockCars: Car[] = [
     fuel: "Electric",
     transmission: "Automatic",
     description:
-      "Revolutionary electric performance sedan with incredible acceleration and range.",
+      "Revolutionary electric performance sedan with incredible acceleration and range. This Plaid variant features tri-motor setup with track-mode capability, advanced autopilot, and over-the-air performance updates that continuously enhance the driving experience.",
     images: ["https://images.pexels.com/photos/258083/pexels-photo-258083.jpeg", "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg"],
     category: "electric",
     featured: false,
