@@ -53,16 +53,18 @@ export default function Cart() {
 
   const loadCartItems = () => {
     try {
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
       // Add quantity and description to existing items
       const enhancedCart = cart.map((item: CartItem) => ({
         ...item,
         quantity: item.quantity || 1,
-        description: item.description || `Premium luxury vehicle with all features included`,
+        description:
+          item.description ||
+          `Premium luxury vehicle with all features included`,
       }));
       setCartItems(enhancedCart);
     } catch (error) {
-      console.error('Error loading cart:', error);
+      console.error("Error loading cart:", error);
       setCartItems([]);
     } finally {
       setLoading(false);
@@ -71,51 +73,58 @@ export default function Cart() {
 
   const updateQuantity = (id: string, newQuantity: number) => {
     if (newQuantity < 1) return;
-    
-    const updatedItems = cartItems.map(item =>
-      item.id === id ? { ...item, quantity: newQuantity } : item
+
+    const updatedItems = cartItems.map((item) =>
+      item.id === id ? { ...item, quantity: newQuantity } : item,
     );
     setCartItems(updatedItems);
-    localStorage.setItem('cart', JSON.stringify(updatedItems));
+    localStorage.setItem("cart", JSON.stringify(updatedItems));
   };
 
   const removeItem = (id: string) => {
-    const updatedItems = cartItems.filter(item => item.id !== id);
+    const updatedItems = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedItems);
-    localStorage.setItem('cart', JSON.stringify(updatedItems));
+    localStorage.setItem("cart", JSON.stringify(updatedItems));
   };
 
   const clearCart = () => {
     setCartItems([]);
-    localStorage.removeItem('cart');
+    localStorage.removeItem("cart");
   };
 
   const applyPromoCode = () => {
     const validCodes: { [key: string]: number } = {
-      'LUXURY10': 0.10,
-      'VIP15': 0.15,
-      'ALPINE20': 0.20,
-      'WELCOME5': 0.05,
+      LUXURY10: 0.1,
+      VIP15: 0.15,
+      ALPINE20: 0.2,
+      WELCOME5: 0.05,
     };
 
     if (validCodes[promoCode.toUpperCase()]) {
       setDiscount(validCodes[promoCode.toUpperCase()]);
-      alert(`Promo code applied! ${(validCodes[promoCode.toUpperCase()] * 100)}% discount added.`);
+      alert(
+        `Promo code applied! ${validCodes[promoCode.toUpperCase()] * 100}% discount added.`,
+      );
     } else {
-      alert('Invalid promo code. Try: LUXURY10, VIP15, ALPINE20, or WELCOME5');
+      alert("Invalid promo code. Try: LUXURY10, VIP15, ALPINE20, or WELCOME5");
     }
   };
 
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * (item.quantity || 1),
+    0,
+  );
   const discountAmount = subtotal * discount;
   const tax = (subtotal - discountAmount) * 0.0875; // 8.75% tax
   const shipping = subtotal > 100000 ? 0 : 2500; // Free shipping over $100k
   const total = subtotal - discountAmount + tax + shipping;
 
   const handleCheckout = () => {
-    alert(`🎉 Thank you for your purchase!\n\nTotal: $${total.toLocaleString()}\n\nYour luxury vehicles will be prepared for delivery. Our team will contact you within 24 hours to arrange the details.`);
+    alert(
+      `🎉 Thank you for your purchase!\n\nTotal: $${total.toLocaleString()}\n\nYour luxury vehicles will be prepared for delivery. Our team will contact you within 24 hours to arrange the details.`,
+    );
     clearCart();
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
   if (loading) {
@@ -135,7 +144,7 @@ export default function Cart() {
         <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-ocean-600 via-forest-600 to-sunset-600"></div>
           <div className="absolute inset-0 bg-black/20"></div>
-          
+
           {/* Animated Background Elements */}
           <div className="absolute inset-0 opacity-30">
             <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full blur-3xl animate-pulse"></div>
@@ -154,11 +163,12 @@ export default function Cart() {
                 </span>
               </h1>
               <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-                Review your selected premium vehicles and proceed to secure checkout
+                Review your selected premium vehicles and proceed to secure
+                checkout
               </p>
-              
+
               <Button
-                onClick={() => navigate('/inventory')}
+                onClick={() => navigate("/inventory")}
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-ocean-600 px-6 py-3 rounded-xl transition-all duration-300"
               >
@@ -182,7 +192,8 @@ export default function Cart() {
                   Your Cart is Empty
                 </h2>
                 <p className="text-xl text-gray-600 mb-8 max-w-md mx-auto">
-                  Discover our premium collection of luxury vehicles and add your favorites to cart
+                  Discover our premium collection of luxury vehicles and add
+                  your favorites to cart
                 </p>
                 <Link to="/inventory">
                   <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
@@ -209,7 +220,10 @@ export default function Cart() {
                     </CardHeader>
                     <CardContent className="space-y-6">
                       {cartItems.map((item) => (
-                        <Card key={item.id} className="bg-gradient-to-r from-white to-gray-50 border-2 border-gray-100 hover:border-ocean-200 transition-all duration-300">
+                        <Card
+                          key={item.id}
+                          className="bg-gradient-to-r from-white to-gray-50 border-2 border-gray-100 hover:border-ocean-200 transition-all duration-300"
+                        >
                           <CardContent className="p-6">
                             <div className="flex flex-col md:flex-row gap-6">
                               {/* Vehicle Image */}
@@ -221,8 +235,10 @@ export default function Cart() {
                                       alt={item.name}
                                       className="w-full h-full object-cover"
                                       onError={(e) => {
-                                        e.currentTarget.style.display = 'none';
-                                        e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                                        e.currentTarget.style.display = "none";
+                                        e.currentTarget.nextElementSibling?.classList.remove(
+                                          "hidden",
+                                        );
                                       }}
                                     />
                                   ) : null}
@@ -248,10 +264,15 @@ export default function Cart() {
                                     <div className="flex items-center gap-2 mb-2">
                                       <div className="flex">
                                         {[...Array(5)].map((_, i) => (
-                                          <Star key={i} className="h-4 w-4 fill-gold-400 text-gold-400" />
+                                          <Star
+                                            key={i}
+                                            className="h-4 w-4 fill-gold-400 text-gold-400"
+                                          />
                                         ))}
                                       </div>
-                                      <span className="text-sm font-medium text-gold-600">5.0 Premium</span>
+                                      <span className="text-sm font-medium text-gold-600">
+                                        5.0 Premium
+                                      </span>
                                     </div>
                                   </div>
                                   <Button
@@ -267,12 +288,19 @@ export default function Cart() {
                                 {/* Quantity and Price */}
                                 <div className="flex items-center justify-between">
                                   <div className="flex items-center gap-3">
-                                    <Label className="text-sm font-medium">Quantity:</Label>
+                                    <Label className="text-sm font-medium">
+                                      Quantity:
+                                    </Label>
                                     <div className="flex items-center gap-2">
                                       <Button
                                         variant="outline"
                                         size="sm"
-                                        onClick={() => updateQuantity(item.id, (item.quantity || 1) - 1)}
+                                        onClick={() =>
+                                          updateQuantity(
+                                            item.id,
+                                            (item.quantity || 1) - 1,
+                                          )
+                                        }
                                         disabled={(item.quantity || 1) <= 1}
                                         className="w-8 h-8 p-0"
                                       >
@@ -284,7 +312,12 @@ export default function Cart() {
                                       <Button
                                         variant="outline"
                                         size="sm"
-                                        onClick={() => updateQuantity(item.id, (item.quantity || 1) + 1)}
+                                        onClick={() =>
+                                          updateQuantity(
+                                            item.id,
+                                            (item.quantity || 1) + 1,
+                                          )
+                                        }
                                         className="w-8 h-8 p-0"
                                       >
                                         <Plus className="h-3 w-3" />
@@ -293,7 +326,10 @@ export default function Cart() {
                                   </div>
                                   <div className="text-right">
                                     <p className="text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
-                                      ${(item.price * (item.quantity || 1)).toLocaleString()}
+                                      $
+                                      {(
+                                        item.price * (item.quantity || 1)
+                                      ).toLocaleString()}
                                     </p>
                                     <p className="text-sm text-gray-500">
                                       ${item.price.toLocaleString()} each
@@ -356,7 +392,9 @@ export default function Cart() {
                         </Button>
                       </div>
                       <div className="text-sm text-gray-600">
-                        <p>Available codes: LUXURY10, VIP15, ALPINE20, WELCOME5</p>
+                        <p>
+                          Available codes: LUXURY10, VIP15, ALPINE20, WELCOME5
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -373,21 +411,27 @@ export default function Cart() {
                       <div className="space-y-3">
                         <div className="flex justify-between">
                           <span>Subtotal ({cartItems.length} items)</span>
-                          <span className="font-medium">${subtotal.toLocaleString()}</span>
+                          <span className="font-medium">
+                            ${subtotal.toLocaleString()}
+                          </span>
                         </div>
-                        
+
                         {discount > 0 && (
                           <div className="flex justify-between text-green-600">
-                            <span>Discount ({(discount * 100)}%)</span>
-                            <span className="font-medium">-${discountAmount.toLocaleString()}</span>
+                            <span>Discount ({discount * 100}%)</span>
+                            <span className="font-medium">
+                              -${discountAmount.toLocaleString()}
+                            </span>
                           </div>
                         )}
-                        
+
                         <div className="flex justify-between">
                           <span>Tax (8.75%)</span>
-                          <span className="font-medium">${tax.toLocaleString()}</span>
+                          <span className="font-medium">
+                            ${tax.toLocaleString()}
+                          </span>
                         </div>
-                        
+
                         <div className="flex justify-between">
                           <span>Shipping & Handling</span>
                           <span className="font-medium">
@@ -398,9 +442,9 @@ export default function Cart() {
                             )}
                           </span>
                         </div>
-                        
+
                         <Separator />
-                        
+
                         <div className="flex justify-between text-lg font-bold">
                           <span>Total</span>
                           <span className="text-2xl bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
@@ -413,13 +457,19 @@ export default function Cart() {
                       <div className="bg-gradient-to-r from-gold-50 to-sunset-50 p-4 rounded-xl">
                         <div className="flex items-center gap-2 mb-2">
                           <DollarSign className="h-4 w-4 text-gold-600" />
-                          <span className="font-medium text-gold-700">Financing Available</span>
+                          <span className="font-medium text-gold-700">
+                            Financing Available
+                          </span>
                         </div>
                         <p className="text-sm text-gold-600">
-                          As low as ${Math.round(total / 60).toLocaleString()}/month
+                          As low as ${Math.round(total / 60).toLocaleString()}
+                          /month
                         </p>
                         <Link to="/financing">
-                          <Button variant="link" className="text-gold-600 p-0 h-auto">
+                          <Button
+                            variant="link"
+                            className="text-gold-600 p-0 h-auto"
+                          >
                             Learn more →
                           </Button>
                         </Link>
@@ -455,19 +505,29 @@ export default function Cart() {
                   {/* Contact Support */}
                   <Card className="shadow-xl border-none bg-gradient-to-br from-gray-50 to-ocean-50">
                     <CardContent className="p-6 text-center">
-                      <h3 className="font-bold text-gray-900 mb-2">Need Assistance?</h3>
+                      <h3 className="font-bold text-gray-900 mb-2">
+                        Need Assistance?
+                      </h3>
                       <p className="text-sm text-gray-600 mb-4">
                         Our luxury vehicle specialists are here to help
                       </p>
                       <div className="space-y-2">
                         <a href="tel:+15551234567">
-                          <Button variant="outline" size="sm" className="w-full">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full"
+                          >
                             <Phone className="h-4 w-4 mr-2" />
                             Call (555) 123-4567
                           </Button>
                         </a>
                         <a href="mailto:sales@alpinemotors.com">
-                          <Button variant="outline" size="sm" className="w-full">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full"
+                          >
                             <Mail className="h-4 w-4 mr-2" />
                             Email Support
                           </Button>

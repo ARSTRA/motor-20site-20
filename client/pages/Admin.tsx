@@ -147,7 +147,19 @@ interface Payment {
   amount: number;
   type: "purchase" | "financing" | "deposit" | "refund";
   status: "completed" | "pending" | "failed" | "refunded";
-  method: "credit_card" | "bank_transfer" | "check" | "cash" | "crypto" | "digital_wallet" | "apple_pay" | "google_pay" | "paypal" | "zelle" | "cashapp" | "venmo";
+  method:
+    | "credit_card"
+    | "bank_transfer"
+    | "check"
+    | "cash"
+    | "crypto"
+    | "digital_wallet"
+    | "apple_pay"
+    | "google_pay"
+    | "paypal"
+    | "zelle"
+    | "cashapp"
+    | "venmo";
   vehicleId?: number;
   vehicleName?: string;
   createdAt: string;
@@ -631,12 +643,16 @@ export default function Admin() {
   };
 
   const handleAddAdminUser = async () => {
-    if (!newAdminForm.name || !newAdminForm.username || !newAdminForm.password) {
+    if (
+      !newAdminForm.name ||
+      !newAdminForm.username ||
+      !newAdminForm.password
+    ) {
       alert("Please fill in all fields");
       return;
     }
 
-    if (adminUsers.some(user => user.username === newAdminForm.username)) {
+    if (adminUsers.some((user) => user.username === newAdminForm.username)) {
       alert("Username already exists");
       return;
     }
@@ -666,7 +682,7 @@ export default function Admin() {
     }
 
     if (confirm(`Are you sure you want to delete admin user: ${username}?`)) {
-      setAdminUsers(adminUsers.filter(user => user.username !== username));
+      setAdminUsers(adminUsers.filter((user) => user.username !== username));
       alert("Admin user deleted successfully!");
     }
   };
@@ -680,18 +696,22 @@ export default function Admin() {
         vehicles: vehicles,
         customers: customers,
         payments: payments,
-        adminUsers: adminUsers.map(user => ({ username: user.username, role: user.role, name: user.name })),
+        adminUsers: adminUsers.map((user) => ({
+          username: user.username,
+          role: user.role,
+          name: user.name,
+        })),
         activityLogs: activityLogs,
         exportedAt: new Date().toISOString(),
         exportedBy: adminUser?.name,
       };
 
       const dataStr = JSON.stringify(exportData, null, 2);
-      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const dataBlob = new Blob([dataStr], { type: "application/json" });
       const url = URL.createObjectURL(dataBlob);
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
-      link.download = `alpine-motors-export-${new Date().toISOString().split('T')[0]}.json`;
+      link.download = `alpine-motors-export-${new Date().toISOString().split("T")[0]}.json`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -741,8 +761,8 @@ export default function Admin() {
   const handleTogglePaymentMethod = (id: number) => {
     setPaymentMethods(
       paymentMethods.map((method) =>
-        method.id === id ? { ...method, isActive: !method.isActive } : method
-      )
+        method.id === id ? { ...method, isActive: !method.isActive } : method,
+      ),
     );
   };
 
@@ -764,13 +784,17 @@ export default function Admin() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const newPayment: Payment = {
         id: Date.now(),
-        customerId: recordPaymentForm.customerId ? parseInt(recordPaymentForm.customerId) : 0,
+        customerId: recordPaymentForm.customerId
+          ? parseInt(recordPaymentForm.customerId)
+          : 0,
         customerName: recordPaymentForm.customerName,
         amount: parseFloat(recordPaymentForm.amount),
         type: recordPaymentForm.type as Payment["type"],
         status: "completed",
         method: recordPaymentForm.method as Payment["method"],
-        vehicleId: recordPaymentForm.vehicleId ? parseInt(recordPaymentForm.vehicleId) : undefined,
+        vehicleId: recordPaymentForm.vehicleId
+          ? parseInt(recordPaymentForm.vehicleId)
+          : undefined,
         vehicleName: recordPaymentForm.vehicleName || undefined,
         createdAt: new Date().toISOString(),
       };
@@ -802,23 +826,27 @@ export default function Admin() {
         payments: payments,
         summary: {
           totalPayments: payments.length,
-          completedPayments: payments.filter(p => p.status === "completed").length,
-          pendingPayments: payments.filter(p => p.status === "pending").length,
-          failedPayments: payments.filter(p => p.status === "failed").length,
+          completedPayments: payments.filter((p) => p.status === "completed")
+            .length,
+          pendingPayments: payments.filter((p) => p.status === "pending")
+            .length,
+          failedPayments: payments.filter((p) => p.status === "failed").length,
           totalAmount: payments.reduce((sum, p) => sum + p.amount, 0),
-          completedAmount: payments.filter(p => p.status === "completed").reduce((sum, p) => sum + p.amount, 0),
+          completedAmount: payments
+            .filter((p) => p.status === "completed")
+            .reduce((sum, p) => sum + p.amount, 0),
         },
-        paymentMethods: paymentMethods.filter(m => m.isActive),
+        paymentMethods: paymentMethods.filter((m) => m.isActive),
         exportedAt: new Date().toISOString(),
         exportedBy: adminUser?.name,
       };
 
       const dataStr = JSON.stringify(reportData, null, 2);
-      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const dataBlob = new Blob([dataStr], { type: "application/json" });
       const url = URL.createObjectURL(dataBlob);
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
-      link.download = `payment-report-${new Date().toISOString().split('T')[0]}.json`;
+      link.download = `payment-report-${new Date().toISOString().split("T")[0]}.json`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -1607,7 +1635,11 @@ export default function Admin() {
                       <div>
                         <p className="text-sm text-ocean-700">Traditional</p>
                         <p className="text-xl font-bold text-ocean-800">
-                          {paymentMethods.filter(m => m.type === "traditional" && m.isActive).length}
+                          {
+                            paymentMethods.filter(
+                              (m) => m.type === "traditional" && m.isActive,
+                            ).length
+                          }
                         </p>
                       </div>
                     </div>
@@ -1619,9 +1651,15 @@ export default function Admin() {
                     <div className="flex items-center gap-3">
                       <Smartphone className="h-8 w-8 text-forest-600" />
                       <div>
-                        <p className="text-sm text-forest-700">Digital Wallets</p>
+                        <p className="text-sm text-forest-700">
+                          Digital Wallets
+                        </p>
                         <p className="text-xl font-bold text-forest-800">
-                          {paymentMethods.filter(m => m.type === "digital" && m.isActive).length}
+                          {
+                            paymentMethods.filter(
+                              (m) => m.type === "digital" && m.isActive,
+                            ).length
+                          }
                         </p>
                       </div>
                     </div>
@@ -1633,9 +1671,15 @@ export default function Admin() {
                     <div className="flex items-center gap-3">
                       <Coins className="h-8 w-8 text-sunset-600" />
                       <div>
-                        <p className="text-sm text-sunset-700">Cryptocurrency</p>
+                        <p className="text-sm text-sunset-700">
+                          Cryptocurrency
+                        </p>
                         <p className="text-xl font-bold text-sunset-800">
-                          {paymentMethods.filter(m => m.type === "crypto" && m.isActive).length}
+                          {
+                            paymentMethods.filter(
+                              (m) => m.type === "crypto" && m.isActive,
+                            ).length
+                          }
                         </p>
                       </div>
                     </div>
@@ -1649,7 +1693,7 @@ export default function Admin() {
                       <div>
                         <p className="text-sm text-gold-700">Total Active</p>
                         <p className="text-xl font-bold text-gold-800">
-                          {paymentMethods.filter(m => m.isActive).length}
+                          {paymentMethods.filter((m) => m.isActive).length}
                         </p>
                       </div>
                     </div>
@@ -2204,7 +2248,9 @@ export default function Admin() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="confirmPassword">Confirm New Password</Label>
+                      <Label htmlFor="confirmPassword">
+                        Confirm New Password
+                      </Label>
                       <Input
                         id="confirmPassword"
                         type="password"
@@ -2239,7 +2285,10 @@ export default function Admin() {
               </Dialog>
 
               {/* Manage Admin Users Dialog */}
-              <Dialog open={adminUsersDialog} onOpenChange={setAdminUsersDialog}>
+              <Dialog
+                open={adminUsersDialog}
+                onOpenChange={setAdminUsersDialog}
+              >
                 <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
@@ -2251,7 +2300,9 @@ export default function Admin() {
                     {/* Add New Admin User */}
                     <Card>
                       <CardHeader>
-                        <CardTitle className="text-lg">Add New Admin User</CardTitle>
+                        <CardTitle className="text-lg">
+                          Add New Admin User
+                        </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
@@ -2270,7 +2321,9 @@ export default function Admin() {
                             />
                           </div>
                           <div>
-                            <Label htmlFor="adminUsername">Username (Email)</Label>
+                            <Label htmlFor="adminUsername">
+                              Username (Email)
+                            </Label>
                             <Input
                               id="adminUsername"
                               type="email"
@@ -2316,9 +2369,13 @@ export default function Admin() {
                                 <SelectValue />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="super_admin">Super Admin</SelectItem>
+                                <SelectItem value="super_admin">
+                                  Super Admin
+                                </SelectItem>
                                 <SelectItem value="manager">Manager</SelectItem>
-                                <SelectItem value="sales_admin">Sales Admin</SelectItem>
+                                <SelectItem value="sales_admin">
+                                  Sales Admin
+                                </SelectItem>
                               </SelectContent>
                             </Select>
                           </div>
@@ -2336,7 +2393,9 @@ export default function Admin() {
                     {/* Existing Admin Users */}
                     <Card>
                       <CardHeader>
-                        <CardTitle className="text-lg">Existing Admin Users</CardTitle>
+                        <CardTitle className="text-lg">
+                          Existing Admin Users
+                        </CardTitle>
                       </CardHeader>
                       <CardContent className="p-0">
                         <Table>
@@ -2382,7 +2441,9 @@ export default function Admin() {
                                       <Button
                                         size="sm"
                                         variant="outline"
-                                        onClick={() => handleDeleteAdminUser(user.username)}
+                                        onClick={() =>
+                                          handleDeleteAdminUser(user.username)
+                                        }
                                       >
                                         <Trash2 className="h-3 w-3 text-red-600" />
                                       </Button>
@@ -2409,7 +2470,10 @@ export default function Admin() {
               </Dialog>
 
               {/* Activity Logs Dialog */}
-              <Dialog open={activityLogsDialog} onOpenChange={setActivityLogsDialog}>
+              <Dialog
+                open={activityLogsDialog}
+                onOpenChange={setActivityLogsDialog}
+              >
                 <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
@@ -2491,7 +2555,10 @@ export default function Admin() {
               </Dialog>
 
               {/* Payment Methods Management Dialog */}
-              <Dialog open={paymentMethodsDialog} onOpenChange={setPaymentMethodsDialog}>
+              <Dialog
+                open={paymentMethodsDialog}
+                onOpenChange={setPaymentMethodsDialog}
+              >
                 <DialogContent className="sm:max-w-6xl max-h-[90vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
@@ -2503,7 +2570,9 @@ export default function Admin() {
                     {/* Add New Payment Method */}
                     <Card>
                       <CardHeader>
-                        <CardTitle className="text-lg">Add New Payment Method</CardTitle>
+                        <CardTitle className="text-lg">
+                          Add New Payment Method
+                        </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -2528,7 +2597,10 @@ export default function Admin() {
                               onValueChange={(value) =>
                                 setNewPaymentMethodForm({
                                   ...newPaymentMethodForm,
-                                  type: value as "traditional" | "digital" | "crypto",
+                                  type: value as
+                                    | "traditional"
+                                    | "digital"
+                                    | "crypto",
                                 })
                               }
                             >
@@ -2536,9 +2608,15 @@ export default function Admin() {
                                 <SelectValue />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="traditional">Traditional</SelectItem>
-                                <SelectItem value="digital">Digital Wallet</SelectItem>
-                                <SelectItem value="crypto">Cryptocurrency</SelectItem>
+                                <SelectItem value="traditional">
+                                  Traditional
+                                </SelectItem>
+                                <SelectItem value="digital">
+                                  Digital Wallet
+                                </SelectItem>
+                                <SelectItem value="crypto">
+                                  Cryptocurrency
+                                </SelectItem>
                               </SelectContent>
                             </Select>
                           </div>
@@ -2557,17 +2635,29 @@ export default function Admin() {
                                 <SelectValue />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="bank_transfer">Bank Transfer</SelectItem>
-                                <SelectItem value="credit_card">Credit Card</SelectItem>
+                                <SelectItem value="bank_transfer">
+                                  Bank Transfer
+                                </SelectItem>
+                                <SelectItem value="credit_card">
+                                  Credit Card
+                                </SelectItem>
                                 <SelectItem value="cash">Cash</SelectItem>
                                 <SelectItem value="paypal">PayPal</SelectItem>
-                                <SelectItem value="apple_pay">Apple Pay</SelectItem>
-                                <SelectItem value="google_pay">Google Pay</SelectItem>
+                                <SelectItem value="apple_pay">
+                                  Apple Pay
+                                </SelectItem>
+                                <SelectItem value="google_pay">
+                                  Google Pay
+                                </SelectItem>
                                 <SelectItem value="zelle">Zelle</SelectItem>
-                                <SelectItem value="cashapp">Cash App</SelectItem>
+                                <SelectItem value="cashapp">
+                                  Cash App
+                                </SelectItem>
                                 <SelectItem value="venmo">Venmo</SelectItem>
                                 <SelectItem value="bitcoin">Bitcoin</SelectItem>
-                                <SelectItem value="ethereum">Ethereum</SelectItem>
+                                <SelectItem value="ethereum">
+                                  Ethereum
+                                </SelectItem>
                                 <SelectItem value="usdc">USD Coin</SelectItem>
                                 <SelectItem value="usdt">Tether</SelectItem>
                                 <SelectItem value="other">Other</SelectItem>
@@ -2585,7 +2675,9 @@ export default function Admin() {
                           </div>
                         </div>
                         <div>
-                          <Label htmlFor="methodDetails">Details & Instructions</Label>
+                          <Label htmlFor="methodDetails">
+                            Details & Instructions
+                          </Label>
                           <Textarea
                             id="methodDetails"
                             value={newPaymentMethodForm.details}
@@ -2608,9 +2700,15 @@ export default function Admin() {
                         <Card key={type}>
                           <CardHeader>
                             <CardTitle className="flex items-center gap-2 capitalize">
-                              {type === "traditional" && <Building2 className="h-5 w-5 text-ocean-600" />}
-                              {type === "digital" && <Smartphone className="h-5 w-5 text-forest-600" />}
-                              {type === "crypto" && <Coins className="h-5 w-5 text-sunset-600" />}
+                              {type === "traditional" && (
+                                <Building2 className="h-5 w-5 text-ocean-600" />
+                              )}
+                              {type === "digital" && (
+                                <Smartphone className="h-5 w-5 text-forest-600" />
+                              )}
+                              {type === "crypto" && (
+                                <Coins className="h-5 w-5 text-sunset-600" />
+                              )}
                               {type} Payment Methods
                             </CardTitle>
                           </CardHeader>
@@ -2633,23 +2731,45 @@ export default function Admin() {
                                     <TableRow key={method.id}>
                                       <TableCell>
                                         <div className="flex items-center gap-3">
-                                          {method.icon === "CreditCard" && <CreditCard className="h-5 w-5 text-gray-600" />}
-                                          {method.icon === "Building2" && <Building2 className="h-5 w-5 text-gray-600" />}
-                                          {method.icon === "Banknote" && <Banknote className="h-5 w-5 text-gray-600" />}
-                                          {method.icon === "Smartphone" && <Smartphone className="h-5 w-5 text-gray-600" />}
-                                          {method.icon === "Coins" && <Coins className="h-5 w-5 text-gray-600" />}
-                                          {method.icon === "Zap" && <Zap className="h-5 w-5 text-gray-600" />}
-                                          {method.icon === "Users" && <Users className="h-5 w-5 text-gray-600" />}
+                                          {method.icon === "CreditCard" && (
+                                            <CreditCard className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Building2" && (
+                                            <Building2 className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Banknote" && (
+                                            <Banknote className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Smartphone" && (
+                                            <Smartphone className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Coins" && (
+                                            <Coins className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Zap" && (
+                                            <Zap className="h-5 w-5 text-gray-600" />
+                                          )}
+                                          {method.icon === "Users" && (
+                                            <Users className="h-5 w-5 text-gray-600" />
+                                          )}
                                           <div>
-                                            <p className="font-medium">{method.name}</p>
+                                            <p className="font-medium">
+                                              {method.name}
+                                            </p>
                                             <p className="text-sm text-gray-500">
-                                              Added {new Date(method.createdAt).toLocaleDateString()}
+                                              Added{" "}
+                                              {new Date(
+                                                method.createdAt,
+                                              ).toLocaleDateString()}
                                             </p>
                                           </div>
                                         </div>
                                       </TableCell>
                                       <TableCell>
-                                        <Badge variant="outline" className="capitalize">
+                                        <Badge
+                                          variant="outline"
+                                          className="capitalize"
+                                        >
                                           {method.category.replace("_", " ")}
                                         </Badge>
                                       </TableCell>
@@ -2667,7 +2787,11 @@ export default function Admin() {
                                         <div className="flex items-center gap-2">
                                           <Switch
                                             checked={method.isActive}
-                                            onCheckedChange={() => handleTogglePaymentMethod(method.id)}
+                                            onCheckedChange={() =>
+                                              handleTogglePaymentMethod(
+                                                method.id,
+                                              )
+                                            }
                                           />
                                           <Badge
                                             className={
@@ -2676,7 +2800,9 @@ export default function Admin() {
                                                 : "bg-gray-100 text-gray-800"
                                             }
                                           >
-                                            {method.isActive ? "Active" : "Inactive"}
+                                            {method.isActive
+                                              ? "Active"
+                                              : "Inactive"}
                                           </Badge>
                                         </div>
                                       </TableCell>
@@ -2688,7 +2814,11 @@ export default function Admin() {
                                           <Button
                                             size="sm"
                                             variant="outline"
-                                            onClick={() => handleDeletePaymentMethod(method.id)}
+                                            onClick={() =>
+                                              handleDeletePaymentMethod(
+                                                method.id,
+                                              )
+                                            }
                                           >
                                             <Trash2 className="h-3 w-3 text-red-600" />
                                           </Button>
@@ -2716,7 +2846,10 @@ export default function Admin() {
               </Dialog>
 
               {/* Record Payment Dialog */}
-              <Dialog open={recordPaymentDialog} onOpenChange={setRecordPaymentDialog}>
+              <Dialog
+                open={recordPaymentDialog}
+                onOpenChange={setRecordPaymentDialog}
+              >
                 <DialogContent className="sm:max-w-2xl">
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
@@ -2727,7 +2860,9 @@ export default function Admin() {
                   <div className="space-y-4 py-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="paymentCustomerName">Customer Name *</Label>
+                        <Label htmlFor="paymentCustomerName">
+                          Customer Name *
+                        </Label>
                         <Input
                           id="paymentCustomerName"
                           value={recordPaymentForm.customerName}
@@ -2812,14 +2947,24 @@ export default function Admin() {
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="credit_card">Credit Card</SelectItem>
-                            <SelectItem value="bank_transfer">Bank Transfer</SelectItem>
+                            <SelectItem value="credit_card">
+                              Credit Card
+                            </SelectItem>
+                            <SelectItem value="bank_transfer">
+                              Bank Transfer
+                            </SelectItem>
                             <SelectItem value="cash">Cash</SelectItem>
                             <SelectItem value="check">Check</SelectItem>
-                            <SelectItem value="crypto">Cryptocurrency</SelectItem>
-                            <SelectItem value="digital_wallet">Digital Wallet</SelectItem>
+                            <SelectItem value="crypto">
+                              Cryptocurrency
+                            </SelectItem>
+                            <SelectItem value="digital_wallet">
+                              Digital Wallet
+                            </SelectItem>
                             <SelectItem value="apple_pay">Apple Pay</SelectItem>
-                            <SelectItem value="google_pay">Google Pay</SelectItem>
+                            <SelectItem value="google_pay">
+                              Google Pay
+                            </SelectItem>
                             <SelectItem value="paypal">PayPal</SelectItem>
                             <SelectItem value="zelle">Zelle</SelectItem>
                             <SelectItem value="cashapp">Cash App</SelectItem>
@@ -2844,7 +2989,9 @@ export default function Admin() {
                     </div>
 
                     <div>
-                      <Label htmlFor="paymentVehicleName">Vehicle Details</Label>
+                      <Label htmlFor="paymentVehicleName">
+                        Vehicle Details
+                      </Label>
                       <Input
                         id="paymentVehicleName"
                         value={recordPaymentForm.vehicleName}

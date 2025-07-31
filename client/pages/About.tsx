@@ -215,11 +215,12 @@ export default function About() {
                   <Button
                     onClick={(e) => {
                       e.preventDefault();
-                      const storySection = document.getElementById('story-section');
+                      const storySection =
+                        document.getElementById("story-section");
                       if (storySection) {
                         storySection.scrollIntoView({
-                          behavior: 'smooth',
-                          block: 'start'
+                          behavior: "smooth",
+                          block: "start",
                         });
                       }
                     }}
@@ -258,7 +259,9 @@ export default function About() {
                           <div className="bg-white/20 p-1.5 rounded-full group-hover:bg-white/30 transition-colors duration-300 group-hover:rotate-12">
                             <Users className="h-5 w-5" />
                           </div>
-                          <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">Meet the Team</span>
+                          <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">
+                            Meet the Team
+                          </span>
                           <div className="flex gap-1">
                             <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
                             <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
@@ -283,9 +286,7 @@ export default function About() {
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
                 className={`relative transition-all duration-300 group ${
-                  index === currentImageIndex
-                    ? "w-8 h-3"
-                    : "w-3 h-3"
+                  index === currentImageIndex ? "w-8 h-3" : "w-3 h-3"
                 }`}
               >
                 <div
@@ -323,10 +324,13 @@ export default function About() {
                   <CardContent className="p-6 sm:p-8">
                     <div
                       className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${
-                        stat.color === 'ocean' ? 'from-ocean-500 to-ocean-600' :
-                        stat.color === 'forest' ? 'from-forest-500 to-forest-600' :
-                        stat.color === 'sunset' ? 'from-sunset-500 to-sunset-600' :
-                        'from-gold-500 to-gold-600'
+                        stat.color === "ocean"
+                          ? "from-ocean-500 to-ocean-600"
+                          : stat.color === "forest"
+                            ? "from-forest-500 to-forest-600"
+                            : stat.color === "sunset"
+                              ? "from-sunset-500 to-sunset-600"
+                              : "from-gold-500 to-gold-600"
                       } mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                     >
                       <stat.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
@@ -334,7 +338,9 @@ export default function About() {
                     <h3 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 group-hover:text-ocean-600 transition-colors duration-300">
                       {stat.value}
                     </h3>
-                    <p className="text-sm sm:text-base text-gray-600 font-medium">{stat.label}</p>
+                    <p className="text-sm sm:text-base text-gray-600 font-medium">
+                      {stat.label}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -343,7 +349,10 @@ export default function About() {
         </section>
 
         {/* Our Story Section */}
-        <section id="story-section" className="py-24 bg-gradient-to-br from-white via-ocean-50/30 to-forest-50/30 scroll-mt-24">
+        <section
+          id="story-section"
+          className="py-24 bg-gradient-to-br from-white via-ocean-50/30 to-forest-50/30 scroll-mt-24"
+        >
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
               <Badge className="mb-4 bg-gradient-to-r from-sunset-500 to-gold-500 text-white px-6 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
@@ -360,7 +369,11 @@ export default function About() {
                 </span>
               </h2>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                🚗 Founded in the scenic mountains of California, Alpine Motors began as a dream to create an automotive experience that combines luxury, adventure, and uncompromising quality. We've built more than a dealership - we've created a destination where automotive dreams come to life.
+                🚗 Founded in the scenic mountains of California, Alpine Motors
+                began as a dream to create an automotive experience that
+                combines luxury, adventure, and uncompromising quality. We've
+                built more than a dealership - we've created a destination where
+                automotive dreams come to life.
               </p>
             </div>
 
@@ -392,7 +405,9 @@ export default function About() {
                       className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ocean-500/60 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                      <p className="text-white font-medium p-3 text-sm">Customer First Approach</p>
+                      <p className="text-white font-medium p-3 text-sm">
+                        Customer First Approach
+                      </p>
                     </div>
                   </div>
                   <div className="relative group">
@@ -402,7 +417,9 @@ export default function About() {
                       className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-forest-500/60 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                      <p className="text-white font-medium p-3 text-sm">Innovation & Technology</p>
+                      <p className="text-white font-medium p-3 text-sm">
+                        Innovation & Technology
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -422,9 +439,16 @@ export default function About() {
                           <Star className="h-5 w-5 text-white" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-2">The Beginning (1998)</h4>
+                          <h4 className="font-bold text-gray-900 mb-2">
+                            The Beginning (1998)
+                          </h4>
                           <p className="text-gray-700 leading-relaxed">
-                            What started as a small family dealership has evolved into a premier destination for luxury vehicle enthusiasts. Our founder, Michael Rodriguez, envisioned a place where customers could experience the finest automobiles against the backdrop of nature's grandeur.
+                            What started as a small family dealership has
+                            evolved into a premier destination for luxury
+                            vehicle enthusiasts. Our founder, Michael Rodriguez,
+                            envisioned a place where customers could experience
+                            the finest automobiles against the backdrop of
+                            nature's grandeur.
                           </p>
                         </div>
                       </div>
@@ -438,9 +462,15 @@ export default function About() {
                           <Trophy className="h-5 w-5 text-white" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-2">Our Mission Today</h4>
+                          <h4 className="font-bold text-gray-900 mb-2">
+                            Our Mission Today
+                          </h4>
                           <p className="text-gray-700 leading-relaxed">
-                            Today, we're proud to represent the world's most prestigious automotive brands, offering not just vehicles, but gateways to extraordinary adventures. Every car we sell comes with our promise of excellence and a commitment to your driving dreams.
+                            Today, we're proud to represent the world's most
+                            prestigious automotive brands, offering not just
+                            vehicles, but gateways to extraordinary adventures.
+                            Every car we sell comes with our promise of
+                            excellence and a commitment to your driving dreams.
                           </p>
                         </div>
                       </div>
@@ -454,9 +484,16 @@ export default function About() {
                           <Heart className="h-5 w-5 text-white" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-2">Our Promise</h4>
+                          <h4 className="font-bold text-gray-900 mb-2">
+                            Our Promise
+                          </h4>
                           <p className="text-gray-700 leading-relaxed">
-                            We believe every customer deserves an extraordinary experience. From the moment you walk into our showroom to years after your purchase, we're committed to exceeding your expectations with personalized service, transparent dealings, and unwavering support.
+                            We believe every customer deserves an extraordinary
+                            experience. From the moment you walk into our
+                            showroom to years after your purchase, we're
+                            committed to exceeding your expectations with
+                            personalized service, transparent dealings, and
+                            unwavering support.
                           </p>
                         </div>
                       </div>
@@ -569,7 +606,8 @@ export default function About() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       onError={(e) => {
                         // Fallback to a default image if specific image fails
-                        e.currentTarget.src = 'https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg';
+                        e.currentTarget.src =
+                          "https://images.pexels.com/photos/28380943/pexels-photo-28380943.jpeg";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -622,7 +660,8 @@ export default function About() {
                       className="w-full h-80 object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
                         // Fallback to a placeholder if image fails to load
-                        e.currentTarget.src = 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg';
+                        e.currentTarget.src =
+                          "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -703,7 +742,9 @@ export default function About() {
                         <MapPin className="h-6 w-6" />
                       </div>
                       <span className="tracking-wide">Visit Our Showroom</span>
-                      <div className="bg-white/20 px-2 py-1 rounded-full text-sm font-bold">📍</div>
+                      <div className="bg-white/20 px-2 py-1 rounded-full text-sm font-bold">
+                        📍
+                      </div>
                     </span>
                   </Link>
                 </Button>
@@ -724,7 +765,9 @@ export default function About() {
                         <TrendingUp className="h-6 w-6" />
                       </div>
                       <span className="tracking-wide">Trade-In Program</span>
-                      <div className="bg-white/20 px-2 py-1 rounded-full text-sm font-bold">💰</div>
+                      <div className="bg-white/20 px-2 py-1 rounded-full text-sm font-bold">
+                        💰
+                      </div>
                     </span>
                   </Link>
                 </Button>
@@ -744,7 +787,9 @@ export default function About() {
                 <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors duration-300">
                   <DollarSign className="h-5 w-5" />
                 </div>
-                <span className="underline decoration-white/50 hover:decoration-white transition-all duration-300">Financing Options</span>
+                <span className="underline decoration-white/50 hover:decoration-white transition-all duration-300">
+                  Financing Options
+                </span>
               </Link>
               <Link
                 to="/dashboard"
@@ -753,7 +798,9 @@ export default function About() {
                 <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors duration-300">
                   <UserCheck className="h-5 w-5" />
                 </div>
-                <span className="underline decoration-white/50 hover:decoration-white transition-all duration-300">Customer Portal</span>
+                <span className="underline decoration-white/50 hover:decoration-white transition-all duration-300">
+                  Customer Portal
+                </span>
               </Link>
             </div>
           </div>
