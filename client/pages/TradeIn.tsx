@@ -465,7 +465,12 @@ export default function TradeIn() {
                       <div className="flex items-center justify-between mb-4">
                         <div>
                           <p className="text-sm text-gray-500 mb-1">Vehicle Traded</p>
-                          <p className={`font-bold text-${testimonial.accent}-600 text-lg`}>{testimonial.vehicle}</p>
+                          <p className={`font-bold text-lg ${
+                            testimonial.accent === 'ocean' ? 'text-ocean-600' :
+                            testimonial.accent === 'forest' ? 'text-forest-600' :
+                            testimonial.accent === 'sunset' ? 'text-sunset-600' :
+                            'text-gold-600'
+                          }`}>{testimonial.vehicle}</p>
                         </div>
                         <div className={`w-16 h-16 bg-gradient-to-r ${testimonial.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                           <CheckCircle className="h-8 w-8 text-white" />
