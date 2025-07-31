@@ -343,7 +343,17 @@ export default function Inventory() {
         </div>
         <div className="absolute top-4 right-4 flex gap-2">
           <button
-            onClick={() => alert('Added to favorites!')}
+            onClick={() => {
+              // Add to favorites functionality
+              const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+              if (!favorites.includes(car.id)) {
+                favorites.push(car.id);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                alert(`${car.name} added to favorites!`);
+              } else {
+                alert(`${car.name} is already in your favorites!`);
+              }
+            }}
             className="bg-white/95 p-3 rounded-xl hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg group/heart"
           >
             <Heart className="h-4 w-4 text-sunset-500 group-hover/heart:fill-sunset-500 transition-all duration-300" />
@@ -768,24 +778,30 @@ export default function Inventory() {
             for
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-8 py-3 rounded-xl">
-              <Phone className="h-4 w-4 mr-2" />
-              Call (555) 123-4567
-            </Button>
-            <Button
-              variant="outline"
-              className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white font-bold px-8 py-3 rounded-xl"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Email Us
-            </Button>
-            <Button
-              variant="outline"
-              className="border-2 border-forest-500 text-forest-600 hover:bg-forest-500 hover:text-white font-bold px-8 py-3 rounded-xl"
-            >
-              <MapPin className="h-4 w-4 mr-2" />
-              Visit Showroom
-            </Button>
+            <a href="tel:+15551234567">
+              <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-8 py-3 rounded-xl">
+                <Phone className="h-4 w-4 mr-2" />
+                Call (555) 123-4567
+              </Button>
+            </a>
+            <a href="mailto:info@alpinemotors.com">
+              <Button
+                variant="outline"
+                className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white font-bold px-8 py-3 rounded-xl"
+              >
+                <Mail className="h-4 w-4 mr-2" />
+                Email Us
+              </Button>
+            </a>
+            <Link to="/contact">
+              <Button
+                variant="outline"
+                className="border-2 border-forest-500 text-forest-600 hover:bg-forest-500 hover:text-white font-bold px-8 py-3 rounded-xl"
+              >
+                <MapPin className="h-4 w-4 mr-2" />
+                Visit Showroom
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
