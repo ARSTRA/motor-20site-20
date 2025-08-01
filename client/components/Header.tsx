@@ -334,6 +334,21 @@ export default function Header() {
 
           {/* CTA Buttons with gradient styling */}
           <div className="flex items-center gap-4">
+            {/* Cart Icon with Item Count */}
+            <Link to="/cart" className="relative">
+              <Button
+                variant="outline"
+                size="icon"
+                className="border-2 border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white font-semibold rounded-xl transition-all duration-300 group"
+              >
+                <ShoppingCart className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                {getTotalItems() > 0 && (
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-gold-500 to-sunset-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                    {getTotalItems()}
+                  </div>
+                )}
+              </Button>
+            </Link>
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
