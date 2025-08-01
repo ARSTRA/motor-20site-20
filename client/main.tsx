@@ -10,6 +10,6 @@ if (!rootElement.hasAttribute("data-root-created")) {
   createRoot(rootElement).render(
     <StrictMode>
       <App />
-    </StrictMode>
+    </StrictMode>,
   );
 }
