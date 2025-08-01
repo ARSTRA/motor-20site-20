@@ -453,20 +453,20 @@ export default function Inventory() {
               ${car.price.toLocaleString()}
             </span>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <Button
               onClick={() => {
                 addToCart(car);
                 // Add a visual feedback notification
                 const notification = document.createElement("div");
                 notification.className =
-                  "fixed top-4 right-4 bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl shadow-xl z-50 animate-bounce";
+                  "fixed top-4 right-4 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 md:px-6 md:py-3 rounded-xl shadow-xl z-50 animate-bounce text-sm md:text-base";
                 notification.textContent = `${car.name} added to cart!`;
                 document.body.appendChild(notification);
                 setTimeout(() => document.body.removeChild(notification), 3000);
               }}
               disabled={isInCart(car.id)}
-              className={`border-2 font-bold px-4 py-2 rounded-xl transition-all duration-300 ${
+              className={`border-2 font-bold px-3 md:px-4 py-2 rounded-xl transition-all duration-300 text-sm md:text-base ${
                 isInCart(car.id)
                   ? "border-green-500 bg-green-500 text-white cursor-not-allowed"
                   : "border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white transform hover:scale-105"
@@ -475,8 +475,8 @@ export default function Inventory() {
               <ShoppingCart className="h-4 w-4 mr-2" />
               {isInCart(car.id) ? "In Cart" : "BUY"}
             </Button>
-            <Link to={`/vehicle/${car.id}`}>
-              <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            <Link to={`/vehicle/${car.id}`} className="flex-1 sm:flex-none">
+              <Button className="w-full bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm md:text-base">
                 View Details
               </Button>
             </Link>
