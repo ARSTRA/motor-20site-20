@@ -41,6 +41,7 @@ import {
 } from "@/components/ui/sheet";
 import Layout from "@/components/Layout";
 import { Car, Category, CarFilters } from "@shared/api";
+import { useCart } from "@/contexts/CartContext";
 
 type ViewMode = "grid" | "list";
 
