@@ -899,12 +899,14 @@ export default function Index() {
             {/* Personalized Service */}
             <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white rounded-3xl border-2 border-transparent hover:border-forest-200">
               <div className="relative h-64 overflow-hidden rounded-t-3xl">
-                <img
-                  src="https://images.pexels.com/photos/7144185/pexels-photo-7144185.jpeg"
+                <OptimizedImage
+                  src={HIGH_QUALITY_AUTOMOTIVE_IMAGES.showroom.consultation}
                   alt="Professional automotive consultant providing personalized service with car keys"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full group-hover:scale-110 transition-transform duration-700"
+                  width={800}
+                  height={600}
+                  priority={true}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                 <div className="absolute top-6 left-6">
                   <Badge className="bg-gradient-to-r from-forest-500 to-forest-600 text-white font-bold shadow-lg px-4 py-2">
                     Expert Guidance
