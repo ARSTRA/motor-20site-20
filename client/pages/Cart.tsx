@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
+import OptimizedImage, { HIGH_QUALITY_AUTOMOTIVE_IMAGES } from "@/components/OptimizedImage";
 import Layout from "@/components/Layout";
 
 export default function Cart() {
