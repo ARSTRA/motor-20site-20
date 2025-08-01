@@ -285,8 +285,6 @@ export default function Inventory() {
     </div>
   );
 
-  const { addToCart, isInCart } = useCart();
-
   // Vehicle card component
   const VehicleCard = ({
     car,
