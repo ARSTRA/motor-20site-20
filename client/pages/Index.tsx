@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/Layout";
+import OptimizedImage, { HIGH_QUALITY_AUTOMOTIVE_IMAGES } from "@/components/OptimizedImage";
 import { Car, Category } from "@shared/api";
 
 const stats = [
