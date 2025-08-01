@@ -48,6 +48,7 @@ type ViewMode = "grid" | "list";
 
 export default function Inventory() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { addToCart, isInCart } = useCart();
   const [cars, setCars] = useState<Car[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
