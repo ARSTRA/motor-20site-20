@@ -745,91 +745,238 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Enhanced CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div
-            className={
-              'absolute top-0 left-0 w-full h-full bg-[url(\'data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')]'
-            }
-          ></div>
+      {/* Enhanced "Ready to Experience" Section */}
+      <section className="py-24 bg-gradient-to-br from-white via-gray-50 to-ocean-50 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className={"absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23000000\" fill-opacity=\"0.4\"%3E%3Ccircle cx=\"20\" cy=\"20\" r=\"1\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"}></div>
         </div>
-        <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
-          <div className="mb-8">
-            <div className="inline-block p-4 bg-white/10 backdrop-blur-sm rounded-2xl mb-6">
-              <span className="text-6xl">🏆</span>
-            </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <Badge variant="outline" className="mb-6 text-ocean-600 border-ocean-300 px-6 py-2 text-sm font-bold">
+              The Alpine Motors Experience
+            </Badge>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-ocean-700 via-forest-700 to-sunset-700 bg-clip-text text-transparent leading-tight">
+              Ready to Experience
+              <span className="block bg-gradient-to-r from-gold-600 to-sunset-600 bg-clip-text text-transparent">
+                Automotive Excellence?
+              </span>
+            </h2>
+            <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              From the moment you step into our showroom to long after you drive away,
+              we're committed to delivering an unparalleled luxury automotive experience that exceeds expectations.
+            </p>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Ready to Experience
-            <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent block">
-              Automotive Excellence?
-            </span>
-          </h2>
-          <p className="text-xl lg:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto text-gray-100">
-            Join thousands of satisfied customers who've discovered their
-            perfect vehicle with Alpine Motors. Experience personalized service,
-            exclusive offers, and the luxury you deserve.
-          </p>
-          <div className="flex flex-col sm:flex-row lg:flex-row gap-6 sm:gap-8 justify-center items-center flex-wrap max-w-5xl mx-auto">
-            <Link to="/contact">
-              <Button
-                size="lg"
-                className="text-lg px-10 py-4 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-              >
-                Schedule Private Viewing
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-10 py-4 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-2xl transition-all duration-300"
-              >
-                Get Instant Quote
-              </Button>
-            </Link>
-            <div className="relative group">
-              {/* Floating decorative elements around the button */}
-              <div className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full animate-pulse opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -bottom-3 -right-3 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.7s] opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full animate-ping [animation-delay:1.2s] opacity-40"></div>
 
-              <Link to="/financing">
-                <Button
-                  size="lg"
-                  className="text-lg px-10 py-4 bg-gradient-to-r from-ocean-600 via-forest-600 to-gold-600 hover:from-ocean-500 hover:via-forest-500 hover:to-gold-500 text-white font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/40 hover:border-white/70"
-                >
-                  {/* Animated background layers */}
-                  <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-ocean-300/20 via-forest-300/20 to-gold-300/20 transform scale-0 group-hover:scale-100 transition-transform duration-500 ease-out rounded-2xl"></span>
-
-                  {/* Button content */}
-                  <span className="relative flex items-center gap-3 z-10">
-                    <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-all duration-300 group-hover:rotate-12">
-                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                      </svg>
+          {/* Experience Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+            {/* Premium Showroom Experience */}
+            <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white rounded-3xl border-2 border-transparent hover:border-ocean-200">
+              <div className="relative h-64 overflow-hidden rounded-t-3xl">
+                <img
+                  src="https://images.pexels.com/photos/11054324/pexels-photo-11054324.jpeg"
+                  alt="Luxury automotive showroom with premium lighting and sophisticated design"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-6 left-6">
+                  <Badge className="bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-lg px-4 py-2">
+                    Premium Showroom
+                  </Badge>
+                </div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+                    Immersive Showroom Experience
+                  </h3>
+                </div>
+              </div>
+              <CardContent className="p-8">
+                <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+                  Step into our meticulously designed showroom where luxury meets innovation.
+                  Every detail is crafted to showcase our vehicles in the most sophisticated environment,
+                  allowing you to envision your perfect driving experience.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-ocean-100 to-ocean-200 rounded-2xl flex items-center justify-center">
+                      <div className="w-6 h-6 bg-gradient-to-r from-ocean-500 to-ocean-600 rounded-lg"></div>
                     </div>
-                    <span className="tracking-wide group-hover:tracking-wider transition-all duration-300">Financing Options</span>
-                    <div className="flex gap-1">
-                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.2s] group-hover:bg-white"></div>
-                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.4s] group-hover:bg-white"></div>
-                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse [animation-delay:0.6s] group-hover:bg-white"></div>
+                    <div>
+                      <div className="font-bold text-ocean-700">World-Class Facility</div>
+                      <div className="text-sm text-gray-500">Premium Environment</div>
                     </div>
-                  </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-                  {/* Particle effect overlay */}
-                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute top-2 left-4 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:0.3s]"></div>
-                    <div className="absolute top-6 right-6 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:0.8s]"></div>
-                    <div className="absolute bottom-3 left-8 w-1 h-1 bg-white/80 rounded-full animate-ping [animation-delay:1.1s]"></div>
-                  </span>
-                </Button>
-              </Link>
+            {/* Personalized Service */}
+            <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white rounded-3xl border-2 border-transparent hover:border-forest-200">
+              <div className="relative h-64 overflow-hidden rounded-t-3xl">
+                <img
+                  src="https://images.pexels.com/photos/7144185/pexels-photo-7144185.jpeg"
+                  alt="Professional automotive consultant providing personalized service with car keys"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-6 left-6">
+                  <Badge className="bg-gradient-to-r from-forest-500 to-forest-600 text-white font-bold shadow-lg px-4 py-2">
+                    Expert Guidance
+                  </Badge>
+                </div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+                    Personalized Consultation
+                  </h3>
+                </div>
+              </div>
+              <CardContent className="p-8">
+                <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+                  Our certified automotive specialists provide personalized guidance tailored to your
+                  lifestyle and preferences. From initial consultation to final delivery,
+                  experience service that's as exceptional as our vehicles.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-forest-100 to-forest-200 rounded-2xl flex items-center justify-center">
+                      <div className="w-6 h-6 bg-gradient-to-r from-forest-500 to-forest-600 rounded-lg"></div>
+                    </div>
+                    <div>
+                      <div className="font-bold text-forest-700">Dedicated Specialists</div>
+                      <div className="text-sm text-gray-500">Personal Attention</div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-              {/* Glow effect behind button */}
-              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ocean-500/30 via-forest-500/30 to-gold-500/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110"></div>
+            {/* Concierge Service */}
+            <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white rounded-3xl border-2 border-transparent hover:border-sunset-200">
+              <div className="relative h-64 overflow-hidden rounded-t-3xl">
+                <img
+                  src="https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg"
+                  alt="Professional team consulting with clients in luxury automotive environment"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute top-6 left-6">
+                  <Badge className="bg-gradient-to-r from-sunset-500 to-sunset-600 text-white font-bold shadow-lg px-4 py-2">
+                    Concierge Service
+                  </Badge>
+                </div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+                    White-Glove Service
+                  </h3>
+                </div>
+              </div>
+              <CardContent className="p-8">
+                <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+                  Experience the ultimate in automotive luxury with our comprehensive concierge service.
+                  From financing arrangements to vehicle delivery, we handle every detail
+                  so you can focus on enjoying your new luxury vehicle.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-sunset-100 to-sunset-200 rounded-2xl flex items-center justify-center">
+                      <div className="w-6 h-6 bg-gradient-to-r from-sunset-500 to-sunset-600 rounded-lg"></div>
+                    </div>
+                    <div>
+                      <div className="font-bold text-sunset-700">Full-Service Experience</div>
+                      <div className="text-sm text-gray-500">End-to-End Care</div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Call-to-Action Section */}
+          <div className="bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 rounded-3xl p-12 text-white text-center relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-20">
+              <div className={"absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.3\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"}></div>
+            </div>
+
+            <div className="relative z-10">
+              <div className="mb-8">
+                <div className="inline-block p-4 bg-white/15 backdrop-blur-sm rounded-2xl mb-6">
+                  <span className="text-6xl">🏆</span>
+                </div>
+              </div>
+
+              <h3 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                Begin Your Luxury Journey Today
+              </h3>
+
+              <p className="text-xl lg:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto text-gray-100">
+                Join the exclusive community of Alpine Motors clients who experience
+                the pinnacle of automotive luxury and service excellence.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center flex-wrap max-w-4xl mx-auto">
+                <Link to="/contact">
+                  <Button
+                    size="lg"
+                    className="text-lg px-10 py-4 bg-white text-ocean-600 hover:bg-gray-100 font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    Schedule Private Viewing
+                  </Button>
+                </Link>
+
+                <Link to="/contact">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-lg px-10 py-4 border-2 border-gold-300 text-gold-300 hover:bg-gold-300 hover:text-ocean-900 font-bold rounded-2xl transition-all duration-300"
+                  >
+                    Get Instant Quote
+                  </Button>
+                </Link>
+
+                <div className="relative group">
+                  <div className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-r from-ocean-400 to-forest-400 rounded-full animate-pulse opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -bottom-3 -right-3 w-4 h-4 bg-gradient-to-r from-gold-400 to-sunset-400 rounded-full animate-bounce [animation-delay:0.7s] opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                  <Link to="/financing">
+                    <Button
+                      size="lg"
+                      className="text-lg px-10 py-4 bg-gradient-to-r from-ocean-600 via-forest-600 to-gold-600 hover:from-ocean-500 hover:via-forest-500 hover:to-gold-500 text-white font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/40 hover:border-white/70"
+                    >
+                      <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+
+                      <span className="relative flex items-center gap-3 z-10">
+                        <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-all duration-300 group-hover:rotate-12">
+                          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="tracking-wide">Financing Options</span>
+                      </span>
+                    </Button>
+                  </Link>
+
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ocean-500/30 via-forest-500/30 to-gold-500/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110"></div>
+                </div>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gold-300 mb-2">25+ Years</div>
+                  <p className="text-gray-200">Automotive Excellence</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gold-300 mb-2">2,500+</div>
+                  <p className="text-gray-200">Satisfied Clients</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gold-300 mb-2">A+ Rating</div>
+                  <p className="text-gray-200">Better Business Bureau</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
