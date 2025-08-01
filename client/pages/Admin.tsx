@@ -1487,6 +1487,272 @@ export default function Admin() {
               </Card>
             </TabsContent>
 
+            {/* Payment Methods Management Tab */}
+            <TabsContent value="payment-methods" className="space-y-6">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Payment Methods Management
+                </h2>
+                <div className="flex gap-3">
+                  <Button variant="outline">
+                    <RefreshCw className="h-4 w-4 mr-2" />
+                    Sync Rates
+                  </Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600">
+                        <Plus className="h-4 w-4 mr-2" />
+                        Add Payment Method
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl">
+                      <DialogHeader>
+                        <DialogTitle>Add New Payment Method</DialogTitle>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="methodName">Method Name</Label>
+                            <Input id="methodName" placeholder="e.g., GTBank Transfer" />
+                          </div>
+                          <div>
+                            <Label htmlFor="methodType">Type</Label>
+                            <Select>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select type" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="credit_card">Credit Card</SelectItem>
+                                <SelectItem value="bank_transfer">Bank Transfer</SelectItem>
+                                <SelectItem value="digital_wallet">Digital Wallet</SelectItem>
+                                <SelectItem value="mobile_money">Mobile Money</SelectItem>
+                                <SelectItem value="crypto">Cryptocurrency</SelectItem>
+                                <SelectItem value="cash">Cash</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="provider">Provider</Label>
+                            <Input id="provider" placeholder="e.g., Flutterwave" />
+                          </div>
+                          <div>
+                            <Label htmlFor="currency">Currency</Label>
+                            <Select>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select currency" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="USD">USD ($)</SelectItem>
+                                <SelectItem value="NGN">NGN (₦)</SelectItem>
+                                <SelectItem value="EUR">EUR (€)</SelectItem>
+                                <SelectItem value="GBP">GBP (£)</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-3 gap-4">
+                          <div>
+                            <Label htmlFor="processingFee">Processing Fee (%)</Label>
+                            <Input id="processingFee" type="number" placeholder="2.5" />
+                          </div>
+                          <div>
+                            <Label htmlFor="minAmount">Min Amount</Label>
+                            <Input id="minAmount" type="number" placeholder="100" />
+                          </div>
+                          <div>
+                            <Label htmlFor="maxAmount">Max Amount</Label>
+                            <Input id="maxAmount" type="number" placeholder="100000" />
+                          </div>
+                        </div>
+                        <div>
+                          <Label htmlFor="accountDetails">Account Details</Label>
+                          <Input id="accountDetails" placeholder="Account number or identifier" />
+                        </div>
+                        <div>
+                          <Label htmlFor="description">Description</Label>
+                          <Textarea id="description" placeholder="Brief description of this payment method" />
+                        </div>
+                        <Button className="w-full">Add Payment Method</Button>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
+
+              {/* Exchange Rates Card */}
+              <Card className="bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Banknote className="h-5 w-5 text-emerald-600" />
+                    Current Exchange Rates
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {exchangeRates.map((rate, index) => (
+                      <div key={index} className="bg-white p-4 rounded-xl shadow-sm border border-emerald-100">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-medium text-gray-600">
+                            {rate.fromCurrency} → {rate.toCurrency}
+                          </span>
+                          <Badge className="bg-emerald-100 text-emerald-700 text-xs">Live</Badge>
+                        </div>
+                        <div className="text-2xl font-bold text-gray-900 mb-1">
+                          {rate.fromCurrency === "NGN" ? "₦" : rate.fromCurrency === "USD" ? "$" : ""}
+                          {rate.rate.toLocaleString()}
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          Updated: {new Date(rate.lastUpdated).toLocaleTimeString()}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Payment Methods Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {paymentMethods.map((method) => (
+                  <Card key={method.id} className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${
+                    method.isActive
+                      ? "border-emerald-200 bg-gradient-to-br from-white to-emerald-50"
+                      : "border-gray-200 bg-gradient-to-br from-white to-gray-50 opacity-75"
+                  }`}>
+                    <CardHeader className="pb-3">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="text-2xl">{method.icon}</div>
+                          <div>
+                            <h3 className="font-semibold text-gray-900">{method.name}</h3>
+                            <p className="text-sm text-gray-600">{method.provider}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Badge className={`${
+                            method.currency === "NGN"
+                              ? "bg-green-100 text-green-800"
+                              : method.currency === "USD"
+                              ? "bg-blue-100 text-blue-800"
+                              : "bg-gray-100 text-gray-800"
+                          }`}>
+                            {method.currency}
+                          </Badge>
+                          <Switch
+                            checked={method.isActive}
+                            onCheckedChange={(checked) => {
+                              setPaymentMethods(paymentMethods.map(m =>
+                                m.id === method.id ? { ...m, isActive: checked } : m
+                              ));
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-2 text-sm">
+                        <p className="text-gray-600">{method.description}</p>
+                        <div className="flex items-center gap-4 text-xs">
+                          <span className="flex items-center gap-1">
+                            <Receipt className="h-3 w-3" />
+                            {method.processingFee}% fee
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" />
+                            {method.processingTime}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="bg-gray-50 p-3 rounded-lg">
+                        <div className="text-xs text-gray-600 mb-1">Limits</div>
+                        <div className="text-sm font-medium">
+                          {method.currency === "NGN" ? "₦" : "$"}{method.minAmount.toLocaleString()} - {method.currency === "NGN" ? "₦" : "$"}{method.maxAmount.toLocaleString()}
+                        </div>
+                      </div>
+
+                      <div className="bg-gray-50 p-3 rounded-lg">
+                        <div className="text-xs text-gray-600 mb-1">Account Details</div>
+                        <div className="text-sm font-mono text-gray-800">{method.accountDetails}</div>
+                      </div>
+
+                      <div className="flex gap-2 pt-2">
+                        <Button size="sm" variant="outline" className="flex-1">
+                          <Edit className="h-3 w-3 mr-1" />
+                          Edit
+                        </Button>
+                        <Button size="sm" variant="outline" className="flex-1">
+                          <Eye className="h-3 w-3 mr-1" />
+                          View
+                        </Button>
+                        <Button size="sm" variant="outline" className="text-red-600 hover:text-red-700">
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Payment Statistics */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <DollarSign className="h-5 w-5 text-green-600" />
+                      USD Transactions
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="text-3xl font-bold text-green-600">$130,000</div>
+                      <div className="text-sm text-gray-600">This month</div>
+                      <div className="flex items-center gap-1 text-sm">
+                        <TrendingUp className="h-4 w-4 text-green-500" />
+                        <span className="text-green-600">+12.5%</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Banknote className="h-5 w-5 text-emerald-600" />
+                      NGN Transactions
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="text-3xl font-bold text-emerald-600">₦45M</div>
+                      <div className="text-sm text-gray-600">This month</div>
+                      <div className="flex items-center gap-1 text-sm">
+                        <TrendingUp className="h-4 w-4 text-emerald-500" />
+                        <span className="text-emerald-600">+18.3%</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Activity className="h-5 w-5 text-blue-600" />
+                      Success Rate
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="text-3xl font-bold text-blue-600">98.7%</div>
+                      <div className="text-sm text-gray-600">Payment success</div>
+                      <Progress value={98.7} className="h-2" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
             {/* Analytics Tab */}
             <TabsContent value="analytics" className="space-y-6">
               <div className="flex justify-between items-center">
