@@ -97,14 +97,14 @@ export default function Cart() {
               Premium Selection
             </Badge>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
               <span className="text-white drop-shadow-2xl">Your Dream</span>
               <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-sunset-400 bg-clip-text text-transparent block drop-shadow-lg">
                 Collection
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-100 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
               Review your selected premium vehicles and proceed to secure your
               luxury automotive experience.
             </p>
