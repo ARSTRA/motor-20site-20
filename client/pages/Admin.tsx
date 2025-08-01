@@ -150,12 +150,43 @@ interface Payment {
   customerId: number;
   customerName: string;
   amount: number;
+  currency: "USD" | "NGN" | "EUR" | "GBP";
   type: "purchase" | "financing" | "deposit" | "refund";
   status: "completed" | "pending" | "failed" | "refunded";
-  method: "credit_card" | "bank_transfer" | "check" | "cash";
+  method: "credit_card" | "bank_transfer" | "check" | "cash" | "digital_wallet" | "crypto" | "mobile_money";
   vehicleId?: number;
   vehicleName?: string;
+  paymentMethodId?: number;
+  transactionRef?: string;
+  exchangeRate?: number;
+  fees?: number;
   createdAt: string;
+}
+
+interface PaymentMethod {
+  id: number;
+  name: string;
+  type: "credit_card" | "bank_transfer" | "digital_wallet" | "mobile_money" | "crypto" | "cash";
+  provider: string;
+  accountDetails: string;
+  currency: "USD" | "NGN" | "EUR" | "GBP";
+  isActive: boolean;
+  processingFee: number;
+  minAmount: number;
+  maxAmount: number;
+  processingTime: string;
+  description: string;
+  icon: string;
+  settings: Record<string, any>;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface ExchangeRate {
+  fromCurrency: string;
+  toCurrency: string;
+  rate: number;
+  lastUpdated: string;
 }
 
 interface DashboardStats {
