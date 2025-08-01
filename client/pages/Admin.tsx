@@ -1383,9 +1383,11 @@ export default function Admin() {
                         <TableHead>Payment ID</TableHead>
                         <TableHead>Customer</TableHead>
                         <TableHead>Amount</TableHead>
+                        <TableHead>Currency</TableHead>
                         <TableHead>Type</TableHead>
                         <TableHead>Method</TableHead>
                         <TableHead>Status</TableHead>
+                        <TableHead>Fees</TableHead>
                         <TableHead>Vehicle</TableHead>
                         <TableHead>Date</TableHead>
                         <TableHead>Actions</TableHead>
@@ -1395,9 +1397,16 @@ export default function Admin() {
                       {payments.map((payment) => (
                         <TableRow key={payment.id}>
                           <TableCell>
-                            <code className="bg-gray-100 px-2 py-1 rounded text-sm">
-                              PAY-{payment.id.toString().padStart(4, "0")}
-                            </code>
+                            <div>
+                              <code className="bg-gray-100 px-2 py-1 rounded text-sm">
+                                PAY-{payment.id.toString().padStart(4, "0")}
+                              </code>
+                              {payment.transactionRef && (
+                                <p className="text-xs text-gray-500 mt-1">
+                                  {payment.transactionRef}
+                                </p>
+                              )}
+                            </div>
                           </TableCell>
                           <TableCell>
                             <p className="font-medium">
@@ -1409,8 +1418,24 @@ export default function Admin() {
                           </TableCell>
                           <TableCell>
                             <p className="font-bold text-green-600">
-                              ${payment.amount.toLocaleString()}
+                              {payment.currency === "NGN" ? "₦" : "$"}{payment.amount.toLocaleString()}
                             </p>
+                            {payment.exchangeRate && (
+                              <p className="text-xs text-gray-500">
+                                Rate: {payment.exchangeRate}
+                              </p>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <Badge className={`${
+                              payment.currency === "NGN"
+                                ? "bg-green-100 text-green-800"
+                                : payment.currency === "USD"
+                                ? "bg-blue-100 text-blue-800"
+                                : "bg-gray-100 text-gray-800"
+                            }`}>
+                              {payment.currency}
+                            </Badge>
                           </TableCell>
                           <TableCell>
                             <Badge variant="outline">
@@ -1436,6 +1461,15 @@ export default function Admin() {
                             >
                               {payment.status.toUpperCase()}
                             </Badge>
+                          </TableCell>
+                          <TableCell>
+                            {payment.fees ? (
+                              <p className="text-sm text-gray-600">
+                                {payment.currency === "NGN" ? "₦" : "$"}{payment.fees.toLocaleString()}
+                              </p>
+                            ) : (
+                              <span className="text-gray-400">N/A</span>
+                            )}
                           </TableCell>
                           <TableCell>
                             {payment.vehicleName ? (
