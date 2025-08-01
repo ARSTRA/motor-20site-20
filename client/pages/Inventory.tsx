@@ -462,11 +462,24 @@ export default function Inventory() {
           </div>
           <div className="flex gap-2">
             <Button
-              variant="outline"
-              className="border-2 border-ocean-500 text-ocean-600 hover:bg-ocean-500 hover:text-white font-bold px-4 py-2 rounded-xl transition-all duration-300"
+              onClick={() => {
+                addToCart(car);
+                // Add a visual feedback notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-4 right-4 bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl shadow-xl z-50 animate-bounce';
+                notification.textContent = `${car.name} added to cart!`;
+                document.body.appendChild(notification);
+                setTimeout(() => document.body.removeChild(notification), 3000);
+              }}
+              disabled={isInCart(car.id)}
+              className={`border-2 font-bold px-4 py-2 rounded-xl transition-all duration-300 ${
+                isInCart(car.id)
+                  ? "border-green-500 bg-green-500 text-white cursor-not-allowed"
+                  : "border-sunset-500 text-sunset-600 hover:bg-sunset-500 hover:text-white transform hover:scale-105"
+              }`}
             >
-              <Phone className="h-4 w-4 mr-2" />
-              Call
+              <ShoppingCart className="h-4 w-4 mr-2" />
+              {isInCart(car.id) ? "In Cart" : "BUY"}
             </Button>
             <Link to={`/vehicle/${car.id}`}>
               <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
