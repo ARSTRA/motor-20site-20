@@ -21,7 +21,7 @@ const stats = [
   {
     label: "Premium Vehicles in Stock",
     value: "150+",
-    image: "https://images.pexels.com/photos/6169027/pexels-photo-6169027.jpeg",
+    image: HIGH_QUALITY_AUTOMOTIVE_IMAGES.services.carInspection,
     description:
       "Meticulously curated collection of luxury and performance vehicles, each inspected and certified to our highest standards.",
     feature: "Certified Quality",
@@ -29,7 +29,7 @@ const stats = [
   {
     label: "Satisfied Members",
     value: "2.5K+",
-    image: "https://images.pexels.com/photos/4173201/pexels-photo-4173201.jpeg",
+    image: HIGH_QUALITY_AUTOMOTIVE_IMAGES.services.customerService,
     description:
       "Trusted by thousands of discerning customers who've discovered their perfect vehicle through our personalized service experience.",
     feature: "5-Star Service",
@@ -37,7 +37,7 @@ const stats = [
   {
     label: "Years of Excellence",
     value: "25+",
-    image: "https://images.pexels.com/photos/6817005/pexels-photo-6817005.jpeg",
+    image: HIGH_QUALITY_AUTOMOTIVE_IMAGES.services.expertTeam,
     description:
       "A quarter-century of automotive expertise, building lasting relationships and delivering exceptional luxury car experiences.",
     feature: "Proven Heritage",
@@ -45,7 +45,7 @@ const stats = [
   {
     label: "Professional Service Centers",
     value: "8",
-    image: "https://images.pexels.com/photos/8985613/pexels-photo-8985613.jpeg",
+    image: HIGH_QUALITY_AUTOMOTIVE_IMAGES.services.mechanics,
     description:
       "State-of-the-art service facilities staffed by certified technicians, ensuring your vehicle receives the finest care and maintenance.",
     feature: "Expert Care",
