@@ -22,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
+import { useCart } from "@/contexts/CartContext";
 
 // Professional Alpine Motors Logo with Luxury Automotive Theme
 const PremiumAutoLogo = () => (
