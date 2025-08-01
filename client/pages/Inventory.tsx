@@ -17,6 +17,7 @@ import {
   Phone,
   Mail,
   X,
+  ShoppingCart,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
