@@ -529,13 +529,13 @@ export default function Inventory() {
                 Premium Collection
               </span>
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
               <span className="text-white drop-shadow-2xl">Luxury Vehicle</span>
               <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-sunset-400 bg-clip-text text-transparent block drop-shadow-lg">
                 Inventory
               </span>
             </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-100 mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
               Discover our complete collection of premium vehicles. Each car is
               meticulously inspected and comes with our guarantee of quality and
               excellence.
