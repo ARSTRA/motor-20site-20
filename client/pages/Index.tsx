@@ -109,7 +109,7 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section with Slideshow */}
-      <section className="relative h-[70vh] md:h-[80vh] overflow-hidden">
+      <section className="relative h-[75vh] md:h-[80vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 md:bg-gradient-to-r md:from-black/60 md:via-black/30 md:to-black/60 z-10" />
 
         {featuredCars.length > 0 ? (
