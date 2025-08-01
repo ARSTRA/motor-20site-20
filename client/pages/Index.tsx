@@ -130,15 +130,15 @@ export default function Index() {
                   backgroundImage: `url(${car.images[0]})`,
                 }}
               >
-                <div className="absolute inset-0 bg-black/40"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-96 h-64 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:bg-black/40"></div>
+                <div className="absolute inset-0 flex items-end md:items-center justify-center pb-6 md:pb-0">
+                  <div className="w-80 md:w-96 h-auto md:h-64 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 flex items-center justify-center p-4 md:p-6">
                     <div className="text-white text-center">
-                      <h3 className="text-2xl font-bold mb-2">{car.name}</h3>
-                      <p className="text-lg opacity-90 mb-2">
+                      <h3 className="text-lg md:text-2xl font-bold mb-2">{car.name}</h3>
+                      <p className="text-sm md:text-lg opacity-90 mb-2 hidden md:block">
                         {car.description}
                       </p>
-                      <p className="text-xl font-bold text-gold-300">
+                      <p className="text-lg md:text-xl font-bold text-gold-300">
                         ${car.price.toLocaleString()}
                       </p>
                     </div>
