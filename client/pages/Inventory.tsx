@@ -41,7 +41,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Layout from "@/components/Layout";
-import OptimizedImage, { HIGH_QUALITY_AUTOMOTIVE_IMAGES } from "@/components/OptimizedImage";
+import OptimizedImage, {
+  HIGH_QUALITY_AUTOMOTIVE_IMAGES,
+} from "@/components/OptimizedImage";
 import { Car, Category, CarFilters } from "@shared/api";
 import { useCart } from "@/contexts/CartContext";
 

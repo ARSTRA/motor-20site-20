@@ -15,7 +15,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
-import OptimizedImage, { HIGH_QUALITY_AUTOMOTIVE_IMAGES } from "@/components/OptimizedImage";
+import OptimizedImage, {
+  HIGH_QUALITY_AUTOMOTIVE_IMAGES,
+} from "@/components/OptimizedImage";
 import Layout from "@/components/Layout";
 
 export default function Cart() {
@@ -160,7 +162,9 @@ export default function Cart() {
                           className="w-full h-full hover:scale-105 transition-transform duration-300"
                           width={600}
                           height={400}
-                          fallback={HIGH_QUALITY_AUTOMOTIVE_IMAGES.backgrounds.fallback}
+                          fallback={
+                            HIGH_QUALITY_AUTOMOTIVE_IMAGES.backgrounds.fallback
+                          }
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 

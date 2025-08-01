@@ -14,7 +14,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/Layout";
-import OptimizedImage, { HIGH_QUALITY_AUTOMOTIVE_IMAGES } from "@/components/OptimizedImage";
+import OptimizedImage, {
+  HIGH_QUALITY_AUTOMOTIVE_IMAGES,
+} from "@/components/OptimizedImage";
 import { Car, Category } from "@shared/api";
 
 const stats = [
@@ -635,7 +637,9 @@ export default function Index() {
                         className="w-full h-full group-hover:scale-110 transition-transform duration-700"
                         width={800}
                         height={600}
-                        fallback={HIGH_QUALITY_AUTOMOTIVE_IMAGES.backgrounds.fallback}
+                        fallback={
+                          HIGH_QUALITY_AUTOMOTIVE_IMAGES.backgrounds.fallback
+                        }
                       />
                       {/* Enhanced Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
