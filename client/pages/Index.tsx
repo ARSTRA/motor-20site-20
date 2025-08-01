@@ -946,12 +946,14 @@ export default function Index() {
             {/* Concierge Service */}
             <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white rounded-3xl border-2 border-transparent hover:border-sunset-200">
               <div className="relative h-64 overflow-hidden rounded-t-3xl">
-                <img
-                  src="https://images.pexels.com/photos/7144177/pexels-photo-7144177.jpeg"
+                <OptimizedImage
+                  src={HIGH_QUALITY_AUTOMOTIVE_IMAGES.showroom.teamConsult}
                   alt="Professional team consulting with clients in luxury automotive environment"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full group-hover:scale-110 transition-transform duration-700"
+                  width={800}
+                  height={600}
+                  priority={true}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                 <div className="absolute top-6 left-6">
                   <Badge className="bg-gradient-to-r from-sunset-500 to-sunset-600 text-white font-bold shadow-lg px-4 py-2">
                     Concierge Service
