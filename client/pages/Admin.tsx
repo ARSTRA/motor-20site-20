@@ -153,7 +153,14 @@ interface Payment {
   currency: "USD" | "NGN" | "EUR" | "GBP";
   type: "purchase" | "financing" | "deposit" | "refund";
   status: "completed" | "pending" | "failed" | "refunded";
-  method: "credit_card" | "bank_transfer" | "check" | "cash" | "digital_wallet" | "crypto" | "mobile_money";
+  method:
+    | "credit_card"
+    | "bank_transfer"
+    | "check"
+    | "cash"
+    | "digital_wallet"
+    | "crypto"
+    | "mobile_money";
   vehicleId?: number;
   vehicleName?: string;
   paymentMethodId?: number;
@@ -166,7 +173,13 @@ interface Payment {
 interface PaymentMethod {
   id: number;
   name: string;
-  type: "credit_card" | "bank_transfer" | "digital_wallet" | "mobile_money" | "crypto" | "cash";
+  type:
+    | "credit_card"
+    | "bank_transfer"
+    | "digital_wallet"
+    | "mobile_money"
+    | "crypto"
+    | "cash";
   provider: string;
   accountDetails: string;
   currency: "USD" | "NGN" | "EUR" | "GBP";
@@ -375,7 +388,7 @@ export default function Admin() {
       icon: "💳",
       settings: {
         supportedCards: ["visa", "mastercard", "amex"],
-        threeDSecure: true
+        threeDSecure: true,
       },
       createdAt: "2024-01-01T00:00:00Z",
       updatedAt: "2024-01-20T10:00:00Z",
@@ -433,7 +446,7 @@ export default function Admin() {
       settings: {
         accountNumber: "0123456789",
         bankCode: "058",
-        sortCode: "058152036"
+        sortCode: "058152036",
       },
       createdAt: "2024-01-01T00:00:00Z",
       updatedAt: "2024-01-20T10:00:00Z",
@@ -454,7 +467,7 @@ export default function Admin() {
       icon: "💳",
       settings: {
         publicKey: "FLWPUBK_TEST-xxx",
-        supportedBanks: ["gtbank", "zenith", "access", "uba"]
+        supportedBanks: ["gtbank", "zenith", "access", "uba"],
       },
       createdAt: "2024-01-01T00:00:00Z",
       updatedAt: "2024-01-20T10:00:00Z",
@@ -476,7 +489,7 @@ export default function Admin() {
       settings: {
         publicKey: "pk_test_xxx",
         secretKey: "sk_test_xxx",
-        supportedChannels: ["card", "bank", "ussd", "qr"]
+        supportedChannels: ["card", "bank", "ussd", "qr"],
       },
       createdAt: "2024-01-01T00:00:00Z",
       updatedAt: "2024-01-20T10:00:00Z",
@@ -484,10 +497,30 @@ export default function Admin() {
   ]);
 
   const [exchangeRates, setExchangeRates] = useState<ExchangeRate[]>([
-    { fromCurrency: "USD", toCurrency: "NGN", rate: 750.50, lastUpdated: "2024-01-22T15:30:00Z" },
-    { fromCurrency: "NGN", toCurrency: "USD", rate: 0.00133, lastUpdated: "2024-01-22T15:30:00Z" },
-    { fromCurrency: "USD", toCurrency: "EUR", rate: 0.92, lastUpdated: "2024-01-22T15:30:00Z" },
-    { fromCurrency: "USD", toCurrency: "GBP", rate: 0.79, lastUpdated: "2024-01-22T15:30:00Z" },
+    {
+      fromCurrency: "USD",
+      toCurrency: "NGN",
+      rate: 750.5,
+      lastUpdated: "2024-01-22T15:30:00Z",
+    },
+    {
+      fromCurrency: "NGN",
+      toCurrency: "USD",
+      rate: 0.00133,
+      lastUpdated: "2024-01-22T15:30:00Z",
+    },
+    {
+      fromCurrency: "USD",
+      toCurrency: "EUR",
+      rate: 0.92,
+      lastUpdated: "2024-01-22T15:30:00Z",
+    },
+    {
+      fromCurrency: "USD",
+      toCurrency: "GBP",
+      rate: 0.79,
+      lastUpdated: "2024-01-22T15:30:00Z",
+    },
   ]);
 
   // Check if admin is already logged in
@@ -765,7 +798,10 @@ export default function Admin() {
                 <CreditCard className="h-4 w-4" />
                 Payments
               </TabsTrigger>
-              <TabsTrigger value="payment-methods" className="flex items-center gap-2">
+              <TabsTrigger
+                value="payment-methods"
+                className="flex items-center gap-2"
+              >
                 <Wallet className="h-4 w-4" />
                 Methods
               </TabsTrigger>
@@ -1418,7 +1454,8 @@ export default function Admin() {
                           </TableCell>
                           <TableCell>
                             <p className="font-bold text-green-600">
-                              {payment.currency === "NGN" ? "₦" : "$"}{payment.amount.toLocaleString()}
+                              {payment.currency === "NGN" ? "₦" : "$"}
+                              {payment.amount.toLocaleString()}
                             </p>
                             {payment.exchangeRate && (
                               <p className="text-xs text-gray-500">
@@ -1427,13 +1464,15 @@ export default function Admin() {
                             )}
                           </TableCell>
                           <TableCell>
-                            <Badge className={`${
-                              payment.currency === "NGN"
-                                ? "bg-green-100 text-green-800"
-                                : payment.currency === "USD"
-                                ? "bg-blue-100 text-blue-800"
-                                : "bg-gray-100 text-gray-800"
-                            }`}>
+                            <Badge
+                              className={`${
+                                payment.currency === "NGN"
+                                  ? "bg-green-100 text-green-800"
+                                  : payment.currency === "USD"
+                                    ? "bg-blue-100 text-blue-800"
+                                    : "bg-gray-100 text-gray-800"
+                              }`}
+                            >
                               {payment.currency}
                             </Badge>
                           </TableCell>
@@ -1465,7 +1504,8 @@ export default function Admin() {
                           <TableCell>
                             {payment.fees ? (
                               <p className="text-sm text-gray-600">
-                                {payment.currency === "NGN" ? "₦" : "$"}{payment.fees.toLocaleString()}
+                                {payment.currency === "NGN" ? "₦" : "$"}
+                                {payment.fees.toLocaleString()}
                               </p>
                             ) : (
                               <span className="text-gray-400">N/A</span>
@@ -1547,7 +1587,10 @@ export default function Admin() {
                         <div className="grid grid-cols-2 gap-4">
                           <div>
                             <Label htmlFor="methodName">Method Name</Label>
-                            <Input id="methodName" placeholder="e.g., GTBank Transfer" />
+                            <Input
+                              id="methodName"
+                              placeholder="e.g., GTBank Transfer"
+                            />
                           </div>
                           <div>
                             <Label htmlFor="methodType">Type</Label>
@@ -1556,11 +1599,21 @@ export default function Admin() {
                                 <SelectValue placeholder="Select type" />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="credit_card">Credit Card</SelectItem>
-                                <SelectItem value="bank_transfer">Bank Transfer</SelectItem>
-                                <SelectItem value="digital_wallet">Digital Wallet</SelectItem>
-                                <SelectItem value="mobile_money">Mobile Money</SelectItem>
-                                <SelectItem value="crypto">Cryptocurrency</SelectItem>
+                                <SelectItem value="credit_card">
+                                  Credit Card
+                                </SelectItem>
+                                <SelectItem value="bank_transfer">
+                                  Bank Transfer
+                                </SelectItem>
+                                <SelectItem value="digital_wallet">
+                                  Digital Wallet
+                                </SelectItem>
+                                <SelectItem value="mobile_money">
+                                  Mobile Money
+                                </SelectItem>
+                                <SelectItem value="crypto">
+                                  Cryptocurrency
+                                </SelectItem>
                                 <SelectItem value="cash">Cash</SelectItem>
                               </SelectContent>
                             </Select>
@@ -1569,7 +1622,10 @@ export default function Admin() {
                         <div className="grid grid-cols-2 gap-4">
                           <div>
                             <Label htmlFor="provider">Provider</Label>
-                            <Input id="provider" placeholder="e.g., Flutterwave" />
+                            <Input
+                              id="provider"
+                              placeholder="e.g., Flutterwave"
+                            />
                           </div>
                           <div>
                             <Label htmlFor="currency">Currency</Label>
@@ -1588,25 +1644,47 @@ export default function Admin() {
                         </div>
                         <div className="grid grid-cols-3 gap-4">
                           <div>
-                            <Label htmlFor="processingFee">Processing Fee (%)</Label>
-                            <Input id="processingFee" type="number" placeholder="2.5" />
+                            <Label htmlFor="processingFee">
+                              Processing Fee (%)
+                            </Label>
+                            <Input
+                              id="processingFee"
+                              type="number"
+                              placeholder="2.5"
+                            />
                           </div>
                           <div>
                             <Label htmlFor="minAmount">Min Amount</Label>
-                            <Input id="minAmount" type="number" placeholder="100" />
+                            <Input
+                              id="minAmount"
+                              type="number"
+                              placeholder="100"
+                            />
                           </div>
                           <div>
                             <Label htmlFor="maxAmount">Max Amount</Label>
-                            <Input id="maxAmount" type="number" placeholder="100000" />
+                            <Input
+                              id="maxAmount"
+                              type="number"
+                              placeholder="100000"
+                            />
                           </div>
                         </div>
                         <div>
-                          <Label htmlFor="accountDetails">Account Details</Label>
-                          <Input id="accountDetails" placeholder="Account number or identifier" />
+                          <Label htmlFor="accountDetails">
+                            Account Details
+                          </Label>
+                          <Input
+                            id="accountDetails"
+                            placeholder="Account number or identifier"
+                          />
                         </div>
                         <div>
                           <Label htmlFor="description">Description</Label>
-                          <Textarea id="description" placeholder="Brief description of this payment method" />
+                          <Textarea
+                            id="description"
+                            placeholder="Brief description of this payment method"
+                          />
                         </div>
                         <Button className="w-full">Add Payment Method</Button>
                       </div>
@@ -1626,19 +1704,29 @@ export default function Admin() {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {exchangeRates.map((rate, index) => (
-                      <div key={index} className="bg-white p-4 rounded-xl shadow-sm border border-emerald-100">
+                      <div
+                        key={index}
+                        className="bg-white p-4 rounded-xl shadow-sm border border-emerald-100"
+                      >
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-sm font-medium text-gray-600">
                             {rate.fromCurrency} → {rate.toCurrency}
                           </span>
-                          <Badge className="bg-emerald-100 text-emerald-700 text-xs">Live</Badge>
+                          <Badge className="bg-emerald-100 text-emerald-700 text-xs">
+                            Live
+                          </Badge>
                         </div>
                         <div className="text-2xl font-bold text-gray-900 mb-1">
-                          {rate.fromCurrency === "NGN" ? "₦" : rate.fromCurrency === "USD" ? "$" : ""}
+                          {rate.fromCurrency === "NGN"
+                            ? "₦"
+                            : rate.fromCurrency === "USD"
+                              ? "$"
+                              : ""}
                           {rate.rate.toLocaleString()}
                         </div>
                         <div className="text-xs text-gray-500">
-                          Updated: {new Date(rate.lastUpdated).toLocaleTimeString()}
+                          Updated:{" "}
+                          {new Date(rate.lastUpdated).toLocaleTimeString()}
                         </div>
                       </div>
                     ))}
@@ -1649,36 +1737,49 @@ export default function Admin() {
               {/* Payment Methods Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paymentMethods.map((method) => (
-                  <Card key={method.id} className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${
-                    method.isActive
-                      ? "border-emerald-200 bg-gradient-to-br from-white to-emerald-50"
-                      : "border-gray-200 bg-gradient-to-br from-white to-gray-50 opacity-75"
-                  }`}>
+                  <Card
+                    key={method.id}
+                    className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${
+                      method.isActive
+                        ? "border-emerald-200 bg-gradient-to-br from-white to-emerald-50"
+                        : "border-gray-200 bg-gradient-to-br from-white to-gray-50 opacity-75"
+                    }`}
+                  >
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
                           <div className="text-2xl">{method.icon}</div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">{method.name}</h3>
-                            <p className="text-sm text-gray-600">{method.provider}</p>
+                            <h3 className="font-semibold text-gray-900">
+                              {method.name}
+                            </h3>
+                            <p className="text-sm text-gray-600">
+                              {method.provider}
+                            </p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Badge className={`${
-                            method.currency === "NGN"
-                              ? "bg-green-100 text-green-800"
-                              : method.currency === "USD"
-                              ? "bg-blue-100 text-blue-800"
-                              : "bg-gray-100 text-gray-800"
-                          }`}>
+                          <Badge
+                            className={`${
+                              method.currency === "NGN"
+                                ? "bg-green-100 text-green-800"
+                                : method.currency === "USD"
+                                  ? "bg-blue-100 text-blue-800"
+                                  : "bg-gray-100 text-gray-800"
+                            }`}
+                          >
                             {method.currency}
                           </Badge>
                           <Switch
                             checked={method.isActive}
                             onCheckedChange={(checked) => {
-                              setPaymentMethods(paymentMethods.map(m =>
-                                m.id === method.id ? { ...m, isActive: checked } : m
-                              ));
+                              setPaymentMethods(
+                                paymentMethods.map((m) =>
+                                  m.id === method.id
+                                    ? { ...m, isActive: checked }
+                                    : m,
+                                ),
+                              );
                             }}
                           />
                         </div>
@@ -1702,13 +1803,20 @@ export default function Admin() {
                       <div className="bg-gray-50 p-3 rounded-lg">
                         <div className="text-xs text-gray-600 mb-1">Limits</div>
                         <div className="text-sm font-medium">
-                          {method.currency === "NGN" ? "₦" : "$"}{method.minAmount.toLocaleString()} - {method.currency === "NGN" ? "₦" : "$"}{method.maxAmount.toLocaleString()}
+                          {method.currency === "NGN" ? "₦" : "$"}
+                          {method.minAmount.toLocaleString()} -{" "}
+                          {method.currency === "NGN" ? "₦" : "$"}
+                          {method.maxAmount.toLocaleString()}
                         </div>
                       </div>
 
                       <div className="bg-gray-50 p-3 rounded-lg">
-                        <div className="text-xs text-gray-600 mb-1">Account Details</div>
-                        <div className="text-sm font-mono text-gray-800">{method.accountDetails}</div>
+                        <div className="text-xs text-gray-600 mb-1">
+                          Account Details
+                        </div>
+                        <div className="text-sm font-mono text-gray-800">
+                          {method.accountDetails}
+                        </div>
                       </div>
 
                       <div className="flex gap-2 pt-2">
@@ -1720,7 +1828,11 @@ export default function Admin() {
                           <Eye className="h-3 w-3 mr-1" />
                           View
                         </Button>
-                        <Button size="sm" variant="outline" className="text-red-600 hover:text-red-700">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="text-red-600 hover:text-red-700"
+                        >
                           <Trash2 className="h-3 w-3" />
                         </Button>
                       </div>
@@ -1740,7 +1852,9 @@ export default function Admin() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
-                      <div className="text-3xl font-bold text-green-600">$130,000</div>
+                      <div className="text-3xl font-bold text-green-600">
+                        $130,000
+                      </div>
                       <div className="text-sm text-gray-600">This month</div>
                       <div className="flex items-center gap-1 text-sm">
                         <TrendingUp className="h-4 w-4 text-green-500" />
@@ -1759,7 +1873,9 @@ export default function Admin() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
-                      <div className="text-3xl font-bold text-emerald-600">₦45M</div>
+                      <div className="text-3xl font-bold text-emerald-600">
+                        ₦45M
+                      </div>
                       <div className="text-sm text-gray-600">This month</div>
                       <div className="flex items-center gap-1 text-sm">
                         <TrendingUp className="h-4 w-4 text-emerald-500" />
@@ -1778,8 +1894,12 @@ export default function Admin() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
-                      <div className="text-3xl font-bold text-blue-600">98.7%</div>
-                      <div className="text-sm text-gray-600">Payment success</div>
+                      <div className="text-3xl font-bold text-blue-600">
+                        98.7%
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        Payment success
+                      </div>
                       <Progress value={98.7} className="h-2" />
                     </div>
                   </CardContent>

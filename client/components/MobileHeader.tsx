@@ -38,23 +38,34 @@ const MobileLogo = () => (
         >
           <div className="absolute inset-0 bg-gradient-to-br from-ocean-600/80 via-forest-600/70 to-sunset-600/80"></div>
         </div>
-        
-        <svg width="100%" height="100%" viewBox="0 0 64 64" className="relative z-10">
+
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 64 64"
+          className="relative z-10"
+        >
           <defs>
-            <linearGradient id="alpineMobileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="alpineMobileGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#0ea5e9" />
               <stop offset="50%" stopColor="#22c55e" />
               <stop offset="100%" stopColor="#f97316" />
             </linearGradient>
           </defs>
-          
+
           {/* Mountain silhouette */}
           <path
             d="M8 40 L16 28 L24 32 L32 24 L40 30 L48 22 L56 28 L56 48 L8 48 Z"
             fill="url(#alpineMobileGradient)"
             opacity="0.9"
           />
-          
+
           {/* Road */}
           <path
             d="M8 42 Q24 40 40 42 Q48 44 56 42"
@@ -63,7 +74,7 @@ const MobileLogo = () => (
             fill="none"
             opacity="0.8"
           />
-          
+
           {/* Simple "A" */}
           <path
             d="M28 18 L36 18 L38 24 L34 24 L33 22 L31 22 L30 24 L26 24 Z M30.5 20 L33.5 20 L32 18.5 Z"
@@ -73,7 +84,7 @@ const MobileLogo = () => (
         </svg>
       </div>
     </div>
-    
+
     <div className="flex flex-col">
       <h1 className="text-lg md:text-2xl font-bold leading-tight">
         <span className="bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
@@ -91,9 +102,15 @@ const MobileLogo = () => (
 );
 
 // Mobile Navigation Menu
-const MobileNav = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+const MobileNav = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
   const { user, logout } = useAuth();
-  
+
   const navItems = [
     { icon: Home, label: "Home", path: "/" },
     { icon: Package, label: "Inventory", path: "/inventory" },
@@ -104,13 +121,15 @@ const MobileNav = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
   ];
 
   return (
-    <div className={`fixed inset-0 z-50 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+    <div
+      className={`fixed inset-0 z-50 transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+    >
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      
+
       {/* Menu Panel */}
       <div className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl">
         {/* Header */}
@@ -126,20 +145,22 @@ const MobileNav = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
               <X className="h-6 w-6" />
             </Button>
           </div>
-          
+
           {user ? (
             <div className="flex items-center gap-3 bg-white/10 rounded-xl p-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                 <User className="h-5 w-5" />
               </div>
               <div>
-                <div className="font-semibold">{user.firstName} {user.lastName}</div>
+                <div className="font-semibold">
+                  {user.firstName} {user.lastName}
+                </div>
                 <div className="text-xs opacity-80">{user.email}</div>
               </div>
             </div>
           ) : null}
         </div>
-        
+
         {/* Navigation Items */}
         <div className="p-6 space-y-2">
           {navItems.map((item) => (
@@ -158,7 +179,7 @@ const MobileNav = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
             </Link>
           ))}
         </div>
-        
+
         {/* User Actions */}
         {user ? (
           <div className="border-t border-gray-100 p-6 space-y-2">
@@ -171,7 +192,10 @@ const MobileNav = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
               <span className="font-medium text-gray-700">Dashboard</span>
             </Link>
             <button
-              onClick={() => { logout(); onClose(); }}
+              onClick={() => {
+                logout();
+                onClose();
+              }}
               className="flex items-center gap-4 p-4 rounded-xl hover:bg-red-50 transition-colors w-full text-left"
             >
               <LogOut className="h-5 w-5 text-red-500" />
@@ -186,22 +210,31 @@ const MobileNav = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
               </Button>
             </Link>
             <Link to="/register" onClick={onClose}>
-              <Button variant="outline" className="w-full border-2 border-ocean-500 text-ocean-600 hover:bg-ocean-50 font-semibold rounded-xl">
+              <Button
+                variant="outline"
+                className="w-full border-2 border-ocean-500 text-ocean-600 hover:bg-ocean-50 font-semibold rounded-xl"
+              >
                 Get Started
               </Button>
             </Link>
           </div>
         )}
-        
+
         {/* Contact Info */}
         <div className="border-t border-gray-100 p-6 bg-gray-50">
           <h3 className="font-semibold text-gray-800 mb-3">Contact Us</h3>
           <div className="space-y-2 text-sm">
-            <a href="tel:+15551234567" className="flex items-center gap-3 text-gray-600 hover:text-ocean-600">
+            <a
+              href="tel:+15551234567"
+              className="flex items-center gap-3 text-gray-600 hover:text-ocean-600"
+            >
               <Phone className="h-4 w-4" />
               (555) 123-4567
             </a>
-            <a href="mailto:info@alpinemotors.com" className="flex items-center gap-3 text-gray-600 hover:text-ocean-600">
+            <a
+              href="mailto:info@alpinemotors.com"
+              className="flex items-center gap-3 text-gray-600 hover:text-ocean-600"
+            >
               <Mail className="h-4 w-4" />
               info@alpinemotors.com
             </a>
@@ -229,11 +262,17 @@ export default function MobileHeader() {
         <div className="hidden md:block bg-gradient-to-r from-ocean-700 via-forest-700 to-sunset-700 text-white py-2 px-4">
           <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
             <div className="flex items-center gap-6">
-              <a href="tel:+15551234567" className="flex items-center gap-2 hover:text-gold-300 transition-colors">
+              <a
+                href="tel:+15551234567"
+                className="flex items-center gap-2 hover:text-gold-300 transition-colors"
+              >
                 <Phone className="h-4 w-4" />
                 <span>(555) 123-4567</span>
               </a>
-              <a href="mailto:info@alpinemotors.com" className="flex items-center gap-2 hover:text-gold-300 transition-colors">
+              <a
+                href="mailto:info@alpinemotors.com"
+                className="flex items-center gap-2 hover:text-gold-300 transition-colors"
+              >
                 <Mail className="h-4 w-4" />
                 <span>info@alpinemotors.com</span>
               </a>
@@ -252,19 +291,34 @@ export default function MobileHeader() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6">
-              <Link to="/" className="text-gray-700 hover:text-ocean-600 font-medium transition-colors">
+              <Link
+                to="/"
+                className="text-gray-700 hover:text-ocean-600 font-medium transition-colors"
+              >
                 Home
               </Link>
-              <Link to="/inventory" className="text-gray-700 hover:text-ocean-600 font-medium transition-colors">
+              <Link
+                to="/inventory"
+                className="text-gray-700 hover:text-ocean-600 font-medium transition-colors"
+              >
                 Inventory
               </Link>
-              <Link to="/about" className="text-gray-700 hover:text-ocean-600 font-medium transition-colors">
+              <Link
+                to="/about"
+                className="text-gray-700 hover:text-ocean-600 font-medium transition-colors"
+              >
                 About
               </Link>
-              <Link to="/financing" className="text-gray-700 hover:text-ocean-600 font-medium transition-colors">
+              <Link
+                to="/financing"
+                className="text-gray-700 hover:text-ocean-600 font-medium transition-colors"
+              >
                 Financing
               </Link>
-              <Link to="/contact" className="text-gray-700 hover:text-ocean-600 font-medium transition-colors">
+              <Link
+                to="/contact"
+                className="text-gray-700 hover:text-ocean-600 font-medium transition-colors"
+              >
                 Contact
               </Link>
             </nav>
@@ -318,7 +372,10 @@ export default function MobileHeader() {
               ) : (
                 <div className="hidden md:flex items-center gap-2">
                   <Link to="/login">
-                    <Button variant="outline" className="border-ocean-500 text-ocean-600 hover:bg-ocean-50 rounded-xl">
+                    <Button
+                      variant="outline"
+                      className="border-ocean-500 text-ocean-600 hover:bg-ocean-50 rounded-xl"
+                    >
                       Sign In
                     </Button>
                   </Link>
