@@ -629,14 +629,13 @@ export default function Index() {
                   <div className="relative">
                     {/* Enhanced Professional Image Header */}
                     <div className="relative h-72 overflow-hidden">
-                      <img
+                      <OptimizedImage
                         src={stat.image}
                         alt={stat.label}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        onError={(e) => {
-                          e.currentTarget.src =
-                            "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg";
-                        }}
+                        className="w-full h-full group-hover:scale-110 transition-transform duration-700"
+                        width={800}
+                        height={600}
+                        fallback={HIGH_QUALITY_AUTOMOTIVE_IMAGES.backgrounds.fallback}
                       />
                       {/* Enhanced Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
