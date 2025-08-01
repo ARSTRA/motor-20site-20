@@ -30,54 +30,57 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <AuthProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/inventory" element={<Inventory />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/financing" element={<Financing />} />
-            <Route path="/trade-in" element={<TradeIn />} />
-            <Route path="/category/:category" element={<CategoryPage />} />
-            <Route path="/car/:id" element={<VehicleDetail />} />
-            <Route path="/vehicle/:id" element={<VehicleDetail />} />
-            <Route
-              path="/privacy"
-              element={
-                <PlaceholderPage
-                  title="Privacy Policy"
-                  description="Our commitment to protecting your privacy and data."
-                />
-              }
-            />
-            <Route
-              path="/terms"
-              element={
-                <PlaceholderPage
-                  title="Terms of Service"
-                  description="Terms and conditions for using our services."
-                />
-              }
-            />
-            <Route
-              path="/forgot-password"
-              element={
-                <PlaceholderPage
-                  title="Forgot Password"
-                  description="Reset your password to regain access to your account."
-                />
-              }
-            />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <CartProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/inventory" element={<Inventory />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/financing" element={<Financing />} />
+              <Route path="/trade-in" element={<TradeIn />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/category/:category" element={<CategoryPage />} />
+              <Route path="/car/:id" element={<VehicleDetail />} />
+              <Route path="/vehicle/:id" element={<VehicleDetail />} />
+              <Route
+                path="/privacy"
+                element={
+                  <PlaceholderPage
+                    title="Privacy Policy"
+                    description="Our commitment to protecting your privacy and data."
+                  />
+                }
+              />
+              <Route
+                path="/terms"
+                element={
+                  <PlaceholderPage
+                    title="Terms of Service"
+                    description="Terms and conditions for using our services."
+                  />
+                }
+              />
+              <Route
+                path="/forgot-password"
+                element={
+                  <PlaceholderPage
+                    title="Forgot Password"
+                    description="Reset your password to regain access to your account."
+                  />
+                }
+              />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
