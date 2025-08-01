@@ -154,10 +154,13 @@ export default function Cart() {
                     <div className="flex flex-col md:flex-row">
                       {/* Vehicle Image */}
                       <div className="md:w-80 h-64 md:h-48 relative overflow-hidden">
-                        <img
+                        <OptimizedImage
                           src={item.car.images[0]}
                           alt={item.car.name}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full hover:scale-105 transition-transform duration-300"
+                          width={600}
+                          height={400}
+                          fallback={HIGH_QUALITY_AUTOMOTIVE_IMAGES.backgrounds.fallback}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
