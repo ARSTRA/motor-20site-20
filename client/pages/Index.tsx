@@ -170,13 +170,13 @@ export default function Index() {
         <div className="relative z-20 h-full flex items-end md:items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="max-w-4xl mb-8 md:mb-0">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-3 md:mb-6 leading-tight">
                 Discover Your
                 <span className="bg-gradient-to-r from-gold-400 via-sunset-400 to-gold-400 bg-clip-text text-transparent block">
                   Perfect Journey
                 </span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 mb-6 md:mb-8 leading-relaxed max-w-2xl">
+              <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-100 mb-4 md:mb-8 leading-relaxed max-w-2xl">
                 Where luxury meets adventure. Experience our curated collection
                 of premium vehicles designed for those who demand excellence.
               </p>
