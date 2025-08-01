@@ -489,7 +489,7 @@ export default function Inventory() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative text-white py-24 overflow-hidden min-h-[600px] flex items-center">
+      <section className="relative text-white py-16 md:py-24 overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center">
         {/* Background Image with Parallax Effect */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000"
