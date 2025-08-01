@@ -745,7 +745,7 @@ export default function Admin() {
             onValueChange={setActiveTab}
             className="space-y-8"
           >
-            <TabsList className="grid w-full grid-cols-6 bg-white p-1 rounded-xl shadow-lg">
+            <TabsList className="grid w-full grid-cols-7 bg-white p-1 rounded-xl shadow-lg">
               <TabsTrigger
                 value="dashboard"
                 className="flex items-center gap-2"
@@ -764,6 +764,10 @@ export default function Admin() {
               <TabsTrigger value="payments" className="flex items-center gap-2">
                 <CreditCard className="h-4 w-4" />
                 Payments
+              </TabsTrigger>
+              <TabsTrigger value="payment-methods" className="flex items-center gap-2">
+                <Wallet className="h-4 w-4" />
+                Methods
               </TabsTrigger>
               <TabsTrigger
                 value="analytics"
