@@ -301,7 +301,7 @@ export default function Inventory() {
     >
       <div className={`relative ${isListView ? "w-80 flex-shrink-0" : ""}`}>
         <div
-          className={`${isListView ? "aspect-[4/3]" : "aspect-[4/3]"} relative overflow-hidden rounded-t-2xl`}
+          className={`${isListView ? "aspect-[4/3]" : "aspect-[4/3] sm:aspect-[3/2]"} relative overflow-hidden rounded-t-xl md:rounded-t-2xl`}
         >
           {car.images && car.images.length > 0 ? (
             <OptimizedImage
