@@ -199,7 +199,7 @@ export default function Index() {
                   <Link to="/contact" className="w-full sm:w-auto block">
                     <Button
                       size="lg"
-                      className="w-full sm:w-auto text-lg px-8 py-4 bg-gradient-to-r from-sunset-500 via-gold-500 to-forest-500 hover:from-sunset-600 hover:via-gold-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/30 hover:border-white/50"
+                      className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-sunset-500 via-gold-500 to-forest-500 hover:from-sunset-600 hover:via-gold-600 hover:to-forest-600 text-white font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/30 hover:border-white/50 rounded-xl"
                     >
                       <span className="absolute inset-0 bg-gradient-to-r from-gold-300/30 via-sunset-300/30 to-forest-300/30 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
                       <span className="absolute inset-0 bg-gradient-to-45deg from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
