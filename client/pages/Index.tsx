@@ -851,7 +851,7 @@ export default function Index() {
           </div>
 
           {/* Experience Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
             {/* Premium Showroom Experience */}
             <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white rounded-3xl border-2 border-transparent hover:border-ocean-200">
               <div className="relative h-64 overflow-hidden rounded-t-3xl">
