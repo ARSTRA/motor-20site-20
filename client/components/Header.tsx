@@ -228,6 +228,7 @@ const PremiumAutoLogo = () => (
 
 export default function Header() {
   const { user, logout } = useAuth();
+  const { getTotalItems } = useCart();
 
   const handleLogout = () => {
     logout();
