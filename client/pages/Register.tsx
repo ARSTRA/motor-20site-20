@@ -99,25 +99,25 @@ export default function Register() {
             <div className="inline-block p-4 bg-gradient-to-r from-forest-500 to-sunset-500 rounded-3xl mb-6 shadow-xl">
               <Car className="h-12 w-12 text-white" />
             </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-forest-600 to-sunset-600 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-forest-600 to-sunset-600 bg-clip-text text-transparent mb-2">
               Join Alpine Motors
             </h1>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 text-base sm:text-lg">
               Create your premium account and unlock exclusive benefits
             </p>
           </div>
 
           <Card className="shadow-2xl border-2 border-gray-100 rounded-3xl overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-forest-500 to-sunset-500 text-white pb-8">
-              <CardTitle className="text-2xl font-bold text-center">
+            <CardHeader className="bg-gradient-to-r from-forest-500 to-sunset-500 text-white pb-6 sm:pb-8">
+              <CardTitle className="text-xl sm:text-2xl font-bold text-center">
                 Create Account
               </CardTitle>
-              <p className="text-center text-forest-100 mt-2">
+              <p className="text-center text-forest-100 mt-2 text-sm sm:text-base">
                 Join our exclusive community
               </p>
             </CardHeader>
 
-            <CardContent className="p-8">
+            <CardContent className="p-6 sm:p-8">
               {error && (
                 <Alert className="mb-6 border-red-200 bg-red-50">
                   <AlertCircle className="h-4 w-4 text-red-600" />
@@ -138,7 +138,7 @@ export default function Register() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Fields */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-3">
                       First Name *
@@ -150,7 +150,7 @@ export default function Register() {
                         value={formData.firstName}
                         onChange={handleChange("firstName")}
                         placeholder="John"
-                        className="pl-12 h-12 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
+                        className="pl-12 h-11 sm:h-12 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
                         required
                       />
                     </div>
@@ -166,7 +166,7 @@ export default function Register() {
                         value={formData.lastName}
                         onChange={handleChange("lastName")}
                         placeholder="Doe"
-                        className="pl-12 h-12 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
+                        className="pl-12 h-11 sm:h-12 border-2 border-forest-200 focus:border-forest-500 rounded-xl"
                         required
                       />
                     </div>
@@ -185,7 +185,7 @@ export default function Register() {
                       value={formData.email}
                       onChange={handleChange("email")}
                       placeholder="john.doe@email.com"
-                      className="pl-12 h-12 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl"
+                      className="pl-12 h-11 sm:h-12 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl"
                       required
                     />
                   </div>
@@ -203,13 +203,13 @@ export default function Register() {
                       value={formData.phone}
                       onChange={handleChange("phone")}
                       placeholder="(555) 123-4567"
-                      className="pl-12 h-12 border-2 border-sunset-200 focus:border-sunset-500 rounded-xl"
+                      className="pl-12 h-11 sm:h-12 border-2 border-sunset-200 focus:border-sunset-500 rounded-xl"
                     />
                   </div>
                 </div>
 
                 {/* Password Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-3">
                       Password *
@@ -221,7 +221,7 @@ export default function Register() {
                         value={formData.password}
                         onChange={handleChange("password")}
                         placeholder="Create password"
-                        className="pl-12 pr-12 h-12 border-2 border-gold-200 focus:border-gold-500 rounded-xl"
+                        className="pl-12 pr-12 h-11 sm:h-12 border-2 border-gold-200 focus:border-gold-500 rounded-xl"
                         required
                       />
                       <button
@@ -248,7 +248,7 @@ export default function Register() {
                         value={formData.confirmPassword}
                         onChange={handleChange("confirmPassword")}
                         placeholder="Confirm password"
-                        className="pl-12 pr-12 h-12 border-2 border-gold-200 focus:border-gold-500 rounded-xl"
+                        className="pl-12 pr-12 h-11 sm:h-12 border-2 border-gold-200 focus:border-gold-500 rounded-xl"
                         required
                       />
                       <button
@@ -318,7 +318,7 @@ export default function Register() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full h-14 bg-gradient-to-r from-forest-500 to-sunset-500 hover:from-forest-600 hover:to-sunset-600 text-white font-bold text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full h-12 sm:h-14 bg-gradient-to-r from-forest-500 to-sunset-500 hover:from-forest-600 hover:to-sunset-600 text-white font-bold text-base sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   {loading ? (
                     <div className="flex items-center">
@@ -346,19 +346,19 @@ export default function Register() {
           </Card>
 
           {/* Benefits */}
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            <div className="p-6 bg-white rounded-2xl shadow-lg border border-forest-100">
-              <div className="text-3xl mb-3">🎯</div>
-              <h3 className="font-bold text-gray-800 mb-2">
+          <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-forest-100">
+              <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🎯</div>
+              <h3 className="font-bold text-gray-800 mb-2 text-base sm:text-lg">
                 Personalized Experience
               </h3>
               <p className="text-sm text-gray-600">
                 Get vehicle recommendations tailored to your preferences
               </p>
             </div>
-            <div className="p-6 bg-white rounded-2xl shadow-lg border border-sunset-100">
-              <div className="text-3xl mb-3">⚡</div>
-              <h3 className="font-bold text-gray-800 mb-2">Priority Access</h3>
+            <div className="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-sunset-100">
+              <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">⚡</div>
+              <h3 className="font-bold text-gray-800 mb-2 text-base sm:text-lg">Priority Access</h3>
               <p className="text-sm text-gray-600">
                 Early access to new arrivals and exclusive deals
               </p>
