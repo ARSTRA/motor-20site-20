@@ -43,15 +43,16 @@ export default function Cart() {
                 <ShoppingCart className="h-16 w-16 text-white" />
               </div>
             </div>
-            
+
             <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
               Your Cart is Empty
             </h1>
-            
+
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Discover our premium collection of luxury vehicles and add your favorites to start building your dream garage.
+              Discover our premium collection of luxury vehicles and add your
+              favorites to start building your dream garage.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/inventory">
                 <Button className="bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
@@ -92,22 +93,25 @@ export default function Cart() {
               <ShoppingCart className="h-5 w-5 mr-2" />
               Premium Selection
             </Badge>
-            
+
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="text-white drop-shadow-2xl">Your Dream</span>
               <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-sunset-400 bg-clip-text text-transparent block drop-shadow-lg">
                 Collection
               </span>
             </h1>
-            
+
             <p className="text-lg sm:text-xl text-gray-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Review your selected premium vehicles and proceed to secure your luxury automotive experience.
+              Review your selected premium vehicles and proceed to secure your
+              luxury automotive experience.
             </p>
-            
+
             <div className="flex items-center justify-center gap-8 text-lg">
               <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-gold-500 to-sunset-500 rounded-full flex items-center justify-center">
-                  <span className="text-2xl font-bold text-white">{totalItems}</span>
+                  <span className="text-2xl font-bold text-white">
+                    {totalItems}
+                  </span>
                 </div>
                 <div className="text-left">
                   <div className="text-gold-300 font-bold">Selected</div>
@@ -129,7 +133,7 @@ export default function Cart() {
                 <h2 className="text-3xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
                   Selected Vehicles ({totalItems})
                 </h2>
-                
+
                 <Button
                   variant="outline"
                   onClick={clearCart}
@@ -141,7 +145,10 @@ export default function Cart() {
               </div>
 
               {cartItems.map((item) => (
-                <Card key={item.car.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-ocean-200">
+                <Card
+                  key={item.car.id}
+                  className="overflow-hidden hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-ocean-200"
+                >
                   <CardContent className="p-0">
                     <div className="flex flex-col md:flex-row">
                       {/* Vehicle Image */}
@@ -152,7 +159,7 @@ export default function Cart() {
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                        
+
                         {item.car.featured && (
                           <div className="absolute top-4 left-4">
                             <Badge className="bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold">
@@ -178,10 +185,11 @@ export default function Cart() {
                                   {item.car.category}
                                 </Badge>
                                 <p className="text-gray-600 text-sm">
-                                  {item.car.year} • {item.car.fuel} • {item.car.mileage.toLocaleString()} miles
+                                  {item.car.year} • {item.car.fuel} •{" "}
+                                  {item.car.mileage.toLocaleString()} miles
                                 </p>
                               </div>
-                              
+
                               <Button
                                 variant="ghost"
                                 size="sm"
@@ -198,7 +206,12 @@ export default function Cart() {
                                   <Button
                                     variant="ghost"
                                     size="sm"
-                                    onClick={() => updateQuantity(item.car.id, item.quantity - 1)}
+                                    onClick={() =>
+                                      updateQuantity(
+                                        item.car.id,
+                                        item.quantity - 1,
+                                      )
+                                    }
                                     className="p-2 hover:bg-gray-200 rounded-l-xl"
                                   >
                                     <Minus className="h-4 w-4" />
@@ -209,15 +222,22 @@ export default function Cart() {
                                   <Button
                                     variant="ghost"
                                     size="sm"
-                                    onClick={() => updateQuantity(item.car.id, item.quantity + 1)}
+                                    onClick={() =>
+                                      updateQuantity(
+                                        item.car.id,
+                                        item.quantity + 1,
+                                      )
+                                    }
                                     className="p-2 hover:bg-gray-200 rounded-r-xl"
                                   >
                                     <Plus className="h-4 w-4" />
                                   </Button>
                                 </div>
-                                
+
                                 <div className="text-right">
-                                  <div className="text-sm text-gray-500 mb-1">Price per unit</div>
+                                  <div className="text-sm text-gray-500 mb-1">
+                                    Price per unit
+                                  </div>
                                   <div className="text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
                                     ${item.car.price.toLocaleString()}
                                   </div>
@@ -225,9 +245,14 @@ export default function Cart() {
                               </div>
 
                               <div className="text-right">
-                                <div className="text-sm text-gray-500 mb-1">Subtotal</div>
+                                <div className="text-sm text-gray-500 mb-1">
+                                  Subtotal
+                                </div>
                                 <div className="text-3xl font-bold bg-gradient-to-r from-sunset-600 to-gold-600 bg-clip-text text-transparent">
-                                  ${(item.car.price * item.quantity).toLocaleString()}
+                                  $
+                                  {(
+                                    item.car.price * item.quantity
+                                  ).toLocaleString()}
                                 </div>
                               </div>
                             </div>
@@ -252,29 +277,41 @@ export default function Cart() {
 
                     <div className="p-6 space-y-4">
                       <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                        <span className="text-gray-600">Subtotal ({totalItems} items)</span>
-                        <span className="font-bold text-lg">${totalPrice.toLocaleString()}</span>
+                        <span className="text-gray-600">
+                          Subtotal ({totalItems} items)
+                        </span>
+                        <span className="font-bold text-lg">
+                          ${totalPrice.toLocaleString()}
+                        </span>
                       </div>
 
                       <div className="flex justify-between items-center py-2 border-b border-gray-100">
                         <span className="text-gray-600">Tax (8.75%)</span>
-                        <span className="font-bold text-lg">${tax.toLocaleString()}</span>
+                        <span className="font-bold text-lg">
+                          ${tax.toLocaleString()}
+                        </span>
                       </div>
 
                       <div className="flex justify-between items-center py-2 border-b border-gray-100">
                         <div className="flex items-center gap-2">
                           <span className="text-gray-600">Delivery</span>
                           {shipping === 0 && (
-                            <Badge className="bg-green-100 text-green-700 text-xs">FREE</Badge>
+                            <Badge className="bg-green-100 text-green-700 text-xs">
+                              FREE
+                            </Badge>
                           )}
                         </div>
                         <span className="font-bold text-lg">
-                          {shipping === 0 ? "FREE" : `$${shipping.toLocaleString()}`}
+                          {shipping === 0
+                            ? "FREE"
+                            : `$${shipping.toLocaleString()}`}
                         </span>
                       </div>
 
                       <div className="flex justify-between items-center py-4 border-t-2 border-ocean-200">
-                        <span className="text-xl font-bold text-gray-900">Total</span>
+                        <span className="text-xl font-bold text-gray-900">
+                          Total
+                        </span>
                         <span className="text-3xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
                           ${finalTotal.toLocaleString()}
                         </span>
@@ -306,8 +343,12 @@ export default function Cart() {
                     <div className="flex items-center gap-3">
                       <Shield className="h-6 w-6 text-green-600" />
                       <div>
-                        <div className="font-bold text-green-800">Secure Payment</div>
-                        <div className="text-sm text-green-600">SSL encrypted transactions</div>
+                        <div className="font-bold text-green-800">
+                          Secure Payment
+                        </div>
+                        <div className="text-sm text-green-600">
+                          SSL encrypted transactions
+                        </div>
                       </div>
                     </div>
                   </Card>
@@ -316,8 +357,12 @@ export default function Cart() {
                     <div className="flex items-center gap-3">
                       <Truck className="h-6 w-6 text-blue-600" />
                       <div>
-                        <div className="font-bold text-blue-800">Professional Delivery</div>
-                        <div className="text-sm text-blue-600">White-glove vehicle delivery</div>
+                        <div className="font-bold text-blue-800">
+                          Professional Delivery
+                        </div>
+                        <div className="text-sm text-blue-600">
+                          White-glove vehicle delivery
+                        </div>
                       </div>
                     </div>
                   </Card>
@@ -326,8 +371,12 @@ export default function Cart() {
                     <div className="flex items-center gap-3">
                       <Award className="h-6 w-6 text-purple-600" />
                       <div>
-                        <div className="font-bold text-purple-800">Quality Guarantee</div>
-                        <div className="text-sm text-purple-600">Certified pre-owned vehicles</div>
+                        <div className="font-bold text-purple-800">
+                          Quality Guarantee
+                        </div>
+                        <div className="text-sm text-purple-600">
+                          Certified pre-owned vehicles
+                        </div>
                       </div>
                     </div>
                   </Card>

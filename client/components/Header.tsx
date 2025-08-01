@@ -422,7 +422,6 @@ export default function Header() {
                     Get Started
                   </Button>
                 </Link>
-
               </>
             )}
             <Button

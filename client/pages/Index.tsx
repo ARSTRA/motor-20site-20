@@ -21,29 +21,33 @@ const stats = [
     label: "Premium Vehicles in Stock",
     value: "150+",
     image: "https://images.pexels.com/photos/6169027/pexels-photo-6169027.jpeg",
-    description: "Meticulously curated collection of luxury and performance vehicles, each inspected and certified to our highest standards.",
-    feature: "Certified Quality"
+    description:
+      "Meticulously curated collection of luxury and performance vehicles, each inspected and certified to our highest standards.",
+    feature: "Certified Quality",
   },
   {
     label: "Satisfied Members",
     value: "2.5K+",
     image: "https://images.pexels.com/photos/4173201/pexels-photo-4173201.jpeg",
-    description: "Trusted by thousands of discerning customers who've discovered their perfect vehicle through our personalized service experience.",
-    feature: "5-Star Service"
+    description:
+      "Trusted by thousands of discerning customers who've discovered their perfect vehicle through our personalized service experience.",
+    feature: "5-Star Service",
   },
   {
     label: "Years of Excellence",
     value: "25+",
     image: "https://images.pexels.com/photos/6817005/pexels-photo-6817005.jpeg",
-    description: "A quarter-century of automotive expertise, building lasting relationships and delivering exceptional luxury car experiences.",
-    feature: "Proven Heritage"
+    description:
+      "A quarter-century of automotive expertise, building lasting relationships and delivering exceptional luxury car experiences.",
+    feature: "Proven Heritage",
   },
   {
     label: "Professional Service Centers",
     value: "8",
     image: "https://images.pexels.com/photos/8985613/pexels-photo-8985613.jpeg",
-    description: "State-of-the-art service facilities staffed by certified technicians, ensuring your vehicle receives the finest care and maintenance.",
-    feature: "Expert Care"
+    description:
+      "State-of-the-art service facilities staffed by certified technicians, ensuring your vehicle receives the finest care and maintenance.",
+    feature: "Expert Care",
   },
 ];
 
@@ -128,8 +132,12 @@ export default function Index() {
                   <div className="w-96 h-64 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 flex items-center justify-center">
                     <div className="text-white text-center">
                       <h3 className="text-2xl font-bold mb-2">{car.name}</h3>
-                      <p className="text-lg opacity-90 mb-2">{car.description}</p>
-                      <p className="text-xl font-bold text-gold-300">${car.price.toLocaleString()}</p>
+                      <p className="text-lg opacity-90 mb-2">
+                        {car.description}
+                      </p>
+                      <p className="text-xl font-bold text-gold-300">
+                        ${car.price.toLocaleString()}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -147,7 +155,9 @@ export default function Index() {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-white text-center">
                 <div className="text-6xl mb-4">🚗</div>
-                <p className="text-lg opacity-75">Loading featured vehicles...</p>
+                <p className="text-lg opacity-75">
+                  Loading featured vehicles...
+                </p>
               </div>
             </div>
           </div>
@@ -300,7 +310,10 @@ export default function Index() {
       </section>
 
       {/* Enhanced Categories Section */}
-      <section id="categories" className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50">
+      <section
+        id="categories"
+        className="py-20 bg-gradient-to-br from-gray-50 via-ocean-50 to-forest-50"
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <Badge
@@ -335,15 +348,20 @@ export default function Index() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         onError={(e) => {
                           // Fallback to default luxury car image if specific image fails
-                          e.currentTarget.src = 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg';
+                          e.currentTarget.src =
+                            "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg";
                         }}
                       />
                       {/* Gradient Overlay */}
-                      <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent`}></div>
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent`}
+                      ></div>
 
                       {/* Category Badge */}
                       <div className="absolute top-4 left-4">
-                        <Badge className={`bg-gradient-to-r ${category.color} text-white font-bold shadow-lg px-3 py-1`}>
+                        <Badge
+                          className={`bg-gradient-to-r ${category.color} text-white font-bold shadow-lg px-3 py-1`}
+                        >
                           Premium
                         </Badge>
                       </div>
@@ -380,10 +398,15 @@ export default function Index() {
                           <span className="text-2xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent">
                             {category.count}
                           </span>
-                          <span className="text-sm text-gray-500">Available</span>
+                          <span className="text-sm text-gray-500">
+                            Available
+                          </span>
                         </div>
                         <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                          <Button size="sm" className={`bg-gradient-to-r ${category.color} text-white rounded-xl shadow-lg hover:shadow-xl`}>
+                          <Button
+                            size="sm"
+                            className={`bg-gradient-to-r ${category.color} text-white rounded-xl shadow-lg hover:shadow-xl`}
+                          >
                             View All
                           </Button>
                         </div>
@@ -462,10 +485,15 @@ export default function Index() {
                     <button
                       onClick={() => {
                         // Add to favorites functionality
-                        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+                        const favorites = JSON.parse(
+                          localStorage.getItem("favorites") || "[]",
+                        );
                         if (!favorites.includes(car.id)) {
                           favorites.push(car.id);
-                          localStorage.setItem('favorites', JSON.stringify(favorites));
+                          localStorage.setItem(
+                            "favorites",
+                            JSON.stringify(favorites),
+                          );
                           alert(`${car.name} added to favorites!`);
                         } else {
                           alert(`${car.name} is already in your favorites!`);
@@ -578,14 +606,18 @@ export default function Index() {
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
-            <Badge variant="outline" className="mb-6 text-gold-400 border-gold-400 px-6 py-2 text-sm font-bold">
+            <Badge
+              variant="outline"
+              className="mb-6 text-gold-400 border-gold-400 px-6 py-2 text-sm font-bold"
+            >
               Our Proven Track Record
             </Badge>
             <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
               Excellence in Numbers
             </h2>
             <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Every statistic tells a story of dedication, quality, and the trust our customers place in Alpine Motors
+              Every statistic tells a story of dedication, quality, and the
+              trust our customers place in Alpine Motors
             </p>
           </div>
 
@@ -601,7 +633,8 @@ export default function Index() {
                         alt={stat.label}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         onError={(e) => {
-                          e.currentTarget.src = 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg';
+                          e.currentTarget.src =
+                            "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg";
                         }}
                       />
                       {/* Enhanced Gradient Overlay */}
@@ -616,13 +649,20 @@ export default function Index() {
                                 <div className="w-4 h-4 bg-gradient-to-r from-black/60 to-black/80 rounded-full"></div>
                               </div>
                               <div>
-                                <div className="text-lg font-black tracking-wide">{stat.feature}</div>
-                                <div className="text-xs font-semibold opacity-80">Premium Standard</div>
+                                <div className="text-lg font-black tracking-wide">
+                                  {stat.feature}
+                                </div>
+                                <div className="text-xs font-semibold opacity-80">
+                                  Premium Standard
+                                </div>
                               </div>
                             </div>
                             <div className="flex gap-1">
                               {[...Array(5)].map((_, i) => (
-                                <div key={i} className="w-2 h-2 bg-black/60 rounded-full"></div>
+                                <div
+                                  key={i}
+                                  className="w-2 h-2 bg-black/60 rounded-full"
+                                ></div>
                               ))}
                             </div>
                           </div>
@@ -645,7 +685,9 @@ export default function Index() {
                               <div className="w-16 h-16 bg-gradient-to-r from-gold-400/30 to-gold-600/30 rounded-2xl flex items-center justify-center mb-2 group-hover:from-gold-300/40 group-hover:to-gold-500/40 transition-all duration-300">
                                 <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
                               </div>
-                              <div className="text-white/60 text-sm font-semibold">Verified</div>
+                              <div className="text-white/60 text-sm font-semibold">
+                                Verified
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -673,13 +715,21 @@ export default function Index() {
                             <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-600 rounded-lg"></div>
                           </div>
                           <div>
-                            <div className="text-xl font-black text-white mb-1">{stat.feature}</div>
-                            <div className="text-gold-400 text-sm font-semibold">Industry Standard</div>
+                            <div className="text-xl font-black text-white mb-1">
+                              {stat.feature}
+                            </div>
+                            <div className="text-gold-400 text-sm font-semibold">
+                              Industry Standard
+                            </div>
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-gold-400 text-3xl font-black">{stat.value}</div>
-                          <div className="text-white/60 text-sm">Achievement</div>
+                          <div className="text-gold-400 text-3xl font-black">
+                            {stat.value}
+                          </div>
+                          <div className="text-white/60 text-sm">
+                            Achievement
+                          </div>
                         </div>
                       </div>
 
@@ -693,22 +743,34 @@ export default function Index() {
                           <div className="w-16 h-16 bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-ocean-400/30 group-hover/indicator:to-ocean-500/30 transition-all duration-300 border border-ocean-400/20">
                             <div className="w-6 h-6 bg-gradient-to-r from-ocean-400 to-ocean-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
                           </div>
-                          <div className="text-white font-bold text-sm mb-1">Premium</div>
-                          <div className="text-ocean-400 text-xs font-medium">Quality</div>
+                          <div className="text-white font-bold text-sm mb-1">
+                            Premium
+                          </div>
+                          <div className="text-ocean-400 text-xs font-medium">
+                            Quality
+                          </div>
                         </div>
                         <div className="text-center group/indicator">
                           <div className="w-16 h-16 bg-gradient-to-r from-forest-500/20 to-forest-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-forest-400/30 group-hover/indicator:to-forest-500/30 transition-all duration-300 border border-forest-400/20">
                             <div className="w-6 h-6 bg-gradient-to-r from-forest-400 to-forest-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
                           </div>
-                          <div className="text-white font-bold text-sm mb-1">Trusted</div>
-                          <div className="text-forest-400 text-xs font-medium">Service</div>
+                          <div className="text-white font-bold text-sm mb-1">
+                            Trusted
+                          </div>
+                          <div className="text-forest-400 text-xs font-medium">
+                            Service
+                          </div>
                         </div>
                         <div className="text-center group/indicator">
                           <div className="w-16 h-16 bg-gradient-to-r from-gold-500/20 to-gold-600/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover/indicator:from-gold-400/30 group-hover/indicator:to-gold-500/30 transition-all duration-300 border border-gold-400/20">
                             <div className="w-6 h-6 bg-gradient-to-r from-gold-400 to-gold-500 rounded-xl group-hover/indicator:scale-110 transition-transform duration-300"></div>
                           </div>
-                          <div className="text-white font-bold text-sm mb-1">Elite</div>
-                          <div className="text-gold-400 text-xs font-medium">Excellence</div>
+                          <div className="text-white font-bold text-sm mb-1">
+                            Elite
+                          </div>
+                          <div className="text-gold-400 text-xs font-medium">
+                            Excellence
+                          </div>
                         </div>
                       </div>
                     </CardContent>
@@ -729,15 +791,21 @@ export default function Index() {
           <div className="mt-20 text-center">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-gold-400 mb-2">A+ Rating</div>
+                <div className="text-3xl font-bold text-gold-400 mb-2">
+                  A+ Rating
+                </div>
                 <p className="text-gray-300">Better Business Bureau</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gold-400 mb-2">98% Satisfaction</div>
+                <div className="text-3xl font-bold text-gold-400 mb-2">
+                  98% Satisfaction
+                </div>
                 <p className="text-gray-300">Customer Reviews</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gold-400 mb-2">Industry Leader</div>
+                <div className="text-3xl font-bold text-gold-400 mb-2">
+                  Industry Leader
+                </div>
                 <p className="text-gray-300">Luxury Vehicle Sales</p>
               </div>
             </div>
@@ -749,13 +817,20 @@ export default function Index() {
       <section className="py-24 bg-gradient-to-br from-white via-gray-50 to-ocean-50 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className={"absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23000000\" fill-opacity=\"0.4\"%3E%3Ccircle cx=\"20\" cy=\"20\" r=\"1\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"}></div>
+          <div
+            className={
+              'absolute top-0 left-0 w-full h-full bg-[url(\'data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23000000" fill-opacity="0.4"%3E%3Ccircle cx="20" cy="20" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')]'
+            }
+          ></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-20">
-            <Badge variant="outline" className="mb-6 text-ocean-600 border-ocean-300 px-6 py-2 text-sm font-bold">
+            <Badge
+              variant="outline"
+              className="mb-6 text-ocean-600 border-ocean-300 px-6 py-2 text-sm font-bold"
+            >
               The Alpine Motors Experience
             </Badge>
             <h2 className="text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-ocean-700 via-forest-700 to-sunset-700 bg-clip-text text-transparent leading-tight">
@@ -765,8 +840,9 @@ export default function Index() {
               </span>
             </h2>
             <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              From the moment you step into our showroom to long after you drive away,
-              we're committed to delivering an unparalleled luxury automotive experience that exceeds expectations.
+              From the moment you step into our showroom to long after you drive
+              away, we're committed to delivering an unparalleled luxury
+              automotive experience that exceeds expectations.
             </p>
           </div>
 
@@ -794,9 +870,10 @@ export default function Index() {
               </div>
               <CardContent className="p-8">
                 <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                  Step into our meticulously designed showroom where luxury meets innovation.
-                  Every detail is crafted to showcase our vehicles in the most sophisticated environment,
-                  allowing you to envision your perfect driving experience.
+                  Step into our meticulously designed showroom where luxury
+                  meets innovation. Every detail is crafted to showcase our
+                  vehicles in the most sophisticated environment, allowing you
+                  to envision your perfect driving experience.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -804,8 +881,12 @@ export default function Index() {
                       <div className="w-6 h-6 bg-gradient-to-r from-ocean-500 to-ocean-600 rounded-lg"></div>
                     </div>
                     <div>
-                      <div className="font-bold text-ocean-700">World-Class Facility</div>
-                      <div className="text-sm text-gray-500">Premium Environment</div>
+                      <div className="font-bold text-ocean-700">
+                        World-Class Facility
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        Premium Environment
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -834,9 +915,10 @@ export default function Index() {
               </div>
               <CardContent className="p-8">
                 <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                  Our certified automotive specialists provide personalized guidance tailored to your
-                  lifestyle and preferences. From initial consultation to final delivery,
-                  experience service that's as exceptional as our vehicles.
+                  Our certified automotive specialists provide personalized
+                  guidance tailored to your lifestyle and preferences. From
+                  initial consultation to final delivery, experience service
+                  that's as exceptional as our vehicles.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -844,8 +926,12 @@ export default function Index() {
                       <div className="w-6 h-6 bg-gradient-to-r from-forest-500 to-forest-600 rounded-lg"></div>
                     </div>
                     <div>
-                      <div className="font-bold text-forest-700">Dedicated Specialists</div>
-                      <div className="text-sm text-gray-500">Personal Attention</div>
+                      <div className="font-bold text-forest-700">
+                        Dedicated Specialists
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        Personal Attention
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -874,9 +960,10 @@ export default function Index() {
               </div>
               <CardContent className="p-8">
                 <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                  Experience the ultimate in automotive luxury with our comprehensive concierge service.
-                  From financing arrangements to vehicle delivery, we handle every detail
-                  so you can focus on enjoying your new luxury vehicle.
+                  Experience the ultimate in automotive luxury with our
+                  comprehensive concierge service. From financing arrangements
+                  to vehicle delivery, we handle every detail so you can focus
+                  on enjoying your new luxury vehicle.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -884,8 +971,12 @@ export default function Index() {
                       <div className="w-6 h-6 bg-gradient-to-r from-sunset-500 to-sunset-600 rounded-lg"></div>
                     </div>
                     <div>
-                      <div className="font-bold text-sunset-700">Full-Service Experience</div>
-                      <div className="text-sm text-gray-500">End-to-End Care</div>
+                      <div className="font-bold text-sunset-700">
+                        Full-Service Experience
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        End-to-End Care
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -897,7 +988,11 @@ export default function Index() {
           <div className="bg-gradient-to-br from-ocean-600 via-forest-600 to-sunset-600 rounded-3xl p-12 text-white text-center relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-20">
-              <div className={"absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.3\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"}></div>
+              <div
+                className={
+                  'absolute top-0 left-0 w-full h-full bg-[url(\'data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.3"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')]'
+                }
+              ></div>
             </div>
 
             <div className="relative z-10">
@@ -912,8 +1007,9 @@ export default function Index() {
               </h3>
 
               <p className="text-xl lg:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto text-gray-100">
-                Join the exclusive community of Alpine Motors clients who experience
-                the pinnacle of automotive luxury and service excellence.
+                Join the exclusive community of Alpine Motors clients who
+                experience the pinnacle of automotive luxury and service
+                excellence.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center flex-wrap max-w-4xl mx-auto">
@@ -949,8 +1045,16 @@ export default function Index() {
 
                       <span className="relative flex items-center gap-3 z-10">
                         <div className="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-all duration-300 group-hover:rotate-12">
-                          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                          <svg
+                            className="h-5 w-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                              clipRule="evenodd"
+                            />
                           </svg>
                         </div>
                         <span className="tracking-wide">Financing Options</span>
@@ -965,15 +1069,21 @@ export default function Index() {
               {/* Trust Indicators */}
               <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold-300 mb-2">25+ Years</div>
+                  <div className="text-3xl font-bold text-gold-300 mb-2">
+                    25+ Years
+                  </div>
                   <p className="text-gray-200">Automotive Excellence</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold-300 mb-2">2,500+</div>
+                  <div className="text-3xl font-bold text-gold-300 mb-2">
+                    2,500+
+                  </div>
                   <p className="text-gray-200">Satisfied Clients</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold-300 mb-2">A+ Rating</div>
+                  <div className="text-3xl font-bold text-gold-300 mb-2">
+                    A+ Rating
+                  </div>
                   <p className="text-gray-200">Better Business Bureau</p>
                 </div>
               </div>

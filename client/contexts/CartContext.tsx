@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { Car } from "@shared/api";
 
 interface CartItem {
@@ -55,13 +61,13 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const addToCart = (car: Car) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.car.id === car.id);
-      
+
       if (existingItem) {
         // If item already exists, increase quantity
         return prevItems.map((item) =>
           item.car.id === car.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
+            : item,
         );
       } else {
         // Add new item to cart
@@ -78,7 +84,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   };
 
   const removeFromCart = (carId: number) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.car.id !== carId));
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.car.id !== carId),
+    );
   };
 
   const updateQuantity = (carId: number, quantity: number) => {
@@ -89,8 +97,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item.car.id === carId ? { ...item, quantity } : item
-      )
+        item.car.id === carId ? { ...item, quantity } : item,
+      ),
     );
   };
 
@@ -103,7 +111,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.car.price * item.quantity, 0);
+    return cartItems.reduce(
+      (total, item) => total + item.car.price * item.quantity,
+      0,
+    );
   };
 
   const isInCart = (carId: number) => {
