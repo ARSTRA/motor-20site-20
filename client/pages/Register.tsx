@@ -358,7 +358,9 @@ export default function Register() {
             </div>
             <div className="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-sunset-100">
               <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">⚡</div>
-              <h3 className="font-bold text-gray-800 mb-2 text-base sm:text-lg">Priority Access</h3>
+              <h3 className="font-bold text-gray-800 mb-2 text-base sm:text-lg">
+                Priority Access
+              </h3>
               <p className="text-sm text-gray-600">
                 Early access to new arrivals and exclusive deals
               </p>

@@ -221,7 +221,9 @@ export default function Login() {
             </div>
             <div className="p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-sunset-100">
               <div className="text-xl sm:text-2xl mb-1 sm:mb-2">⭐</div>
-              <p className="text-xs sm:text-sm font-semibold text-gray-700">Favorites</p>
+              <p className="text-xs sm:text-sm font-semibold text-gray-700">
+                Favorites
+              </p>
             </div>
           </div>
         </div>
