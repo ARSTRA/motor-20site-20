@@ -57,25 +57,25 @@ export default function Login() {
             <div className="inline-block p-4 bg-gradient-to-r from-ocean-500 to-forest-500 rounded-3xl mb-6 shadow-xl">
               <Car className="h-12 w-12 text-white" />
             </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-text text-transparent mb-2">
               Welcome Back
             </h1>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 text-base sm:text-lg">
               Sign in to your Alpine Motors account
             </p>
           </div>
 
           <Card className="shadow-2xl border-2 border-gray-100 rounded-3xl overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white pb-8">
-              <CardTitle className="text-2xl font-bold text-center">
+            <CardHeader className="bg-gradient-to-r from-ocean-500 to-forest-500 text-white pb-6 sm:pb-8">
+              <CardTitle className="text-xl sm:text-2xl font-bold text-center">
                 Sign In
               </CardTitle>
-              <p className="text-center text-ocean-100 mt-2">
+              <p className="text-center text-ocean-100 mt-2 text-sm sm:text-base">
                 Access your premium account
               </p>
             </CardHeader>
 
-            <CardContent className="p-8">
+            <CardContent className="p-6 sm:p-8">
               {error && (
                 <Alert className="mb-6 border-red-200 bg-red-50">
                   <AlertCircle className="h-4 w-4 text-red-600" />
@@ -106,7 +106,7 @@ export default function Login() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
-                      className="pl-12 h-14 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl text-lg"
+                      className="pl-12 h-12 sm:h-14 border-2 border-ocean-200 focus:border-ocean-500 rounded-xl text-base sm:text-lg"
                       required
                     />
                   </div>
@@ -123,7 +123,7 @@ export default function Login() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter your password"
-                      className="pl-12 pr-12 h-14 border-2 border-forest-200 focus:border-forest-500 rounded-xl text-lg"
+                      className="pl-12 pr-12 h-12 sm:h-14 border-2 border-forest-200 focus:border-forest-500 rounded-xl text-base sm:text-lg"
                       required
                     />
                     <button
@@ -166,7 +166,7 @@ export default function Login() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full h-14 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full h-12 sm:h-14 bg-gradient-to-r from-ocean-500 to-forest-500 hover:from-ocean-600 hover:to-forest-600 text-white font-bold text-base sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   {loading ? (
                     <div className="flex items-center">
@@ -206,22 +206,22 @@ export default function Login() {
           </Card>
 
           {/* Benefits */}
-          <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-            <div className="p-4 bg-white rounded-2xl shadow-lg border border-ocean-100">
-              <div className="text-2xl mb-2">🚗</div>
-              <p className="text-sm font-semibold text-gray-700">
+          <div className="mt-6 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-4 text-center">
+            <div className="p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-ocean-100">
+              <div className="text-xl sm:text-2xl mb-1 sm:mb-2">🚗</div>
+              <p className="text-xs sm:text-sm font-semibold text-gray-700">
                 Vehicle Access
               </p>
             </div>
-            <div className="p-4 bg-white rounded-2xl shadow-lg border border-forest-100">
-              <div className="text-2xl mb-2">💳</div>
-              <p className="text-sm font-semibold text-gray-700">
+            <div className="p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-forest-100">
+              <div className="text-xl sm:text-2xl mb-1 sm:mb-2">💳</div>
+              <p className="text-xs sm:text-sm font-semibold text-gray-700">
                 Saved Payments
               </p>
             </div>
-            <div className="p-4 bg-white rounded-2xl shadow-lg border border-sunset-100">
-              <div className="text-2xl mb-2">⭐</div>
-              <p className="text-sm font-semibold text-gray-700">Favorites</p>
+            <div className="p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-sunset-100">
+              <div className="text-xl sm:text-2xl mb-1 sm:mb-2">⭐</div>
+              <p className="text-xs sm:text-sm font-semibold text-gray-700">Favorites</p>
             </div>
           </div>
         </div>
