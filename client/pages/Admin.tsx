@@ -2105,6 +2105,7 @@ export default function Admin() {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="usd">USD ($)</SelectItem>
+                          <SelectItem value="ngn">NGN (₦)</SelectItem>
                           <SelectItem value="eur">EUR (€)</SelectItem>
                           <SelectItem value="gbp">GBP (£)</SelectItem>
                         </SelectContent>
